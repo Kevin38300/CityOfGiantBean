@@ -1,0 +1,9 @@
+Epee 30 0 500
+Lance 20 10 600
+Baton 10 20 750
+Bouclier 20 10 500
+Lourd 30 0 600
+Leger 10 20 750
+SoinPv 0 200 0 200
+SoinMana 0 0 200 200
+Bombe 1000 0 0 2500
