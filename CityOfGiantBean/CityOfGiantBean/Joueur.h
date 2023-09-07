@@ -84,11 +84,8 @@ public:
 	float ChoixElement(Elements _elementAtk, Elements _elementDef);
 
 	void initPerso();
-	void initPersoCombat();
-	void updatePerso(sf::RenderWindow& _window, ModeGame _mode);
-	void updatePersoCombat(sf::RenderWindow& _window, ModeGame _mode, Joueur _joueur);
-	void displayPerso(sf::RenderWindow& _window, ModeGame _mode);
-	void displayPersoCombat(sf::RenderWindow& _window, ModeGame _mode);
+	void updatePerso(myWindow& _window, ModeGame _mode);
+	void displayPerso(myWindow& _window, ModeGame _mode);
 	void directionCombat();
 
 	void ChoixObjetCombat(Personnage& _perso1, Personnage& _perso2, Consos _conso);

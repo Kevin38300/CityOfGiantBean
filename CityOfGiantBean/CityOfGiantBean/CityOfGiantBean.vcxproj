@@ -152,24 +152,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Armes.cpp" />
+    <ClCompile Include="Armures.cpp" />
+    <ClCompile Include="Assassin.cpp" />
     <ClCompile Include="Chargement.cpp" />
+    <ClCompile Include="Clerc.cpp" />
+    <ClCompile Include="Consos.cpp" />
+    <ClCompile Include="Fontaine.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Guerrier.cpp" />
+    <ClCompile Include="Job.cpp" />
+    <ClCompile Include="Joueur.cpp" />
+    <ClCompile Include="Magicien.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="myWindow.cpp" />
+    <ClCompile Include="Personnage.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Taverne.cpp" />
     <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="Villagois.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Armes.h" />
+    <ClInclude Include="Armures.h" />
+    <ClInclude Include="Assassin.h" />
     <ClInclude Include="Chargement.h" />
+    <ClInclude Include="Clerc.h" />
+    <ClInclude Include="Consos.h" />
+    <ClInclude Include="Fontaine.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Guerrier.h" />
+    <ClInclude Include="Job.h" />
+    <ClInclude Include="Joueur.h" />
+    <ClInclude Include="Magicien.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myWindow.h" />
+    <ClInclude Include="NonVivant.h" />
+    <ClInclude Include="Personnage.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="stateManager.h" />
+    <ClInclude Include="Taverne.h" />
     <ClInclude Include="Tools.h" />
+    <ClInclude Include="Villagois.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

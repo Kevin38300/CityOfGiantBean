@@ -2,7 +2,7 @@
 
 
 extern int classeDisplay;
-extern float timerState;
+
 bool FirstClasse = true;
 
 
@@ -18,7 +18,7 @@ int PvRestant;
 void Joueur::initPerso() {
 	persoMTexture.loadFromFile("..\\Ressources\\Textures\\CLASSE\\PersoMale.png");
 	persoFTexture.loadFromFile("..\\Ressources\\Textures\\CLASSE\\PersoFemale.png");
-	persoSprite.setScale(2, 2);
+	persoSprite.setScale(3, 3);
 	persoRect = { 192,0,16,18 };
 	persoPosition = { 100,100 };
 	vitessePerso = { 200,200 };
@@ -210,57 +210,47 @@ float Joueur::ChoixElement(Elements _elementAtk, Elements _elementDef) {
 	//std::cout << degatsElem << std::endl;
 }
 
-void Joueur::initPersoCombat() {
-	persoPosition = { 136, 347 };
-	persoFrameY = 2;
-	timerCombat = 0.0f;
-	choixCaseCombatJoueur = 0;
-	CaseCombat.setFillColor(sf::Color::Blue);
-	CaseCombat.setSize(sf::Vector2f(50, 50));
-	boolCaseCombat = false;
-	persoSelected = false;
-}
-
 void Joueur::updatePerso(myWindow& _window, ModeGame _mode) {
 
-	if (choixS == 1) {
+	if (save::getSexe() == 1) {
 		persoSprite.setTexture(persoMTexture);
 	}
-	if (choixS == 2) {
+	if (save::getSexe() == 2) {
 		persoSprite.setTexture(persoFTexture);
 	}
-	if (_state->getModeJeu() == ModeJeu::LIBRE) {
+	if (_mode == ModeGame::LIBRE) {
 
 		sf::FloatRect playerfrect = persoSprite.getGlobalBounds();
-		//isMoving = false;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && persoPosition.y > 0) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 			if (persoPosition.y > 0) {
 				persoPosition.y -= vitessePerso.y * tools::GetTimeDelta();
+				isMoving = true;
+				persoFrameY = 0;
 			}
-			isMoving = true;
-			persoFrameY = 0;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			if (persoPosition.y < 700) {
+			if (persoPosition.y < AjustResoY * 1080) {
 				persoPosition.y += vitessePerso.y * tools::GetTimeDelta();
+				isMoving = true;
+				persoFrameY = 2;
 			}
-			isMoving = true;
-			persoFrameY = 2;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-			if (persoPosition.x < 1300) {
+			if (persoPosition.x < AjustResoX * 1920) {
 				persoPosition.x += vitessePerso.x * tools::GetTimeDelta();
+				isMoving = true;
+				persoFrameY = 1;
 			}
-			isMoving = true;
-			persoFrameY = 1;
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && persoPosition.x > 0) {
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) ) {
 			if (persoPosition.x > 0) {
 				persoPosition.x -= vitessePerso.x * tools::GetTimeDelta();
+				isMoving = true;
+				persoFrameY = 3;
 			}
-			isMoving = true;
-			persoFrameY = 3;
 		}
+		else
+			isMoving = false;
 
 		switch (classeDisplay)
 		{
@@ -283,371 +273,56 @@ void Joueur::updatePerso(myWindow& _window, ModeGame _mode) {
 			break;
 		}
 		if (isMoving) {
-			if (animTime > 5.5) {
-				persoFrameX++;
-				switch (classeDisplay)
-				{
-				case 0:
-					if (persoFrameX > 14) persoFrameX = 12;
-					break;
-				case 1:
-					if (persoFrameX > 11) persoFrameX = 9;
-					break;
-				case 2:
-					if (persoFrameX > 8) persoFrameX = 6;
-					break;
-				case 3:
-					if (persoFrameX > 3) persoFrameX = 0;
-					break;
-				case 4:
-					if (persoFrameX > 5) persoFrameX = 3;
-					break;
-				default:
-					break;
-				}
-				persoRect.left = persoFrameX * persoRect.width;
-				persoRect.top = persoFrameY * persoRect.height;
-				//persoSprite.setTextureRect(persoRect);
+			persoFrameX++;
+			switch (classeDisplay)
+			{
+			case 0:
+				if (persoFrameX > 14) persoFrameX = 12;
+				break;
+			case 1:
+				if (persoFrameX > 11) persoFrameX = 9;
+				break;
+			case 2:
+				if (persoFrameX > 8) persoFrameX = 6;
+				break;
+			case 3:
+				if (persoFrameX > 3) persoFrameX = 0;
+				break;
+			case 4:
+				if (persoFrameX > 5) persoFrameX = 3;
+				break;
+			default:
+				break;
 			}
+			persoRect.left = persoFrameX * persoRect.width;
+			persoRect.top = persoFrameY * persoRect.height;
+				persoSprite.setTextureRect(persoRect);
+
 		}
 		else {
 			persoRect.left = persoFrameX * persoRect.width;
 			persoRect.top = persoFrameY * persoRect.height;
-			//persoSprite.setTextureRect(persoRect);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
-			std::cout << "pos X = " << persoPosition.x << "pos Y = " << persoPosition.y << std::endl;
-		}
-
-		if (_state->getLieux() == Lieux::VILLE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, ShopPos, ShopSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::BOUTIQUE);
-				persoPosition = ShopPosT;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, tavernePos, taverneSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::TAVERNE);
-				persoPosition = tavernePosT;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, SafariPos, SafariSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::SAFARIE);
-				persoPosition = SafariSPos;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, hotelPos, hotelSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::HOTEL);
-				persoPosition = hotelPosH;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, fontainePos, fontaineSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::FONTAINE);
-				persoPosition = fontainePos;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, AlchimiePos, AlchimieSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::ALCHIMIE);
-				persoPosition = AlchimiePosA;
-				timerState = 0.0f;
-			}
-			else if (tools::CircleRect_Collision(persoPosition, 1, GiantJackPos, GiantJackSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::GIANTJACK);
-				persoPosition = GiantJackPos;
-				timerState = 0.0f;
-			}
-		}
-		if (tools::CircleRect_Collision(persoPosition, 10, SafariSPos, SafariSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-			if (_state->getLieux() == Lieux::SAFARIE && timerState >= 0.2f) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = SafariPos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::BOUTIQUE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 10, ShopPosT, ShopSizeT) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = ShopPos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::TAVERNE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, tavernePosT, taverneSizeT) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = tavernePos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::HOTEL && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, hotelPosH, hotelSizeH) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = hotelPos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::FONTAINE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, fontainePos, fontaineSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = fontainePos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::ALCHIMIE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, AlchimiePosA, AlchimieSizeA) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = AlchimiePos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::GIANTJACK && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, GiantJackPos, GiantJackSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::VILLE);
-				persoPosition = GiantJackPos;
-				timerState = 0.0f;
-			}
-		}
-		if (_state->getLieux() == Lieux::AVENTURE && timerState >= 0.2f) {
-			if (tools::CircleRect_Collision(persoPosition, 1, AventurePos, AventureSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				_state->ChangeLieux(Lieux::GIANTJACK);
-				persoPosition = GiantJackPos;
-				timerState = 0.0f;
-			}
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && timerState > 0.3f) {
-			_state->ChangeModeJeu(ModeJeu::MENUGAME);
-			timerState = 0.0f;
-		}
-	}
-	if (_state->getModeJeu() == ModeJeu::SKILL_TREE) {
-
-	}
-}
-
-void Joueur::updatePersoCombat(myWindow& _window, ModeGame _mode, Joueur _joueur) {
-	switch (classeDisplay)
-	{
-	case 0:
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-			persoRect = { 192,36,16,18 };
-		}
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXACTION) {
-			persoRect = { 192,18,16,18 };
-		}
-		break;
-	case 1:
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-			persoRect = { 144,36,16,18 };
-		}
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXACTION) {
-			persoRect = { 144,18,16,18 };
-		}
-		break;
-	case 2:
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-			persoRect = { 96,36,16,18 };
-		}
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXACTION) {
-			persoRect = { 96,18,16,18 };
-		}
-		break;
-	case 3:
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-			persoRect = { 0,36,16,18 };
-		}
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXACTION) {
-			persoRect = { 0,18,16,18 };
-		}
-		break;
-	case 4:
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-			persoRect = { 48,36,16,18 };
-		}
-		if (_state->getPhaseCombat() == PhaseCombat::CHOIXACTION) {
-			persoRect = { 48,18,16,18 };
-		}
-		break;
-	default:
-		break;
-	}
-	timerCombat += tools::GetTimeDelta();
-	if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-		if (boolCaseCombat == false) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && choixCaseCombatJoueur < 4 && timerCombat > 0.2f) {
-				choixCaseCombatJoueur += 1;
-				timerCombat = 0.0f;
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && choixCaseCombatJoueur > 0 && timerCombat > 0.2f) {
-				choixCaseCombatJoueur -= 1;
-				timerCombat = 0.0f;
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerCombat > 0.2f) {
-				if (tools::CircleRect_Collision(_joueur.persoPosition, 10, posCaseJoueur, sf::Vector2f(10, 10)) && _joueur.persoSelected == false)
-				{
-					std::cout << "Colision Perso Case" << std::endl;
-					_joueur.persoSelected = true;
-				}
-				if (tools::CircleRect_Collision(_joueur.persoPosition, 10, posCaseJoueur, sf::Vector2f(10, 10)))
-				{
-					std::cout << "Colision Perso Case" << std::endl;
-					_joueur.persoSelected = true;
-				}
-				if (tools::CircleRect_Collision(_joueur.persoPosition, 10, posCaseJoueur, sf::Vector2f(10, 10)))
-				{
-					std::cout << "Colision Perso Case" << std::endl;
-					_joueur.persoSelected = true;
-				}
-				if (tools::CircleRect_Collision(_joueur.persoPosition, 10, posCaseJoueur, sf::Vector2f(10, 10)))
-				{
-					std::cout << "Colision Perso Case" << std::endl;
-					_joueur.persoSelected = true;
-				}
-				if (tools::CircleRect_Collision(_joueur.persoPosition, 10, posCaseJoueur, sf::Vector2f(10, 10)))
-				{
-					std::cout << "Colision Perso Case" << std::endl;
-					_joueur.persoSelected = true;
-				}
-				switch (choixCaseCombatJoueur)
-				{
-				case 0:
-					persoSelected = true;
-					break;
-				case 1:
-					persoSelected = false;
-					break;
-				case 2:
-					persoSelected = false;
-					break;
-				case 3:
-					persoSelected = false;
-					break;
-				case 4:
-					persoSelected = false;
-					break;
-				default:
-					break;
-				}
-				boolCaseCombat = true;
-				choixCaseCombatJoueur = 0;
-				timerCombat = 0.0f;
-			}
-		}
-		if (boolCaseCombat == true) {
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && choixCaseCombatJoueur < 4 && timerCombat > 0.2f) {
-				choixCaseCombatJoueur += 1;
-				timerCombat = 0.0f;
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && choixCaseCombatJoueur > 0 && timerCombat > 0.2f) {
-				choixCaseCombatJoueur -= 1;
-				timerCombat = 0.0f;
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerCombat > 0.2f) {
-				if (persoSelected == true) {
-					switch (choixCaseCombatJoueur)
-					{
-					case 0:
-						persoPosition = { 457,145 };
-						persoSelected = false;
-						break;
-					case 1:
-						persoPosition = { 457,200 };
-						persoSelected = false;
-						break;
-					case 2:
-						persoPosition = { 387,111 };
-						persoSelected = false;
-						break;
-					case 3:
-						persoPosition = { 387,166 };
-						persoSelected = false;
-						break;
-					case 4:
-						persoPosition = { 387,223 };
-						persoSelected = false;
-						break;
-					default:
-						break;
-					}
-					boolCaseCombat = false;
-					choixCaseCombatJoueur = 0;
-					timerCombat = 0.0f;
-				}
-				else
-				{
-					boolCaseCombat = false;
-				}
-			}
+				persoSprite.setTextureRect(persoRect);
 		}
 	}
 }
 
 void Joueur::displayPerso(myWindow& _window, ModeGame _mode) {
-	if (_state->getModeJeu() == ModeJeu::LIBRE) {
+	if (_mode == ModeGame::LIBRE) {
 		persoSprite.setTextureRect(persoRect);
 		persoSprite.setPosition(persoPosition);
-		_window.draw(persoSprite);
+		_window.Draw(persoSprite);
 	}
-	if (_state->getModeJeu() == ModeJeu::CHASSE) {
+	if (_mode == ModeGame::CHASSE) {
 		persoSprite.setTextureRect(persoRect);
 		persoSprite.setPosition(persoPosition);
-		_window.draw(persoSprite);
+		_window.Draw(persoSprite);
 	}
-	if (_state->getModeJeu() == ModeJeu::AVE) {
+	if (_mode == ModeGame::AVE) {
 		persoSprite.setTextureRect(persoRect);
 		persoSprite.setPosition(persoPosition);
-		_window.draw(persoSprite);
+		_window.Draw(persoSprite);
 	}
-}
-
-void Joueur::displayPersoCombat(myWindow& _window, ModeGame _mode) {
-	if (_state->getPhaseCombat() == PhaseCombat::CHOIXPOSITION) {
-		if (boolCaseCombat == false) {
-			switch (choixCaseCombatJoueur) {
-			case 0:
-				posCaseJoueur = { 130, 341 };
-				break;
-			case 1:
-				posCaseJoueur = { 391, 341 };
-				break;
-			case 2:
-				posCaseJoueur = { 650, 341 };
-				break;
-			case 3:
-				posCaseJoueur = { 914, 341 };
-				break;
-			case 4:
-				posCaseJoueur = { 1161, 341 };
-				break;
-			default:
-				break;
-			}
-		}
-		if (boolCaseCombat == true) {
-			switch (choixCaseCombatJoueur) {
-			case 0:
-				posCaseJoueur = { 447, 135 };
-				break;
-			case 1:
-				posCaseJoueur = { 447, 190 };
-				break;
-			case 2:
-				posCaseJoueur = { 377, 106 };
-				break;
-			case 3:
-				posCaseJoueur = { 377, 161 };
-				break;
-			case 4:
-				posCaseJoueur = { 377, 218 };
-				break;
-			default:
-				break;
-			}
-		}
-		CaseCombat.setPosition(posCaseJoueur);
-		_window.draw(CaseCombat);
-	}
-	persoSprite.setTextureRect(persoRect);
-	persoSprite.setPosition(persoPosition);
-	_window.draw(persoSprite);
 }
 
 void Joueur::directionCombat() {
@@ -1143,6 +818,7 @@ void Joueur::ChoixObjetCombat(Personnage& _perso1, Personnage& _perso2, Consos _
 		choixUseObjet = 0;
 	}
 }
+
 void Joueur::UseSoinPvCombat(Personnage& _perso1, Consos _conso) {
 	if (soinPvEquipe == true) {
 		_perso1.SetTotPv(_perso1.GetTotPv() + _conso.GetSoinPv());

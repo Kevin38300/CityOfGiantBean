@@ -83,27 +83,27 @@ void initTaverne() {
 	txPNJ.setFont(fontT);
 	txPNJ.setOrigin(txPNJ.getGlobalBounds().height / 2, txPNJ.getGlobalBounds().width / 2);
 	txPNJ.setPosition(120, 450);
-	txPNJ.setFillColor(Color::Red);
+	txPNJ.setFillColor(sf::Color::Red);
 
 	ValidationT.setFont(fontT);
 	ValidationT.setOrigin(ValidationT.getGlobalBounds().height / 2, ValidationT.getGlobalBounds().width / 2);
 	ValidationT.setPosition(120, 450);
-	ValidationT.setFillColor(Color::Red);
+	ValidationT.setFillColor(sf::Color::Red);
 
 	OuiTexteT.setFont(fontT);
 	OuiTexteT.setOrigin(OuiTexteT.getGlobalBounds().height / 2, OuiTexteT.getGlobalBounds().width / 2);
 	OuiTexteT.setPosition(300, 550);
-	OuiTexteT.setFillColor(Color::Red);
+	OuiTexteT.setFillColor(sf::Color::Red);
 
 	NonTexteT.setFont(fontT);
 	NonTexteT.setOrigin(NonTexteT.getGlobalBounds().height / 2, NonTexteT.getGlobalBounds().width / 2);
 	NonTexteT.setPosition(400, 550);
-	NonTexteT.setFillColor(Color::Red);
+	NonTexteT.setFillColor(sf::Color::Red);
 
 	PasArgentTaverne.setFont(fontT);
 	PasArgentTaverne.setOrigin(PasArgentTaverne.getGlobalBounds().height / 2, PasArgentTaverne.getGlobalBounds().width / 2);
 	PasArgentTaverne.setPosition(150, 450);
-	PasArgentTaverne.setFillColor(Color::Red);
+	PasArgentTaverne.setFillColor(sf::Color::Red);
 
 	PasDArgentT = "Vous n'avez pas assez d'argent!";
 	ValidationTa = "Vous allez change de classe: Classe : ";
@@ -117,7 +117,7 @@ void initTaverne() {
 	boiteDiscussion::initBoiteDiscussion();
 }
 
-void updateTaverne(sf::RenderWindow& _window, Joueur& _perso1) {
+void updateTaverne(myWindow& _window, Joueur& _perso1) {
 
 	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, TavernePNJpos, TavernePNJsize))
 		iPNJ = 1;
@@ -234,7 +234,7 @@ void updateTaverne(sf::RenderWindow& _window, Joueur& _perso1) {
 	}
 }
 
-void displayTaverne(sf::RenderWindow& _window) {
+void displayTaverne(myWindow& _window) {
 	if (ValidT == 1 || PasArgentResteT == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
 	}
@@ -249,7 +249,7 @@ void displayTaverne(sf::RenderWindow& _window) {
 	PasArgentTaverne.setString(PasDArgentT);
 	if (PasArgentResteT == 1) {
 		timerPasArgentT += tools::GetTimeDelta();
-		_window.draw(PasArgentTaverne);
+		_window.Draw(PasArgentTaverne);
 		if (timerPasArgentT >= 1.0f) {
 			timerPasArgentT = 0.0f;
 			PasArgentResteT = 0;
@@ -257,7 +257,7 @@ void displayTaverne(sf::RenderWindow& _window) {
 	}
 }
 
-void validationTaverne(sf::RenderWindow& _window) {
+void validationTaverne(myWindow& _window) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		OuiNonT = 1;
 	}
@@ -266,7 +266,7 @@ void validationTaverne(sf::RenderWindow& _window) {
 	}
 }
 
-void displayValidationT(sf::RenderWindow& _window) {
+void displayValidationT(myWindow& _window) {
 
 	if (OuiNonT == 1) {
 		OuiTexteT.setScale(2, 2);
@@ -281,9 +281,9 @@ void displayValidationT(sf::RenderWindow& _window) {
 		NonTexteT.setScale(1, 1);
 	}
 	ValidationT.setString(ValidationTa + ValidationTatmp + ValidationTaDepense);
-	_window.draw(ValidationT);
-	_window.draw(OuiTexteT);
-	_window.draw(NonTexteT);
+	_window.Draw(ValidationT);
+	_window.Draw(OuiTexteT);
+	_window.Draw(NonTexteT);
 }
 
 void ChgJob(Joueur& _perso1, Job _job) {
@@ -311,10 +311,10 @@ void NonRetourTaverne() {
 }
 
 
-void Tavernier(sf::RenderWindow& _window) {
+void Tavernier(myWindow& _window) {
 	if (iPNJ == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
 		txPNJ.setString(stPNJ);
-		_window.draw(txPNJ);
+		_window.Draw(txPNJ);
 	}
 }

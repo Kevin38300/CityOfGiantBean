@@ -138,15 +138,14 @@ public:
 	inline Armures GetArmure() { return mon_armure; }
 	inline Consos GetConso() { return ma_conso; }
 
-	Personnage();//constructeur 1
-	~Personnage();//destructeur 1
+	Personnage();
+	~Personnage();
 	Personnage(std::string _name, int _niveau, int _pv, int defense, int attaque, int argent, int _mana, int _endurance, int _vitesse); //constructeur 2
 
 	Elements GetElement() {return element;}
 	std::string GetNomElem();
 	inline float GetDegatElement() {return degatsElem;}
 	inline void SetElement(Elements _element) {element = _element;}
-	//void ChoixElement(Elements _elementAtk, Elements _elementDef);
 	void DisplayStat();
 	void AfficheStats(myWindow& _window, sf::Text texte);
 	void ChangeStatNiveau(int _niveau);

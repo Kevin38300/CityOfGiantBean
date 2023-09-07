@@ -22,6 +22,18 @@
     <Filter Include="Game">
       <UniqueIdentifier>{ed8d9f5a-1c3c-44f6-822e-3a5e95896625}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Perso">
+      <UniqueIdentifier>{3c49b80b-b49a-4e12-9e39-b35c897045e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Perso\Classe">
+      <UniqueIdentifier>{997ab78c-3dfe-469b-9560-937c0eee2e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objet">
+      <UniqueIdentifier>{c549c268-3b23-4763-911f-0a657cc90da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lieux">
+      <UniqueIdentifier>{e53c9903-81c5-4b1a-97b8-bb79446a6e46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -48,6 +60,45 @@
     <ClCompile Include="Map.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Job.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Assassin.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Clerc.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Guerrier.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Magicien.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Armes.cpp">
+      <Filter>Objet</Filter>
+    </ClCompile>
+    <ClCompile Include="Armures.cpp">
+      <Filter>Objet</Filter>
+    </ClCompile>
+    <ClCompile Include="Consos.cpp">
+      <Filter>Objet</Filter>
+    </ClCompile>
+    <ClCompile Include="Villagois.cpp">
+      <Filter>Perso\Classe</Filter>
+    </ClCompile>
+    <ClCompile Include="Joueur.cpp">
+      <Filter>Perso</Filter>
+    </ClCompile>
+    <ClCompile Include="Personnage.cpp">
+      <Filter>Perso</Filter>
+    </ClCompile>
+    <ClCompile Include="Fontaine.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
+    <ClCompile Include="Taverne.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tools.h">
@@ -73,6 +124,48 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Job.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Assassin.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Clerc.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Guerrier.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Magicien.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Armes.h">
+      <Filter>Objet</Filter>
+    </ClInclude>
+    <ClInclude Include="Armures.h">
+      <Filter>Objet</Filter>
+    </ClInclude>
+    <ClInclude Include="Consos.h">
+      <Filter>Objet</Filter>
+    </ClInclude>
+    <ClInclude Include="NonVivant.h">
+      <Filter>Objet</Filter>
+    </ClInclude>
+    <ClInclude Include="Villagois.h">
+      <Filter>Perso\Classe</Filter>
+    </ClInclude>
+    <ClInclude Include="Joueur.h">
+      <Filter>Perso</Filter>
+    </ClInclude>
+    <ClInclude Include="Personnage.h">
+      <Filter>Perso</Filter>
+    </ClInclude>
+    <ClInclude Include="Fontaine.h">
+      <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Taverne.h">
+      <Filter>Lieux</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

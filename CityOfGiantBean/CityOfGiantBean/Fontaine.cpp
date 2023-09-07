@@ -56,22 +56,22 @@ void initFontaine() {
 	ValidationFontaine.setFont(fontF);
 	ValidationFontaine.setOrigin(ValidationFontaine.getGlobalBounds().height / 2, ValidationFontaine.getGlobalBounds().width / 2);
 	ValidationFontaine.setPosition(150, 450);
-	ValidationFontaine.setFillColor(Color::Red);
+	ValidationFontaine.setFillColor(sf::Color::Red);
 
 	OuiTexteF.setFont(fontF);
 	OuiTexteF.setOrigin(OuiTexteF.getGlobalBounds().height / 2, OuiTexteF.getGlobalBounds().width / 2);
 	OuiTexteF.setPosition(300, 550);
-	OuiTexteF.setFillColor(Color::Red);
+	OuiTexteF.setFillColor(sf::Color::Red);
 
 	NonTexteF.setFont(fontF);
 	NonTexteF.setOrigin(NonTexteF.getGlobalBounds().height / 2, NonTexteF.getGlobalBounds().width / 2);
 	NonTexteF.setPosition(400, 550);
-	NonTexteF.setFillColor(Color::Red);
+	NonTexteF.setFillColor(sf::Color::Red);
 
 	PasArgentFontaine.setFont(fontF);
 	PasArgentFontaine.setOrigin(PasArgentFontaine.getGlobalBounds().height / 2, PasArgentFontaine.getGlobalBounds().width / 2);
 	PasArgentFontaine.setPosition(150, 450);
-	PasArgentFontaine.setFillColor(Color::Red);
+	PasArgentFontaine.setFillColor(sf::Color::Red);
 
 	PasDArgentF = "Vous n'avez pas assez d'argent!";
 	ValidElem = "Vous allez change d'element. Element choisi : ";
@@ -81,7 +81,7 @@ void initFontaine() {
 	boiteDiscussion::initBoiteDiscussion();
 }
 
-void updateFontaine(sf::RenderWindow& _window, Joueur& _perso1) {
+void updateFontaine(myWindow& _window, Joueur& _perso1) {
 
 	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineFeuPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		ValidF = 1;
@@ -172,7 +172,7 @@ void ChgElem(Joueur& _perso1, Personnage::Elements _element) {
 	}
 }
 
-void displayFontaine(sf::RenderWindow& _window) {
+void displayFontaine(myWindow& _window) {
 	if (ValidF == 1 || PasArgentResteF == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
 	}
@@ -182,7 +182,7 @@ void displayFontaine(sf::RenderWindow& _window) {
 	PasArgentFontaine.setString(PasDArgentF);
 	if (PasArgentResteF == 1) {
 		timerPasArgentF += tools::GetTimeDelta();
-		_window.draw(PasArgentFontaine);
+		_window.Draw(PasArgentFontaine);
 		if (timerPasArgentF >= 1.0f) {
 			timerPasArgentF = 0.0f;
 			PasArgentResteF = 0;
@@ -190,7 +190,7 @@ void displayFontaine(sf::RenderWindow& _window) {
 	}
 }
 
-void validationFontaine(sf::RenderWindow& _window) {
+void validationFontaine(myWindow& _window) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		OuiTexteF.setScale(2, 2);
 		NonTexteF.setScale(1, 1);
@@ -203,7 +203,7 @@ void validationFontaine(sf::RenderWindow& _window) {
 	}
 }
 
-void displayValidationF(sf::RenderWindow& _window) {
+void displayValidationF(myWindow& _window) {
 	OuiTexteF.setString("Oui");
 	NonTexteF.setString("Non");
 
@@ -212,9 +212,9 @@ void displayValidationF(sf::RenderWindow& _window) {
 		NonTexteF.setScale(1, 1);
 	}
 	ValidationFontaine.setString(ValidElem + NomElementtmp + validDepense);
-	_window.draw(ValidationFontaine);
-	_window.draw(OuiTexteF);
-	_window.draw(NonTexteF);
+	_window.Draw(ValidationFontaine);
+	_window.Draw(OuiTexteF);
+	_window.Draw(NonTexteF);
 }
 
 void NonRetourFontaine() {
