@@ -1,6 +1,7 @@
 #include "Chargement.h"
 #include "Menu.h"
 #include "Game.h"
+#include "Save.h"
 
 Chargement::Chargement() {
 }
@@ -129,7 +130,7 @@ void Chargement::update(myWindow& _window) {
 
 				posNewPersoM = sf::Vector2f(AjustResoX * 600.0f, AjustResoY * 150.0f);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
-					iChoixSexe = 1;
+					save::setSexe(1);
 					spPerso.setTexture(ttPersoM);
 					spPerso.setTextureRect(persoRect);
 					spPerso.setScale(3, 3);
@@ -144,7 +145,7 @@ void Chargement::update(myWindow& _window) {
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewPersoF.x, posNewPersoF.y), sf::Vector2f(spPersoF.getGlobalBounds().width, spPersoF.getGlobalBounds().height))) {
 				posNewPersoF = sf::Vector2f(AjustResoX * 950.0f, AjustResoY * 150.0f);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
-					iChoixSexe = 2;
+					save::setSexe(2);
 					spPerso.setTexture(ttPersoF);
 					spPerso.setTextureRect(persoRect);
 					spPerso.setScale(3, 3);
@@ -185,10 +186,10 @@ void Chargement::update(myWindow& _window) {
 				posNewPseudo = sf::Vector2f(AjustResoX * 100.0f, AjustResoY * 300.0f);
 			}
 		}
-		if (iChoixSexe == 1) {
+		if (save::getSexe() == 1) {
 			spPersoM.setScale(5, 5);
 		}
-		if (iChoixSexe == 2) {
+		if (save::getSexe() == 2) {
 			spPersoF.setScale(5, 5);
 		}
 		if (bValidPerso == true && bValidPseudo == true) {
@@ -198,6 +199,14 @@ void Chargement::update(myWindow& _window) {
 		posNewTxVerifNon = sf::Vector2f(posNewTxVerif.x + txNewVerifNon.getGlobalBounds().width *3+ txNewVerif.getGlobalBounds().width, posNewTxVerif.y);
 		if (bValid) {
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewTxVerifOui.x, posNewTxVerifOui.y + txNewVerifOui.getGlobalBounds().height), sf::Vector2f(txNewVerifOui.getGlobalBounds().width, txNewVerifOui.getGlobalBounds().height))) {
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
+					fClickMenu = 0.0f;
+					save::setpseudo1(stPseudo);
+					save::setMap(1);
+					Sauvegarde::SaveGame(save::getpseudo1(), save::getSexe(), save::getMap());
+					this->stateManager_->TransitionTo(new Game(MapGame::RDC, ModeGame::LIBRE, AventureGame::NONE, ShopGame::NONE, _window), _window);
+					return;
+				}
 			}
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewTxVerifNon.x, posNewTxVerifNon.y + txNewVerifNon.getGlobalBounds().height), sf::Vector2f(txNewVerifNon.getGlobalBounds().width, txNewVerifNon.getGlobalBounds().height))) {
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {

@@ -20,10 +20,14 @@ namespace boiteDiscussion
 	void initBoiteDiscussion();
 	void displayBoiteDiscussion(myWindow& _window);
 }
-namespace pseudo
+namespace save
 {
 	void setpseudo1(std::string _string);
 	std::string getpseudo1();
+	void setSexe(int _choixSexe);
+	int getSexe();
+	void setMap(int _choixMap);
+	int getMap();
 }
 namespace music
 {

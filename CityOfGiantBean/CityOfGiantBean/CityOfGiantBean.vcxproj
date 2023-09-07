@@ -154,16 +154,20 @@
   <ItemGroup>
     <ClCompile Include="Chargement.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="myWindow.cpp" />
+    <ClCompile Include="Save.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chargement.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="myWindow.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="stateManager.h" />
     <ClInclude Include="Tools.h" />
   </ItemGroup>

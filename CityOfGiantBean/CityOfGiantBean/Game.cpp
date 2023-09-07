@@ -1,10 +1,14 @@
 #include "Game.h"
+#include "Map.h"
 
 Game::Game() {
 }
 
-Game::Game(StateGame _stateGame, myWindow& _window) {
-	_stateGame = stateGame;
+Game::Game(MapGame _mapGame, ModeGame _modeGame, AventureGame _aventureGame, ShopGame _shopGame, myWindow& _window) {
+	mapGame = _mapGame;
+	modeGame = _modeGame;
+	shopGame = _shopGame;
+	aventureGame = _aventureGame;
 }
 
 void Game::init(myWindow& _window) {
@@ -16,23 +20,45 @@ void Game::init(myWindow& _window) {
 	_cyan = sf::Color::Cyan;
 	_transparent = sf::Color(0.0, 0.0, 0.0, 0.0);
 
-	ttMenu.loadFromFile("../Ressources/Textures/MENU/MenuCeleste.jpg");
-	spMenu.setTexture(ttMenu);
 
-	if (stateGame == StateGame::NEW) {
+	initCarte();
+
+	if (mapGame == MapGame::RDC) {
 
 	}
-	if (stateGame == StateGame::CONTINU) {
+	if (mapGame == MapGame::SAFARIE) {
+
+	}
+	if (mapGame == MapGame::MONTE) {
+
+	}
+	if (mapGame == MapGame::AVENTURE) {
+
+	}
+	if (mapGame == MapGame::SHOP) {
 
 	}
 }
 
 void Game::update(myWindow& _window) {
 
-	if (stateGame == StateGame::NEW) {
+	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
+	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
+	fClickMenu += tools::GetTimeDelta();
+	updateCarte(_window, mapGame, shopGame, aventureGame, modeGame, posSouris);
+	if (mapGame == MapGame::RDC) {
 
 	}
-	if (stateGame == StateGame::CONTINU) {
+	if (mapGame == MapGame::SAFARIE) {
+
+	}
+	if (mapGame == MapGame::MONTE) {
+
+	}
+	if (mapGame == MapGame::AVENTURE) {
+
+	}
+	if (mapGame == MapGame::SHOP) {
 
 	}
 }
@@ -41,11 +67,19 @@ void Game::updateEvent(myWindow& _window) {
 }
 
 void Game::draw(myWindow& _window) {
-	_window.Draw(spMenu);
-	_window.Draw(txMTitre);
-	if (stateGame == StateGame::NEW) {
+	displayCarte(_window, mapGame, shopGame, aventureGame, modeGame);
+	if (mapGame == MapGame::RDC) {
 	}
-	if (stateGame == StateGame::CONTINU) {
+	if (mapGame == MapGame::SAFARIE) {
+
+	}
+	if (mapGame == MapGame::MONTE) {
+
+	}
+	if (mapGame == MapGame::AVENTURE) {
+
+	}
+	if (mapGame == MapGame::SHOP) {
 
 	}
 }

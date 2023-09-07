@@ -130,6 +130,14 @@ void Menu::init(myWindow& _window) {
 
 void Menu::update(myWindow& _window) {
 
+	std::ifstream Save("..\\Ressources\\Save\\Save.txt", std::ios::in);
+	if (!Save.is_open()) {
+		bSave = false;
+	}
+	else {
+		bSave = true;
+	}
+
 	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
@@ -189,7 +197,7 @@ void Menu::update(myWindow& _window) {
 					return;
 				}
 			}
-			else			{
+			else {
 				txVerifOui.setCharacterSize(50);
 				posVerifOui = sf::Vector2f(AjustResoX * 800.0f, AjustResoY * 900.0f);
 			}
@@ -201,7 +209,7 @@ void Menu::update(myWindow& _window) {
 					bVerifNew = false;
 				}
 			}
-			else			{
+			else {
 				txVerifNon.setCharacterSize(50);
 				posVerifNon = sf::Vector2f(AjustResoX * 900.0f, AjustResoY * 900.0f);
 			}
@@ -220,10 +228,12 @@ void Menu::update(myWindow& _window) {
 					fClickMenu = 0.0f;
 					bVerifNew = true;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMCharge.x, posMCharge.y + txMCharge.getGlobalBounds().height), sf::Vector2f(txMCharge.getGlobalBounds().width, txMCharge.getGlobalBounds().height))) {
-					fClickMenu = 0.0f;
-					this->stateManager_->TransitionTo(new Chargement(StateChargement::CONTINU, _window), _window);
-					return;
+				if (bSave) {
+					if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMCharge.x, posMCharge.y + txMCharge.getGlobalBounds().height), sf::Vector2f(txMCharge.getGlobalBounds().width, txMCharge.getGlobalBounds().height))) {
+						fClickMenu = 0.0f;
+						this->stateManager_->TransitionTo(new Chargement(StateChargement::CONTINU, _window), _window);
+						return;
+					}
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMQuitter.x, posMQuitter.y + txMQuitter.getGlobalBounds().height), sf::Vector2f(txMQuitter.getGlobalBounds().width, txMQuitter.getGlobalBounds().height))) {
 					_window.SetIsDone(true);
@@ -260,7 +270,8 @@ void Menu::draw(myWindow& _window) {
 	_window.Draw(spMenu);
 	_window.Draw(txMTitre);
 	_window.Draw(txMNew);
-	_window.Draw(txMCharge);
+	if (bSave)
+		_window.Draw(txMCharge);
 	_window.Draw(txMOption);
 	_window.Draw(txMQuitter);
 	if (bVerifNew) {

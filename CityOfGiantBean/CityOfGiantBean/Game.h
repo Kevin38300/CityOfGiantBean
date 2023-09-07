@@ -2,9 +2,42 @@
 #include "stateManager.h"
 
 
-enum class StateGame {
-	NEW,
-	CONTINU
+enum class MapGame {
+	RDC,
+	SAFARIE,
+	MONTE,
+	AVENTURE,
+	SHOP
+};
+
+enum class AventureGame {
+	ZONE_MAGE,
+	ZONE_GUERRIER,
+	ZONE_ASSASSIN,
+	ZONE_CLERC,
+	AVENTURE,
+	NONE
+};
+
+enum class ModeGame {
+	LIBRE,
+	AVE,
+	LOOT,
+	SKILL_TREE,
+	QUETE,
+	FORGE,
+	CHASSE,
+	DUEL,
+	MENU
+};
+
+enum class ShopGame {
+	HOTEL,
+	BOUTIQUE,
+	ALCHIMIE,
+	FONTAINE,
+	TAVERNE,
+	NONE
 };
 
 class Game : public State
@@ -23,10 +56,13 @@ private:
 
 	sf::Color _white, _black, _green, _red, _transparent, _blue, _cyan;
 
-	StateGame stateGame;
+	MapGame mapGame;
+	ModeGame modeGame;
+	AventureGame aventureGame;
+	ShopGame shopGame;
 public:
 	Game();
-	Game(StateGame _stateGame, myWindow& _window);
+	Game(MapGame _mapGame, ModeGame _modeGame, AventureGame _aventureGame, ShopGame _shopGame, myWindow& _window);
 	void init(myWindow& _window) override;
 	void update(myWindow& _window) override;
 	void updateEvent(myWindow& _window) override;

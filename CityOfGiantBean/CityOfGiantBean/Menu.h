@@ -23,7 +23,7 @@ private:
 	sf::Text txVerifNew, txVerifOui, txVerifNon;
 	sf::Vector2f posVerifNew, posVerifOui, posVerifNon;
 
-	bool bOption, bVerifNew;
+	bool bOption, bVerifNew, bSave;
 	sf::Color _white, _black, _green, _red, _transparent, _blue, _cyan;
 
 	StateMenu stateMenu;

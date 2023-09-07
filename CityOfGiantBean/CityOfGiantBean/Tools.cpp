@@ -12,9 +12,9 @@ int iLangueTrad, iChoixMusic;
 bool bFirstIn, bFirstInM;
 float SonVolume, MusicVolume;
 
-
 std::string stpst1;
 
+int iSaveSexe, iSaveMap;
 
 namespace boiteDiscussion
 {
@@ -31,13 +31,25 @@ namespace boiteDiscussion
 		_window.Draw(BoiteDiscussionSprite);
 	}
 }
-namespace pseudo
+namespace save
 {
 	void setpseudo1(std::string _string) {
 		stpst1 = _string;
 	}
 	std::string getpseudo1() {
 		return stpst1;
+	}
+	void setSexe(int _choixSexe){
+		iSaveSexe = _choixSexe;
+	}
+	int getSexe()	{
+		return iSaveSexe;
+	}
+	void setMap(int _choixMap)	{
+		iSaveMap = _choixMap;
+	}
+	int getMap()	{
+		return iSaveMap;
 	}
 }
 namespace music
