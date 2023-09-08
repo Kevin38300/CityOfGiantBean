@@ -3,7 +3,7 @@
 Assassin::Assassin()
 {
 	nameJob = "Assassin";
-	pv = 200;
+	pv = 300;
 	defense = 50;
 	attaque = 500;
 	//argent = 10000;

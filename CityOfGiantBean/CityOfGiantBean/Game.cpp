@@ -5,6 +5,9 @@
 #include "Fontaine.h"
 #include "Boutique.h"
 #include "Alchime.h"
+#include "Safarie.h"
+#include "MenuInGame.h"
+#include "Villagois.h"
 
 Game::Game() {
 }
@@ -18,6 +21,11 @@ Game::Game(MapGame _mapGame, ModeGame _modeGame, AventureGame _aventureGame, Sho
 
 Joueur persoMain;
 Alchimie alchimie;
+MenuGame menuGame;
+Safarie safarie;
+Consos conso;
+Villagois villagois = Villagois();
+
 void Game::init(myWindow& _window) {
 	_white = sf::Color::White;
 	_black = sf::Color::Black;
@@ -30,10 +38,13 @@ void Game::init(myWindow& _window) {
 	initCarte();
 	persos.push_back(&persoMain);
 	persoMain.initPerso();
+	persoMain.SetJob(villagois);
 	initFontaine();
 	initTaverne();
 	initBoutique();
 	alchimie.initAlchimie();
+	menuGame.InitMenuGame();
+	safarie.initSafari();
 }
 
 void Game::update(myWindow& _window) {
@@ -42,12 +53,19 @@ void Game::update(myWindow& _window) {
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
 	updateCarte(_window, mapGame, shopGame, aventureGame, modeGame, persoMain.persoPosition);
+	menuGame.UpdateMenuGame(_window, modeGame, persoMain, safarie);
+	if (modeGame == ModeGame::LIBRE) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
+			modeGame = ModeGame::MENU;
+			fClickMenu = 0.0f;
+		}
+	}
 	if (mapGame == MapGame::RDC) {
 
 	}
 	if (mapGame == MapGame::SAFARIE) {
 		persoMain.updatePerso(_window, modeGame);
-
+		safarie.updateSafari(persoMain, modeGame, conso);
 	}
 	if (mapGame == MapGame::MONTE) {
 
@@ -83,8 +101,7 @@ void Game::draw(myWindow& _window) {
 	if (mapGame == MapGame::RDC) {
 	}
 	if (mapGame == MapGame::SAFARIE) {
-		persoMain.displayPerso(_window, modeGame);
-
+		safarie.drawSafari(_window, modeGame, persoMain);
 	}
 	if (mapGame == MapGame::MONTE) {
 
@@ -111,6 +128,7 @@ void Game::draw(myWindow& _window) {
 		if (shopGame == ShopGame::HOTEL) {
 		}
 	}
+	menuGame.DisplayMenuGame(_window, modeGame, persoMain);
 }
 
 void Game::destroy() {

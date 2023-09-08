@@ -3,8 +3,8 @@
 Magicien::Magicien()
 {
 	nameJob = "Magicien";
-	pv = 100;
-	defense = 10;
+	pv = 400;
+	defense = 50;
 	attaque = 400;
 	//argent = 1000;
 	mana = 200;

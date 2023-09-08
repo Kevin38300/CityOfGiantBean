@@ -42,6 +42,7 @@ enum class ShopGame {
 
 class Joueur;
 class Alchimie;
+class MenuGame;
 class Game : public State
 {
 private:
@@ -62,7 +63,6 @@ private:
 	ModeGame modeGame;
 	AventureGame aventureGame;
 	ShopGame shopGame;
-	//Alchimie alchimie;
 
 	std::vector<Joueur*> persos;
 public:

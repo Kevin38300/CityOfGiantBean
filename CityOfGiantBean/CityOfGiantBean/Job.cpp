@@ -1,14 +1,14 @@
 #include "Job.h"
 
 Job::Job() {
-	nameJob = "Default";
-	pv = 0;
-	defense = 0;
-	attaque = 0;
+	nameJob = "Villagois";
+	pv = 200;
+	defense = 50;
+	attaque = 100;
 	//argent = 0;
-	mana = 0;
-	endurance = 0; // /100
-	vitesse = 0; // /100
+	mana = 50;
+	endurance = 10; // /100
+	vitesse = 5; // /100
 }
 Job::~Job() {
 }

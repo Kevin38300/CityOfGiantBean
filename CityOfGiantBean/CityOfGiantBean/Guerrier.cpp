@@ -5,9 +5,9 @@ Guerrier::Guerrier()
 	nameJob = "Guerrier";
 	pv = 1000;
 	defense = 250;
-	attaque = 250;
+	attaque = 200;
 	//argent = 500;
-	mana = 20;
+	mana = 50;
 	endurance = 100; // /100
 	vitesse = 10; // /100
 	effet = Tank;

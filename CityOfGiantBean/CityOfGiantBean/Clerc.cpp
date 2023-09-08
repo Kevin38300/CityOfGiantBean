@@ -3,13 +3,13 @@
 Clerc::Clerc()
 {
 	nameJob = "Clerc";
-	pv = 200;
-	defense = 200;
+	pv = 500;
+	defense = 250;
 	attaque = 200;
 	//argent = 10000;
 	mana = 250;
 	endurance = 10; // /100
-	vitesse = 5; // /100
+	vitesse = 50; // /100
 	effet = Soin;
 }
 

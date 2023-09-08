@@ -105,6 +105,15 @@
     <ClCompile Include="Boutique.cpp">
       <Filter>Lieux</Filter>
     </ClCompile>
+    <ClCompile Include="MenuInGame.cpp">
+      <Filter>Menu/Save</Filter>
+    </ClCompile>
+    <ClCompile Include="Safarie.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
+    <ClCompile Include="Monstre.cpp">
+      <Filter>Perso</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tools.h">
@@ -178,6 +187,15 @@
     </ClInclude>
     <ClInclude Include="Boutique.h">
       <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuInGame.h">
+      <Filter>Menu/Save</Filter>
+    </ClInclude>
+    <ClInclude Include="Safarie.h">
+      <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Monstre.h">
+      <Filter>Perso</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

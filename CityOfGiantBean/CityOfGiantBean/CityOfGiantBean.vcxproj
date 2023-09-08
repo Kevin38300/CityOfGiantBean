@@ -168,8 +168,11 @@
     <ClCompile Include="Magicien.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuInGame.cpp" />
+    <ClCompile Include="Monstre.cpp" />
     <ClCompile Include="myWindow.cpp" />
     <ClCompile Include="Personnage.cpp" />
+    <ClCompile Include="Safarie.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Taverne.cpp" />
@@ -193,9 +196,12 @@
     <ClInclude Include="Magicien.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuInGame.h" />
+    <ClInclude Include="Monstre.h" />
     <ClInclude Include="myWindow.h" />
     <ClInclude Include="NonVivant.h" />
     <ClInclude Include="Personnage.h" />
+    <ClInclude Include="Safarie.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="stateManager.h" />
     <ClInclude Include="Taverne.h" />
