@@ -236,7 +236,7 @@ void initCarte()
 	fClickMenu = 0.0f;
 	boiteDiscussion::initBoiteDiscussion();
 }
-void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame& _aventure, ModeGame& _mode, sf::Vector2f _posPerso) {
+void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame& _aventure, ModeGame& _mode, sf::Vector2f& _posPerso) {
 	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
@@ -251,6 +251,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 		if (_map == MapGame::RDC) {
 			if (_shop == ShopGame::NONE) {
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, hotelPos, hotelSize)) {
+					_posPerso = hotelPosH;
 					_map = MapGame::SHOP;
 					_shop = ShopGame::HOTEL;
 					fClickMenu = 0.0f;
@@ -259,29 +260,34 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::BOUTIQUE;
+					_posPerso = ShopPosT;
 					fClickMenu = 0.0f;
 					return;
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, AlchimiePos, AlchimieSize)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::ALCHIMIE;
+					_posPerso = AlchimiePosA;
 					fClickMenu = 0.0f;
 					return;
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, fontainePos, fontaineSize)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::FONTAINE;
+					_posPerso = fontainePos;
 					fClickMenu = 0.0f;
 					return;
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, tavernePos, taverneSize)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::TAVERNE;
+					_posPerso = tavernePosT;
 					fClickMenu = 0.0f;
 					return;
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, SafariPos, SafariSize)) {
 					_map = MapGame::SAFARIE;
+					_posPerso = SafariSPos;
 					fClickMenu = 0.0f;
 					return;
 				}
@@ -356,6 +362,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::AVENTURE;
+				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
 			}
@@ -370,6 +377,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_GUERRIER;
+				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
 			}
@@ -384,6 +392,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_CLERC;
+				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
 			}
@@ -398,6 +407,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_MAGE;
+				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
 			}
@@ -412,6 +422,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_ASSASSIN;
+				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
 			}
@@ -546,7 +557,7 @@ void displayCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGam
 	}
 	if (_map == MapGame::AVENTURE) {
 		_window.Draw(spAventure);
-		_window.Draw(GiantJackShapeAv);
+		//_window.Draw(GiantJackShapeAv);
 		if (_aventure == AventureGame::AVENTURE) {
 
 		}

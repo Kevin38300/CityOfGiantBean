@@ -47,7 +47,7 @@ private:
 
 	sf::Texture ttMenu;
 	sf::Sprite spMenu;
-	sf::Vector2f posTitre, posSouris;
+	sf::Vector2f posTitre, posSouris, posJoueur;
 	sf::Vector2i mousePosition;
 	float fClickMenu;
 	sf::Font fontMenu;
