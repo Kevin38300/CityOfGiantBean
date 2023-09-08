@@ -4,6 +4,7 @@
 #include "Taverne.h"
 #include "Fontaine.h"
 #include "Boutique.h"
+#include "Alchime.h"
 
 Game::Game() {
 }
@@ -16,6 +17,7 @@ Game::Game(MapGame _mapGame, ModeGame _modeGame, AventureGame _aventureGame, Sho
 }
 
 Joueur persoMain;
+Alchimie alchimie;
 void Game::init(myWindow& _window) {
 	_white = sf::Color::White;
 	_black = sf::Color::Black;
@@ -31,6 +33,7 @@ void Game::init(myWindow& _window) {
 	initFontaine();
 	initTaverne();
 	initBoutique();
+	alchimie.initAlchimie();
 }
 
 void Game::update(myWindow& _window) {
@@ -59,6 +62,7 @@ void Game::update(myWindow& _window) {
 			updateTaverne(_window, persoMain);
 		}
 		if (shopGame == ShopGame::ALCHIMIE) {
+			alchimie.updateAlchimie(_window, modeGame, persoMain);
 		}
 		if (shopGame == ShopGame::BOUTIQUE) {
 			updateBoutique(_window, persoMain);
@@ -96,6 +100,7 @@ void Game::draw(myWindow& _window) {
 			displayTaverne(_window);
 		}
 		if (shopGame == ShopGame::ALCHIMIE) {
+			alchimie.displayAlchimie(_window, modeGame, persoMain);
 		}
 		if (shopGame == ShopGame::BOUTIQUE) {
 			displayBoutique(_window, persoMain);
