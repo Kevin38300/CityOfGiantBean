@@ -9,7 +9,7 @@ std::string windowTitle;
 sf::Vector2u windowSize;
 
 int iLangueTrad, iChoixMusic;
-bool bFirstIn, bFirstInM;
+bool bFirstIn, bFirstInM, bDialogue;
 float SonVolume, MusicVolume;
 
 std::string stpst1;
@@ -29,6 +29,12 @@ namespace boiteDiscussion
 	}
 	void displayBoiteDiscussion(myWindow& _window) {
 		_window.Draw(BoiteDiscussionSprite);
+	}
+	bool getBoolDiscu()	{
+		return bDialogue;
+	}
+	void setBoolDiscu(bool _bool)	{
+		bDialogue = _bool;
 	}
 }
 namespace save

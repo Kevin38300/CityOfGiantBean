@@ -30,18 +30,21 @@ int ValidT = 0;
 int ChgReussi = 0;
 sf::Font fontT;
 sf::Text ValidationT;
-std::string ValidationTa, ValidationTaDepense, ValidationTatmp;
+std::string ValidationTa, ValidationTaDepense, ValidationTatmp, ValidationTaEn, ValidationTaDepenseEn, ValidationTatmpEn;
 sf::Text OuiTexteT;
 sf::Text NonTexteT;
 int OuiNonT = 3;
 int PasArgentResteT = 0;
-float timerPasArgentT = 0.0f;
+int ValidReussiT = 0;
+float timerPasArgentT = 0.0f, timerValidReussiT = 0.0f;
 sf::Text PasArgentTaverne;
-std::string PasDArgentT;
-std::string NomJob;
+sf::Text ArgentRestantT;
+sf::Text ObtenuClasseTexte;
+std::string PasDArgentT, PasDArgentTEn;
+std::string NomJob, NomJobEn;
 
 int iPNJ = 0;
-std::string stPNJ;
+std::string stPNJ, stPNJEn;
 sf::Text txPNJ;
 sf::Vector2f TavernePNJsize;
 sf::Vector2f TavernePNJpos;
@@ -50,30 +53,35 @@ sf::RectangleShape TavernePNJshape;
 void initTaverne() {
 
 
-	TavernePNJsize = { 50,50 };
-	TavernePNJpos = { 640,330 };
+	TavernePNJsize = {AjustResoX * 105,AjustResoY * 80 };
+	TavernePNJpos = { AjustResoX * 925,AjustResoY * 530 };
 	TavernePNJshape.setSize(TavernePNJsize);
 	TavernePNJshape.setPosition(TavernePNJpos);
+	TavernePNJshape.setFillColor(sf::Color::Red);
 
-	JobAssassinSize = { 100,100 };
-	JobAssassinPos = { 1060,230 };
+	JobAssassinSize = { AjustResoX * 157,AjustResoY * 119 };
+	JobAssassinPos = { AjustResoX * 1519,AjustResoY * 328 };
 	JobAssassinShape.setSize(JobAssassinSize);
 	JobAssassinShape.setPosition(JobAssassinPos);
+	JobAssassinShape.setFillColor(sf::Color::Red);
 
-	JobGuerrierSize = { 100,100 };
-	JobGuerrierPos = { 310, 270 };
+	JobGuerrierSize = { AjustResoX * 126,AjustResoY * 73 };
+	JobGuerrierPos = { AjustResoX * 453,AjustResoY * 388 };
 	JobGuerrierShape.setSize(JobGuerrierSize);
 	JobGuerrierShape.setPosition(JobGuerrierPos);
+	JobGuerrierShape.setFillColor(sf::Color::Red);
 
-	JobClercSize = { 100,100 };
-	JobClercPos = { 845, 560 };
+	JobClercSize = { AjustResoX * 226,AjustResoY * 85 };
+	JobClercPos = { AjustResoX * 1263,AjustResoY * 880 };
 	JobClercShape.setSize(JobClercSize);
 	JobClercShape.setPosition(JobClercPos);
+	JobClercShape.setFillColor(sf::Color::Red);
 
-	JobMagicienSize = { 100,100 };
-	JobMagicienPos = { 290,550 };
+	JobMagicienSize = { AjustResoX * 117,AjustResoY * 130 };
+	JobMagicienPos = { AjustResoX * 411,AjustResoY * 842 };
 	JobMagicienShape.setSize(JobMagicienSize);
 	JobMagicienShape.setPosition(JobMagicienPos);
+	JobMagicienShape.setFillColor(sf::Color::Red);
 
 	choixClasse = 0;
 	choixJob = false;
@@ -82,60 +90,75 @@ void initTaverne() {
 
 	txPNJ.setFont(fontT);
 	txPNJ.setOrigin(txPNJ.getGlobalBounds().height / 2, txPNJ.getGlobalBounds().width / 2);
-	txPNJ.setPosition(120, 450);
+	txPNJ.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txPNJ.setFillColor(sf::Color::Red);
 
 	ValidationT.setFont(fontT);
 	ValidationT.setOrigin(ValidationT.getGlobalBounds().height / 2, ValidationT.getGlobalBounds().width / 2);
-	ValidationT.setPosition(120, 450);
+	ValidationT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ValidationT.setFillColor(sf::Color::Red);
 
 	OuiTexteT.setFont(fontT);
 	OuiTexteT.setOrigin(OuiTexteT.getGlobalBounds().height / 2, OuiTexteT.getGlobalBounds().width / 2);
-	OuiTexteT.setPosition(300, 550);
+	OuiTexteT.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
 	OuiTexteT.setFillColor(sf::Color::Red);
 
 	NonTexteT.setFont(fontT);
 	NonTexteT.setOrigin(NonTexteT.getGlobalBounds().height / 2, NonTexteT.getGlobalBounds().width / 2);
-	NonTexteT.setPosition(400, 550);
+	NonTexteT.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
 	NonTexteT.setFillColor(sf::Color::Red);
 
 	PasArgentTaverne.setFont(fontT);
 	PasArgentTaverne.setOrigin(PasArgentTaverne.getGlobalBounds().height / 2, PasArgentTaverne.getGlobalBounds().width / 2);
-	PasArgentTaverne.setPosition(150, 450);
+	PasArgentTaverne.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	PasArgentTaverne.setFillColor(sf::Color::Red);
+
+
+	ArgentRestantT.setFont(fontT);
+	ArgentRestantT.setOrigin(ArgentRestantT.getGlobalBounds().height / 2, ArgentRestantT.getGlobalBounds().width / 2);
+	ArgentRestantT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
+	ArgentRestantT.setFillColor(sf::Color::Red);
+
+	ObtenuClasseTexte.setFont(fontT);
+	ObtenuClasseTexte.setOrigin(ObtenuClasseTexte.getGlobalBounds().height / 2, ObtenuClasseTexte.getGlobalBounds().width / 2);
+	ObtenuClasseTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
+	ObtenuClasseTexte.setFillColor(sf::Color::Red);
 
 	PasDArgentT = "Vous n'avez pas assez d'argent!";
 	ValidationTa = "Vous allez change de classe: Classe : ";
 	ValidationTaDepense = "\ncela va vous coute 10 000 Gold. Voulez vous continuer ?";
 	stPNJ = "Bonjour et bienvenue dans la taverne ! Vous pouvez obtenir\nune classe ou en changer en parlant avec les responsables.\nVos statistiques vont augmenter selon la classe choisis. ";
+	PasDArgentTEn = "You don't have enough gold!";
+	ValidationTaEn = "You will change class: Class:";
+	ValidationTaDepenseEn = "\nit will cost you 10,000 Gold. Do you want to continue ? ";;
+	stPNJEn = "Hello and welcome to the tavern! You can get a class or \nchange it by talking with the leaders. \nYour statistics will increase depending on the class chosen.";
 
-	OuiTexteT.setString("Oui");
-	NonTexteT.setString("Non");
-	txPNJ.setString(stPNJ);
+	tools::ChoixLangue(tools::GetTrad(), OuiTexteT, "Oui", "Yes");
+	tools::ChoixLangue(tools::GetTrad(), NonTexteT, "Non", "No");
+	tools::ChoixLangue(tools::GetTrad(), txPNJ, stPNJ, stPNJEn);
 
 	boiteDiscussion::initBoiteDiscussion();
 }
 
 void updateTaverne(myWindow& _window, Joueur& _perso1) {
 
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, TavernePNJpos, TavernePNJsize))
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, TavernePNJpos, TavernePNJsize))
 		iPNJ = 1;
 	else
 		iPNJ = 0;
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, JobAssassinPos, JobAssassinSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobAssassinPos, JobAssassinSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		ValidT = 1;
 		choixClasse = 1;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, JobGuerrierPos, JobGuerrierSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobGuerrierPos, JobGuerrierSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		ValidT = 1;
 		choixClasse = 2;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, JobClercPos, JobClercSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobClercPos, JobClercSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		ValidT = 1;
 		choixClasse = 3;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, JobMagicienPos, JobMagicienSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobMagicienPos, JobMagicienSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		ValidT = 1;
 		choixClasse = 4;
 	}
@@ -143,10 +166,12 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 	{
 	case 1:
 		ValidationTatmp = " Assassin";
+		ValidationTatmpEn = " Murderer";
 		validationTaverne(_window);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (OuiNonT == 1) {
 				NomJob = "Assassin";
+				NomJobEn = "Murderer";
 				ChgJob(_perso1, assassin);
 				if (ChgReussi == 1) {
 					classeDisplay = 1;
@@ -165,10 +190,12 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 		break;
 	case 2:
 		ValidationTatmp = " Guerrier";
+		ValidationTatmpEn = " Warrior";
 		validationTaverne(_window);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (OuiNonT == 1) {
 				NomJob = "Guerrier";
+				NomJobEn = "Warrior";
 				ChgJob(_perso1, guerrier);
 				if (ChgReussi == 1) {
 					classeDisplay = 3;
@@ -187,10 +214,12 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 		break;
 	case 3:
 		ValidationTatmp = " Clerc";
+		ValidationTatmpEn = " Cleric";
 		validationTaverne(_window);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (OuiNonT == 1) {
 				NomJob = "Clerc";
+				NomJobEn = "Cleric";
 				ChgJob(_perso1, clerc);
 				if (ChgReussi == 1) {
 					classeDisplay = 2;
@@ -209,10 +238,12 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 		break;
 	case 4:
 		ValidationTatmp = " Magicien";
+		ValidationTatmpEn = " Magician";
 		validationTaverne(_window);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (OuiNonT == 1) {
 				NomJob = "Magicien";
+				NomJobEn = "Magician";
 				ChgJob(_perso1, magicien);
 				//_perso1.SetRect({ 48,0,16,18 });
 				if (ChgReussi == 1) {
@@ -235,17 +266,18 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 }
 
 void displayTaverne(myWindow& _window) {
-	if (ValidT == 1 || PasArgentResteT == 1) {
+	if (ValidT == 1 || PasArgentResteT == 1 || ValidReussiT == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
+		boiteDiscussion::setBoolDiscu(true);
+	}
+	else
+	{
+		boiteDiscussion::setBoolDiscu(false);
 	}
 	if (ValidT == 1) {
 		displayValidationT(_window);
 	}
-	//_window.draw(JobAssassinShape);
-	//_window.draw(JobClercShape);
-	//_window.draw(JobMagicienShape);
-	//_window.draw(JobGuerrierShape);
-	//_window.draw(TavernePNJshape);
+	Tavernier(_window);
 	PasArgentTaverne.setString(PasDArgentT);
 	if (PasArgentResteT == 1) {
 		timerPasArgentT += tools::GetTimeDelta();
@@ -253,6 +285,15 @@ void displayTaverne(myWindow& _window) {
 		if (timerPasArgentT >= 1.0f) {
 			timerPasArgentT = 0.0f;
 			PasArgentResteT = 0;
+		}
+	}
+	if (ValidReussiT == 1) {
+		timerValidReussiT += tools::GetTimeDelta();
+		_window.Draw(ObtenuClasseTexte);
+		_window.Draw(ArgentRestantT);
+		if (timerValidReussiT >= 1.0f) {
+			timerValidReussiT = 0.0f;
+			ValidReussiT = 0;
 		}
 	}
 }
@@ -280,7 +321,7 @@ void displayValidationT(myWindow& _window) {
 		OuiTexteT.setScale(1, 1);
 		NonTexteT.setScale(1, 1);
 	}
-	ValidationT.setString(ValidationTa + ValidationTatmp + ValidationTaDepense);
+	tools::ChoixLangue(tools::GetTrad(), ValidationT, ValidationTa + ValidationTatmp + ValidationTaDepense, ValidationTaEn + ValidationTatmpEn + ValidationTaDepenseEn);
 	_window.Draw(ValidationT);
 	_window.Draw(OuiTexteT);
 	_window.Draw(NonTexteT);
@@ -290,10 +331,11 @@ void ChgJob(Joueur& _perso1, Job _job) {
 	if (_perso1.GetTotArgent() >= 10000) {
 		_perso1.SetTotArgent(_perso1.GetTotArgent() - 10000);
 		_perso1.SetJob(_job);
-		_perso1.DisplayStat();
-		std::cout << "Vous avez change de job\nVous etes un " << NomJob << std::endl;
 		_perso1.iChgClasse += 1;
+		tools::ChoixLangue(tools::GetTrad(), ObtenuClasseTexte, "Vous avez change de classe \nVous etes : " + NomJob, "You have changed classe \nYou are :" + NomJobEn);
+		tools::ChoixLangue(tools::GetTrad(), ArgentRestantT, "\n\nOr restant : " + std::to_string((int)_perso1.GetTotArgent()), "\n\nGold remaining " + std::to_string((int)_perso1.GetTotArgent()));
 		PasArgentResteT = 0;
+		ValidReussiT = 1;
 		ChgReussi = 1;
 		NonRetourTaverne();
 	}
@@ -314,7 +356,6 @@ void NonRetourTaverne() {
 void Tavernier(myWindow& _window) {
 	if (iPNJ == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
-		txPNJ.setString(stPNJ);
 		_window.Draw(txPNJ);
 	}
 }

@@ -219,90 +219,91 @@ void Joueur::updatePerso(myWindow& _window, ModeGame _mode) {
 		persoSprite.setTexture(persoFTexture);
 	}
 	if (_mode == ModeGame::LIBRE) {
+		if (boiteDiscussion::getBoolDiscu() == false) {
+			sf::FloatRect playerfrect = persoSprite.getGlobalBounds();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+				if (persoPosition.y > 0) {
+					persoPosition.y -= vitessePerso.y * tools::GetTimeDelta();
+					isMoving = true;
+					persoFrameY = 0;
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+				if (persoPosition.y < AjustResoY * 1080) {
+					persoPosition.y += vitessePerso.y * tools::GetTimeDelta();
+					isMoving = true;
+					persoFrameY = 2;
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+				if (persoPosition.x < AjustResoX * 1920) {
+					persoPosition.x += vitessePerso.x * tools::GetTimeDelta();
+					isMoving = true;
+					persoFrameY = 1;
+				}
+			}
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+				if (persoPosition.x > 0) {
+					persoPosition.x -= vitessePerso.x * tools::GetTimeDelta();
+					isMoving = true;
+					persoFrameY = 3;
+				}
+			}
+			else
+				isMoving = false;
 
-		sf::FloatRect playerfrect = persoSprite.getGlobalBounds();
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-			if (persoPosition.y > 0) {
-				persoPosition.y -= vitessePerso.y * tools::GetTimeDelta();
-				isMoving = true;
-				persoFrameY = 0;
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-			if (persoPosition.y < AjustResoY * 1080) {
-				persoPosition.y += vitessePerso.y * tools::GetTimeDelta();
-				isMoving = true;
-				persoFrameY = 2;
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-			if (persoPosition.x < AjustResoX * 1920) {
-				persoPosition.x += vitessePerso.x * tools::GetTimeDelta();
-				isMoving = true;
-				persoFrameY = 1;
-			}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) ) {
-			if (persoPosition.x > 0) {
-				persoPosition.x -= vitessePerso.x * tools::GetTimeDelta();
-				isMoving = true;
-				persoFrameY = 3;
-			}
-		}
-		else
-			isMoving = false;
-
-		switch (classeDisplay)
-		{
-		case 0:
-			persoRect = { 192,0,16,18 };
-			break;
-		case 1:
-			persoRect = { 144,0,16,18 };
-			break;
-		case 2:
-			persoRect = { 96,0,16,18 };
-			break;
-		case 3:
-			persoRect = { 0,0,16,18 };
-			break;
-		case 4:
-			persoRect = { 48,0,16,18 };
-			break;
-		default:
-			break;
-		}
-		if (isMoving) {
-			persoFrameX++;
 			switch (classeDisplay)
 			{
 			case 0:
-				if (persoFrameX > 14) persoFrameX = 12;
+				persoRect = { 192,0,16,18 };
 				break;
 			case 1:
-				if (persoFrameX > 11) persoFrameX = 9;
+				persoRect = { 144,0,16,18 };
 				break;
 			case 2:
-				if (persoFrameX > 8) persoFrameX = 6;
+				persoRect = { 96,0,16,18 };
 				break;
 			case 3:
-				if (persoFrameX > 3) persoFrameX = 0;
+				persoRect = { 0,0,16,18 };
 				break;
 			case 4:
-				if (persoFrameX > 5) persoFrameX = 3;
+				persoRect = { 48,0,16,18 };
 				break;
 			default:
 				break;
 			}
-			persoRect.left = persoFrameX * persoRect.width;
-			persoRect.top = persoFrameY * persoRect.height;
+			if (isMoving) {
+				persoFrameX++;
+				switch (classeDisplay)
+				{
+				case 0:
+					if (persoFrameX > 14) persoFrameX = 12;
+					break;
+				case 1:
+					if (persoFrameX > 11) persoFrameX = 9;
+					break;
+				case 2:
+					if (persoFrameX > 8) persoFrameX = 6;
+					break;
+				case 3:
+					if (persoFrameX > 3) persoFrameX = 0;
+					break;
+				case 4:
+					if (persoFrameX > 5) persoFrameX = 3;
+					break;
+				default:
+					break;
+				}
+				persoRect.left = persoFrameX * persoRect.width;
+				persoRect.top = persoFrameY * persoRect.height;
 				persoSprite.setTextureRect(persoRect);
 
-		}
-		else {
-			persoRect.left = persoFrameX * persoRect.width;
-			persoRect.top = persoFrameY * persoRect.height;
+			}
+			else {
+				persoRect.left = persoFrameX * persoRect.width;
+				persoRect.top = persoFrameY * persoRect.height;
 				persoSprite.setTextureRect(persoRect);
+			}
 		}
 	}
 }

@@ -19,6 +19,8 @@ namespace boiteDiscussion
 {
 	void initBoiteDiscussion();
 	void displayBoiteDiscussion(myWindow& _window);
+	bool getBoolDiscu();
+	void setBoolDiscu(bool _bool);
 }
 namespace save
 {

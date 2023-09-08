@@ -203,6 +203,11 @@ void displayFontaine(myWindow& _window) {
 	_window.Draw(FontaineVentShape);*/
 	if (ValidF == 1 || PasArgentResteF == 1 || ValidReussi == 1) {
 		boiteDiscussion::displayBoiteDiscussion(_window);
+		boiteDiscussion::setBoolDiscu(true);
+	}
+	else
+	{
+		boiteDiscussion::setBoolDiscu(false);
 	}
 	if (ValidF == 1) {
 		displayValidationF(_window);
