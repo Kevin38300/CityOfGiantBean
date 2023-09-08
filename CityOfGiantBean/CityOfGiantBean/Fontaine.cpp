@@ -98,19 +98,19 @@ void initFontaine() {
 
 void updateFontaine(myWindow& _window, Joueur& _perso1) {
 
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineFeuPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineFeuPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidF = 1;
 		choixElement = 1;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineVentPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineVentPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidF = 1;
 		choixElement = 2;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineTerrePos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineTerrePos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidF = 1;
 		choixElement = 3;
 	}
-	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineEauPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, FontaineEauPos, FontaineElemSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidF = 1;
 		choixElement = 4;
 	}

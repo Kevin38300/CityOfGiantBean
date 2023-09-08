@@ -128,6 +128,7 @@ void initTaverne() {
 	ValidationTa = "Vous allez change de classe: Classe : ";
 	ValidationTaDepense = "\ncela va vous coute 10 000 Gold. Voulez vous continuer ?";
 	stPNJ = "Bonjour et bienvenue dans la taverne ! Vous pouvez obtenir\nune classe ou en changer en parlant avec les responsables.\nVos statistiques vont augmenter selon la classe choisis. ";
+
 	PasDArgentTEn = "You don't have enough gold!";
 	ValidationTaEn = "You will change class: Class:";
 	ValidationTaDepenseEn = "\nit will cost you 10,000 Gold. Do you want to continue ? ";;
@@ -146,19 +147,19 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 		iPNJ = 1;
 	else
 		iPNJ = 0;
-	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobAssassinPos, JobAssassinSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobAssassinPos, JobAssassinSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidT = 1;
 		choixClasse = 1;
 	}
-	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobGuerrierPos, JobGuerrierSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobGuerrierPos, JobGuerrierSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidT = 1;
 		choixClasse = 2;
 	}
-	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobClercPos, JobClercSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobClercPos, JobClercSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidT = 1;
 		choixClasse = 3;
 	}
-	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobMagicienPos, JobMagicienSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, JobMagicienPos, JobMagicienSize) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		ValidT = 1;
 		choixClasse = 4;
 	}
@@ -278,7 +279,7 @@ void displayTaverne(myWindow& _window) {
 		displayValidationT(_window);
 	}
 	Tavernier(_window);
-	PasArgentTaverne.setString(PasDArgentT);
+	tools::ChoixLangue(tools::GetTrad(), PasArgentTaverne, PasDArgentT, PasDArgentTEn);
 	if (PasArgentResteT == 1) {
 		timerPasArgentT += tools::GetTimeDelta();
 		_window.Draw(PasArgentTaverne);

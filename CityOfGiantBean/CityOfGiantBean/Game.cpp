@@ -3,6 +3,7 @@
 #include "Joueur.h"
 #include "Taverne.h"
 #include "Fontaine.h"
+#include "Boutique.h"
 
 Game::Game() {
 }
@@ -29,6 +30,7 @@ void Game::init(myWindow& _window) {
 	persoMain.initPerso();
 	initFontaine();
 	initTaverne();
+	initBoutique();
 }
 
 void Game::update(myWindow& _window) {
@@ -59,6 +61,7 @@ void Game::update(myWindow& _window) {
 		if (shopGame == ShopGame::ALCHIMIE) {
 		}
 		if (shopGame == ShopGame::BOUTIQUE) {
+			updateBoutique(_window, persoMain);
 		}
 		if (shopGame == ShopGame::FONTAINE) {
 			updateFontaine(_window, persoMain);
@@ -95,6 +98,7 @@ void Game::draw(myWindow& _window) {
 		if (shopGame == ShopGame::ALCHIMIE) {
 		}
 		if (shopGame == ShopGame::BOUTIQUE) {
+			displayBoutique(_window, persoMain);
 		}
 		if (shopGame == ShopGame::FONTAINE) {
 			displayFontaine(_window);

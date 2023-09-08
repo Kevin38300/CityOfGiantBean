@@ -99,6 +99,12 @@
     <ClCompile Include="Taverne.cpp">
       <Filter>Lieux</Filter>
     </ClCompile>
+    <ClCompile Include="Alchime.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
+    <ClCompile Include="Boutique.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tools.h">
@@ -165,6 +171,12 @@
       <Filter>Lieux</Filter>
     </ClInclude>
     <ClInclude Include="Taverne.h">
+      <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Alchime.h">
+      <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Boutique.h">
       <Filter>Lieux</Filter>
     </ClInclude>
   </ItemGroup>

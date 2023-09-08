@@ -152,9 +152,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alchime.cpp" />
     <ClCompile Include="Armes.cpp" />
     <ClCompile Include="Armures.cpp" />
     <ClCompile Include="Assassin.cpp" />
+    <ClCompile Include="Boutique.cpp" />
     <ClCompile Include="Chargement.cpp" />
     <ClCompile Include="Clerc.cpp" />
     <ClCompile Include="Consos.cpp" />
@@ -175,9 +177,11 @@
     <ClCompile Include="Villagois.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alchime.h" />
     <ClInclude Include="Armes.h" />
     <ClInclude Include="Armures.h" />
     <ClInclude Include="Assassin.h" />
+    <ClInclude Include="Boutique.h" />
     <ClInclude Include="Chargement.h" />
     <ClInclude Include="Clerc.h" />
     <ClInclude Include="Consos.h" />
