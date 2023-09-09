@@ -12,6 +12,7 @@ class MenuGame {
 	sf::Sprite MenuGameSprite, smgInv, spAvatarFull;
 
 	std::string description, stQteInv, stEquipeOuNon ;
+	std::string descriptionEn, stEquipeOuNonEn ;
 
 	sf::Text sMGinventaire, sMGchoixEquipe, sMGoption, txDescriptionInv, txDesOption, txProfil, txAide, txQuete, txRetour, txAvatar, txInfoProfil;
 
@@ -21,7 +22,7 @@ class MenuGame {
 
 	sf::RectangleShape rInv, rOption, rsChoixAvatar;
 
-	sf::Vector2f pInvBase, pOption, posRsAvatar{ 250,93 }, posDesOption, posProfil, posAide, posQuete, posRetour, posAvatar, posAvatarP{ 50,50 };
+	sf::Vector2f pInvBase, pOption, posRsAvatar{ AjustResoX * 300, AjustResoY * 202.5f }, posDesOption, posProfil, posAide, posQuete, posRetour, posAvatar, posAvatarP{ AjustResoX * 75, AjustResoY * 60 };
 
 	bool bProfil{ false }, bAide{ false }, bAvatar{ false }, bQuete{ false }, BAva[7]{ false };
 	sf::IntRect rectAvatar{ 450,0,50,50 };
@@ -42,79 +43,79 @@ public:
 		ttAvatar.loadFromFile("..\\Ressources\\Textures\\Logo\\AvatarProfil.png");
 		spAvatarFull.setTexture(ttAvatar);
 		spAvatar.setTexture(ttAvatar);
-		spAvatarFull.setPosition(sf::Vector2f(250, 90));
+		spAvatarFull.setPosition(sf::Vector2f(AjustResoX * 300, AjustResoY * 200));
 
 		fMG.loadFromFile("../Ressources/Fonts/Typewriter.ttf");
 
-		sMGoption.setString("Option");
 		sMGoption.setFont(fMG);
 		sMGoption.setOrigin(sMGoption.getGlobalBounds().height / 2, sMGoption.getGlobalBounds().width / 2);
-		sMGoption.setPosition(1100, 90);
+		sMGoption.setPosition(AjustResoX * 1551, AjustResoY * 58);
+		tools::ChoixLangue(tools::GetTrad(), sMGoption, "Options", "Settings");
 
-		sMGinventaire.setString("Inventaire");
 		sMGinventaire.setFont(fMG);
 		sMGinventaire.setOrigin(sMGinventaire.getGlobalBounds().height / 2, sMGinventaire.getGlobalBounds().width / 2);
-		sMGinventaire.setPosition(600, 120);
+		sMGinventaire.setPosition(AjustResoX * 896, AjustResoY * 58);
+		tools::ChoixLangue(tools::GetTrad(), sMGinventaire, "Inventaire", "Inventory");
 
-		sMGchoixEquipe.setString("Choix de l'equipe");
 		sMGchoixEquipe.setFont(fMG);
 		sMGchoixEquipe.setOrigin(sMGchoixEquipe.getGlobalBounds().height / 2, sMGchoixEquipe.getGlobalBounds().width / 2);
-		sMGchoixEquipe.setPosition(150, 175);
+		sMGchoixEquipe.setPosition(AjustResoX * 214, AjustResoY * 58);
+		tools::ChoixLangue(tools::GetTrad(), sMGchoixEquipe, "Choix de l'equipe", "Team choice");
 
 		txDescriptionInv.setFont(fMG);
 		txDescriptionInv.setOrigin(txDescriptionInv.getGlobalBounds().height / 2, txDescriptionInv.getGlobalBounds().width / 2);
-		txDescriptionInv.setPosition(100, 500);
+		txDescriptionInv.setPosition(AjustResoX * 150, AjustResoY * 800);
 		txDescriptionInv.setFillColor(sf::Color::Black);
 
 		txDesOption.setFont(fMG);
 		txDesOption.setOrigin(txDesOption.getGlobalBounds().height / 2, txDesOption.getGlobalBounds().width / 2);
-		txDesOption.setPosition(100, 500);
+		txDesOption.setPosition(AjustResoX * 150, AjustResoY * 800);
 		txDesOption.setFillColor(sf::Color::Black);
 
 		txInfoProfil.setFont(fMG);
 		txInfoProfil.setOrigin(txDesOption.getGlobalBounds().height / 2, txDesOption.getGlobalBounds().width / 2);
-		txInfoProfil.setPosition(200, 100);
+		txInfoProfil.setPosition(AjustResoX * 200, AjustResoY * 150);
 		txInfoProfil.setFillColor(sf::Color::Black);
 
 		rInv.setFillColor(sf::Color(0, 255, 0, 100));
-		rInv.setSize(sf::Vector2f(51, 50));
+		rInv.setSize(sf::Vector2f(AjustResoX * 69, AjustResoY * 70));
 
 
 		rOption.setFillColor(sf::Color(100, 255, 0, 100));
-		rOption.setSize(sf::Vector2f(110, 50));
+		rOption.setSize(sf::Vector2f(AjustResoX * 110, AjustResoY * 50));
 
 		rsChoixAvatar.setFillColor(sf::Color(0, 0, 0, 0));
-		rsChoixAvatar.setOutlineThickness(5);
+		rsChoixAvatar.setOutlineThickness(AjustReso * 5);
 		rsChoixAvatar.setOutlineColor(sf::Color::Blue);
-		rsChoixAvatar.setSize(sf::Vector2f(45, 45));
+		rsChoixAvatar.setSize(sf::Vector2f(AjustResoX * 45, AjustResoY * 45));
 
 		invDepVertical = 1;
 		invDepVerticalOp = 0;
 		invDepLateral = 1;
 
-		txProfil.setString("Profil");
+		tools::ChoixLangue(tools::GetTrad(), txProfil, "Profil", "Profil");
 		txProfil.setFont(fMG);
-		posProfil = { 300,100 };
+		posProfil = { AjustResoX * 200,AjustResoY * 150 };
 		txProfil.setPosition(posProfil);
 		txProfil.setFillColor(sf::Color::Black);
-		txAide.setString("Aide");
+		tools::ChoixLangue(tools::GetTrad(), txAide, "Aide", "Help");
 		txAide.setFont(fMG);
-		posAide = { 300,150 };
+		posAide = { AjustResoX * 200,AjustResoY * 200 };
 		txAide.setPosition(posAide);
 		txAide.setFillColor(sf::Color::Black);
-		txQuete.setString("Quete");
+		tools::ChoixLangue(tools::GetTrad(), txQuete, "Quete", "Quest");
 		txQuete.setFont(fMG);
-		posQuete = { 300,200 };
+		posQuete = { AjustResoX * 200,AjustResoY * 250 };
 		txQuete.setPosition(posQuete);
 		txQuete.setFillColor(sf::Color::Black);
-		txAvatar.setString("Avatar");
+		tools::ChoixLangue(tools::GetTrad(), txAvatar, "Avatar", "Avatar");
 		txAvatar.setFont(fMG);
-		posAvatar = { 300,250 };
+		posAvatar = { AjustResoX * 200,AjustResoY * 300 };
 		txAvatar.setPosition(posAvatar);
 		txAvatar.setFillColor(sf::Color::Black);
-		txRetour.setString("Retour");
+		tools::ChoixLangue(tools::GetTrad(), txRetour, "Retour", "Back");
 		txRetour.setFont(fMG);
-		posRetour = { 300,300 };
+		posRetour = { AjustResoX * 200,AjustResoY * 350 };
 		txRetour.setPosition(posRetour);
 		txRetour.setFillColor(sf::Color::Black);
 	};

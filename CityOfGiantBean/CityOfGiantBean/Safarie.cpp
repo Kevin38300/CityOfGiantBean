@@ -1094,6 +1094,7 @@ void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 		}
 	}
 	if (_mode == ModeGame::CHASSE) {
+		_perso1.displayPerso(_window, _mode);
 		_perso1.AfficheStats(_window, txStatsPerso);
 		if (bColGobelin == true) {
 			Gobelin1.AfficheStatsM(_window, txStatsMonstre);
