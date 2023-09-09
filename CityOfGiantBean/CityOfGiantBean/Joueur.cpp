@@ -1,4 +1,5 @@
 #include "Joueur.h"
+#include "Villagois.h"
 
 
 extern int classeDisplay;
@@ -13,6 +14,7 @@ std::string ValidationSexe, stValidationPseudo, stPseudo;
 int degatFinal;
 int PvRestant;
 
+Villagois villagois = Villagois();
 
 
 void Joueur::initPerso() {
@@ -25,6 +27,7 @@ void Joueur::initPerso() {
 	persoFrameX = 12;
 	persoFrameY = 2;
 	element = None;
+	SetJob(villagois);
 }
 
 float Joueur::ChoixElement(Elements _elementAtk, Elements _elementDef) {

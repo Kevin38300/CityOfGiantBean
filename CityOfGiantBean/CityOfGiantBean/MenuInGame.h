@@ -24,9 +24,9 @@ class MenuGame {
 	sf::Vector2f pInvBase, pOption, posRsAvatar{ 250,93 }, posDesOption, posProfil, posAide, posQuete, posRetour, posAvatar, posAvatarP{ 50,50 };
 
 	bool bProfil{ false }, bAide{ false }, bAvatar{ false }, bQuete{ false }, BAva[7]{ false };
-	float timerState{ 0.0f };
 	sf::IntRect rectAvatar{ 450,0,50,50 };
 public:
+	float timerState{ 0.0f };
 	sf::Sprite spAvatar;
 	MenuGame() {};
 	~MenuGame() {};
@@ -37,7 +37,7 @@ public:
 
 		tmgInventaire.loadFromFile("..\\Ressources\\Textures\\MENU\\Inventaire.png");
 		smgInv.setTexture(tmgInventaire);
-		smgInv.setPosition(sf::Vector2f(150, 80));
+		smgInv.setPosition(sf::Vector2f(AjustResoX * 207, AjustResoY * 102));
 
 		ttAvatar.loadFromFile("..\\Ressources\\Textures\\Logo\\AvatarProfil.png");
 		spAvatarFull.setTexture(ttAvatar);

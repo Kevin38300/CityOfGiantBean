@@ -7,7 +7,7 @@
 #include "Alchime.h"
 #include "Safarie.h"
 #include "MenuInGame.h"
-#include "Villagois.h"
+//#include "Villagois.h"
 
 Game::Game() {
 }
@@ -24,7 +24,7 @@ Alchimie alchimie;
 MenuGame menuGame;
 Safarie safarie;
 Consos conso;
-Villagois villagois = Villagois();
+//Villagois villagois = Villagois();
 
 void Game::init(myWindow& _window) {
 	_white = sf::Color::White;
@@ -38,7 +38,7 @@ void Game::init(myWindow& _window) {
 	initCarte();
 	persos.push_back(&persoMain);
 	persoMain.initPerso();
-	persoMain.SetJob(villagois);
+	//persoMain.SetJob(villagois);
 	initFontaine();
 	initTaverne();
 	initBoutique();
@@ -57,6 +57,12 @@ void Game::update(myWindow& _window) {
 	if (modeGame == ModeGame::LIBRE) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::MENU;
+			fClickMenu = 0.0f;
+		}
+	}
+	if (modeGame == ModeGame::MENU) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
+			modeGame = ModeGame::LIBRE;
 			fClickMenu = 0.0f;
 		}
 	}

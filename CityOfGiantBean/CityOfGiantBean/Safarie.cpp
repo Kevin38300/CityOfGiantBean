@@ -30,150 +30,150 @@ Monstre Loup4;
 void Safarie::initSafari() {
 	fontS.loadFromFile("../Ressources/Fonts/Typewriter.ttf");
 
-	posRoiGoblein = { 525,427 };
-	rsRoiGobelin.setSize(rsize);
+	posRoiGoblein = { AjustResoX * 752.0f, AjustResoY *  663.0f};
+	rsRoiGobelin.setSize(sf::Vector2f(AjustResoX * 84, AjustResoY * 69));
 	rsRoiGobelin.setPosition(posRoiGoblein);
 	rsRoiGobelin.setFillColor(sf::Color::Cyan);
 
-	posRoiOurs = { 806,338 };
-	rsRoiOurs.setSize(rsize);
+	posRoiOurs = { AjustResoX * 1136.0f, AjustResoY * 503.0f };
+	rsRoiOurs.setSize(sf::Vector2f(AjustResoX * 106, AjustResoY * 90));
 	rsRoiOurs.setPosition(posRoiOurs);
 	rsRoiOurs.setFillColor(sf::Color::Cyan);
 
-	posRoiOrc = { 553,243 };
-	rsRoiOrc.setSize(rsize);
+	posRoiOrc = { AjustResoX * 803.0f, AjustResoY * 349.0f };
+	rsRoiOrc.setSize(sf::Vector2f(AjustResoX * 64, AjustResoY * 73));
 	rsRoiOrc.setPosition(posRoiOrc);
 	rsRoiOrc.setFillColor(sf::Color::Cyan);
 
-	posRoiLoup = { 389,326 };
-	rsRoiLoup.setSize(rsize);
+	posRoiLoup = { AjustResoX * 537.0f, AjustResoY * 484.0f };
+	rsRoiLoup.setSize(sf::Vector2f(AjustResoX * 88, AjustResoY * 74));
 	rsRoiLoup.setPosition(posRoiLoup);
 	rsRoiLoup.setFillColor(sf::Color::Cyan);
 
-	posRanger = { 651,313 };
-	rsRanger.setSize(rsize);
+	posRanger = { AjustResoX * 949.0f, AjustResoY * 486.0f };
+	rsRanger.setSize(sf::Vector2f(AjustResoX * 67, AjustResoY * 82));
 	rsRanger.setPosition(posRanger);
 	rsRanger.setFillColor(sf::Color::Cyan);
 
 	boiteDiscussion::initBoiteDiscussion();
-	posText = { 100,470 };
+	posText = { AjustResoX * 150.0f, AjustResoY * 850.0f };
 	txParoleSafarie.setFont(fontS);
 	txParoleSafarie.setFillColor(sf::Color::Black);
 
 
 	DetailActionAventureS.setFont(fontS);
 	DetailActionAventureS.setOrigin(DetailActionAventureS.getGlobalBounds().height / 2, DetailActionAventureS.getGlobalBounds().width / 2);
-	DetailActionAventureS.setPosition(100, 560);
+	DetailActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	DetailActionAventureS.setFillColor(sf::Color::Red);
 
 	ActionAventureS.setFont(fontS);
 	ActionAventureS.setOrigin(ActionAventureS.getGlobalBounds().height / 2, ActionAventureS.getGlobalBounds().width / 2);
-	ActionAventureS.setPosition(300, 510);
+	ActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	ActionAventureS.setFillColor(sf::Color::Red);
 
 	AventureAttaqueS.setFont(fontS);
 	AventureAttaqueS.setOrigin(AventureAttaqueS.getGlobalBounds().height / 2, AventureAttaqueS.getGlobalBounds().width / 2);
-	AventureAttaqueS.setPosition(120, 375);
+	AventureAttaqueS.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	AventureAttaqueS.setFillColor(sf::Color::Red);
 
 	AventureSkillS.setFont(fontS);
 	AventureSkillS.setOrigin(AventureSkillS.getGlobalBounds().height / 2, AventureSkillS.getGlobalBounds().width / 2);
-	AventureSkillS.setPosition(390, 375);
+	AventureSkillS.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	AventureSkillS.setFillColor(sf::Color::Red);
 
 	AventureObjetS.setFont(fontS);
 	AventureObjetS.setOrigin(AventureObjetS.getGlobalBounds().height / 2, AventureObjetS.getGlobalBounds().width / 2);
-	AventureObjetS.setPosition(660, 375);
+	AventureObjetS.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	AventureObjetS.setFillColor(sf::Color::Red);
 
 	AventureFuiteS.setFont(fontS);
 	AventureFuiteS.setOrigin(AventureFuiteS.getGlobalBounds().height / 2, AventureFuiteS.getGlobalBounds().width / 2);
-	AventureFuiteS.setPosition(930, 375);
+	AventureFuiteS.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	AventureFuiteS.setFillColor(sf::Color::Red);
 
 	txStatsMonstre.setFont(fontS);
 	txStatsMonstre.setOrigin(txStatsMonstre.getGlobalBounds().height / 2, txStatsMonstre.getGlobalBounds().width / 2);
-	txStatsMonstre.setPosition(1133, 45);
+	txStatsMonstre.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
 	txStatsMonstre.setFillColor(sf::Color::Red);
 
 	txStatsPerso.setFont(fontS);
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
-	txStatsPerso.setPosition(25, 40);
+	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
 	txStatsPerso.setFillColor(sf::Color::Red);
 
 	txDescCombat.setFont(fontS);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
-	txDescCombat.setPosition(100, 560);
+	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	txDescCombat.setFillColor(sf::Color::Red);
 
 	txElevation.setFont(fontS);
 	txElevation.setOrigin(txElevation.getGlobalBounds().height / 2, txElevation.getGlobalBounds().width / 2);
-	txElevation.setPosition(120, 375);
+	txElevation.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
 	txElevation.setFillColor(sf::Color::Black);
 	
 
 	txSoinPV.setFont(fontS);
 	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
-	txSoinPV.setPosition(120, 375);
+	txSoinPV.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSoinPV.setFillColor(sf::Color::Red);
 
 	txSoinMana.setFont(fontS);
 	txSoinMana.setOrigin(txSoinMana.getGlobalBounds().height / 2, txSoinMana.getGlobalBounds().width / 2);
-	txSoinMana.setPosition(390, 375);
+	txSoinMana.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSoinMana.setFillColor(sf::Color::Red);
 
 	txBombe.setFont(fontS);
 	txBombe.setOrigin(txBombe.getGlobalBounds().height / 2, txBombe.getGlobalBounds().width / 2);
-	txBombe.setPosition(660, 375);
+	txBombe.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txBombe.setFillColor(sf::Color::Red);
 
 	txFilet.setFont(fontS);
 	txFilet.setOrigin(txFilet.getGlobalBounds().height / 2, txFilet.getGlobalBounds().width / 2);
-	txFilet.setPosition(930, 375);
+	txFilet.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txFilet.setFillColor(sf::Color::Red);
 
 	txSkill1.setFont(fontS);
 	txSkill1.setOrigin(txSkill1.getGlobalBounds().height / 2, txSkill1.getGlobalBounds().width / 2);
-	txSkill1.setPosition(120, 375);
+	txSkill1.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSkill1.setFillColor(sf::Color::Red);
 
 	txSkill2.setFont(fontS);
 	txSkill2.setOrigin(txSkill2.getGlobalBounds().height / 2, txSkill2.getGlobalBounds().width / 2);
-	txSkill2.setPosition(390, 375);
+	txSkill2.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSkill2.setFillColor(sf::Color::Red);
 
 	txSkill3.setFont(fontS);
 	txSkill3.setOrigin(txSkill3.getGlobalBounds().height / 2, txSkill3.getGlobalBounds().width / 2);
-	txSkill3.setPosition(660, 375);
+	txSkill3.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txSkill3.setFillColor(sf::Color::Red);
 
 	txSkill4.setFont(fontS);
 	txSkill4.setOrigin(txSkill4.getGlobalBounds().height / 2, txSkill4.getGlobalBounds().width / 2);
-	txSkill4.setPosition(930, 375);
+	txSkill4.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txSkill4.setFillColor(sf::Color::Red);
 
 	txRetourAction.setFont(fontS);
 	txRetourAction.setOrigin(txRetourAction.getGlobalBounds().height / 2, txRetourAction.getGlobalBounds().width / 2);
-	txRetourAction.setPosition(1133, 375);
+	txRetourAction.setPosition(AjustResoX * 1527.0f, AjustResoY * 645.0f);
 	txRetourAction.setFillColor(sf::Color::Red);
 
-	ActionAventureS.setString("Choisissez votre action :");
-	AventureAttaqueS.setString("Attaque");
-	AventureSkillS.setString("Skill");
-	AventureObjetS.setString("Objet");
-	AventureFuiteS.setString("Fuite");
+	tools::ChoixLangue(tools::GetTrad(), ActionAventureS, "Choisissez votre action :", "Choose your action:");
+	tools::ChoixLangue(tools::GetTrad(), AventureAttaqueS, "Attaque", "Attack");
+	tools::ChoixLangue(tools::GetTrad(), AventureSkillS, "Skill", "Skill");
+	tools::ChoixLangue(tools::GetTrad(), AventureObjetS, "Objet", "Object");
+	tools::ChoixLangue(tools::GetTrad(), AventureFuiteS, "Fuite", "Feel");
 
 	txSkill1.setString("Skill 1");
 	txSkill2.setString("Skill 2");
 	txSkill3.setString("Skill 3");
 	txSkill4.setString("Skill 4");
 
-	txSoinPV.setString("Soin PV");
-	txSoinMana.setString("Soin Mana");
-	txBombe.setString("Bombe");
-	txFilet.setString("Filet");
-	txSFilet.setString("Super Filet");
-	txRetourAction.setString("Retour");
+	tools::ChoixLangue(tools::GetTrad(), txSoinPV, "Soin PV", "Healing PV");
+	tools::ChoixLangue(tools::GetTrad(), txSoinMana, "Soin Mana", "Healing Mana");
+	tools::ChoixLangue(tools::GetTrad(), txBombe, "Bombe", "Bomb");
+	tools::ChoixLangue(tools::GetTrad(), txFilet, "Filet", "Net");
+	tools::ChoixLangue(tools::GetTrad(), txSFilet, "Super Filet", "Super Net");
+	tools::ChoixLangue(tools::GetTrad(), txRetourAction, "Retour", "Back");
 
 	stDescCombatP = { "Vous avez attaque le " };
 	stDescCombatM = { " vous a attaque" };
@@ -182,17 +182,35 @@ void Safarie::initSafari() {
 	stVictory = { "\nFelicitation vous avez gagne" };
 	stDefaite = { "\nVous avez perdu, le ranger va vous soigner" };
 
-	stBoostAtk = { "Votre attaque est booster" };
-	stBoostDef = { "Votre defense est booster" };
+	stDescCombatPEn = { "You attacked the " };
+	stDescCombatMEn = { " attacked you" };
+	stNbDegPEn = { ". The damage inflicted is : " };
+	stNbDegMEn = { ". The damage suffered is :" };
+	stVictoryEn = { "\nCongratulations you won" };
+	stDefaiteEn = { "\nYou lost, the ranger will heal you" };
+
+	stBoostAtk = { "Votre attaque est augmenter" };
+	stBoostDef = { "Votre defense est augmenter" };
 	stPoison = { "Vous avez infliger poison au monstre" };
 	stImmunite = { "Vous vous etes mis une immunite" };
 	stCatch = { "Capture reussi" };
 	stNonCatch = { "Echec de la capture" };
 
-	stFuiteok = "Vous allez reussir a fuire";
+	stBoostAtkEn = { "Your attack is increasing" };
+	stBoostDefEn = { "Your defense is increase" };
+	stPoisonEn = { "You have inflicted poison on the monster" };
+	stImmuniteEn = { "You have put yourself immunity" };
+	stCatchEn = { "Successful cath" };
+	stNonCatchEn = { "Miss catch" };
+
+	stFuiteok = "Vous avez reussi a fuire";
 	stFuiteR = "Echec de la fuite";
+
+	stFuiteokEn = "You managed to flee";
+	stFuiteREn = "Flee failed";
 	
-	stElevation = "A : pour elevation de la zone";
+	stElevation = "J'aimerais elever le niveau de la zone";
+	stElevationEn = "I would like to raise the level of the area";
 
 	initMonstreSafari();
 }
@@ -232,13 +250,13 @@ void Safarie::initMonstreSafari() {
 	rsOrc.setSize(rsize);
 	rsOrc.setFillColor(sf::Color::Green);
 
-	posLoup = { 200,300 };
-	posOurs = { 900,300 };
-	posGobelin = { 500,520 };
-	posOrc = { 500,80 };
+	posLoup = { AjustResoX * 243, AjustResoY * 464 };
+	posOurs = { AjustResoX * 1487, AjustResoY * 525 };
+	posGobelin = { AjustResoX * 737, AjustResoY * 845 };
+	posOrc = { AjustResoX * 885, AjustResoY * 157 };
 
-	posCombatSafari = { 270,190 };
-	posCombatMonstre = { 960,180 };
+	posCombatSafari = { AjustResoX * 349.0f, AjustResoY * 293.0f };
+	posCombatMonstre = { AjustResoX * 1284.0f, AjustResoY * 293.0f };
 
 	monstres.push_back(&Gobelin1);
 	monstres.push_back(&Gobelin2);
@@ -266,23 +284,28 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiGoblein, rsize)) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Gobelin: Bonjour, si tu veux t'entrainer avec\nmes gobelin tu pourras drop du Cuivre");
+			stParoleSafarieEn = ("Goblin King: Hello, if you want to train with\nmy goblins you can drop Copper");
 		}
 		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiOurs, rsize)) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Ours: Bonjour, si tu veux t'entrainer avec\nmes oursons tu pourras drop du Cuire");
+			stParoleSafarieEn = ("Bear King: Hello, if you want to train with\nmy cubs you can drop the Cook");
 		}
 		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiLoup, rsize)) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Loup: Bonjour, si tu veux t'entrainer avec\nmes louveteaux tu pourras drop de le Fourrure");
+			stParoleSafarieEn = ("Wolf King: Hello, if you want to train with\nmy cubs you can drop the Fur");
 		}
 		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiOrc, rsize)) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Orc: Bonjour, si tu veux t'entrainer avec\nmes petits Orc tu pourras drop du Fer");
+			stParoleSafarieEn = ("Orc King: Hello, if you want to train with\nmy little Orc you can drop Iron");
 		}
 		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRanger, rsize)) {
 			bColRoiMonstre = true;
 			bColRanger = true;
 			stParoleSafarie = ("Entrainez vous sans crainte, je vous soignerais");
+			stParoleSafarieEn = ("Train without fear, I will treat you");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 				bTimeRanger = true;
 				fTmp = 0.0f;
@@ -292,9 +315,11 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 				fTmp += tools::GetTimeDelta();
 				if (fTmp < 2.0f)
 					stParoleSafarie = ("Je verifie vos accomplissement, veuillez patientez.");
+					stParoleSafarieEn = ("I check your achievements, please wait.");
 				if (fTmp > 2.0 && fTmp < 4.1f) {
 					if (bElevation == false) {
 						stParoleSafarie = ("Veuillez vous entrainer, vous ne rempissez pas les conditions !");
+						stParoleSafarieEn = ("Please train, you don't repay the conditions !");
 						if (fTmp > 4.0f) {
 							fTmp = 0.0f;
 							bTimeRanger = false;
@@ -302,6 +327,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 					}
 					if (bElevation == true) {
 						stParoleSafarie = ("OK, vous pourrez affronter des monstres plus fort");
+						stParoleSafarieEn = ("OK, you'll be able to take on stronger monsters");
 						bLvlUp = true;
 						if (fTmp > 4.0f) {
 							iZonzSafari += 1;
@@ -509,11 +535,12 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 	switch (choixActionO)
 	{
 	case 1:
-		DetailActionAventureS.setString("Vous allez soigner vos PV");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous allez soigner vos PV", "You will heal your PV");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionO > 0.3f) {
 			if (_perso1.SoinPvBuy >= 1) {
 				tmpint = _perso1.GetTotPvMax() - _perso1.GetTotPv();
 				stObj = { "Vous avez soigne vos Pv de " + std::to_string(tmpint) };
+				stObjEn = { "You have taken care of your Pv of " + std::to_string(tmpint) };
 				_perso1.SetTotPv(_perso1.GetTotPvMax());
 				_perso1.SoinPvBuy -= 1;
 				if (_perso1.SoinPvBuy <= 0)
@@ -527,6 +554,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 			}
 			else {
 				stObj = { "Vous n'avez pas l' objet de soin de PV" };
+				stObjEn = { "You do not have the object of care of PV" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -535,11 +563,12 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 		}
 		break;
 	case 2:
-		DetailActionAventureS.setString("Vous allez soigner votre Mana");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous allez soigner votre Mana", "You will heal your Mana");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionO > 0.3f) {
 			if (_perso1.SoinManaBuy >= 1) {
 				tmpint = _perso1.GetTotManaMax() - _perso1.GetTotMana();
 				stObj = { "Vous avez soigne votre Mana de " + tmpint };
+				stObjEn = { "You have healed your Mana of " + tmpint };
 				_perso1.SetTotMana(tmpint);
 				_perso1.SoinManaBuy -= 1;
 				if (_perso1.SoinManaBuy <= 0)
@@ -553,6 +582,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 			}
 			else {
 				stObj = { "Vous n'avez pas l' objet de soin de Mana" };
+				stObjEn = { "You don't have Mana's healing object" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -561,7 +591,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 		}
 		break;
 	case 3:
-		DetailActionAventureS.setString("Vous allez faire des degats au monstre");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous allez faire des degats au monstre", "You will do damage to the monster");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionO > 0.3f) {
 			if (_perso1.BombeBuy >= 1) {
 				degatFinal = (1000 - _monstre1.GetDefense());
@@ -573,6 +603,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 				_monstre1.SetPV(PvRestant);
 				stNomMonstre = { _monstre1.GetName() };
 				stObj = { "Vous avez fais des degats : " + std::to_string((int)degatFinal) };
+				stObjEn = { "You have done damage : " + std::to_string((int)degatFinal) };
 				_perso1.BombeBuy -= 1;
 				if (_perso1.BombeBuy <= 0)
 					_perso1.bombeEquipe -= 1;
@@ -585,6 +616,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 			}
 			else {
 				stObj = { "Vous n'avez pas de Bombe" };
+				stObjEn = { "You don't have a Bomb" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -593,12 +625,12 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 		}
 		break;
 	case 4:
-		DetailActionAventureS.setString("Permet de Capturer un monstre");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Permet de Capturer un monstre", "Allows you to catch a monster");
 		if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionO > 0.3f) || bTmp == true) {
 			bTmp = true;
 			if (_perso1.GetFillet() >= 1) {
 				if (_perso1.GetSuperFillet() >= 1) {
-					DetailActionAventureS.setString("Vous avez un super filet, A pour superFilet, ou E Filet");
+					tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous avez un super filet, A pour superFilet, ou E Filet", "You have a super net, A for superNet, or E Net");
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 						timerDescritionCombat = 0.0f;
 						std::cout << "Reussi" << std::endl;
@@ -661,7 +693,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 				}
 			}
 			else {
-				DetailActionAventureS.setString("Vous n'avez pas de Filet");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous n'avez pas de Filet", "You don't have a Net");
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -669,7 +701,7 @@ void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _c
 			timerChoixActionO = 0.0f;
 			break;
 	case 5:
-		DetailActionAventureS.setString("Retour au choix d'attaque");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Retour au choix d'attaque", "Back to attack choice");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionO > 0.3f) {
 			bChoixObjet = false;
 			timerChoixActionO = 0.0f;
@@ -1023,13 +1055,13 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 
 void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 	if (_mode == ModeGame::LIBRE) {
-		_window.Draw(rsRoiGobelin);
+		/*_window.Draw(rsRoiGobelin);
 		_window.Draw(rsRoiLoup);
 		_window.Draw(rsRoiOrc);
 		_window.Draw(rsRoiOurs);
-		_window.Draw(rsRanger);
+		_window.Draw(rsRanger);*/
 		if (irsVieGobelin >= 1) {
-			_window.Draw(rsGobelin);
+			//_window.Draw(rsGobelin);
 			spGobelin.setPosition(posGobelin);
 			_window.Draw(spGobelin);
 		}
@@ -1053,10 +1085,10 @@ void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 		if (bColRoiMonstre == true) {
 			boiteDiscussion::displayBoiteDiscussion(_window);
 			txParoleSafarie.setPosition(posText);
-			txParoleSafarie.setString(stParoleSafarie);
+			tools::ChoixLangue(tools::GetTrad(), txParoleSafarie, stParoleSafarie, stParoleSafarieEn);
 			_window.Draw(txParoleSafarie);
 			if (bColRanger == true){
-			txElevation.setString(stElevation);
+				tools::ChoixLangue(tools::GetTrad(), txElevation, stElevation, stElevationEn); 
 			_window.Draw(txElevation);
 			}
 		}
@@ -1227,52 +1259,52 @@ void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 	if (bDescCombat == true) {
 		if (iDescCombat == 1) {
 			if (bVictory == false) {
-				txDescCombat.setString(stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal));
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal), stDescCombatPEn + stNomMonstre + stNbDegPEn + std::to_string((int)degatFinal));
 				_window.Draw(txDescCombat);
 			}
 			else {
-				txDescCombat.setString(stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal) + stVictory);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal) + stVictory, stDescCombatPEn + stNomMonstre + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn);
 				_window.Draw(txDescCombat);
 			}
 		}
 		if (iDescCombat == 2) {
-			txDescCombat.setString(stNomMonstre + stDescCombatM + stNbDegM + std::to_string((int)degatFinal));
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stNomMonstre + stDescCombatM + stNbDegM + std::to_string((int)degatFinal), stNomMonstre + stDescCombatMEn + stNbDegMEn + std::to_string((int)degatFinal));
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 3) {
-			txDescCombat.setString(stObj);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stObj, stObjEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 5) {
-			txDescCombat.setString(stFuiteok);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stFuiteok, stFuiteokEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 6) {
-			txDescCombat.setString(stFuiteR);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stFuiteR, stFuiteREn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 7) {
-			txDescCombat.setString(stBoostAtk);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stBoostAtk, stBoostAtkEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 8) {
-			txDescCombat.setString(stBoostDef);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stBoostDef, stBoostDefEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 9) {
-			txDescCombat.setString(stPoison);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stPoison, stPoisonEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 10) {
-			txDescCombat.setString(stImmunite);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stImmunite, stImmuniteEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 11) {
-			txDescCombat.setString(stCatch);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stCatch, stCatchEn);
 			_window.Draw(txDescCombat);
 		}
 		if (iDescCombat == 12) {
-			txDescCombat.setString(stNonCatch);
+			tools::ChoixLangue(tools::GetTrad(), txDescCombat, stNonCatch, stNonCatchEn);
 			_window.Draw(txDescCombat);
 		}
 	}
@@ -1303,16 +1335,16 @@ void Safarie::ChoixActionSafarie() {
 	switch (choixActionS)
 	{
 	case 1:
-		DetailActionAventureS.setString("Attaque : l'attaque de base prend en compte l'attaque du lanceur\n et la defense de la cible puis applique l'avantage selon l'element");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Attaque : l'attaque de base prend en compte l'attaque du lanceur\n et la defense de la cible puis applique l'avantage selon l'element", "Attack: The basic attack takes into account the attack of the launchern\nand the defense of the target and then applies the advantage according to the element");
 		break;
 	case 2:
-		DetailActionAventureS.setString("Skill : Permet d'utiliser une competence possede");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill : Permet d'utiliser une competence possede", "Skill: Allows you to use a possesssede skill");
 		break;
 	case 3:
-		DetailActionAventureS.setString("Objet : Permet d'utilise un objet equipe");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Objet : Permet d'utilise un objet equipe", "Subject: Allows you to use a team object");
 		break;
 	case 4:
-		DetailActionAventureS.setString("Fuite : Permet de fuir un combat, si votre vitesse est superieur a celle\n de l'adversaire fuite a 100%, sinon selon une probabilite");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Fuite : Permet de fuir un combat, si votre vitesse est superieur a celle\n de l'adversaire fuite a 100%, sinon selon une probabilite", "Escape: Allows you to flee a fight, if your speed is higher than that\nof the opponent flight has 100%, otherwise according to a probability");
 		break;
 	default:
 		break;
@@ -1334,7 +1366,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 	{
 	case 1:
 		if (_perso1.SKILL[0] == true) {
-			DetailActionAventureS.setString("Skill 1 : Attaque avec le double de degats");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 1 : Attaque avec le double de degats", "Skill 1: Attack with double the damage");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				degatFinal = (((_perso1.GetTotAttaque() - _monstre1.GetDefense()) * _perso1.ChoixElement(_perso1.GetElement(), _monstre1.GetElement())) * 2);
 				if (degatFinal <= 0)
@@ -1354,7 +1386,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 			}
 		}
 		else {
-			DetailActionAventureS.setString("Vous ne posseder pas de skill 1");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous ne posseder pas de skill 1", "You don't have skill 1");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1364,7 +1396,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 	case 2:
 		if (_perso1.SKILL[1] == true || _perso1.SKILL[2] == true) {
 			if (_perso1.SKILL[1] == true) {
-				DetailActionAventureS.setString("Skill 2 : Attaque en ignorant les elements");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 2 : Attaque en ignorant les elements", "Skill 2: Attack by ignoring the elements");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					degatFinal = (_perso1.GetTotAttaque() - _monstre1.GetDefense());
 					if (degatFinal <= 0)
@@ -1384,7 +1416,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 				}
 			}
 			if (_perso1.SKILL[2] == true) {
-				DetailActionAventureS.setString("Skill 2 : Attaque en ignorant la defense");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 2 : Attaque en ignorant la defense", "Skill 2: Attack by ignoring defense");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					degatFinal = (_perso1.GetTotAttaque() * _perso1.ChoixElement(_perso1.GetElement(), _monstre1.GetElement()));
 					if (degatFinal <= 0)
@@ -1405,7 +1437,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 			}
 		}
 		else {
-			DetailActionAventureS.setString("Vous ne posseder pas de skill 2");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous ne posseder pas de skill 2", "You don't have skill 2");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1415,7 +1447,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 	case 3:
 		if (_perso1.SKILL[3] == true || _perso1.SKILL[4] == true || _perso1.SKILL[5] == true || _perso1.SKILL[6] == true) {
 			if (_perso1.SKILL[3] == true) {
-				DetailActionAventureS.setString("Skill 3 : Boost des degats pour 2 tour (50%)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : Boost des degats pour 2 tour (50%)", "Skill 3: Damage boost for 2 turns (50%)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iBoostAtk = 2;
 					timerChoixSkill = 0.0f;
@@ -1428,7 +1460,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 				}
 			}
 			if (_perso1.SKILL[4] == true) {
-				DetailActionAventureS.setString("Skill 3 : Boost de la resistance aux degats pour 2 tour (50%)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : Boost de la resistance aux degats pour 2 tour (50%)", "Skill 3: Damage resistance boost for 2 turns (50%)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iBoostDef = 2;
 					timerChoixSkill = 0.0f;
@@ -1441,7 +1473,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 				}
 			}
 			if (_perso1.SKILL[5] == true) {
-				DetailActionAventureS.setString("Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)", "Skill 3: Inflicts poison for 2 turns(50% of the attack)"); 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iPoison = 2;
 					timerDescritionCombat = 0.0f;
@@ -1454,7 +1486,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 				}
 			}
 			if (_perso1.SKILL[6] == true) {
-				DetailActionAventureS.setString("Skill 3 : S'octroie une immunite a tous degats (2 tour)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : S'octroie une immunite a tous degats (2 tour)", "Skill 3: Grants yourself an immunity to all damages (2 round)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iImmunite = 2;
 					timerChoixSkill = 0.0f;
@@ -1468,7 +1500,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 			}
 		}
 		else {
-			DetailActionAventureS.setString("Vous ne posseder pas de skill 3");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous ne posseder pas de skill 3", "You don't have a skill 3");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1478,14 +1510,14 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 	case 4:
 		if (_perso1.SKILL[7] == true || _perso1.SKILL[8] == true) {
 			if (_perso1.SKILL[7] == true) {
-				DetailActionAventureS.setString("Skill 4 : Invoque une creature !! A venir Prochainement !!");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 4 : Invoque une creature !! A venir Prochainement !!", "Skill 4: Summon a creature!! Coming soon !!");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					bChoixSkill = false;
 					timerChoixSkill = 0.0f;
 				}
 			}
 			if (_perso1.SKILL[8] == true) {
-				DetailActionAventureS.setString("Skill 4 : Invoque un villagois kidnapper !! A venir Prochainement !! ");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 4 : Invoque un villagois kidnapper !! A venir Prochainement !!", "Skill 4: Summon a villagois kidnap!! Coming soon !!");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					bChoixSkill = false;
 					timerChoixSkill = 0.0f;
@@ -1493,7 +1525,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 			}
 		}
 		else {
-			DetailActionAventureS.setString("Vous ne posseder pas de skill 4");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Vous ne posseder pas de skill 4", "You don't have skill 4");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1501,7 +1533,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 		}
 		break;
 	case 5:
-		DetailActionAventureS.setString("Retour au choix d'attaque");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Retour au choix d'attaque", "Back to attack choice");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 			bChoixSkill = false;
 			timerChoixSkill = 0.0f;

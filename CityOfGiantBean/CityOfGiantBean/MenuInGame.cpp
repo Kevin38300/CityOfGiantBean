@@ -5,10 +5,10 @@
 
 void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueur, Safarie& safari) {
 	timerState += tools::GetTimeDelta();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && timerState > 0.3f && bProfil == false && bAide == false && bQuete == false && bAvatar == false) {
+	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && timerState > 0.3f && bProfil == false && bAide == false && bQuete == false && bAvatar == false) {
 		_mode = ModeGame::LIBRE;
 		timerState = 0.0f;
-	}
+	}*/
 	if (choixInv == 0 && choixOption == 0) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && iMGchoixMenu > 0 && timerState > 0.3f) {
 			iMGchoixMenu -= 1;

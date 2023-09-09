@@ -4,7 +4,7 @@ extern std::string NomElement;
 extern std::string NomJob;
 
 Personnage::Personnage(){
-	name = "default";
+	name = " ";
 	NomElement = "None";
 	element = None;
 	niveau = 1;
