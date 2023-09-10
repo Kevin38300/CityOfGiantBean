@@ -156,6 +156,7 @@
     <ClCompile Include="Armes.cpp" />
     <ClCompile Include="Armures.cpp" />
     <ClCompile Include="Assassin.cpp" />
+    <ClCompile Include="Aventure.cpp" />
     <ClCompile Include="Boutique.cpp" />
     <ClCompile Include="Chargement.cpp" />
     <ClCompile Include="Clerc.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Fontaine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Guerrier.cpp" />
+    <ClCompile Include="Hotel.cpp" />
     <ClCompile Include="Job.cpp" />
     <ClCompile Include="Joueur.cpp" />
     <ClCompile Include="Magicien.cpp" />
@@ -184,6 +186,7 @@
     <ClInclude Include="Armes.h" />
     <ClInclude Include="Armures.h" />
     <ClInclude Include="Assassin.h" />
+    <ClInclude Include="Aventure.h" />
     <ClInclude Include="Boutique.h" />
     <ClInclude Include="Chargement.h" />
     <ClInclude Include="Clerc.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Fontaine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Guerrier.h" />
+    <ClInclude Include="Hotel.h" />
     <ClInclude Include="Job.h" />
     <ClInclude Include="Joueur.h" />
     <ClInclude Include="Magicien.h" />

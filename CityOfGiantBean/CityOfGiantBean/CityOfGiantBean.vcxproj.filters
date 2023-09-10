@@ -114,6 +114,12 @@
     <ClCompile Include="Monstre.cpp">
       <Filter>Perso</Filter>
     </ClCompile>
+    <ClCompile Include="Hotel.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
+    <ClCompile Include="Aventure.cpp">
+      <Filter>Lieux</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tools.h">
@@ -196,6 +202,12 @@
     </ClInclude>
     <ClInclude Include="Monstre.h">
       <Filter>Perso</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotel.h">
+      <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Aventure.h">
+      <Filter>Lieux</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,7 +7,8 @@
 #include "Alchime.h"
 #include "Safarie.h"
 #include "MenuInGame.h"
-//#include "Villagois.h"
+#include "Hotel.h"
+#include "Aventure.h"
 
 Game::Game() {
 }
@@ -21,9 +22,11 @@ Game::Game(MapGame _mapGame, ModeGame _modeGame, AventureGame _aventureGame, Sho
 
 Joueur persoMain;
 Alchimie alchimie;
+Aventure aventure;
 MenuGame menuGame;
 Safarie safarie;
 Consos conso;
+Hotel hotel;
 //Villagois villagois = Villagois();
 
 void Game::init(myWindow& _window) {
@@ -45,6 +48,7 @@ void Game::init(myWindow& _window) {
 	alchimie.initAlchimie();
 	menuGame.InitMenuGame();
 	safarie.initSafari();
+	hotel.initHotel();
 }
 
 void Game::update(myWindow& _window) {
@@ -61,6 +65,18 @@ void Game::update(myWindow& _window) {
 		}
 	}
 	if (modeGame == ModeGame::MENU) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
+			modeGame = ModeGame::LIBRE;
+			fClickMenu = 0.0f;
+		}
+	}
+	if (modeGame == ModeGame::QUETE) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
+			modeGame = ModeGame::LIBRE;
+			fClickMenu = 0.0f;
+		}
+	}
+	if (modeGame == ModeGame::SKILL_TREE) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::LIBRE;
 			fClickMenu = 0.0f;
@@ -95,6 +111,7 @@ void Game::update(myWindow& _window) {
 			updateFontaine(_window, persoMain);
 		}
 		if (shopGame == ShopGame::HOTEL) {
+			hotel.update(persoMain, modeGame, safarie, aventure);
 		}
 	}
 }
@@ -132,6 +149,7 @@ void Game::draw(myWindow& _window) {
 			displayFontaine(_window);
 		}
 		if (shopGame == ShopGame::HOTEL) {
+			hotel.displayHotel(_window, modeGame, persoMain);
 		}
 	}
 	menuGame.DisplayMenuGame(_window, modeGame, persoMain);
