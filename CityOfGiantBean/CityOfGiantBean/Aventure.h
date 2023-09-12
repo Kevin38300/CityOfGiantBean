@@ -24,10 +24,10 @@ public:
 	void initEnnemi();
 	void UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, AventureGame& _modeAv);
 	void ChoixActionAv();
-	void combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso);
-	void combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso);
-	void combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso);
-	void combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso);
+	void combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso, AventureGame& _modeAv);
+	void combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso, AventureGame& _modeAv);
+	void combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso, AventureGame& _modeAv);
+	void combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso, AventureGame& _modeAv);
 	void combatAventureVill(Joueur& _perso1, Villagois& _perso2, Consos& _conso, ModeGame& _mode);
 	void Fuite(Joueur& _perso1, Joueur& _perso2, ModeGame& _mode);
 	void displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _perso1, AventureGame& _modeAv);
