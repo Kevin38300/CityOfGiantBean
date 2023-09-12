@@ -160,7 +160,7 @@ void Safarie::initSafari() {
 	tools::ChoixLangue(tools::GetTrad(), ActionAventureS, "Choisissez votre action :", "Choose your action:");
 	tools::ChoixLangue(tools::GetTrad(), AventureAttaqueS, "Attaque", "Attack");
 	tools::ChoixLangue(tools::GetTrad(), AventureSkillS, "Skill", "Skill");
-	tools::ChoixLangue(tools::GetTrad(), AventureObjetS, "Objet", "Object");
+	tools::ChoixLangue(tools::GetTrad(), AventureObjetS, "Objet", "Item");
 	tools::ChoixLangue(tools::GetTrad(), AventureFuiteS, "Fuite", "Feel");
 
 	txSkill1.setString("Skill 1");
@@ -1555,32 +1555,28 @@ void Safarie::Fuite(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode) {
 	if (bColGobelin == true) {
 		posGobelin = posSaveMonstre;
 		_perso1.SetTotPv(_perso1.GetTotPvMax());
-		_perso1.persoPosition.x = posSavePosition.x;
-		_perso1.persoPosition.y = posSavePosition.y - 50;
+		_perso1.persoPosition = sf::Vector2f(AjustResoX * 810, AjustResoY * 507);
 		bColGobelin = false;
 		_mode = ModeGame::LIBRE;
 	}
 	if (bColLoup == true) {
 		posLoup = posSaveMonstre;
 		_perso1.SetTotPv(_perso1.GetTotPvMax());
-		_perso1.persoPosition.x = posSavePosition.x + 50;
-		_perso1.persoPosition.y = posSavePosition.y;
+		_perso1.persoPosition = sf::Vector2f(AjustResoX * 810, AjustResoY * 507);
 		bColLoup = false;
 		_mode = ModeGame::LIBRE;
 	}
 	if (bColOurs == true) {
 		posOurs = posSaveMonstre;
 		_perso1.SetTotPv(_perso1.GetTotPvMax());
-		_perso1.persoPosition.x = posSavePosition.x - 50;
-		_perso1.persoPosition.y = posSavePosition.y;
+		_perso1.persoPosition = sf::Vector2f(AjustResoX * 810, AjustResoY * 507);
 		bColOurs = false;
 		_mode = ModeGame::LIBRE;
 	}
 	if (bColOrc == true) {
 		posOrc = posSaveMonstre;
 		_perso1.SetTotPv(_perso1.GetTotPvMax());
-		_perso1.persoPosition.x = posSavePosition.x;
-		_perso1.persoPosition.y = posSavePosition.y + 50;
+		_perso1.persoPosition = sf::Vector2f(AjustResoX * 810, AjustResoY * 507);
 		bColOrc = false;
 		_mode = ModeGame::LIBRE;
 	}

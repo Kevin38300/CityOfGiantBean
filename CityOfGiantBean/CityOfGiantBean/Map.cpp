@@ -573,7 +573,7 @@ void displayCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGam
 		if (_aventure == AventureGame::ZONE_CLERC) {
 
 		}
-		if (_mode == ModeGame::DUEL) {
+		if (_mode == ModeGame::AVE) {
 			_window.Draw(spSafariCombat);
 
 		}

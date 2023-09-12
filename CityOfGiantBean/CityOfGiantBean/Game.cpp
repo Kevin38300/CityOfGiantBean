@@ -49,6 +49,7 @@ void Game::init(myWindow& _window) {
 	menuGame.InitMenuGame();
 	safarie.initSafari();
 	hotel.initHotel();
+	aventure.initEnnemi();
 }
 
 void Game::update(myWindow& _window) {
@@ -83,7 +84,6 @@ void Game::update(myWindow& _window) {
 		}
 	}
 	if (mapGame == MapGame::RDC) {
-
 	}
 	if (mapGame == MapGame::SAFARIE) {
 		persoMain.updatePerso(_window, modeGame);
@@ -94,7 +94,7 @@ void Game::update(myWindow& _window) {
 	}
 	if (mapGame == MapGame::AVENTURE) {
 		persoMain.updatePerso(_window, modeGame);
-
+		aventure.UpdateAventure(persoMain, modeGame, conso, aventureGame);
 	}
 	if (mapGame == MapGame::SHOP) {
 		persoMain.updatePerso(_window, modeGame);
@@ -122,18 +122,23 @@ void Game::updateEvent(myWindow& _window) {
 void Game::draw(myWindow& _window) {
 	displayCarte(_window, mapGame, shopGame, aventureGame, modeGame);
 	if (mapGame == MapGame::RDC) {
+		//ShowCursor(true);
 	}
 	if (mapGame == MapGame::SAFARIE) {
+		//ShowCursor(false);
 		safarie.drawSafari(_window, modeGame, persoMain);
 	}
 	if (mapGame == MapGame::MONTE) {
+		//ShowCursor(true);
 
 	}
 	if (mapGame == MapGame::AVENTURE) {
+		//ShowCursor(false);
 		persoMain.displayPerso(_window, modeGame);
-
+		aventure.displayAventure(_window, modeGame, persoMain, aventureGame);
 	}
 	if (mapGame == MapGame::SHOP) {
+		//ShowCursor(false);
 		persoMain.displayPerso(_window, modeGame);
 
 		if (shopGame == ShopGame::TAVERNE) {

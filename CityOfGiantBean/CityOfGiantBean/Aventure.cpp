@@ -23,21 +23,31 @@ sf::RectangleShape rsAss, rsGuer, rsClerc, rsMag, rsVill;
 
 sf::Vector2f posRsAss, posRsGuerr, posRsClerc, posRsMag, posRsVill, postexte, posSavePosition, posCombatAv, posCombatEnemi, posSaveMonstre;
 
-sf::Vector2f rsize{ 50,50 };
+sf::Vector2f rsize{ AjustResoX * 50,AjustResoY * 50 };
 
 sf::Texture ttAss, ttGuer, ttClerc, ttMag, ttVill;
 
 sf::Sprite spAss, spGuer, spClerc, spMag, spVill;
+sf::Sprite spAss2, spGuer2, spClerc2, spMag2, spVill2;
+sf::Sprite spAss3, spGuer3, spClerc3, spMag3, spVill3;
+sf::Sprite spAss4, spGuer4, spClerc4, spMag4, spVill4;
 
-bool bPnj{ false },bVill{ false }, bAss{ false }, bMag{ false }, bGuer{ false }, bClerc{ false }, bAtkPerso{ false }, bFuite{ false }, bAtkMonstre{ false }, bChoixAction{ false }, bDescCombat{ false }, bChoixObjet{ false }, bChoixSkill{ false }, bIsSkill{ false }, bVictory{ false }, bDefaite{ false };
+bool bPnj{ false }, bVill{ false }, bAss{ false }, bMag{ false }, bGuer{ false }, bClerc{ false }, bAtkPerso{ false }, bFuite{ false }, bAtkMonstre{ false }, bChoixAction{ false }, bDescCombat{ false }, bChoixObjet{ false }, bChoixSkill{ false }, bIsSkill{ false }, bVictory{ false }, bDefaite{ false };
+bool bAss2{ false }, bMag2{ false }, bGuer2{ false }, bClerc2{ false };
+bool bAss3{ false }, bMag3{ false }, bGuer3{ false }, bClerc3{ false };
+bool bAss4{ false }, bMag4{ false }, bGuer4{ false }, bClerc4{ false };
 
 std::string stParoleAv, stNomEnnemi, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stVictory, stDefaite, stBoostAtk, stBoostDef, stPoison, stImmunite, stClercHeal, stFuiteok, stFuiteR, stObj;
+std::string stParoleAvEn, stNomEnnemiEn, stDescCombatPEn, stDescCombatMEn, stNbDegPEn, stNbDegMEn, stVictoryEn, stDefaiteEn, stBoostAtkEn, stBoostDefEn, stPoisonEn, stImmuniteEn, stClercHealEn, stFuiteokEn, stFuiteREn, stObjEn;
 
 sf::Text txParoleAv, txStatsPerso, txStatsEnnemi, DetailActionAventureA, ActionAventure, AventureAttaque, AventureSkill, AventureObjet, AventureFuite, txSoinPV, txSoinMana, txSkill1, txSkill2, txSkill3, txSkill4, txBombe, txRetourAction, txDescCombat;
 
 sf::Font fontAv;
 
 int choixskill{ 1 }, irsVieAss{ 1 }, irsVieGuer{ 1 }, irsVieClerc{ 1 }, irsVieMag{ 1 }, irsVieVill{ 1 }, iChoixCote{ 0 }, choixActionA{ 1 }, choixActionO{ 1 }, iDescCombat{ 0 }, iNbAss{ 0 }, iNbGuer{ 0 }, iNbMag{ 0 }, iNbClerc{ 0 }, iNbVill{ 0 };
+int irsVieAss2{ 1 }, irsVieGuer2{ 1 }, irsVieClerc2{ 1 }, irsVieMag2{ 1 };
+int irsVieAss3{ 1 }, irsVieGuer3{ 1 }, irsVieClerc3{ 1 }, irsVieMag3{ 1 };
+int irsVieAss4{ 1 }, irsVieGuer4{ 1 }, irsVieClerc4{ 1 }, irsVieMag4{ 1 };
 
 float timerChoixActionA{ 0.0f }, timerDescritionCombat{ 0.0f }, timerChoixSkill{ 0.0f };
 
@@ -61,39 +71,69 @@ void Aventure::initEnnemi() {
 	ttAss.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Assassin.png");
 	spAss.setTexture(ttAss);
 	spAss.setScale(0.06, 0.04);
+	spAss2.setTexture(ttAss);
+	spAss2.setScale(0.06, 0.04);
+	spAss3.setTexture(ttAss);
+	spAss3.setScale(0.06, 0.04);
+	spAss4.setTexture(ttAss);
+	spAss4.setScale(0.06, 0.04);
 	ttGuer.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Guerrier.png");
 	spGuer.setTexture(ttGuer);
 	spGuer.setScale(0.2, 0.2);
+	spGuer2.setTexture(ttGuer);
+	spGuer2.setScale(0.2, 0.2);
+	spGuer3.setTexture(ttGuer);
+	spGuer3.setScale(0.2, 0.2);
+	spGuer4.setTexture(ttGuer);
+	spGuer4.setScale(0.2, 0.2);
 	ttClerc.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Clerc.png");
 	spClerc.setTexture(ttClerc);
 	spClerc.setScale(0.18, 0.18);
+	spClerc2.setTexture(ttClerc);
+	spClerc2.setScale(0.18, 0.18);
+	spClerc3.setTexture(ttClerc);
+	spClerc3.setScale(0.18, 0.18);
+	spClerc4.setTexture(ttClerc);
+	spClerc4.setScale(0.18, 0.18);
 	ttMag.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Magicien.png");
 	spMag.setTexture(ttMag);
 	spMag.setScale(0.2, 0.2);
+	spMag2.setTexture(ttMag);
+	spMag2.setScale(0.2, 0.2);
+	spMag3.setTexture(ttMag);
+	spMag3.setScale(0.2, 0.2);
+	spMag4.setTexture(ttMag);
+	spMag4.setScale(0.2, 0.2);
 	ttVill.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Villagois.png");
 	spVill.setTexture(ttVill);
 	spVill.setScale(0.35, 0.35);
+	spVill2.setTexture(ttVill);
+	spVill2.setScale(0.35, 0.35);
+	spVill3.setTexture(ttVill);
+	spVill3.setScale(0.35, 0.35);
+	spVill4.setTexture(ttVill);
+	spVill4.setScale(0.35, 0.35);
 
-	rsAss.setSize(rsize);
+	rsAss.setSize(sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height));
 	rsAss.setFillColor(sf::Color::Cyan);
 
-	rsGuer.setSize(rsize);
+	rsGuer.setSize(sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height));
 	rsGuer.setFillColor(sf::Color::Red);
 
-	rsClerc.setSize(rsize);
+	rsClerc.setSize(sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height));
 	rsClerc.setFillColor(sf::Color::Yellow);
 
-	rsMag.setSize(rsize);
+	rsMag.setSize(sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height));
 	rsMag.setFillColor(sf::Color::Green);
 
-	rsVill.setSize(rsize);
+	rsVill.setSize(sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height));
 	rsVill.setFillColor(sf::Color::Black);
 
-	posRsAss = { 200,300 };
-	posRsGuerr = { 900,300 };
-	posRsClerc = { 600,420 };
-	posRsMag = { 500,80 };
-	posRsVill = { 500,300 };
+	posRsAss = { AjustResoX * 380,AjustResoY * 409 };
+	posRsGuerr = { AjustResoX * 1411,AjustResoY * 390 };
+	posRsClerc = { AjustResoX * 877,AjustResoY * 835 };
+	posRsMag = { AjustResoX * 885,AjustResoY * 112 };
+	posRsVill = { AjustResoX * 847,AjustResoY * 378 };
 
 	ennemis.push_back(&VillagoisEnnemi);
 	ennemis.push_back(&AssassinEnnemi);
@@ -101,113 +141,113 @@ void Aventure::initEnnemi() {
 	ennemis.push_back(&ClercEnnemi);
 	ennemis.push_back(&MagicienEnnemi);
 
-	postexte = { 100,470 };
+	postexte = { AjustResoX * 150.0f, AjustResoY * 850.0f };
 	txParoleAv.setFont(fontAv);
 	txParoleAv.setFillColor(sf::Color::Black);
 
-	posCombatAv = { 270,190 };
-	posCombatEnemi = { 930,160 };
+	posCombatAv = { AjustResoX * 349.0f, AjustResoY * 293.0f };
+	posCombatEnemi = { AjustResoX * 1275.0f, AjustResoY * 287.0f };
 
 	txStatsPerso.setFont(fontAv);
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
-	txStatsPerso.setPosition(25, 40);
+	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
 	txStatsPerso.setFillColor(sf::Color::Red);
 
 	txStatsEnnemi.setFont(fontAv);
 	txStatsEnnemi.setOrigin(txStatsEnnemi.getGlobalBounds().height / 2, txStatsEnnemi.getGlobalBounds().width / 2);
-	txStatsEnnemi.setPosition(1133, 45);
+	txStatsEnnemi.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
 	txStatsEnnemi.setFillColor(sf::Color::Red);
 
 	DetailActionAventureA.setFont(fontAv);
 	DetailActionAventureA.setOrigin(DetailActionAventureA.getGlobalBounds().height / 2, DetailActionAventureA.getGlobalBounds().width / 2);
-	DetailActionAventureA.setPosition(100, 560);
+	DetailActionAventureA.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	DetailActionAventureA.setFillColor(sf::Color::Red);
 
 	ActionAventure.setFont(fontAv);
 	ActionAventure.setOrigin(ActionAventure.getGlobalBounds().height / 2, ActionAventure.getGlobalBounds().width / 2);
-	ActionAventure.setPosition(300, 510);
+	ActionAventure.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	ActionAventure.setFillColor(sf::Color::Red);
 
 	AventureAttaque.setFont(fontAv);
 	AventureAttaque.setOrigin(AventureAttaque.getGlobalBounds().height / 2, AventureAttaque.getGlobalBounds().width / 2);
-	AventureAttaque.setPosition(120, 375);
+	AventureAttaque.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	AventureAttaque.setFillColor(sf::Color::Red);
 
 	AventureSkill.setFont(fontAv);
 	AventureSkill.setOrigin(AventureSkill.getGlobalBounds().height / 2, AventureSkill.getGlobalBounds().width / 2);
-	AventureSkill.setPosition(390, 375);
+	AventureSkill.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	AventureSkill.setFillColor(sf::Color::Red);
 
 	AventureObjet.setFont(fontAv);
 	AventureObjet.setOrigin(AventureObjet.getGlobalBounds().height / 2, AventureObjet.getGlobalBounds().width / 2);
-	AventureObjet.setPosition(660, 375);
+	AventureObjet.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	AventureObjet.setFillColor(sf::Color::Red);
 
 	AventureFuite.setFont(fontAv);
 	AventureFuite.setOrigin(AventureFuite.getGlobalBounds().height / 2, AventureFuite.getGlobalBounds().width / 2);
-	AventureFuite.setPosition(930, 375);
+	AventureFuite.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	AventureFuite.setFillColor(sf::Color::Red);
-
-	txSoinPV.setFont(fontAv);
-	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
-	txSoinPV.setPosition(120, 375);
-	txSoinPV.setFillColor(sf::Color::Red);
 
 	txDescCombat.setFont(fontAv);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
-	txDescCombat.setPosition(100, 560);
+	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txDescCombat.setFillColor(sf::Color::Red);
+
+	txSoinPV.setFont(fontAv);
+	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
+	txSoinPV.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
+	txSoinPV.setFillColor(sf::Color::Red);
 
 	txSoinMana.setFont(fontAv);
 	txSoinMana.setOrigin(txSoinMana.getGlobalBounds().height / 2, txSoinMana.getGlobalBounds().width / 2);
-	txSoinMana.setPosition(390, 375);
+	txSoinMana.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSoinMana.setFillColor(sf::Color::Red);
 
 	txBombe.setFont(fontAv);
 	txBombe.setOrigin(txBombe.getGlobalBounds().height / 2, txBombe.getGlobalBounds().width / 2);
-	txBombe.setPosition(660, 375);
+	txBombe.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txBombe.setFillColor(sf::Color::Red);
 
 	txSkill1.setFont(fontAv);
 	txSkill1.setOrigin(txSkill1.getGlobalBounds().height / 2, txSkill1.getGlobalBounds().width / 2);
-	txSkill1.setPosition(120, 375);
+	txSkill1.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSkill1.setFillColor(sf::Color::Red);
 
 	txSkill2.setFont(fontAv);
 	txSkill2.setOrigin(txSkill2.getGlobalBounds().height / 2, txSkill2.getGlobalBounds().width / 2);
-	txSkill2.setPosition(390, 375);
+	txSkill2.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSkill2.setFillColor(sf::Color::Red);
 
 	txSkill3.setFont(fontAv);
 	txSkill3.setOrigin(txSkill3.getGlobalBounds().height / 2, txSkill3.getGlobalBounds().width / 2);
-	txSkill3.setPosition(660, 375);
+	txSkill3.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txSkill3.setFillColor(sf::Color::Red);
 
 	txSkill4.setFont(fontAv);
 	txSkill4.setOrigin(txSkill4.getGlobalBounds().height / 2, txSkill4.getGlobalBounds().width / 2);
-	txSkill4.setPosition(930, 375);
+	txSkill4.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txSkill4.setFillColor(sf::Color::Red);
 
 	txRetourAction.setFont(fontAv);
 	txRetourAction.setOrigin(txRetourAction.getGlobalBounds().height / 2, txRetourAction.getGlobalBounds().width / 2);
-	txRetourAction.setPosition(1133, 375);
+	txRetourAction.setPosition(AjustResoX * 1527.0f, AjustResoY * 645.0f);
 	txRetourAction.setFillColor(sf::Color::Red);
 
-	ActionAventure.setString("Choisissez votre action :");
-	AventureAttaque.setString("Attaque");
-	AventureSkill.setString("Skill");
-	AventureObjet.setString("Objet");
-	AventureFuite.setString("Fuite");
+	tools::ChoixLangue(tools::GetTrad(), ActionAventure, "Choisissez votre action :", "Choose your action:");
+	tools::ChoixLangue(tools::GetTrad(), AventureAttaque, "Attaque", "Attack");
+	tools::ChoixLangue(tools::GetTrad(), AventureSkill, "Skill", "Skill");
+	tools::ChoixLangue(tools::GetTrad(), AventureObjet, "Objet", "Item");
+	tools::ChoixLangue(tools::GetTrad(), AventureFuite, "Fuite", "Feel");
 
-	txSkill1.setString("Skill 1");
-	txSkill2.setString("Skill 2");
-	txSkill3.setString("Skill 3");
-	txSkill4.setString("Skill 4");
+	tools::ChoixLangue(tools::GetTrad(), txSkill1, "Skill 1", "Skill 1");
+	tools::ChoixLangue(tools::GetTrad(), txSkill2, "Skill 2", "Skill 2");
+	tools::ChoixLangue(tools::GetTrad(), txSkill3, "Skill 3", "Skill 3");
+	tools::ChoixLangue(tools::GetTrad(), txSkill4, "Skill 4", "Skill 4");
 
-	txSoinPV.setString("Soin PV");
-	txSoinMana.setString("Soin Mana");
-	txBombe.setString("Bombe");
-	txRetourAction.setString("Retour");
+	tools::ChoixLangue(tools::GetTrad(), txSoinPV, "Soin PV", "Healing PV");
+	tools::ChoixLangue(tools::GetTrad(), txSoinMana, "Soin Mana", "Healing Mana");
+	tools::ChoixLangue(tools::GetTrad(), txBombe, "Bombe", "Bomb");
+	tools::ChoixLangue(tools::GetTrad(), txRetourAction, "Retour", "Back");
 
 	stDescCombatP = { "Vous avez attaque le " };
 	stDescCombatM = { " vous a attaque" };
@@ -216,189 +256,685 @@ void Aventure::initEnnemi() {
 	stVictory = { "\nFelicitation vous avez gagne" };
 	stDefaite = { "\nVous avez perdu, le ranger va vous soigner" };
 
-	stBoostAtk = { "Votre attaque est booster" };
-	stBoostDef = { "Votre defense est booster" };
+	stDescCombatPEn = { "You attacked the " };
+	stDescCombatMEn = { " attacked you" };
+	stNbDegPEn = { ". The damage inflicted is : " };
+	stNbDegMEn = { ". The damage suffered is :" };
+	stVictoryEn = { "\nCongratulations you won" };
+	stDefaiteEn = { "\nYou lost, the ranger will heal you" };
+
+	stBoostAtk = { "Votre attaque est augmenter" };
+	stBoostDef = { "Votre defense est augmenter" };
 	stPoison = { "Vous avez infliger poison au monstre" };
 	stImmunite = { "Vous vous etes mis une immunite" };
 	stClercHeal = { "L'ennemi a gagner des pv :" };
 
-	stFuiteok = "Vous allez reussir a fuire";
+	stBoostAtkEn = { "Your attack is increasing" };
+	stBoostDefEn = { "Your defense is increase" };
+	stPoisonEn = { "You have inflicted poison on the monster" };
+	stImmuniteEn = { "You have put yourself immunity" };
+	stClercHealEn = { "The enemy has gained pv :" };
+
+	stFuiteok = "Vous avez reussi a fuire";
 	stFuiteR = "Echec de la fuite";
+
+	stFuiteokEn = "You managed to flee";
+	stFuiteREn = "Flee failed";
 
 	boiteDiscussion::initBoiteDiscussion();
 }
 
-void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
+void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, AventureGame& _modeAv) {
 
 	if (_mode == ModeGame::LIBRE) {
 
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, rsize)) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
 			bPnj = true;
 			stParoleAv = { "Battez mes 4 sbires si vous pensez pouvoir m'affronter" };
+			stParoleAvEn = { "Defeat my 4 minions if you think you can beat me" };
 		}
 		else
 			bPnj = false;
 
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, rsize) && irsVieAss >= 1) {
+		if (_modeAv == AventureGame::ZONE_MAGE) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
 
-			AssassinEnnemi.SetName("Assassin");
-			AssassinEnnemi.SetJob(assassinA);
-			AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
-			AssassinEnnemi.SetElement(Personnage::Feu);
-			stNomEnnemi = { AssassinEnnemi.GetName() };
+				MagicienEnnemi.SetName("Magicien");
+				MagicienEnnemi.SetJob(magicienA);
+				MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { MagicienEnnemi.GetName() };
 
-			if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
-				bAtkPerso = true;
-				bAtkMonstre = false;
-				iChoixCote = 1;
+				if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bMag = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				_mode = ModeGame::AVE;
 			}
-			else {
-				bAtkPerso = false;
-				bAtkMonstre = true;
-				iChoixCote = 2;
-			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
 
-			bAss = true;
-			posSavePosition = _perso1.GetPos();
-			_perso1.persoPosition = posCombatAv;
-			_perso1.directionCombat();
-			posSaveMonstre = posRsAss;
-			posRsAss = posCombatEnemi;
-			_mode = ModeGame::AVE;
+				MagicienEnnemi.SetName("Magicien");
+				MagicienEnnemi.SetJob(magicienA);
+				MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { MagicienEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bMag2 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+
+				MagicienEnnemi.SetName("Magicien");
+				MagicienEnnemi.SetJob(magicienA);
+				MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { MagicienEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bMag3 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+
+				MagicienEnnemi.SetName("Magicien");
+				MagicienEnnemi.SetJob(magicienA);
+				MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { MagicienEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bMag4 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, rsize) && irsVieGuer >= 1) {
+		if (_modeAv == AventureGame::ZONE_ASSASSIN) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
 
-			GuerrierEnnemi.SetName("Guerrier");
-			GuerrierEnnemi.SetJob(guerrierA);
-			GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
-			stNomEnnemi = { GuerrierEnnemi.GetName() };
+				AssassinEnnemi.SetName("Assassin");
+				AssassinEnnemi.SetJob(assassinA);
+				AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
+				AssassinEnnemi.SetElement(Personnage::Feu);
+				stNomEnnemi = { AssassinEnnemi.GetName() };
 
-			if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
-				bAtkPerso = true;
-				bAtkMonstre = false;
-				iChoixCote = 1;
+				if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bAss = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
+				_mode = ModeGame::AVE;
 			}
-			else {
-				bAtkPerso = false;
-				bAtkMonstre = true;
-				iChoixCote = 2;
-			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
 
-			bGuer = true;
-			posSavePosition = _perso1.GetPos();
-			_perso1.persoPosition = posCombatAv;
-			_perso1.directionCombat();
-			posSaveMonstre = posRsGuerr;
-			posRsGuerr = posCombatEnemi;
-			_mode = ModeGame::AVE;
+				AssassinEnnemi.SetName("Assassin");
+				AssassinEnnemi.SetJob(assassinA);
+				AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
+				AssassinEnnemi.SetElement(Personnage::Feu);
+				stNomEnnemi = { AssassinEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bAss2 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+
+				AssassinEnnemi.SetName("Assassin");
+				AssassinEnnemi.SetJob(assassinA);
+				AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
+				AssassinEnnemi.SetElement(Personnage::Feu);
+				stNomEnnemi = { AssassinEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bAss3 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+
+				AssassinEnnemi.SetName("Assassin");
+				AssassinEnnemi.SetJob(assassinA);
+				AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
+				AssassinEnnemi.SetElement(Personnage::Feu);
+				stNomEnnemi = { AssassinEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bAss4 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, rsize) && irsVieClerc >= 1) {
+		if (_modeAv == AventureGame::ZONE_GUERRIER) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
 
-			ClercEnnemi.SetName("Clerc");
-			ClercEnnemi.SetJob(clercA);
-			ClercEnnemi.ChangeStatNiveau2(iZoneAv);
-			stNomEnnemi = { ClercEnnemi.GetName() };
+				GuerrierEnnemi.SetName("Guerrier");
+				GuerrierEnnemi.SetJob(guerrierA);
+				GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { GuerrierEnnemi.GetName() };
 
-			if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
-				bAtkPerso = true;
-				bAtkMonstre = false;
-				iChoixCote = 1;
+				if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bGuer = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
+				_mode = ModeGame::AVE;
 			}
-			else {
-				bAtkPerso = false;
-				bAtkMonstre = true;
-				iChoixCote = 2;
-			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
 
-			bClerc = true;
-			posSavePosition = _perso1.GetPos();
-			_perso1.persoPosition = posCombatAv;
-			_perso1.directionCombat();
-			posSaveMonstre = posRsClerc;
-			posRsClerc = posCombatEnemi;
-			_mode = ModeGame::AVE;
+				GuerrierEnnemi.SetName("Guerrier");
+				GuerrierEnnemi.SetJob(guerrierA);
+				GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { GuerrierEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bGuer2 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+
+				GuerrierEnnemi.SetName("Guerrier");
+				GuerrierEnnemi.SetJob(guerrierA);
+				GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { GuerrierEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bGuer3 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+
+				GuerrierEnnemi.SetName("Guerrier");
+				GuerrierEnnemi.SetJob(guerrierA);
+				GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { GuerrierEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bGuer4 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, rsize) && irsVieMag >= 1) {
+		if (_modeAv == AventureGame::ZONE_CLERC) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
 
-			MagicienEnnemi.SetName("Magicien");
-			MagicienEnnemi.SetJob(magicienA);
-			MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
-			stNomEnnemi = { MagicienEnnemi.GetName() };
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
 
-			if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
-				bAtkPerso = true;
-				bAtkMonstre = false;
-				iChoixCote = 1;
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
+				_mode = ModeGame::AVE;
 			}
-			else {
-				bAtkPerso = false;
-				bAtkMonstre = true;
-				iChoixCote = 2;
-			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
 
-			bMag = true;
-			posSavePosition = _perso1.GetPos();
-			_perso1.persoPosition = posCombatAv;
-			_perso1.directionCombat();
-			posSaveMonstre = posRsMag;
-			posRsMag = posCombatEnemi;
-			_mode = ModeGame::AVE;
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc3 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc2 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc4 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, rsize) && iNbAss > 0 && iNbGuer > 0 && iNbClerc > 0 && iNbMag > 0) {
+		if (_modeAv == AventureGame::AVENTURE) {
 
-			VillagoisEnnemi.SetName("Boss");
-			VillagoisEnnemi.SetJob(villagoisA);
-			villagoisA.SetStatVillagois(1000 * iZoneAv, 50 * iZoneAv, 200 * iZoneAv, 200 * iZoneAv, 1000 * iZoneAv, 50 * iZoneAv);
-			stNomEnnemi = { VillagoisEnnemi.GetName() };
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
 
-			if (_perso1.GetTotVitesse() >= VillagoisEnnemi.GetTotVitesse()) {
-				bAtkPerso = true;
-				bAtkMonstre = false;
-				iChoixCote = 1;
+				AssassinEnnemi.SetName("Assassin");
+				AssassinEnnemi.SetJob(assassinA);
+				AssassinEnnemi.ChangeStatNiveau2(iZoneAv);
+				AssassinEnnemi.SetElement(Personnage::Feu);
+				stNomEnnemi = { AssassinEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= AssassinEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bAss = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
+				_mode = ModeGame::AVE;
 			}
-			else {
-				bAtkPerso = false;
-				bAtkMonstre = true;
-				iChoixCote = 2;
-			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
 
-			bVill = true;
-			posSavePosition = _perso1.GetPos();
-			_perso1.persoPosition = posCombatAv;
-			_perso1.directionCombat();
-			posSaveMonstre = posRsVill;
-			posRsVill = posCombatEnemi;
-			_mode = ModeGame::AVE;
+				GuerrierEnnemi.SetName("Guerrier");
+				GuerrierEnnemi.SetJob(guerrierA);
+				GuerrierEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { GuerrierEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= GuerrierEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bGuer = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+
+				MagicienEnnemi.SetName("Magicien");
+				MagicienEnnemi.SetJob(magicienA);
+				MagicienEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { MagicienEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= MagicienEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bMag = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height)) && iNbAss > 0 && iNbGuer > 0 && iNbClerc > 0 && iNbMag > 0) {
+
+				VillagoisEnnemi.SetName("Boss");
+				VillagoisEnnemi.SetJob(villagoisA);
+				villagoisA.SetStatVillagois(1000 * iZoneAv, 50 * iZoneAv, 200 * iZoneAv, 200 * iZoneAv, 1000 * iZoneAv, 50 * iZoneAv);
+				stNomEnnemi = { VillagoisEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= VillagoisEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bVill = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsVill;
+				posRsVill = posCombatEnemi;
+				_mode = ModeGame::AVE;
+			}
 		}
 	}
 	if (_mode == ModeGame::AVE) {
 
 		if (bAss == true) {
-			combatAventureAss(_perso1, assassinA, _conso, _mode);
+			combatAventureAss(_perso1, assassinA, _conso, _mode, 1);
+		}
+		if (bAss2 == true) {
+			combatAventureAss(_perso1, assassinA, _conso, _mode, 2);
+		}
+		if (bAss3 == true) {
+			combatAventureAss(_perso1, assassinA, _conso, _mode, 3);
+		}
+		if (bAss4 == true) {
+			combatAventureAss(_perso1, assassinA, _conso, _mode, 4);
 		}
 		if (bClerc == true) {
-			combatAventureClerc(_perso1, clercA, _conso, _mode);
+			combatAventureClerc(_perso1, clercA, _conso, _mode, 1);
+		}
+		if (bClerc2 == true) {
+			combatAventureClerc(_perso1, clercA, _conso, _mode, 2);
+		}
+		if (bClerc3 == true) {
+			combatAventureClerc(_perso1, clercA, _conso, _mode, 3);
+		}
+		if (bClerc4 == true) {
+			combatAventureClerc(_perso1, clercA, _conso, _mode, 4);
 		}
 		if (bGuer == true) {
-			combatAventureGuer(_perso1, guerrierA, _conso, _mode);
+			combatAventureGuer(_perso1, guerrierA, _conso, _mode, 1);
+		}
+		if (bGuer2 == true) {
+			combatAventureGuer(_perso1, guerrierA, _conso, _mode, 2);
+		}
+		if (bGuer3 == true) {
+			combatAventureGuer(_perso1, guerrierA, _conso, _mode, 3);
+		}
+		if (bGuer4 == true) {
+			combatAventureGuer(_perso1, guerrierA, _conso, _mode, 4);
 		}
 		if (bMag == true) {
-			combatAventureMag(_perso1, magicienA, _conso, _mode);
+			combatAventureMag(_perso1, magicienA, _conso, _mode, 1);
+		}
+		if (bMag2 == true) {
+			combatAventureMag(_perso1, magicienA, _conso, _mode, 2);
+		}
+		if (bMag3 == true) {
+			combatAventureMag(_perso1, magicienA, _conso, _mode, 3);
+		}
+		if (bMag4 == true) {
+			combatAventureMag(_perso1, magicienA, _conso, _mode, 4);
 		}
 		if (bVill == true) {
 			combatAventureVill(_perso1, villagoisA, _conso, _mode);
 		}
 	}
 	spAss.setPosition(posRsAss);
+	spAss2.setPosition(posRsGuerr);
+	spAss3.setPosition(posRsClerc);
+	spAss4.setPosition(posRsMag);
+	//rsAss.setPosition(posRsAss);
 	spGuer.setPosition(posRsGuerr);
+	spGuer2.setPosition(posRsAss);
+	spGuer3.setPosition(posRsClerc);
+	spGuer4.setPosition(posRsMag);
+	//rsGuer.setPosition(posRsGuerr);
 	spClerc.setPosition(posRsClerc);
+	spClerc2.setPosition(posRsGuerr);
+	spClerc3.setPosition(posRsAss);
+	spClerc4.setPosition(posRsMag);
+	//rsClerc.setPosition(posRsClerc);
 	spMag.setPosition(posRsMag);
+	spMag2.setPosition(posRsGuerr);
+	spMag3.setPosition(posRsClerc);
+	spMag4.setPosition(posRsAss);
+	//rsMag.setPosition(posRsMag);
 	spVill.setPosition(posRsVill);
-	rsAss.setPosition(posRsAss);
-	rsGuer.setPosition(posRsGuerr);
-	rsClerc.setPosition(posRsClerc);
-	rsMag.setPosition(posRsMag);
-	rsVill.setPosition(posRsVill);
+	//rsVill.setPosition(posRsVill);
 }
 
 
@@ -416,23 +952,23 @@ void Aventure::ChoixActionAv() {
 	switch (choixActionA)
 	{
 	case 1:
-		DetailActionAventureA.setString("Attaque : l'attaque de base prend en compte l'attaque du lanceur\n et la defense de la cible puis applique l'avantage selon l'element");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Attaque : l'attaque de base prend en compte l'attaque du lanceur\n et la defense de la cible puis applique l'avantage selon l'element", "Attack: The basic attack takes into account the attack of the launchern\nand the defense of the target and then applies the advantage according to the element");
 		break;
 	case 2:
-		DetailActionAventureA.setString("Skill : Permet d'utiliser une competence possede");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill : Permet d'utiliser une competence possede", "Skill: Allows you to use a possesssede skill");
 		break;
 	case 3:
-		DetailActionAventureA.setString("Objet : Permet d'utilise un objet equipe");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Objet : Permet d'utilise un objet equipe", "Subject: Allows you to use a team object");
 		break;
 	case 4:
-		DetailActionAventureA.setString("Fuite : Permet de fuir un combat, si votre vitesse est superieur a celle\n de l'adversaire fuite a 100%, sinon selon une probabilite");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Fuite : Permet de fuir un combat, si votre vitesse est superieur a celle\n de l'adversaire fuite a 100%, sinon selon une probabilite", "Escape: Allows you to flee a fight, if your speed is higher than that\nof the opponent flight has 100%, otherwise according to a probability");
 		break;
 	default:
 		break;
 	}
 }
 
-void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _conso, ModeGame& _mode) {
+void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso) {
 	bIsSkill = true;
 	if (bDescCombat == false && bChoixObjet == false && bChoixSkill == false) {
 		txDescCombat.setString("");
@@ -624,7 +1160,14 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 				_perso1.NbEnnemiBattu += 1;
 				_perso1.NbAss += 1;
 				iNbAss += 1;
-				irsVieAss = 0;
+				if (_numPerso == 1)
+					irsVieAss = 0;
+				if (_numPerso == 2)
+					irsVieAss2 = 0;
+				if (_numPerso == 3)
+					irsVieAss3 = 0;
+				if (_numPerso == 4)
+					irsVieAss4 = 0;
 				_perso1.Experience((30 * AssassinEnnemi.GetNiveau()));
 				bVictory = true;
 			}
@@ -639,10 +1182,24 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 
 
 			if (bDescCombat == false) {
-				posRsAss = posSaveMonstre;
 				_perso1.persoPosition.x = posSavePosition.x;
 				_perso1.persoPosition.y = posSavePosition.y + 20;
-				bAss = false;
+				if (_numPerso == 1) {
+					bAss = false;
+					posRsAss = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
+					bAss2 = false;
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
+					bAss3 = false;
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
+					bAss4 = false;
+					posRsMag = posSaveMonstre;
+				}
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
@@ -670,14 +1227,21 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 			if (bFuite == true) {
 				posRsAss = posSaveMonstre;
 				Fuite(_perso1, AssassinEnnemi, _mode);
-				bAss = false;
+				if (_numPerso == 1)
+					bAss = false;
+				if (_numPerso == 2)
+					bAss2 = false;
+				if (_numPerso == 3)
+					bAss3 = false;
+				if (_numPerso == 4)
+					bAss4 = false;
 				bFuite = false;
 			}
 		}
 	}
 }
 
-void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _conso, ModeGame& _mode) {
+void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso) {
 	bIsSkill = true;
 	if (bDescCombat == false && bChoixObjet == false && bChoixSkill == false) {
 		txDescCombat.setString("");
@@ -869,7 +1433,14 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 				_perso1.NbEnnemiBattu += 1;
 				_perso1.NbMag += 1;
 				iNbMag += 1;
-				irsVieMag = 0;
+				if (_numPerso == 1)
+					irsVieMag = 0;
+				if (_numPerso == 2)
+					irsVieMag2 = 0;
+				if (_numPerso == 3)
+					irsVieMag3 = 0;
+				if (_numPerso == 4)
+					irsVieMag4 = 0;
 				_perso1.Experience((30 * MagicienEnnemi.GetNiveau()));
 				bVictory = true;
 			}
@@ -884,10 +1455,24 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 
 
 			if (bDescCombat == false) {
-				posRsMag = posSaveMonstre;
 				_perso1.persoPosition.x = posSavePosition.x;
 				_perso1.persoPosition.y = posSavePosition.y + 20;
-				bMag = false;
+				if (_numPerso == 1) {
+					bMag = false;
+					posRsMag = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
+					bMag2 = false;
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
+					bMag3 = false;
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
+					bMag4 = false;
+					posRsAss = posSaveMonstre;
+				}
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
@@ -915,14 +1500,21 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 			if (bFuite == true) {
 				posRsMag = posSaveMonstre;
 				Fuite(_perso1, MagicienEnnemi, _mode);
-				bMag = false;
+				if (_numPerso == 1)
+					bMag = false;
+				if (_numPerso == 2)
+					bMag2 = false;
+				if (_numPerso == 3)
+					bMag3 = false;
+				if (_numPerso == 4)
+					bMag4 = false;
 				bFuite = false;
 			}
 		}
 	}
 }
 
-void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _conso, ModeGame& _mode) {
+void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso) {
 	bIsSkill = true;
 	if (bDescCombat == false && bChoixObjet == false && bChoixSkill == false) {
 		txDescCombat.setString("");
@@ -1114,7 +1706,14 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				_perso1.NbEnnemiBattu += 1;
 				_perso1.NbGuer += 1;
 				iNbGuer += 1;
-				irsVieGuer = 0;
+				if (_numPerso == 1)
+					irsVieGuer = 0;
+				if (_numPerso == 2)
+					irsVieGuer2 = 0;
+				if (_numPerso == 3)
+					irsVieGuer3 = 0;
+				if (_numPerso == 4)
+					irsVieGuer4 = 0;
 				_perso1.Experience((30 * GuerrierEnnemi.GetNiveau()));
 				bVictory = true;
 			}
@@ -1129,10 +1728,24 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 
 
 			if (bDescCombat == false) {
-				posRsGuerr = posSaveMonstre;
 				_perso1.persoPosition.x = posSavePosition.x;
 				_perso1.persoPosition.y = posSavePosition.y + 20;
-				bGuer = false;
+				if (_numPerso == 1) {
+					bGuer = false;
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
+					bGuer2 = false;
+					posRsAss = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
+					bGuer3 = false;
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
+					bGuer4 = false;
+					posRsMag = posSaveMonstre;
+				}
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
@@ -1160,14 +1773,21 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 			if (bFuite == true) {
 				posRsGuerr = posSaveMonstre;
 				Fuite(_perso1, GuerrierEnnemi, _mode);
-				bGuer = false;
+				if (_numPerso == 1)
+					bGuer = false;
+				if (_numPerso == 2)
+					bGuer2 = false;
+				if (_numPerso == 3)
+					bGuer3 = false;
+				if (_numPerso == 4)
+					bGuer4 = false;
 				bFuite = false;
 			}
 		}
 	}
 }
 
-void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _conso, ModeGame& _mode) {
+void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _conso, ModeGame& _mode, int _numPerso) {
 	bIsSkill = true;
 	if (bDescCombat == false && bChoixObjet == false && bChoixSkill == false) {
 		txDescCombat.setString("");
@@ -1341,7 +1961,14 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 				_perso1.NbEnnemiBattu += 1;
 				_perso1.NbClerc += 1;
 				iNbClerc += 1;
-				irsVieClerc = 0;
+				if (_numPerso == 1)
+					irsVieClerc = 0;
+				if (_numPerso == 2)
+					irsVieClerc2 = 0;
+				if (_numPerso == 3)
+					irsVieClerc3 = 0;
+				if (_numPerso == 4)
+					irsVieClerc4 = 0;
 				_perso1.Experience((30 * ClercEnnemi.GetNiveau()));
 				bVictory = true;
 			}
@@ -1359,7 +1986,14 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 				posRsClerc = posSaveMonstre;
 				_perso1.persoPosition.x = posSavePosition.x;
 				_perso1.persoPosition.y = posSavePosition.y + 20;
-				bClerc = false;
+				if (_numPerso == 1)
+					bClerc = false;
+				if (_numPerso == 2)
+					bClerc2 = false;
+				if (_numPerso == 3)
+					bClerc3 = false;
+				if (_numPerso == 4)
+					bClerc4 = false;
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
@@ -1385,9 +2019,23 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 			bDefaite = false;
 			bDescCombat = false;
 			if (bFuite == true) {
-				posRsClerc = posSaveMonstre;
+				if (_numPerso == 1) {
+					posRsClerc = posSaveMonstre;
+					bClerc = false;
+				}
+				if (_numPerso == 2) {
+					posRsClerc = posSaveMonstre;
+					bClerc2 = false;
+				}
+				if (_numPerso == 3) {
+					bClerc3 = false;
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
+					bClerc4 = false;
+					posRsMag = posSaveMonstre;
+				}
 				Fuite(_perso1, ClercEnnemi, _mode);
-				bClerc = false;
 				bFuite = false;
 			}
 		}
@@ -1662,11 +2310,12 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 	switch (choixActionO)
 	{
 	case 1:
-		DetailActionAventureA.setString("Vous allez soigner vos PV");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous allez soigner vos PV", "You will heal your PV");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionA > 0.3f) {
 			if (_perso1.SoinPvBuy >= 1) {
 				tmpint = _perso1.GetTotPvMax() - _perso1.GetTotPv();
 				stObj = { "Vous avez soigne vos Pv de " + std::to_string(tmpint) };
+				stObjEn = { "You have taken care of your Pv of " + std::to_string(tmpint) };
 				_perso1.SetTotPv(_perso1.GetTotPvMax());
 				_perso1.SoinPvBuy -= 1;
 				if (_perso1.SoinPvBuy <= 0)
@@ -1680,6 +2329,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 			}
 			else {
 				stObj = { "Vous n'avez pas l' objet de soin de PV" };
+				stObjEn = { "You do not have the object of care of PV" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -1688,11 +2338,12 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 		}
 		break;
 	case 2:
-		DetailActionAventureA.setString("Vous allez soigner votre Mana");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous allez soigner votre Mana", "You will heal your Mana");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionA > 0.3f) {
 			if (_perso1.SoinManaBuy >= 1) {
 				tmpint = _perso1.GetTotManaMax() - _perso1.GetTotMana();
 				stObj = { "Vous avez soigne votre Mana de " + tmpint };
+				stObjEn = { "You have healed your Mana of " + tmpint };
 				_perso1.SetTotMana(tmpint);
 				_perso1.SoinManaBuy -= 1;
 				if (_perso1.SoinManaBuy <= 0)
@@ -1706,6 +2357,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 			}
 			else {
 				stObj = { "Vous n'avez pas l' objet de soin de Mana" };
+				stObjEn = { "You don't have Mana's healing object" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -1714,7 +2366,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 		}
 		break;
 	case 3:
-		DetailActionAventureA.setString("Vous allez faire des degats au monstre");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous allez faire des degats au monstre", "You will do damage to the monster");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionA > 0.3f) {
 			if (_perso1.BombeBuy >= 1) {
 				degatFinal = (1000 - _def);
@@ -1744,6 +2396,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 					stNomEnnemi = { VillagoisEnnemi.GetName() };
 				}
 				stObj = { "Vous avez fais des degats : " + std::to_string((int)degatFinal) };
+				stObjEn = { "You have done damage : " + std::to_string((int)degatFinal) };
 				_perso1.BombeBuy -= 1;
 				if (_perso1.BombeBuy <= 0)
 					_perso1.bombeEquipe -= 1;
@@ -1756,6 +2409,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 			}
 			else {
 				stObj = { "Vous n'avez pas de Bombe" };
+				stObjEn = { "You don't have a Bomb" };
 				bChoixObjet = false;
 				bDescCombat = true;
 				iDescCombat = 3;
@@ -1764,7 +2418,7 @@ void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _d
 		}
 		break;
 	case 4:
-		DetailActionAventureA.setString("Retour au choix d'attaque");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Retour au choix d'attaque", "Back to attack choice");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixActionA > 0.3f) {
 			bChoixObjet = false;
 			timerChoixActionA = 0.0f;
@@ -1791,7 +2445,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 	{
 	case 1:
 		if (_perso1.SKILL[0] == true) {
-			DetailActionAventureA.setString("Skill 1 : Attaque avec le double de degats");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 1 : Attaque avec le double de degats", "Skill 1: Attack with double the damage");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				degatFinal = ((_perso1.GetTotAttaque() - _def) * _perso1.ChoixElement(_perso1.GetElement(), _element) * 2);
 				if (degatFinal <= 0)
@@ -1829,7 +2483,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 			}
 		}
 		else {
-			DetailActionAventureA.setString("Vous ne posseder pas de skill 1");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous ne posseder pas de skill 1", "You don't have skill 1");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1839,7 +2493,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 	case 2:
 		if (_perso1.SKILL[1] == true || _perso1.SKILL[2] == true) {
 			if (_perso1.SKILL[1] == true) {
-				DetailActionAventureA.setString("Skill 2 : Attaque en ignorant les elements");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 2 : Attaque en ignorant les elements", "Skill 2: Attack by ignoring the elements");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					degatFinal = (_perso1.GetTotAttaque() - _def);
 					if (degatFinal <= 0)
@@ -1877,7 +2531,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 				}
 			}
 			if (_perso1.SKILL[2] == true) {
-				DetailActionAventureA.setString("Skill 2 : Attaque en ignorant la defense");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 2 : Attaque en ignorant la defense", "Skill 2: Attack by ignoring defense");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					degatFinal = (_perso1.GetTotAttaque() * _perso1.ChoixElement(_perso1.GetElement(), _element));
 					if (degatFinal <= 0)
@@ -1916,7 +2570,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 			}
 		}
 		else {
-			DetailActionAventureA.setString("Vous ne posseder pas de skill 2");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous ne posseder pas de skill 2", "You don't have skill 2");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1926,7 +2580,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 	case 3:
 		if (_perso1.SKILL[3] == true || _perso1.SKILL[4] == true || _perso1.SKILL[5] == true || _perso1.SKILL[6] == true) {
 			if (_perso1.SKILL[3] == true) {
-				DetailActionAventureA.setString("Skill 3 : Boost des degats pour 2 tour (50%)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 3 : Boost des degats pour 2 tour (50%)", "Skill 3: Damage boost for 2 turns (50%)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iBoostAtk = 2;
 					timerChoixSkill = 0.0f;
@@ -1939,7 +2593,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 				}
 			}
 			if (_perso1.SKILL[4] == true) {
-				DetailActionAventureA.setString("Skill 3 : Boost de la resistance aux degats pour 2 tour (50%)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 3 : Boost de la resistance aux degats pour 2 tour (50%)", "Skill 3: Damage resistance boost for 2 turns (50%)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iBoostDef = 2;
 					timerChoixSkill = 0.0f;
@@ -1952,7 +2606,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 				}
 			}
 			if (_perso1.SKILL[5] == true) {
-				DetailActionAventureA.setString("Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)", "Skill 3: Inflicts poison for 2 turns(50% of the attack)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iPoison = 2;
 					timerDescritionCombat = 0.0f;
@@ -1965,7 +2619,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 				}
 			}
 			if (_perso1.SKILL[6] == true) {
-				DetailActionAventureA.setString("Skill 3 : S'octroie une immunite a tous degats (2 tour)");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 3 : S'octroie une immunite a tous degats (2 tour)", "Skill 3: Grants yourself an immunity to all damages (2 round)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iImmunite = 2;
 					timerChoixSkill = 0.0f;
@@ -1979,7 +2633,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 			}
 		}
 		else {
-			DetailActionAventureA.setString("Vous ne posseder pas de skill 3");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous ne posseder pas de skill 3", "You don't have a skill 3");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -1989,14 +2643,14 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 	case 4:
 		if (_perso1.SKILL[7] == true || _perso1.SKILL[8] == true) {
 			if (_perso1.SKILL[7] == true) {
-				DetailActionAventureA.setString("Skill 4 : Invoque une creature !! A venir Prochainement !!");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 4 : Invoque une creature !! A venir Prochainement !!", "Skill 4: Summon a creature!! Coming soon !!");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					bChoixSkill = false;
 					timerChoixSkill = 0.0f;
 				}
 			}
 			if (_perso1.SKILL[8] == true) {
-				DetailActionAventureA.setString("Skill 4 : Invoque un villagois kidnapper !! A venir Prochainement !! ");
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Skill 4 : Invoque un villagois kidnapper !! A venir Prochainement !!", "Skill 4: Summon a villagois kidnap!! Coming soon !!");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					bChoixSkill = false;
 					timerChoixSkill = 0.0f;
@@ -2004,7 +2658,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 			}
 		}
 		else {
-			DetailActionAventureA.setString("Vous ne posseder pas de skill 4");
+			tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Vous ne posseder pas de skill 4", "You don't have skill 4");
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 				bChoixSkill = false;
 				timerChoixSkill = 0.0f;
@@ -2012,7 +2666,7 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 		}
 		break;
 	case 5:
-		DetailActionAventureA.setString("Retour au choix d'attaque");
+		tools::ChoixLangue(tools::GetTrad(), DetailActionAventureA, "Retour au choix d'attaque", "Back to attack choice");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 			bChoixSkill = false;
 			timerChoixSkill = 0.0f;
@@ -2025,36 +2679,105 @@ void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def
 
 void Aventure::Fuite(Joueur& _perso1, Joueur& _perso2, ModeGame& _mode) {
 	_perso1.SetTotPv(_perso1.GetTotPvMax());
-	_perso1.persoPosition.x = posSavePosition.x;
-	_perso1.persoPosition.y = posSavePosition.y + 50;
+	_perso1.persoPosition = sf::Vector2f(AjustResoX * 950, AjustResoY * 317);
 	_mode = ModeGame::LIBRE;
 }
 
-void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
+void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _perso1, AventureGame& _modeAv) {
 	if (_mode == ModeGame::LIBRE) {
+		if (_modeAv == AventureGame::ZONE_MAGE) {
+			if (irsVieMag >= 1) {
+				_window.Draw(spMag);
+			}
+			if (irsVieMag2 >= 1) {
+				_window.Draw(spMag2);
+			}
+			if (irsVieMag3 >= 1) {
+				_window.Draw(spMag3);
+			}
+			if (irsVieMag4 >= 1) {
+				_window.Draw(spMag4);
+			}
+			if (irsVieVill >= 1) {
+				_window.Draw(spVill);
+			}
+		}
+		if (_modeAv == AventureGame::ZONE_ASSASSIN) {
+			if (irsVieAss >= 1) {
+				_window.Draw(spAss);
+			}
+			if (irsVieAss2 >= 1) {
+				_window.Draw(spAss2);
+			}
+			if (irsVieAss3 >= 1) {
+				_window.Draw(spAss3);
+			}
+			if (irsVieAss4 >= 1) {
+				_window.Draw(spAss4);
+			}
+			if (irsVieVill >= 1) {
+				_window.Draw(spVill);
+			}
+		}
+		if (_modeAv == AventureGame::ZONE_GUERRIER) {
+			if (irsVieGuer >= 1) {
+				_window.Draw(spGuer);
+			}
+			if (irsVieGuer2 >= 1) {
+				_window.Draw(spGuer2);
+			}
+			if (irsVieGuer3 >= 1) {
+				_window.Draw(spGuer3);
+			}
+			if (irsVieGuer4 >= 1) {
+				_window.Draw(spGuer4);
+			}
+			if (irsVieVill >= 1) {
+				_window.Draw(spVill);
+			}
+		}
+		if (_modeAv == AventureGame::ZONE_CLERC) {
+			if (irsVieClerc >= 1) {
+				_window.Draw(spClerc);
+			}
+			if (irsVieClerc2 >= 1) {
+				_window.Draw(spClerc2);
+			}
+			if (irsVieClerc3 >= 1) {
+				_window.Draw(spClerc3);
+			}
+			if (irsVieClerc4 >= 1) {
+				_window.Draw(spClerc4);
+			}
+			if (irsVieVill >= 1) {
+				_window.Draw(spVill);
+			}
+		}
+		if (_modeAv == AventureGame::AVENTURE) {
 
-		if (irsVieAss >= 1) {
-			_window.Draw(spAss);
-		}
-		if (irsVieGuer >= 1) {
-			_window.Draw(spGuer);
-		}
-		if (irsVieClerc >= 1) {
-			_window.Draw(spClerc);
-		}
-		if (irsVieMag >= 1) {
-			_window.Draw(spMag);
-		}
-		if (irsVieVill >= 1) {
-			_window.Draw(spVill);
-		}
+			if (irsVieAss >= 1) {
+				_window.Draw(spAss);
+			}
+			if (irsVieGuer >= 1) {
+				_window.Draw(spGuer);
+			}
+			if (irsVieClerc >= 1) {
+				_window.Draw(spClerc);
+			}
+			if (irsVieMag >= 1) {
+				_window.Draw(spMag);
+			}
+			if (irsVieVill >= 1) {
+				_window.Draw(spVill);
+			}
 
 
-		if (bPnj == true) {
-			boiteDiscussion::displayBoiteDiscussion(_window);
-			txParoleAv.setPosition(postexte);
-			txParoleAv.setString(stParoleAv);
-			_window.Draw(txParoleAv);
+			if (bPnj == true) {
+				boiteDiscussion::displayBoiteDiscussion(_window);
+				txParoleAv.setPosition(postexte);
+				tools::ChoixLangue(tools::GetTrad(), txParoleAv, stParoleAv, stParoleAvEn);
+				_window.Draw(txParoleAv);
+			}
 		}
 	}
 	if (_mode == ModeGame::AVE) {
@@ -2063,17 +2786,65 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 			AssassinEnnemi.AfficheStats(_window, txStatsEnnemi);
 			_window.Draw(spAss);
 		}
+		if (bAss2 == true) {
+			AssassinEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spAss2);
+		}
+		if (bAss3 == true) {
+			AssassinEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spAss3);
+		}
+		if (bAss4 == true) {
+			AssassinEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spAss4);
+		}
 		if (bGuer == true) {
 			GuerrierEnnemi.AfficheStats(_window, txStatsEnnemi);
 			_window.Draw(spGuer);
+		}
+		if (bGuer2 == true) {
+			GuerrierEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spGuer2);
+		}
+		if (bGuer3 == true) {
+			GuerrierEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spGuer3);
+		}
+		if (bGuer4 == true) {
+			GuerrierEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spGuer4);
 		}
 		if (bClerc == true) {
 			ClercEnnemi.AfficheStats(_window, txStatsEnnemi);
 			_window.Draw(spClerc);
 		}
+		if (bClerc2 == true) {
+			ClercEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spClerc2);
+		}
+		if (bClerc3 == true) {
+			ClercEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spClerc3);
+		}
+		if (bClerc4 == true) {
+			ClercEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spClerc4);
+		}
 		if (bMag == true) {
 			MagicienEnnemi.AfficheStats(_window, txStatsEnnemi);
 			_window.Draw(spMag);
+		}
+		if (bMag2 == true) {
+			MagicienEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spMag2);
+		}
+		if (bMag3 == true) {
+			MagicienEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spMag3);
+		}
+		if (bMag4 == true) {
+			MagicienEnnemi.AfficheStats(_window, txStatsEnnemi);
+			_window.Draw(spMag4);
 		}
 		if (bVill == true) {
 			VillagoisEnnemi.AfficheStats(_window, txStatsEnnemi);
@@ -2110,12 +2881,12 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 			default:
 				break;
 			}
-		_window.Draw(ActionAventure);
-		_window.Draw(DetailActionAventureA);
-		_window.Draw(AventureAttaque);
-		_window.Draw(AventureSkill);
-		_window.Draw(AventureFuite);
-		_window.Draw(AventureObjet);
+			_window.Draw(ActionAventure);
+			_window.Draw(DetailActionAventureA);
+			_window.Draw(AventureAttaque);
+			_window.Draw(AventureSkill);
+			_window.Draw(AventureFuite);
+			_window.Draw(AventureObjet);
 		}
 		if (bChoixObjet == true && bDescCombat == false && bChoixSkill == false) {
 			switch (choixActionO)
@@ -2206,48 +2977,49 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 		if (bDescCombat == true) {
 			if (iDescCombat == 1) {
 				if (bVictory == false) {
-					txDescCombat.setString(stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal));
+					tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal), stDescCombatPEn + stNomEnnemi + stNbDegPEn + std::to_string((int)degatFinal));
 					_window.Draw(txDescCombat);
 				}
 				else {
-					txDescCombat.setString(stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal) + stVictory);
+					tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal) + stVictory, stDescCombatPEn + stNomEnnemiEn + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn);
 					_window.Draw(txDescCombat);
 				}
 			}
 			if (iDescCombat == 2) {
-				txDescCombat.setString(stNomEnnemi + stDescCombatM + stNbDegM + std::to_string((int)degatFinal));
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stNomEnnemi + stDescCombatM + stNbDegM + std::to_string((int)degatFinal), stNomEnnemiEn + stDescCombatMEn + stNbDegMEn + std::to_string((int)degatFinal));
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 3) {
-				txDescCombat.setString(stObj);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stObj, stObjEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 5) {
-				txDescCombat.setString(stFuiteok);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stFuiteok, stFuiteokEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 6) {
 				txDescCombat.setString(stFuiteR);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stFuiteR, stFuiteREn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 7) {
-				txDescCombat.setString(stBoostAtk);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stBoostAtk, stBoostAtkEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 8) {
-				txDescCombat.setString(stBoostDef);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stBoostDef, stBoostDefEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 9) {
-				txDescCombat.setString(stPoison);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stPoison, stPoisonEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 10) {
-				txDescCombat.setString(stImmunite);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stImmunite, stImmuniteEn);
 				_window.Draw(txDescCombat);
 			}
 			if (iDescCombat == 13) {
-				txDescCombat.setString(stClercHeal + std::to_string((int)degatFinal));
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stClercHeal + std::to_string((int)degatFinal), stClercHealEn + std::to_string((int)degatFinal));
 				_window.Draw(txDescCombat);
 			}
 		}
