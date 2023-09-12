@@ -82,17 +82,38 @@ void Personnage::AfficheStats(myWindow& _window, sf::Text texte){
 
 void Personnage::ChangeStatNiveau(int _niveau)
 {
-	pv = pv * ((_niveau - 1) * 1.2f);
+	pv = pv * 1.2f;
+	defense = defense * 1.2f;
+	attaque = attaque * 1.2f;
+	mana = mana * 1.2f;
+	vitesse = vitesse * 1.2f;
+	/*pv = pv * ((_niveau - 1) * 1.2f);
 	defense = defense * ((_niveau - 1) * 1.2f);
 	attaque = attaque * ((_niveau - 1) * 1.2f);
 	mana = mana * ((_niveau - 1) * 1.2f);
-	vitesse = vitesse * ((_niveau - 1) * 1.2f);
+	vitesse = vitesse * ((_niveau - 1) * 1.2f);*/
 	UpdateStatsJob();
 }
 
 void Personnage::ChangeStatNiveau2(int _niveau)
 {
 	if (_niveau <= 1)
+		pv = GetPv();
+	else
+		pv = pv * 1.2f;
+	if (_niveau <= 1)
+		defense = GetDefense();
+	else
+		defense = defense * 1.2f;
+	if (_niveau <= 1)
+		attaque = GetAttaque();
+	else
+		attaque = attaque * 1.2f;
+	if (_niveau <= 1)
+		vitesse = GetVitesse();
+	else
+		vitesse = vitesse * 1.2f;
+	/*if (_niveau <= 1)
 		pv = GetPv();
 	else
 		pv = pv * ((_niveau - 1) * 1.2f);
@@ -107,7 +128,7 @@ void Personnage::ChangeStatNiveau2(int _niveau)
 	if (_niveau <= 1)
 		vitesse = GetVitesse();
 	else
-		vitesse = vitesse * ((_niveau - 1) * 1.2f);
+		vitesse = vitesse * ((_niveau - 1) * 1.2f);*/
 	 
 	UpdateStatsJob();
 }

@@ -31,6 +31,7 @@ public:
 	void combatAventureVill(Joueur& _perso1, Villagois& _perso2, Consos& _conso, ModeGame& _mode);
 	void Fuite(Joueur& _perso1, Joueur& _perso2, ModeGame& _mode);
 	void displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _perso1, AventureGame& _modeAv);
+	void LootCombat(Joueur& _perso1, AventureGame& _modeAv);
 };
 	void ChoixObjetAventure(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def, int _pv, Personnage::Elements _element);
 	void ChoixActionSkill(Joueur& _perso1, Joueur& _perso2, Consos& _conso, int _def, int _pv, Personnage::Elements _element);

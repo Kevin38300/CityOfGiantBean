@@ -3025,3 +3025,23 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 		}
 	}
 }
+
+void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv){
+	if (_modeAv == AventureGame::AVENTURE)	{
+
+	}
+	if (_modeAv == AventureGame::ZONE_ASSASSIN)	{
+		int tmp;
+		tmp = _perso1.GetTotArgent() + 1000 * iZoneAv;
+		_perso1.SetTotArgent(tmp);
+	}
+	if (_modeAv == AventureGame::ZONE_CLERC)	{
+
+	}
+	if (_modeAv == AventureGame::ZONE_GUERRIER)	{
+
+	}
+	if (_modeAv == AventureGame::ZONE_MAGE)	{
+
+	}
+}
