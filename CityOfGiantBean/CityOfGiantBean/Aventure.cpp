@@ -32,12 +32,12 @@ sf::Sprite spAss2, spGuer2, spClerc2, spMag2, spVill2;
 sf::Sprite spAss3, spGuer3, spClerc3, spMag3, spVill3;
 sf::Sprite spAss4, spGuer4, spClerc4, spMag4, spVill4;
 
-bool bPnj{ false }, bVill{ false }, bAss{ false }, bMag{ false }, bGuer{ false }, bClerc{ false }, bAtkPerso{ false }, bFuite{ false }, bAtkMonstre{ false }, bChoixAction{ false }, bDescCombat{ false }, bChoixObjet{ false }, bChoixSkill{ false }, bIsSkill{ false }, bVictory{ false }, bDefaite{ false };
+bool bPnj{ false }, bVill{ false }, bAss{ false }, bMag{ false }, bGuer{ false }, bClerc{ false }, bAtkPerso{ false }, bFuite{ false }, bAtkMonstre{ false }, bChoixAction{ false }, bDescCombat{ false }, bLoot{ false }, bChoixObjet{ false }, bChoixSkill{ false }, bIsSkill{ false }, bVictory{ false }, bDefaite{ false };
 bool bAss2{ false }, bMag2{ false }, bGuer2{ false }, bClerc2{ false };
 bool bAss3{ false }, bMag3{ false }, bGuer3{ false }, bClerc3{ false };
 bool bAss4{ false }, bMag4{ false }, bGuer4{ false }, bClerc4{ false };
 
-std::string stParoleAv, stNomEnnemi, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stVictory, stDefaite, stBoostAtk, stBoostDef, stPoison, stImmunite, stClercHeal, stFuiteok, stFuiteR, stObj;
+std::string stParoleAv, stNomEnnemi, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stVictory, stDefaite, stBoostAtk, stBoostDef, stPoison, stImmunite, stClercHeal, stFuiteok, stFuiteR, stObj, stLoot, stLootEn;
 std::string stParoleAvEn, stNomEnnemiEn, stDescCombatPEn, stDescCombatMEn, stNbDegPEn, stNbDegMEn, stVictoryEn, stDefaiteEn, stBoostAtkEn, stBoostDefEn, stPoisonEn, stImmuniteEn, stClercHealEn, stFuiteokEn, stFuiteREn, stObjEn;
 
 sf::Text txParoleAv, txStatsPerso, txStatsEnnemi, DetailActionAventureA, ActionAventure, AventureAttaque, AventureSkill, AventureObjet, AventureFuite, txSoinPV, txSoinMana, txSkill1, txSkill2, txSkill3, txSkill4, txBombe, txRetourAction, txDescCombat;
@@ -1300,7 +1300,7 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 				if (_numPerso == 4)
 					irsVieAss4 = 0;
 				_perso1.Experience((30 * AssassinEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv);
+				LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -1574,7 +1574,7 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 				if (_numPerso == 4)
 					irsVieMag4 = 0;
 				_perso1.Experience((30 * MagicienEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv);
+				LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -1627,8 +1627,8 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 		timerDescritionCombat += tools::GetTimeDelta();
 		if (timerDescritionCombat > 2.0f && bDescCombat == true) {
 			iDescCombat = 0;
-			bVictory = false;
 			bDefaite = false;
+			bVictory = false;
 			bDescCombat = false;
 			if (bFuite == true) {
 				posRsMag = posSaveMonstre;
@@ -1848,7 +1848,7 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				if (_numPerso == 4)
 					irsVieGuer4 = 0;
 				_perso1.Experience((30 * GuerrierEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv);
+				LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -2103,7 +2103,7 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 				if (_numPerso == 4)
 					irsVieClerc4 = 0;
 				_perso1.Experience((30 * ClercEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv);
+				LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -2131,6 +2131,7 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
+
 			}
 			_choixAttaque = 0;
 			_perso1.iPoison = 0;
@@ -2149,7 +2150,6 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 		timerDescritionCombat += tools::GetTimeDelta();
 		if (timerDescritionCombat > 2.0f && bDescCombat == true) {
 			iDescCombat = 0;
-			bVictory = false;
 			bDefaite = false;
 			bDescCombat = false;
 			if (bFuite == true) {
@@ -3115,7 +3115,7 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 					_window.Draw(txDescCombat);
 				}
 				else {
-					tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal) + stVictory, stDescCombatPEn + stNomEnnemiEn + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn);
+					tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomEnnemi + stNbDegP + std::to_string((int)degatFinal) + stVictory + stLoot, stDescCombatPEn + stNomEnnemiEn + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn + stLootEn);
 					_window.Draw(txDescCombat);
 				}
 			}
@@ -3156,45 +3156,116 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stClercHeal + std::to_string((int)degatFinal), stClercHealEn + std::to_string((int)degatFinal));
 				_window.Draw(txDescCombat);
 			}
+			if (iDescCombat == 14) {
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stLoot, stLootEn);
+				_window.Draw(txDescCombat);
+			}
 		}
 	}
 }
 
-void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv) {
-
+void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mode) {
+	//iDescCombat = 14;
+	int tmp, tmpNb;
+	std::string tmpString, tmpStringEn;
 	if (_modeAv == AventureGame::ZONE_ASSASSIN) {
-		int tmp;
-		tmp = _perso1.GetTotArgent() + 1000 * iZoneAv;
-		_perso1.SetTotArgent(tmp);
+		tmp = 1000 * iZoneAv;
+		tmpNb = _perso1.GetTotArgent() + tmp;
+		stLoot = { "\nArgent gagne : " + std::to_string(tmp) };
+		stLootEn = { "\nGold get : " + std::to_string(tmp) };
+		_perso1.SetTotArgent(tmpNb);
 	}
-	if (_modeAv == AventureGame::ZONE_CLERC) {
-		int tmp;
+	else if (_modeAv == AventureGame::ZONE_CLERC) {
 		tmp = tools::iRand(1, 4);
-		if (tmp == 1)
-			_perso1.SoinPvBuy += 1;
-		if (tmp == 2)
-			_perso1.SoinManaBuy += 1;
-		if (tmp == 3)
-			_perso1.BombeBuy += 1;
+		switch (tmp)
+		{
+		case 1:
+			tmpNb = tools::iRand(1, 3);
+			_perso1.SoinPvBuy += tmpNb;
+			tmpString = { " potion de soin pv" };
+			tmpStringEn = { " healing Pv potion" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+			break;
+		case 2:
+			tmpNb = tools::iRand(1, 3);
+			_perso1.SoinManaBuy += tmpNb;
+			tmpString = { " potion de soin mana" };
+			tmpStringEn = { " healing mana potion" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+			break;
+		case 3:
+			tmpNb = tools::iRand(1, 3);
+			_perso1.BombeBuy += tmpNb;
+			tmpString = { " bombe" };
+			tmpStringEn = { " bomb" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+			break;
+		default:
+			break;
+		}
 	}
-	if (_modeAv == AventureGame::ZONE_GUERRIER) {
-		int tmp;
+	else if (_modeAv == AventureGame::ZONE_GUERRIER) {
 		tmp = tools::iRand(1, 4);
-		if (tmp == 1)
-			_perso1.LegerBuy += 1;
-		if (tmp == 2)
-			_perso1.LourdBuy += 1;
-		if (tmp == 3)
-			_perso1.BouclierBuy += 1;
+		if (tmp == 1) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.LegerBuy += tmpNb;
+			tmpString = { " armure legere" };
+			tmpStringEn = { " light armor" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
+		if (tmp == 2) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.LourdBuy += tmpNb;
+			tmpString = { " armure lourde" };
+			tmpStringEn = { " heavy armor" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
+		if (tmp == 3) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.BouclierBuy += tmpNb;
+			tmpString = { " bouclier" };
+			tmpStringEn = { " shield" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
 	}
-	if (_modeAv == AventureGame::ZONE_MAGE) {
-		int tmp;
+	else if (_modeAv == AventureGame::ZONE_MAGE) {
 		tmp = tools::iRand(1, 4);
-		if (tmp == 1)
-			_perso1.EpeeBuy += 1;
-		if (tmp == 2)
-			_perso1.LanceBuy += 1;
-		if (tmp == 3)
-			_perso1.BatonBuy += 1;
+		if (tmp == 1) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.EpeeBuy += tmpNb;
+			tmpString = { " epee" };
+			tmpStringEn = { " sword" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
+		if (tmp == 2) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.LanceBuy += tmpNb;
+			tmpString = { " spear" };
+			tmpStringEn = { " spiike" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
+		if (tmp == 3) {
+			tmpNb = tools::iRand(1, 3);
+			_perso1.BatonBuy += tmpNb;
+			tmpString = { " bague" };
+			tmpStringEn = { " ring" };
+			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
+			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+		}
 	}
+	else {
+		stLoot = { "" };
+		stLootEn = { "" };
+	}
+	//if (timerDescritionCombat > 2.0f) {
+	//	_mode = ModeGame::LIBRE;
+	//}
 }
