@@ -316,6 +316,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsMag;
 				posRsMag = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
@@ -342,6 +343,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsGuerr;
 				posRsGuerr = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
@@ -368,6 +370,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsClerc;
 				posRsClerc = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
@@ -394,6 +397,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsAss;
 				posRsAss = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (irsVieMag <= 0) {
@@ -455,6 +459,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsAss;
 				posRsAss = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
@@ -482,6 +487,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsGuerr;
 				posRsGuerr = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
@@ -509,6 +515,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsClerc;
 				posRsClerc = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
@@ -536,6 +543,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsMag;
 				posRsMag = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (irsVieAss <= 0) {
@@ -596,6 +604,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsGuerr;
 				posRsGuerr = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
@@ -622,6 +631,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsAss;
 				posRsAss = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
@@ -648,6 +658,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsClerc;
 				posRsClerc = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
@@ -674,6 +685,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsMag;
 				posRsMag = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (irsVieGuer <= 0) {
@@ -734,6 +746,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsClerc;
 				posRsClerc = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
@@ -760,6 +773,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsAss;
 				posRsAss = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
@@ -786,6 +800,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsGuerr;
 				posRsGuerr = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
@@ -812,6 +827,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				_perso1.directionCombat();
 				posSaveMonstre = posRsMag;
 				posRsMag = posCombatEnemi;
+				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
 			if (irsVieClerc <= 0) {
@@ -1300,7 +1316,8 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 				if (_numPerso == 4)
 					irsVieAss4 = 0;
 				_perso1.Experience((30 * AssassinEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv, _mode);
+				if (bLoot == true)
+					LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -1574,7 +1591,8 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 				if (_numPerso == 4)
 					irsVieMag4 = 0;
 				_perso1.Experience((30 * MagicienEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv, _mode);
+				if (bLoot == true)
+					LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -1848,7 +1866,8 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				if (_numPerso == 4)
 					irsVieGuer4 = 0;
 				_perso1.Experience((30 * GuerrierEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv, _mode);
+				if (bLoot == true)
+					LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -2103,7 +2122,8 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 				if (_numPerso == 4)
 					irsVieClerc4 = 0;
 				_perso1.Experience((30 * ClercEnnemi.GetNiveau()));
-				LootCombat(_perso1, _modeAv, _mode);
+				if (bLoot == true)
+					LootCombat(_perso1, _modeAv, _mode);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -3167,6 +3187,9 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mode) {
 	//iDescCombat = 14;
 	int tmp, tmpNb;
+	tmp = tools::iRand(1, 4);
+	tmpNb = tools::iRand(1, 3);
+	bLoot = false;
 	std::string tmpString, tmpStringEn;
 	if (_modeAv == AventureGame::ZONE_ASSASSIN) {
 		tmp = 1000 * iZoneAv;
@@ -3175,12 +3198,11 @@ void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mod
 		stLootEn = { "\nGold get : " + std::to_string(tmp) };
 		_perso1.SetTotArgent(tmpNb);
 	}
-	else if (_modeAv == AventureGame::ZONE_CLERC) {
-		tmp = tools::iRand(1, 4);
+	if (_modeAv == AventureGame::ZONE_CLERC) {
+		std::cout << tmp << std::endl;
 		switch (tmp)
 		{
 		case 1:
-			tmpNb = tools::iRand(1, 3);
 			_perso1.SoinPvBuy += tmpNb;
 			tmpString = { " potion de soin pv" };
 			tmpStringEn = { " healing Pv potion" };
@@ -3188,7 +3210,6 @@ void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mod
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
 			break;
 		case 2:
-			tmpNb = tools::iRand(1, 3);
 			_perso1.SoinManaBuy += tmpNb;
 			tmpString = { " potion de soin mana" };
 			tmpStringEn = { " healing mana potion" };
@@ -3196,7 +3217,6 @@ void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mod
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
 			break;
 		case 3:
-			tmpNb = tools::iRand(1, 3);
 			_perso1.BombeBuy += tmpNb;
 			tmpString = { " bombe" };
 			tmpStringEn = { " bomb" };
@@ -3207,65 +3227,60 @@ void Aventure::LootCombat(Joueur& _perso1, AventureGame& _modeAv, ModeGame& _mod
 			break;
 		}
 	}
-	else if (_modeAv == AventureGame::ZONE_GUERRIER) {
-		tmp = tools::iRand(1, 4);
-		if (tmp == 1) {
-			tmpNb = tools::iRand(1, 3);
+	if (_modeAv == AventureGame::ZONE_GUERRIER) {
+		switch (tmp)
+		{
+		case 1:
 			_perso1.LegerBuy += tmpNb;
 			tmpString = { " armure legere" };
 			tmpStringEn = { " light armor" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
-		}
-		if (tmp == 2) {
-			tmpNb = tools::iRand(1, 3);
+			break;
+		case 2:
 			_perso1.LourdBuy += tmpNb;
 			tmpString = { " armure lourde" };
 			tmpStringEn = { " heavy armor" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
-		}
-		if (tmp == 3) {
-			tmpNb = tools::iRand(1, 3);
+			break;
+		case 3:
 			_perso1.BouclierBuy += tmpNb;
 			tmpString = { " bouclier" };
 			tmpStringEn = { " shield" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+			break;
+		default:
+			break;
 		}
 	}
-	else if (_modeAv == AventureGame::ZONE_MAGE) {
-		tmp = tools::iRand(1, 4);
-		if (tmp == 1) {
-			tmpNb = tools::iRand(1, 3);
+	if (_modeAv == AventureGame::ZONE_MAGE) {
+		switch (tmp)
+		{
+		case 1:
 			_perso1.EpeeBuy += tmpNb;
 			tmpString = { " epee" };
 			tmpStringEn = { " sword" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
-		}
-		if (tmp == 2) {
-			tmpNb = tools::iRand(1, 3);
+			break;
+		case 2:
 			_perso1.LanceBuy += tmpNb;
 			tmpString = { " spear" };
 			tmpStringEn = { " spiike" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
-		}
-		if (tmp == 3) {
-			tmpNb = tools::iRand(1, 3);
+			break;
+		case 3:
 			_perso1.BatonBuy += tmpNb;
 			tmpString = { " bague" };
 			tmpStringEn = { " ring" };
 			stLoot = { "\nVous avez obtenu " + std::to_string(tmpNb) + tmpString };
 			stLootEn = { "\nYou get " + std::to_string(tmpNb) + tmpStringEn };
+			break;
+		default:
+			break;
 		}
 	}
-	else {
-		stLoot = { "" };
-		stLootEn = { "" };
-	}
-	//if (timerDescritionCombat > 2.0f) {
-	//	_mode = ModeGame::LIBRE;
-	//}
 }
