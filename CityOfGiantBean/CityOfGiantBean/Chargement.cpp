@@ -34,6 +34,7 @@ void Chargement::init(myWindow& _window) {
 	txMTitre.setCharacterSize(75);
 
 	if (stateChargement == StateChargement::NEW) {
+		posEntrePseudo = sf::Vector2f(AjustResoX * 700.0f, AjustResoY * 300.0f);
 		posNewChoixS = sf::Vector2f(AjustResoX * 700.0f, AjustResoY * 100.0f);
 		posNewPersoM = sf::Vector2f(AjustResoX * 600.0f, AjustResoY * 170.0f);
 		posNewPersoF = sf::Vector2f(AjustResoX * 950.0f, AjustResoY * 170.0f);
@@ -62,6 +63,11 @@ void Chargement::init(myWindow& _window) {
 
 		spPerso.setPosition(posNewPersoVerif);
 
+
+		txEntrePseudo.setFont(fontMenu);
+		txEntrePseudo.setFillColor(_black);
+		txEntrePseudo.setPosition(posEntrePseudo);
+		txEntrePseudo.setCharacterSize(50);
 
 		txNewChoixS.setFont(fontMenu);
 		txNewChoixS.setFillColor(_black);
@@ -113,6 +119,7 @@ void Chargement::update(myWindow& _window) {
 		if (bTextEnter) {
 			txNewPseudo.setCharacterSize(75);
 			posNewPseudo = sf::Vector2f(AjustResoX * 100.0f, AjustResoY * 275.0f);
+			tools::ChoixLangue(tools::GetTrad(), txEntrePseudo, "Veuillez entrer votre pseudo\npuis valide en cliquant sur pseudo","Please enter your pseudo\nthen validate by clicking on pseudo");
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewPseudo.x, posNewPseudo.y + txNewPseudo.getGlobalBounds().height), sf::Vector2f(txNewPseudo.getGlobalBounds().width, txNewPseudo.getGlobalBounds().height))) {
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -261,6 +268,8 @@ void Chargement::draw(myWindow& _window) {
 		_window.Draw(spPersoF);
 		_window.Draw(txNewPseudo);
 		_window.Draw(txNewRetour);
+		if (bTextEnter == true)
+			_window.Draw(txEntrePseudo);
 		if (bValid) {
 			_window.Draw(spPerso);
 			_window.Draw(txNewPseudoVerif);
