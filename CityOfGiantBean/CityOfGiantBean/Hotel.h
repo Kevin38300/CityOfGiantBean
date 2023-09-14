@@ -23,7 +23,7 @@ private:
 	std::string stBasePNJ, stReponse1, stReponse2, stReponse3, stReponseBase, stDescSkillTree, stDebutDecr, stDecrValid, stPasPoint, stPasNiveau, stInfoValid, stInfoQuete;
 	std::string stBasePNJEn, stReponse1En, stReponse2En, stReponse3En, stReponseBaseEn, stDescSkillTreeEn, stDebutDecrEn, stDecrValidEn, stPasPointEn, stPasNiveauEn, stInfoValidEn, stInfoQueteEn;
 
-	sf::Text txBasePNJ, txReponse1, txReponse2, txReponse3, txReponseBase, txDetailReponse, txDescSkillTree, txDescQuete, txQFontaine, txQQuit, txQTaverne, txQShop, txQForge, txQChasseur, txQPasDeQuartier, txQCapture, txQElevation, txQElimination, txQDetrousseur, txQBoss, txQEtage, txQRetour, txInfoQuete;
+	sf::Text txBasePNJ, txReponse1, txReponse2, txReponse3, txReponseBase, txDetailReponse, txDescSkillTree, txDescQuete, txQFontaine, txQQuit, txQTaverne, txQShop, txQForge, txQChasseur, txQPasDeQuartier, txQCapture, txQElevation, txQElimination, txQDetrousseur, txQBoss, txQEtage, txQRetour, txInfoQuete, txLevelUpH;
 
 	float timerChoixActionH{0.0f}, timerSkill{ 0.0f };
 	float timerState{ 0.0f };

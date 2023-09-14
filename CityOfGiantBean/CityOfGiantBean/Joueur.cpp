@@ -392,7 +392,8 @@ void Joueur::Experience(int _xp) {
 	std::cout << "XP gagner " << _xp << std::endl;
 	exp += _xp;
 	while (exp >= TotalExp) {
-		niveau += 1;
+		niveau += 1; 
+		bLeveluUp = true;
 		SetNiveau(niveau);
 		ChangeStatNiveau(GetNiveau());
 		expDemande *= 2.5;

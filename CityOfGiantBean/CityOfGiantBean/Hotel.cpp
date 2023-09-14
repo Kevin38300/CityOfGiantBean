@@ -165,6 +165,11 @@ void Hotel::initHotel() {
 	txReponseBase.setPosition(AjustResoX * 150, AjustResoY * 900);
 	txReponseBase.setFillColor(sf::Color::Black);
 
+	txLevelUpH.setFont(fontS);
+	txLevelUpH.setOrigin(txLevelUpH.getGlobalBounds().height / 2, txLevelUpH.getGlobalBounds().width / 2);
+	txLevelUpH.setPosition(posText);
+	txLevelUpH.setFillColor(sf::Color::Black);
+
 	txReponse1.setFont(fontS);
 	txReponse1.setOrigin(txReponse1.getGlobalBounds().height / 2, txReponse1.getGlobalBounds().width / 2);
 	txReponse1.setPosition(AjustResoX * 150, AjustResoY * 950);
@@ -267,6 +272,14 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 			choixActionH = 0;
 			choixActionH2 = 0;
 			choixActionH3 = 0;
+		}
+		if (_perso1.bLeveluUp == true) {
+			_perso1.fTimerLevelUp += tools::GetTimeDelta();
+			if (_perso1.fTimerLevelUp > 1.5f) {
+				_perso1.fTimerLevelUp = 0.0f;
+				_perso1.bLeveluUp = false;
+			}
+			tools::ChoixLangue(tools::GetTrad(), txLevelUpH, "Vous avez progresse au niveau " + std::to_string(_perso1.GetNiveau()), "You have progressed at the level " + std::to_string(_perso1.GetNiveau()));
 		}
 	}
 	if (_modeGame == ModeGame::SKILL_TREE) {
@@ -1284,6 +1297,11 @@ void Hotel::displayHotel(myWindow& _window, ModeGame& _modeGame, Joueur& _perso1
 			_window.Draw(txBasePNJ);
 			tools::ChoixLangue(tools::GetTrad(), txReponseBase, stReponseBase, stReponseBaseEn);
 			_window.Draw(txReponseBase);
+		}
+		if (_perso1.bLeveluUp == true) {
+			boiteDiscussion::displayBoiteDiscussion(_window);
+			txLevelUpH.setPosition(posText);
+			_window.Draw(txLevelUpH);
 		}
 	}
 	if (_modeGame == ModeGame::SKILL_TREE) {

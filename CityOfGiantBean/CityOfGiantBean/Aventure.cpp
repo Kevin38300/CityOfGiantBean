@@ -40,7 +40,7 @@ bool bAss4{ false }, bMag4{ false }, bGuer4{ false }, bClerc4{ false };
 std::string stParoleAv, stNomEnnemi, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stVictory, stDefaite, stBoostAtk, stBoostDef, stPoison, stImmunite, stClercHeal, stFuiteok, stFuiteR, stObj, stLoot, stLootEn;
 std::string stParoleAvEn, stNomEnnemiEn, stDescCombatPEn, stDescCombatMEn, stNbDegPEn, stNbDegMEn, stVictoryEn, stDefaiteEn, stBoostAtkEn, stBoostDefEn, stPoisonEn, stImmuniteEn, stClercHealEn, stFuiteokEn, stFuiteREn, stObjEn;
 
-sf::Text txParoleAv, txStatsPerso, txStatsEnnemi, DetailActionAventureA, ActionAventure, AventureAttaque, AventureSkill, AventureObjet, AventureFuite, txSoinPV, txSoinMana, txSkill1, txSkill2, txSkill3, txSkill4, txBombe, txRetourAction, txDescCombat;
+sf::Text txParoleAv, txStatsPerso, txStatsEnnemi, DetailActionAventureA, ActionAventure, AventureAttaque, AventureSkill, AventureObjet, AventureFuite, txSoinPV, txSoinMana, txSkill1, txSkill2, txSkill3, txSkill4, txBombe, txRetourAction, txDescCombat, txLevelUpA;
 
 sf::Font fontAv;
 
@@ -148,6 +148,11 @@ void Aventure::initEnnemi() {
 	postexte = { AjustResoX * 150.0f, AjustResoY * 850.0f };
 	txParoleAv.setFont(fontAv);
 	txParoleAv.setFillColor(sf::Color::Black);
+
+	txLevelUpA.setFont(fontAv);
+	txLevelUpA.setOrigin(txLevelUpA.getGlobalBounds().height / 2, txLevelUpA.getGlobalBounds().width / 2);
+	txLevelUpA.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
+	txLevelUpA.setFillColor(sf::Color::Red);
 
 	posCombatAv = { AjustResoX * 349.0f, AjustResoY * 293.0f };
 	posCombatEnemi = { AjustResoX * 1275.0f, AjustResoY * 287.0f };
@@ -1004,6 +1009,15 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posRsVill = posCombatEnemi;
 				_mode = ModeGame::AVE;
 			}
+		}
+
+		if (_perso1.bLeveluUp == true) {
+			_perso1.fTimerLevelUp += tools::GetTimeDelta();
+			if (_perso1.fTimerLevelUp > 1.5f) {
+				_perso1.fTimerLevelUp = 0.0f;
+				_perso1.bLeveluUp = false;
+			}
+			tools::ChoixLangue(tools::GetTrad(), txLevelUpA, "Vous avez progresse au niveau " + std::to_string(_perso1.GetNiveau()), "You have progressed at the level " + std::to_string(_perso1.GetNiveau()));
 		}
 	}
 	if (_mode == ModeGame::AVE) {
@@ -2932,6 +2946,12 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 				tools::ChoixLangue(tools::GetTrad(), txParoleAv, stParoleAv, stParoleAvEn);
 				_window.Draw(txParoleAv);
 			}
+		}
+
+		if (_perso1.bLeveluUp == true) {
+			boiteDiscussion::displayBoiteDiscussion(_window);
+			txLevelUpA.setPosition(postexte);
+			_window.Draw(txLevelUpA);
 		}
 	}
 	if (_mode == ModeGame::AVE) {

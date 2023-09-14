@@ -30,7 +30,7 @@ Monstre Loup4;
 void Safarie::initSafari() {
 	fontS.loadFromFile("../Ressources/Fonts/Typewriter.ttf");
 
-	posRoiGoblein = { AjustResoX * 752.0f, AjustResoY *  663.0f};
+	posRoiGoblein = { AjustResoX * 752.0f, AjustResoY * 663.0f };
 	rsRoiGobelin.setSize(sf::Vector2f(AjustResoX * 84, AjustResoY * 69));
 	rsRoiGobelin.setPosition(posRoiGoblein);
 	rsRoiGobelin.setFillColor(sf::Color::Cyan);
@@ -60,6 +60,11 @@ void Safarie::initSafari() {
 	txParoleSafarie.setFont(fontS);
 	txParoleSafarie.setFillColor(sf::Color::Black);
 
+
+	txLevelUp.setFont(fontS);
+	txLevelUp.setOrigin(txLevelUp.getGlobalBounds().height / 2, txLevelUp.getGlobalBounds().width / 2);
+	txLevelUp.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
+	txLevelUp.setFillColor(sf::Color::Red);
 
 	DetailActionAventureS.setFont(fontS);
 	DetailActionAventureS.setOrigin(DetailActionAventureS.getGlobalBounds().height / 2, DetailActionAventureS.getGlobalBounds().width / 2);
@@ -110,7 +115,7 @@ void Safarie::initSafari() {
 	txElevation.setOrigin(txElevation.getGlobalBounds().height / 2, txElevation.getGlobalBounds().width / 2);
 	txElevation.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
 	txElevation.setFillColor(sf::Color::Black);
-	
+
 
 	txSoinPV.setFont(fontS);
 	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
@@ -208,7 +213,7 @@ void Safarie::initSafari() {
 
 	stFuiteokEn = "You managed to flee";
 	stFuiteREn = "Flee failed";
-	
+
 	stElevation = "J'aimerais elever le niveau de la zone";
 	stElevationEn = "I would like to raise the level of the area";
 
@@ -315,7 +320,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 				fTmp += tools::GetTimeDelta();
 				if (fTmp < 2.0f)
 					stParoleSafarie = ("Je verifie vos accomplissement, veuillez patientez.");
-					stParoleSafarieEn = ("I check your achievements, please wait.");
+				stParoleSafarieEn = ("I check your achievements, please wait.");
 				if (fTmp > 2.0 && fTmp < 4.1f) {
 					if (bElevation == false) {
 						stParoleSafarie = ("Veuillez vous entrainer, vous ne rempissez pas les conditions !");
@@ -351,8 +356,8 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			bElevation = true;
 		else
 			bElevation = false;
-	
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posGobelin, rsize) && irsVieGobelin >= 1) {
+
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posGobelin, sf::Vector2f(spGobelin.getGlobalBounds().width, spGobelin.getGlobalBounds().height)) && irsVieGobelin >= 1) {
 
 			Gobelin1.SetName("Gobelin");
 			Gobelin1.SetMonstre(gobelin);
@@ -378,7 +383,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posGobelin = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOurs, rsize) && irsVieOurs >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOurs, sf::Vector2f(spOurs.getGlobalBounds().width, spOurs.getGlobalBounds().height)) && irsVieOurs >= 1) {
 
 			Ours1.SetName("Ours");
 			Ours1.SetMonstre(ours);
@@ -404,7 +409,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posOurs = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posLoup, rsize) && irsVieLoup >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posLoup, sf::Vector2f(spLoup.getGlobalBounds().width, spLoup.getGlobalBounds().height)) && irsVieLoup >= 1) {
 
 			Loup1.SetName("Loup");
 			Loup1.SetMonstre(loup);
@@ -430,7 +435,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posLoup = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOrc, rsize) && irsVieOrc >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOrc, sf::Vector2f(spOrc.getGlobalBounds().width, spOrc.getGlobalBounds().height)) && irsVieOrc >= 1) {
 
 			Orc1.SetName("Orc");
 			Orc1.SetMonstre(orc);
@@ -461,6 +466,14 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		rsGobelin.setPosition(posGobelin);
 		rsOurs.setPosition(posOurs);
 		rsOrc.setPosition(posOrc);
+		if (_perso1.bLeveluUp == true) {
+			_perso1.fTimerLevelUp += tools::GetTimeDelta();
+			if (_perso1.fTimerLevelUp > 1.5f) {
+				_perso1.fTimerLevelUp = 0.0f;
+				_perso1.bLeveluUp = false;
+			}
+			tools::ChoixLangue(tools::GetTrad(), txLevelUp, "Vous avez progresse au niveau " + std::to_string(_perso1.GetNiveau()), "You have progressed at the level " + std::to_string(_perso1.GetNiveau()));
+		}
 	}
 	if (_mode == ModeGame::CHASSE) {
 
@@ -912,6 +925,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.SetLootCuivre(tmp_loot);
 					_perso1.SetTotPv(_perso1.GetTotPvMax());
 					_perso1.Experience((15 * _monstre1.GetNiveau()));
+					stLoot = { "\nVous avez obtenu : 1 Cuivre" };
+					stLootEn = { "\nYou get : 1 Copper" };
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbGob += 1;
 					iNbGob += 1;
@@ -922,6 +937,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.SetLootFourrure(tmp_loot);
 					_perso1.SetTotPv(_perso1.GetTotPvMax());
 					_perso1.Experience((20 * _monstre1.GetNiveau()));
+					stLoot = { "\nVous avez obtenu : 1 Fourrure" };
+					stLootEn = { "\nYou get : 1 Fur" };
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbLoup += 1;
 					iNbLoup += 1;
@@ -935,6 +952,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbOurs += 1;
 					iNbOurs += 1;
 					_perso1.Experience((30 * _monstre1.GetNiveau()));
+					stLoot = { "\nVous avez obtenu : 1 Cuir" };
+					stLootEn = { "\nYou get : 1 Leather" };
 					bLoot = true;
 				}
 				if (bColOrc == true && bLoot == false) {
@@ -945,6 +964,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbOrc += 1;
 					iNbOrc += 1;
 					_perso1.Experience((30 * _monstre1.GetNiveau()));
+					stLoot = { "\nVous avez obtenu : 1 Fer" };
+					stLootEn = { "\nYou get : 1 Iron" };
 					bLoot = true;
 				}
 				bVictory = true;
@@ -1087,10 +1108,15 @@ void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 			txParoleSafarie.setPosition(posText);
 			tools::ChoixLangue(tools::GetTrad(), txParoleSafarie, stParoleSafarie, stParoleSafarieEn);
 			_window.Draw(txParoleSafarie);
-			if (bColRanger == true){
-				tools::ChoixLangue(tools::GetTrad(), txElevation, stElevation, stElevationEn); 
-			_window.Draw(txElevation);
+			if (bColRanger == true) {
+				tools::ChoixLangue(tools::GetTrad(), txElevation, stElevation, stElevationEn);
+				_window.Draw(txElevation);
 			}
+		}
+		if (_perso1.bLeveluUp == true) {
+			boiteDiscussion::displayBoiteDiscussion(_window);
+			txLevelUp.setPosition(posText);
+			_window.Draw(txLevelUp);
 		}
 	}
 	if (_mode == ModeGame::CHASSE) {
@@ -1264,7 +1290,7 @@ void Safarie::drawSafari(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 				_window.Draw(txDescCombat);
 			}
 			else {
-				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal) + stVictory, stDescCombatPEn + stNomMonstre + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn);
+				tools::ChoixLangue(tools::GetTrad(), txDescCombat, stDescCombatP + stNomMonstre + stNbDegP + std::to_string((int)degatFinal) + stVictory + stLoot, stDescCombatPEn + stNomMonstre + stNbDegPEn + std::to_string((int)degatFinal) + stVictoryEn + stLootEn);
 				_window.Draw(txDescCombat);
 			}
 		}
@@ -1474,7 +1500,7 @@ void Safarie::ChoixActionSkill(Joueur& _perso1, Monstre& _monstre1, Consos& _con
 				}
 			}
 			if (_perso1.SKILL[5] == true) {
-				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)", "Skill 3: Inflicts poison for 2 turns(50% of the attack)"); 
+				tools::ChoixLangue(tools::GetTrad(), DetailActionAventureS, "Skill 3 : Inflige poison pendant 2 tour(50% de l'attaque)", "Skill 3: Inflicts poison for 2 turns(50% of the attack)");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerChoixSkill > 0.3f) {
 					_perso1.iPoison = 2;
 					timerDescritionCombat = 0.0f;
@@ -1582,7 +1608,7 @@ void Safarie::Fuite(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode) {
 	}
 }
 
-void Safarie::Catch(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode){
+void Safarie::Catch(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode) {
 
 	if (bColGobelin == true) {
 		posGobelin = posSaveMonstre;
@@ -1624,4 +1650,8 @@ void Safarie::Catch(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode){
 		bColOrc = false;
 		_mode = ModeGame::LIBRE;
 	}
+}
+
+void Safarie::Loot(Joueur& _perso1) {
+
 }

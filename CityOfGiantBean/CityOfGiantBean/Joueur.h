@@ -28,7 +28,8 @@ public:
 	int MonterNiveau() {
 		return TotalExp - exp;
 	}
-
+	float fTimerLevelUp{ 0.0f };
+	bool bLeveluUp;
 	bool Branche1, Branche2, Branche3, Branche4, UnlockBranche, choixSkillTree;
 	std::string stPseudo, stStats;
 	sf::Text txPseudo;

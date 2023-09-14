@@ -22,10 +22,10 @@ class Safarie
 
 	sf::IntRect	tmpRect, rectLoup, rectOurs, rectGobelin, rectOrc,rectCLoup, rectCOurs, rectCGobelin, rectCOrc;
 
-	sf::Text txParoleSafarie, DetailActionAventureS, AventureFuiteS, AventureObjetS, AventureSkillS, AventureAttaqueS, ActionAventureS, txStatsPerso, txStatsMonstre, txDescCombat, txElevation;
+	sf::Text txParoleSafarie, DetailActionAventureS, AventureFuiteS, AventureObjetS, AventureSkillS, AventureAttaqueS, ActionAventureS, txStatsPerso, txStatsMonstre, txDescCombat, txElevation, txLevelUp;
 
-	std::string stParoleSafarie, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stNomMonstre, stDegatInflige, stVictory, stDefaite, stObj, stFuiteR, stFuiteok, stPoison, stImmunite, stBoostAtk, stBoostDef, stElevation, stCatch, stNonCatch;
-	std::string stParoleSafarieEn, stDescCombatPEn, stDescCombatMEn, stNbDegPEn, stNbDegMEn, stNomMonstreEn, stDegatInfligeEn, stVictoryEn, stDefaiteEn, stObjEn, stFuiteREn, stFuiteokEn, stPoisonEn, stImmuniteEn, stBoostAtkEn, stBoostDefEn, stElevationEn, stCatchEn, stNonCatchEn;
+	std::string stParoleSafarie, stDescCombatP, stDescCombatM, stNbDegP, stNbDegM, stNomMonstre, stDegatInflige, stVictory, stDefaite, stObj, stFuiteR, stFuiteok, stPoison, stImmunite, stBoostAtk, stBoostDef, stElevation, stCatch, stNonCatch, stLoot;
+	std::string stParoleSafarieEn, stDescCombatPEn, stDescCombatMEn, stNbDegPEn, stNbDegMEn, stNomMonstreEn, stDegatInfligeEn, stVictoryEn, stDefaiteEn, stObjEn, stFuiteREn, stFuiteokEn, stPoisonEn, stImmuniteEn, stBoostAtkEn, stBoostDefEn, stElevationEn, stCatchEn, stNonCatchEn, stLootEn;
 
 	sf::Text ActionAventure, DetailActionAventure, AventureAttaque, AventureSkill, AventureObjet, AventureFuite, txSoinPV, txSoinMana, txBombe, txFilet, txSFilet, txSkill1, txSkill2, txSkill3, txSkill4, txRetourAction;
 
@@ -56,5 +56,6 @@ public:
 	void ChoixCote();
 	void Fuite(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode);
 	void Catch(Joueur& _perso1, Monstre& _monstre1, ModeGame& _mode);
+	void Loot(Joueur& _perso1);
 };
 
