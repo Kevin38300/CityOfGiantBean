@@ -316,6 +316,9 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				}
 
 				bMag = true;
+				bMag2 = false;
+				bMag3 = false;
+				bMag4 = false;
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
@@ -324,7 +327,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spMag2.getGlobalBounds().width, spMag2.getGlobalBounds().height)) && irsVieMag2 >= 1) {
 
 				MagicienEnnemi.SetName("Magicien");
 				MagicienEnnemi.SetJob(magicienA);
@@ -342,7 +345,10 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 					iChoixCote = 2;
 				}
 
+				bMag = false;
 				bMag2 = true;
+				bMag3 = false;
+				bMag4 = false;
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
@@ -351,7 +357,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spMag3.getGlobalBounds().width, spMag3.getGlobalBounds().height)) && irsVieMag3 >= 1) {
 
 				MagicienEnnemi.SetName("Magicien");
 				MagicienEnnemi.SetJob(magicienA);
@@ -369,7 +375,10 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 					iChoixCote = 2;
 				}
 
+				bMag = false;
+				bMag2 = false;
 				bMag3 = true;
+				bMag4 = false;
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
@@ -378,7 +387,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spMag4.getGlobalBounds().width, spMag4.getGlobalBounds().height)) && irsVieMag4 >= 1) {
 
 				MagicienEnnemi.SetName("Magicien");
 				MagicienEnnemi.SetJob(magicienA);
@@ -396,6 +405,9 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 					iChoixCote = 2;
 				}
 
+				bMag = false;
+				bMag2 = false;
+				bMag3 = false;
 				bMag4 = true;
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
@@ -467,7 +479,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spAss2.getGlobalBounds().width, spAss2.getGlobalBounds().height)) && irsVieAss2 >= 1) {
 
 				AssassinEnnemi.SetName("Assassin");
 				AssassinEnnemi.SetJob(assassinA);
@@ -490,12 +502,12 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsGuerr;
-				posRsGuerr = posCombatEnemi;
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spAss3.getGlobalBounds().width, spAss3.getGlobalBounds().height)) && irsVieAss3 >= 1) {
 
 				AssassinEnnemi.SetName("Assassin");
 				AssassinEnnemi.SetJob(assassinA);
@@ -518,12 +530,12 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsClerc;
-				posRsClerc = posCombatEnemi;
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spAss4.getGlobalBounds().width, spAss4.getGlobalBounds().height)) && irsVieAss4 >= 1) {
 
 				AssassinEnnemi.SetName("Assassin");
 				AssassinEnnemi.SetJob(assassinA);
@@ -546,8 +558,8 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsMag;
-				posRsMag = posCombatEnemi;
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
@@ -612,7 +624,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spGuer2.getGlobalBounds().width, spGuer2.getGlobalBounds().height)) && irsVieGuer2 >= 1) {
 
 				GuerrierEnnemi.SetName("Guerrier");
 				GuerrierEnnemi.SetJob(guerrierA);
@@ -634,12 +646,12 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsAss;
-				posRsAss = posCombatEnemi;
+				posSaveMonstre = posRsClerc;
+				posRsClerc = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spGuer3.getGlobalBounds().width, spGuer3.getGlobalBounds().height)) && irsVieGuer3 >= 1) {
 
 				GuerrierEnnemi.SetName("Guerrier");
 				GuerrierEnnemi.SetJob(guerrierA);
@@ -661,12 +673,12 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsClerc;
-				posRsClerc = posCombatEnemi;
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spGuer4.getGlobalBounds().width, spGuer4.getGlobalBounds().height)) && irsVieGuer4 >= 1) {
 
 				GuerrierEnnemi.SetName("Guerrier");
 				GuerrierEnnemi.SetJob(guerrierA);
@@ -754,34 +766,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
-
-				ClercEnnemi.SetName("Clerc");
-				ClercEnnemi.SetJob(clercA);
-				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
-				stNomEnnemi = { ClercEnnemi.GetName() };
-
-				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
-					bAtkPerso = true;
-					bAtkMonstre = false;
-					iChoixCote = 1;
-				}
-				else {
-					bAtkPerso = false;
-					bAtkMonstre = true;
-					iChoixCote = 2;
-				}
-
-				bClerc3 = true;
-				posSavePosition = _perso1.GetPos();
-				_perso1.persoPosition = posCombatAv;
-				_perso1.directionCombat();
-				posSaveMonstre = posRsAss;
-				posRsAss = posCombatEnemi;
-				bLoot = true;
-				_mode = ModeGame::AVE;
-			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spClerc2.getGlobalBounds().width, spClerc2.getGlobalBounds().height)) && irsVieClerc2 >= 1) {
 
 				ClercEnnemi.SetName("Clerc");
 				ClercEnnemi.SetJob(clercA);
@@ -803,12 +788,39 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsGuerr;
-				posRsGuerr = posCombatEnemi;
+				posSaveMonstre = posRsAss;
+				posRsAss = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spClerc3.getGlobalBounds().width, spClerc3.getGlobalBounds().height)) && irsVieClerc3 >= 1) {
+
+				ClercEnnemi.SetName("Clerc");
+				ClercEnnemi.SetJob(clercA);
+				ClercEnnemi.ChangeStatNiveau2(iZoneAv);
+				stNomEnnemi = { ClercEnnemi.GetName() };
+
+				if (_perso1.GetTotVitesse() >= ClercEnnemi.GetTotVitesse()) {
+					bAtkPerso = true;
+					bAtkMonstre = false;
+					iChoixCote = 1;
+				}
+				else {
+					bAtkPerso = false;
+					bAtkMonstre = true;
+					iChoixCote = 2;
+				}
+
+				bClerc3 = true;
+				posSavePosition = _perso1.GetPos();
+				_perso1.persoPosition = posCombatAv;
+				_perso1.directionCombat();
+				posSaveMonstre = posRsMag;
+				posRsMag = posCombatEnemi;
+				bLoot = true;
+				_mode = ModeGame::AVE;
+			}
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spClerc4.getGlobalBounds().width, spClerc4.getGlobalBounds().height)) && irsVieClerc4 >= 1) {
 
 				ClercEnnemi.SetName("Clerc");
 				ClercEnnemi.SetJob(clercA);
@@ -830,8 +842,8 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posSavePosition = _perso1.GetPos();
 				_perso1.persoPosition = posCombatAv;
 				_perso1.directionCombat();
-				posSaveMonstre = posRsMag;
-				posRsMag = posCombatEnemi;
+				posSaveMonstre = posRsGuerr;
+				posRsGuerr = posCombatEnemi;
 				bLoot = true;
 				_mode = ModeGame::AVE;
 			}
@@ -1075,19 +1087,19 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 		}
 	}
 	spAss.setPosition(posRsAss);
-	spAss2.setPosition(posRsGuerr);
-	spAss3.setPosition(posRsClerc);
-	spAss4.setPosition(posRsMag);
+	spAss2.setPosition(posRsMag);
+	spAss3.setPosition(posRsGuerr);
+	spAss4.setPosition(posRsClerc);
 	//rsAss.setPosition(posRsAss);
 	spGuer.setPosition(posRsGuerr);
-	spGuer2.setPosition(posRsAss);
-	spGuer3.setPosition(posRsClerc);
+	spGuer2.setPosition(posRsClerc);
+	spGuer3.setPosition(posRsAss);
 	spGuer4.setPosition(posRsMag);
 	//rsGuer.setPosition(posRsGuerr);
 	spClerc.setPosition(posRsClerc);
-	spClerc2.setPosition(posRsGuerr);
-	spClerc3.setPosition(posRsAss);
-	spClerc4.setPosition(posRsMag);
+	spClerc2.setPosition(posRsAss);
+	spClerc3.setPosition(posRsMag);
+	spClerc4.setPosition(posRsGuerr);
 	//rsClerc.setPosition(posRsClerc);
 	spMag.setPosition(posRsMag);
 	spMag2.setPosition(posRsGuerr);
@@ -1353,15 +1365,15 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 				}
 				if (_numPerso == 2) {
 					bAss2 = false;
-					posRsGuerr = posSaveMonstre;
+					posRsMag = posSaveMonstre;
 				}
 				if (_numPerso == 3) {
 					bAss3 = false;
-					posRsClerc = posSaveMonstre;
+					posRsGuerr = posSaveMonstre;
 				}
 				if (_numPerso == 4) {
 					bAss4 = false;
-					posRsMag = posSaveMonstre;
+					posRsClerc = posSaveMonstre;
 				}
 				bVictory = false;
 				bDefaite = false;
@@ -1388,16 +1400,23 @@ void Aventure::combatAventureAss(Joueur& _perso1, Assassin& _perso2, Consos& _co
 			bDefaite = false;
 			bDescCombat = false;
 			if (bFuite == true) {
-				posRsAss = posSaveMonstre;
 				Fuite(_perso1, AssassinEnnemi, _mode);
-				if (_numPerso == 1)
+				if (_numPerso == 1) {
 					bAss = false;
-				if (_numPerso == 2)
+					posRsAss = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
 					bAss2 = false;
-				if (_numPerso == 3)
+					posRsMag = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
 					bAss3 = false;
-				if (_numPerso == 4)
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
 					bAss4 = false;
+					posRsClerc = posSaveMonstre;
+				}
 				bFuite = false;
 			}
 		}
@@ -1663,16 +1682,23 @@ void Aventure::combatAventureMag(Joueur& _perso1, Magicien& _perso2, Consos& _co
 			bVictory = false;
 			bDescCombat = false;
 			if (bFuite == true) {
-				posRsMag = posSaveMonstre;
 				Fuite(_perso1, MagicienEnnemi, _mode);
-				if (_numPerso == 1)
+				if (_numPerso == 1) {
 					bMag = false;
-				if (_numPerso == 2)
+					posRsMag = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
 					bMag2 = false;
-				if (_numPerso == 3)
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
 					bMag3 = false;
-				if (_numPerso == 4)
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
 					bMag4 = false;
+					posRsAss = posSaveMonstre;
+				}
 				bFuite = false;
 			}
 		}
@@ -1903,11 +1929,11 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				}
 				if (_numPerso == 2) {
 					bGuer2 = false;
-					posRsAss = posSaveMonstre;
+					posRsClerc = posSaveMonstre;
 				}
 				if (_numPerso == 3) {
 					bGuer3 = false;
-					posRsClerc = posSaveMonstre;
+					posRsAss = posSaveMonstre;
 				}
 				if (_numPerso == 4) {
 					bGuer4 = false;
@@ -1938,16 +1964,23 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 			bDefaite = false;
 			bDescCombat = false;
 			if (bFuite == true) {
-				posRsGuerr = posSaveMonstre;
 				Fuite(_perso1, GuerrierEnnemi, _mode);
-				if (_numPerso == 1)
+				if (_numPerso == 1) {
 					bGuer = false;
-				if (_numPerso == 2)
+					posRsGuerr = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
 					bGuer2 = false;
-				if (_numPerso == 3)
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
 					bGuer3 = false;
-				if (_numPerso == 4)
+					posRsAss = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
 					bGuer4 = false;
+					posRsMag = posSaveMonstre;
+				}
 				bFuite = false;
 			}
 		}
@@ -2151,17 +2184,24 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 
 
 			if (bDescCombat == false) {
-				posRsClerc = posSaveMonstre;
 				_perso1.persoPosition.x = posSavePosition.x;
 				_perso1.persoPosition.y = posSavePosition.y + 20;
-				if (_numPerso == 1)
+				if (_numPerso == 1) {
 					bClerc = false;
-				if (_numPerso == 2)
+					posRsClerc = posSaveMonstre;
+				}
+				if (_numPerso == 2) {
 					bClerc2 = false;
-				if (_numPerso == 3)
+					posRsAss = posSaveMonstre;
+				}
+				if (_numPerso == 3) {
 					bClerc3 = false;
-				if (_numPerso == 4)
+					posRsMag = posSaveMonstre;
+				}
+				if (_numPerso == 4) {
 					bClerc4 = false;
+					posRsGuerr = posSaveMonstre;
+				}
 				bVictory = false;
 				bDefaite = false;
 				_mode = ModeGame::LIBRE;
@@ -2192,16 +2232,16 @@ void Aventure::combatAventureClerc(Joueur& _perso1, Clerc& _perso2, Consos& _con
 					bClerc = false;
 				}
 				if (_numPerso == 2) {
-					posRsClerc = posSaveMonstre;
+					posRsAss = posSaveMonstre;
 					bClerc2 = false;
 				}
 				if (_numPerso == 3) {
 					bClerc3 = false;
-					posRsGuerr = posSaveMonstre;
+					posRsMag = posSaveMonstre;
 				}
 				if (_numPerso == 4) {
 					bClerc4 = false;
-					posRsMag = posSaveMonstre;
+					posRsGuerr = posSaveMonstre;
 				}
 				Fuite(_perso1, ClercEnnemi, _mode);
 				bFuite = false;
