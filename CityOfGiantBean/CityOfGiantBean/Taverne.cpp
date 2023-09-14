@@ -91,12 +91,12 @@ void initTaverne() {
 	txPNJ.setFont(fontT);
 	txPNJ.setOrigin(txPNJ.getGlobalBounds().height / 2, txPNJ.getGlobalBounds().width / 2);
 	txPNJ.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	txPNJ.setFillColor(sf::Color::Red);
+	txPNJ.setFillColor(sf::Color::Black);
 
 	ValidationT.setFont(fontT);
 	ValidationT.setOrigin(ValidationT.getGlobalBounds().height / 2, ValidationT.getGlobalBounds().width / 2);
 	ValidationT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ValidationT.setFillColor(sf::Color::Red);
+	ValidationT.setFillColor(sf::Color::Black);
 
 	OuiTexteT.setFont(fontT);
 	OuiTexteT.setOrigin(OuiTexteT.getGlobalBounds().height / 2, OuiTexteT.getGlobalBounds().width / 2);
@@ -111,18 +111,18 @@ void initTaverne() {
 	PasArgentTaverne.setFont(fontT);
 	PasArgentTaverne.setOrigin(PasArgentTaverne.getGlobalBounds().height / 2, PasArgentTaverne.getGlobalBounds().width / 2);
 	PasArgentTaverne.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	PasArgentTaverne.setFillColor(sf::Color::Red);
+	PasArgentTaverne.setFillColor(sf::Color::Black);
 
 
 	ArgentRestantT.setFont(fontT);
 	ArgentRestantT.setOrigin(ArgentRestantT.getGlobalBounds().height / 2, ArgentRestantT.getGlobalBounds().width / 2);
 	ArgentRestantT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ArgentRestantT.setFillColor(sf::Color::Red);
+	ArgentRestantT.setFillColor(sf::Color::Black);
 
 	ObtenuClasseTexte.setFont(fontT);
 	ObtenuClasseTexte.setOrigin(ObtenuClasseTexte.getGlobalBounds().height / 2, ObtenuClasseTexte.getGlobalBounds().width / 2);
 	ObtenuClasseTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ObtenuClasseTexte.setFillColor(sf::Color::Red);
+	ObtenuClasseTexte.setFillColor(sf::Color::Black);
 
 	PasDArgentT = "Vous n'avez pas assez d'argent!";
 	ValidationTa = "Vous allez change de classe: Classe : ";

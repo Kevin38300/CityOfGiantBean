@@ -176,22 +176,22 @@ void initBoutique() {
 	PasArgentShop.setFont(font);
 	PasArgentShop.setOrigin(PasArgentShop.getGlobalBounds().height / 2, PasArgentShop.getGlobalBounds().width / 2);
 	PasArgentShop.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	PasArgentShop.setFillColor(sf::Color::Red);
+	PasArgentShop.setFillColor(sf::Color::Black);
 
 	ArgentRestantB.setFont(font);
 	ArgentRestantB.setOrigin(ArgentRestantB.getGlobalBounds().height / 2, ArgentRestantB.getGlobalBounds().width / 2);
 	ArgentRestantB.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ArgentRestantB.setFillColor(sf::Color::Red);
+	ArgentRestantB.setFillColor(sf::Color::Black);
 
 	ObtenuObjetTexte.setFont(font);
 	ObtenuObjetTexte.setOrigin(ObtenuObjetTexte.getGlobalBounds().height / 2, ObtenuObjetTexte.getGlobalBounds().width / 2);
 	ObtenuObjetTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ObtenuObjetTexte.setFillColor(sf::Color::Red);
+	ObtenuObjetTexte.setFillColor(sf::Color::Black);
 
 	ValidationShop.setFont(font);
 	ValidationShop.setOrigin(ValidationShop.getGlobalBounds().height / 2, ValidationShop.getGlobalBounds().width / 2);
 	ValidationShop.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ValidationShop.setFillColor(sf::Color::Red);
+	ValidationShop.setFillColor(sf::Color::Black);
 
 	OuiTexte.setFont(font);
 	OuiTexte.setOrigin(OuiTexte.getGlobalBounds().height / 2, OuiTexte.getGlobalBounds().width / 2);
@@ -206,19 +206,19 @@ void initBoutique() {
 	txVendeur.setFont(font);
 	txVendeur.setOrigin(txVendeur.getGlobalBounds().height / 2, txVendeur.getGlobalBounds().width / 2);
 	txVendeur.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	txVendeur.setFillColor(sf::Color::Red);
+	txVendeur.setFillColor(sf::Color::Black);
 
 	PasDArgent = "Vous n'avez pas assez d'argent!";
 	ArgentRestant = "Argent restant : ";
 	ValidationAchat = "Voulez vous acheter cette objet ?";
 	ObtenuObjet = "Vous avez Obtenu : ";
-	stVendeur = "Bonjour et bienvenue dans la boutique ! Vous pouvez acheter\n des equipements et des consommables, vous pourrez les equipes\n et voir vos quantites depuis votre inventaire";
+	stVendeur = "Bonjour et bienvenue dans la boutique ! Vous pouvez acheter\ndes equipements et des consommables, vous pourrez les equipes\net voir vos quantites depuis votre inventaire";
 
 	PasDArgentEn = "You don't have enough gold!";
 	ArgentRestantEn = "nGold remaining : ";
 	ValidationAchatEn = "Do you want to buy this item ?";
 	ObtenuObjetEn = "You got : ";
-	stVendeurEn = "Hello and welcome to the shop! You can buy\n equipment and consumables, you can equip them\n and see your quantities from your inventory";
+	stVendeurEn = "Hello and welcome to the shop! You can buy\nequipment and consumables, you can equip them\nand see your quantities from your inventory";
 
 	boiteDiscussion::initBoiteDiscussion();
 	loadBoutique();

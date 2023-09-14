@@ -58,7 +58,7 @@ void initFontaine() {
 	ValidationFontaine.setFont(fontF);
 	ValidationFontaine.setOrigin(ValidationFontaine.getGlobalBounds().height / 2, ValidationFontaine.getGlobalBounds().width / 2);
 	ValidationFontaine.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ValidationFontaine.setFillColor(sf::Color::Red);
+	ValidationFontaine.setFillColor(sf::Color::Black);
 
 	OuiTexteF.setFont(fontF);
 	OuiTexteF.setOrigin(OuiTexteF.getGlobalBounds().height / 2, OuiTexteF.getGlobalBounds().width / 2);
@@ -73,17 +73,17 @@ void initFontaine() {
 	PasArgentFontaine.setFont(fontF);
 	PasArgentFontaine.setOrigin(PasArgentFontaine.getGlobalBounds().height / 2, PasArgentFontaine.getGlobalBounds().width / 2);
 	PasArgentFontaine.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	PasArgentFontaine.setFillColor(sf::Color::Red);
+	PasArgentFontaine.setFillColor(sf::Color::Black);
 
 	ArgentRestant.setFont(fontF);
 	ArgentRestant.setOrigin(ArgentRestant.getGlobalBounds().height / 2, ArgentRestant.getGlobalBounds().width / 2);
 	ArgentRestant.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ArgentRestant.setFillColor(sf::Color::Red);
+	ArgentRestant.setFillColor(sf::Color::Black);
 
 	ObtenuElementTexte.setFont(fontF);
 	ObtenuElementTexte.setOrigin(ObtenuElementTexte.getGlobalBounds().height / 2, ObtenuElementTexte.getGlobalBounds().width / 2);
 	ObtenuElementTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	ObtenuElementTexte.setFillColor(sf::Color::Red);
+	ObtenuElementTexte.setFillColor(sf::Color::Black);
 
 	PasDArgentF = "Vous n'avez pas assez d'argent!";
 	ValidElem = "Vous allez change d'element. Element choisi : ";

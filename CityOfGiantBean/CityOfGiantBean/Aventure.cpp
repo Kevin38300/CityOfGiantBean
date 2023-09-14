@@ -152,7 +152,7 @@ void Aventure::initEnnemi() {
 	txLevelUpA.setFont(fontAv);
 	txLevelUpA.setOrigin(txLevelUpA.getGlobalBounds().height / 2, txLevelUpA.getGlobalBounds().width / 2);
 	txLevelUpA.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
-	txLevelUpA.setFillColor(sf::Color::Red);
+	txLevelUpA.setFillColor(sf::Color::Black);
 
 	posCombatAv = { AjustResoX * 349.0f, AjustResoY * 293.0f };
 	posCombatEnemi = { AjustResoX * 1275.0f, AjustResoY * 287.0f };
@@ -160,22 +160,22 @@ void Aventure::initEnnemi() {
 	txStatsPerso.setFont(fontAv);
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
 	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
-	txStatsPerso.setFillColor(sf::Color::Red);
+	txStatsPerso.setFillColor(sf::Color::Black);
 
 	txStatsEnnemi.setFont(fontAv);
 	txStatsEnnemi.setOrigin(txStatsEnnemi.getGlobalBounds().height / 2, txStatsEnnemi.getGlobalBounds().width / 2);
 	txStatsEnnemi.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
-	txStatsEnnemi.setFillColor(sf::Color::Red);
+	txStatsEnnemi.setFillColor(sf::Color::Black);
 
 	DetailActionAventureA.setFont(fontAv);
 	DetailActionAventureA.setOrigin(DetailActionAventureA.getGlobalBounds().height / 2, DetailActionAventureA.getGlobalBounds().width / 2);
 	DetailActionAventureA.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	DetailActionAventureA.setFillColor(sf::Color::Red);
+	DetailActionAventureA.setFillColor(sf::Color::Black);
 
 	ActionAventure.setFont(fontAv);
 	ActionAventure.setOrigin(ActionAventure.getGlobalBounds().height / 2, ActionAventure.getGlobalBounds().width / 2);
 	ActionAventure.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
-	ActionAventure.setFillColor(sf::Color::Red);
+	ActionAventure.setFillColor(sf::Color::Black);
 
 	AventureAttaque.setFont(fontAv);
 	AventureAttaque.setOrigin(AventureAttaque.getGlobalBounds().height / 2, AventureAttaque.getGlobalBounds().width / 2);
@@ -200,7 +200,7 @@ void Aventure::initEnnemi() {
 	txDescCombat.setFont(fontAv);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
 	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	txDescCombat.setFillColor(sf::Color::Red);
+	txDescCombat.setFillColor(sf::Color::Black);
 
 	txSoinPV.setFont(fontAv);
 	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
@@ -297,6 +297,13 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 	if (_mode == ModeGame::LIBRE) {
 
 		if (_modeAv == AventureGame::ZONE_MAGE) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
+				bPnj = true;
+				stParoleAv = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nBattez vous a volonte\nniveau d'aventure : " + std::to_string(iZoneAv)};
+				stParoleAvEn = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nFight at will\nAdventure level:" + std::to_string(iZoneAv) };
+			}
+			else
+				bPnj = false;
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
 
 				MagicienEnnemi.SetName("Magicien");
@@ -451,6 +458,13 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				timerVieMag4 = 0.0f;
 		}
 		if (_modeAv == AventureGame::ZONE_ASSASSIN) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
+				bPnj = true;
+				stParoleAv = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nBattez vous a volonte\nniveau d'aventure : " + std::to_string(iZoneAv) };
+				stParoleAvEn = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nFight at will\nAdventure level:" + std::to_string(iZoneAv) };
+			}
+			else
+				bPnj = false;
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
 
 				AssassinEnnemi.SetName("Assassin");
@@ -597,6 +611,13 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				timerVieAss4 = 0.0f;
 		}
 		if (_modeAv == AventureGame::ZONE_GUERRIER) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
+				bPnj = true;
+				stParoleAv = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nBattez vous a volonte\nniveau d'aventure : " + std::to_string(iZoneAv) };
+				stParoleAvEn = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nFight at will\nAdventure level:" + std::to_string(iZoneAv) };
+			}
+			else
+				bPnj = false;
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
 
 				GuerrierEnnemi.SetName("Guerrier");
@@ -739,6 +760,13 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				timerVieGuer4 = 0.0f;
 		}
 		if (_modeAv == AventureGame::ZONE_CLERC) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
+				bPnj = true;
+				stParoleAv = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nBattez vous a volonte\nniveau d'aventure : " + std::to_string(iZoneAv) };
+				stParoleAvEn = { "Le niveau des aventuriers est lie au niveau de l'aventure general\nFight at will\nAdventure level:" + std::to_string(iZoneAv) };
+			}
+			else
+				bPnj = false;
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
 
 				ClercEnnemi.SetName("Clerc");
@@ -2980,12 +3008,12 @@ void Aventure::displayAventure(myWindow& _window, ModeGame& _mode, Joueur& _pers
 			}
 
 
-			if (bPnj == true) {
-				boiteDiscussion::displayBoiteDiscussion(_window);
-				txParoleAv.setPosition(postexte);
-				tools::ChoixLangue(tools::GetTrad(), txParoleAv, stParoleAv, stParoleAvEn);
-				_window.Draw(txParoleAv);
-			}
+		}
+		if (bPnj == true) {
+			boiteDiscussion::displayBoiteDiscussion(_window);
+			txParoleAv.setPosition(postexte);
+			tools::ChoixLangue(tools::GetTrad(), txParoleAv, stParoleAv, stParoleAvEn);
+			_window.Draw(txParoleAv);
 		}
 
 		if (_perso1.bLeveluUp == true) {

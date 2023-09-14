@@ -90,12 +90,12 @@ void Chargement::init(myWindow& _window) {
 		txNewVerif.setCharacterSize(50);
 
 		txNewVerifOui.setFont(fontMenu);
-		txNewVerifOui.setFillColor(_black);
+		txNewVerifOui.setFillColor(_red);
 		txNewVerifOui.setPosition(posNewTxVerifOui);
 		txNewVerifOui.setCharacterSize(50);
 
 		txNewVerifNon.setFont(fontMenu);
-		txNewVerifNon.setFillColor(_black);
+		txNewVerifNon.setFillColor(_red);
 		txNewVerifNon.setPosition(posNewTxVerifNon);
 		txNewVerifNon.setCharacterSize(50);
 

@@ -64,17 +64,17 @@ void Safarie::initSafari() {
 	txLevelUp.setFont(fontS);
 	txLevelUp.setOrigin(txLevelUp.getGlobalBounds().height / 2, txLevelUp.getGlobalBounds().width / 2);
 	txLevelUp.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
-	txLevelUp.setFillColor(sf::Color::Red);
+	txLevelUp.setFillColor(sf::Color::Black);
 
 	DetailActionAventureS.setFont(fontS);
 	DetailActionAventureS.setOrigin(DetailActionAventureS.getGlobalBounds().height / 2, DetailActionAventureS.getGlobalBounds().width / 2);
 	DetailActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-	DetailActionAventureS.setFillColor(sf::Color::Red);
+	DetailActionAventureS.setFillColor(sf::Color::Black);
 
 	ActionAventureS.setFont(fontS);
 	ActionAventureS.setOrigin(ActionAventureS.getGlobalBounds().height / 2, ActionAventureS.getGlobalBounds().width / 2);
 	ActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
-	ActionAventureS.setFillColor(sf::Color::Red);
+	ActionAventureS.setFillColor(sf::Color::Black);
 
 	AventureAttaqueS.setFont(fontS);
 	AventureAttaqueS.setOrigin(AventureAttaqueS.getGlobalBounds().height / 2, AventureAttaqueS.getGlobalBounds().width / 2);
@@ -99,22 +99,22 @@ void Safarie::initSafari() {
 	txStatsMonstre.setFont(fontS);
 	txStatsMonstre.setOrigin(txStatsMonstre.getGlobalBounds().height / 2, txStatsMonstre.getGlobalBounds().width / 2);
 	txStatsMonstre.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
-	txStatsMonstre.setFillColor(sf::Color::Red);
+	txStatsMonstre.setFillColor(sf::Color::Black);
 
 	txStatsPerso.setFont(fontS);
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
 	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
-	txStatsPerso.setFillColor(sf::Color::Red);
+	txStatsPerso.setFillColor(sf::Color::Black);
 
 	txDescCombat.setFont(fontS);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
 	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
-	txDescCombat.setFillColor(sf::Color::Red);
+	txDescCombat.setFillColor(sf::Color::Black);
 
 	txElevation.setFont(fontS);
 	txElevation.setOrigin(txElevation.getGlobalBounds().height / 2, txElevation.getGlobalBounds().width / 2);
 	txElevation.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
-	txElevation.setFillColor(sf::Color::Black);
+	txElevation.setFillColor(sf::Color::Red);
 
 
 	txSoinPV.setFont(fontS);
@@ -284,8 +284,8 @@ void Safarie::initMonstreSafari() {
 
 void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 	if (_mode == ModeGame::LIBRE) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add) || bElevation == true)
-			bElevation = true;
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add) || bElevation == true)
+			bElevation = true;*/
 		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiGoblein, rsize)) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Gobelin: Bonjour, si tu veux t'entrainer avec\nmes gobelin tu pourras drop du Cuivre");
@@ -311,7 +311,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			bColRanger = true;
 			stParoleSafarie = ("Entrainez vous sans crainte, je vous soignerais");
 			stParoleSafarieEn = ("Train without fear, I will treat you");
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 				bTimeRanger = true;
 				fTmp = 0.0f;
 			}

@@ -17,12 +17,12 @@ void Alchimie::initAlchimie() {
 	txDecr.setFont(fA);
 	txDecr.setOrigin(txDecr.getGlobalBounds().height / 2, txDecr.getGlobalBounds().width / 2);
 	txDecr.setPosition(AjustResoX * 150.0f, AjustResoY * 900.0f);
-	txDecr.setFillColor(sf::Color::Black);
+	txDecr.setFillColor(sf::Color::Red);
 
 	txRetour.setFont(fA);
 	txRetour.setOrigin(txRetour.getGlobalBounds().height / 2, txRetour.getGlobalBounds().width / 2);
 	txRetour.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
-	txRetour.setFillColor(sf::Color::Black);
+	txRetour.setFillColor(sf::Color::Red);
 
 	txDescForge.setFont(fA);
 	txDescForge.setOrigin(txDescForge.getGlobalBounds().height / 2, txDescForge.getGlobalBounds().width / 2);

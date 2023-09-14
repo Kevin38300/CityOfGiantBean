@@ -163,7 +163,7 @@ void Hotel::initHotel() {
 	txReponseBase.setFont(fontS);
 	txReponseBase.setOrigin(txReponseBase.getGlobalBounds().height / 2, txReponseBase.getGlobalBounds().width / 2);
 	txReponseBase.setPosition(AjustResoX * 150, AjustResoY * 900);
-	txReponseBase.setFillColor(sf::Color::Black);
+	txReponseBase.setFillColor(sf::Color::Red);
 
 	txLevelUpH.setFont(fontS);
 	txLevelUpH.setOrigin(txLevelUpH.getGlobalBounds().height / 2, txLevelUpH.getGlobalBounds().width / 2);
@@ -173,17 +173,17 @@ void Hotel::initHotel() {
 	txReponse1.setFont(fontS);
 	txReponse1.setOrigin(txReponse1.getGlobalBounds().height / 2, txReponse1.getGlobalBounds().width / 2);
 	txReponse1.setPosition(AjustResoX * 150, AjustResoY * 950);
-	txReponse1.setFillColor(sf::Color::Black);
+	txReponse1.setFillColor(sf::Color::Red);
 
 	txReponse2.setFont(fontS);
 	txReponse2.setOrigin(txReponse2.getGlobalBounds().height / 2, txReponse2.getGlobalBounds().width / 2);
 	txReponse2.setPosition(AjustResoX * 150, AjustResoY * 1050);
-	txReponse2.setFillColor(sf::Color::Black);
+	txReponse2.setFillColor(sf::Color::Red);
 
 	txReponse3.setFont(fontS);
 	txReponse3.setOrigin(txReponse3.getGlobalBounds().height / 2, txReponse3.getGlobalBounds().width / 2);
 	txReponse3.setPosition(AjustResoX * 150, AjustResoY * 1100);
-	txReponse3.setFillColor(sf::Color::Black);
+	txReponse3.setFillColor(sf::Color::Red);
 
 	initQuete();
 	initSkillTree();
