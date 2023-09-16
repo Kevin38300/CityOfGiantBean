@@ -918,7 +918,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 			else
 				bPnj = false;
 
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsAss, sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height)) && irsVieAss >= 1 && (save::getTuto() == false || save::getTutoNb() >= 10)) {
 
 				AssassinEnnemi.SetName("Assassin");
 				AssassinEnnemi.SetJob(assassinA);
@@ -945,7 +945,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posRsAss = posCombatEnemi;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsGuerr, sf::Vector2f(spGuer.getGlobalBounds().width, spGuer.getGlobalBounds().height)) && irsVieGuer >= 1 && (save::getTuto() == false || save::getTutoNb() == 7)) {
 
 				GuerrierEnnemi.SetName("Guerrier");
 				GuerrierEnnemi.SetJob(guerrierA);
@@ -971,7 +971,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posRsGuerr = posCombatEnemi;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsClerc, sf::Vector2f(spClerc.getGlobalBounds().width, spClerc.getGlobalBounds().height)) && irsVieClerc >= 1 && (save::getTuto() == false || save::getTutoNb() >= 10)) {
 
 				ClercEnnemi.SetName("Clerc");
 				ClercEnnemi.SetJob(clercA);
@@ -997,7 +997,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 				posRsClerc = posCombatEnemi;
 				_mode = ModeGame::AVE;
 			}
-			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1) {
+			if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posRsMag, sf::Vector2f(spMag.getGlobalBounds().width, spMag.getGlobalBounds().height)) && irsVieMag >= 1 && (save::getTuto() == false || save::getTutoNb() >= 10)) {
 
 				MagicienEnnemi.SetName("Magicien");
 				MagicienEnnemi.SetJob(magicienA);
@@ -1936,6 +1936,8 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				_perso1.Experience((30 * GuerrierEnnemi.GetNiveau()));
 				if (bLoot == true)
 					LootCombat(_perso1, _modeAv, _mode);
+				if (save::getTutoNb() == 7)
+					save::setTutoNb(8);
 				bVictory = true;
 			}
 			if (_perso1.GetTotPv() <= 0) {
@@ -1944,6 +1946,8 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 				if (tmp_arg <= 0)
 					tmp_arg = 0;
 				_perso1.SetTotArgent(tmp_arg);
+				if (save::getTutoNb() == 7)
+					save::setTutoNb(8);
 				bDefaite = true;
 			}
 
@@ -2009,6 +2013,8 @@ void Aventure::combatAventureGuer(Joueur& _perso1, Guerrier& _perso2, Consos& _c
 					bGuer4 = false;
 					posRsMag = posSaveMonstre;
 				}
+				if (save::getTutoNb() == 7)
+					save::setTutoNb(8);
 				bFuite = false;
 			}
 		}

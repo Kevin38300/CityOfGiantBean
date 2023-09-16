@@ -408,6 +408,8 @@ void updateBoutique(myWindow& _window, Joueur& _perso1) {
 			if (achatReussi == 1) {
 				_perso1.BombeBuy += 1;
 				_perso1.iAchat += 1;
+				if (save::getTutoNb() == 4)
+					save::setTutoNb(5);
 				achatReussi = 0;
 			}
 		}

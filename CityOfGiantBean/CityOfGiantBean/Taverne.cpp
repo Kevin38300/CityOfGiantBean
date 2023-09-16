@@ -339,6 +339,8 @@ void ChgJob(Joueur& _perso1, Job _job) {
 		ValidReussiT = 1;
 		ChgReussi = 1;
 		NonRetourTaverne();
+		if (save::getTutoNb() == 8)
+			save::setTutoNb(9);
 	}
 	else {
 		ChgReussi = 2;

@@ -259,7 +259,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize) && (save::getTutoNb() == 4 || save::getTuto() == false)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize) && (save::getTutoNb() == 4 || save::getTutoNb() == 5 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::BOUTIQUE;
 					_posPerso = ShopPosT;
@@ -321,8 +321,6 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				return;
 			}
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, ShopPosT, ShopSizeT) && _shop == ShopGame::BOUTIQUE) {
-				if (save::getTutoNb() == 4)
-					save::setTutoNb(5);
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
@@ -341,6 +339,8 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
+				if (save::getTutoNb() == 10)
+					save::setTutoNb(11);
 				return;
 			}
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, tavernePosT, taverneSizeT) && _shop == ShopGame::TAVERNE) {
@@ -353,10 +353,6 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 		}
 		if (_map == MapGame::SAFARIE) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, SafariSPos, SafariSSize)) {
-				if (save::getTutoNb() == 3)
-					save::setTutoNb(4);
-				if (save::getTutoNb() == 5)
-					save::setTutoNb(6);
 				_map = MapGame::RDC;
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
@@ -373,6 +369,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				_map = MapGame::RDC;
 				_aventure = AventureGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
 		}
@@ -380,7 +377,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txVille.setCharacterSize(40);
 			posVille = sf::Vector2f(AjustResoX * 130.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventure.x, posAventure.y + txAventure.getGlobalBounds().height), sf::Vector2f(txAventure.getGlobalBounds().width, txAventure.getGlobalBounds().height)) && (save::getTutoNb() >= 7 || save::getTuto() == false)) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventure.x, posAventure.y + txAventure.getGlobalBounds().height), sf::Vector2f(txAventure.getGlobalBounds().width, txAventure.getGlobalBounds().height)) && (save::getTutoNb() == 7 || save::getTuto() == false)) {
 			txAventure.setCharacterSize(45);
 			posAventure = sf::Vector2f(AjustResoX * 245.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -388,6 +385,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				_aventure = AventureGame::AVENTURE;
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
 		}

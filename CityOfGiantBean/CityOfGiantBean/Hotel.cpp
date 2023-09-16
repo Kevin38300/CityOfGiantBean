@@ -121,6 +121,9 @@ void Hotel::initQuete() {
 	txQQuit.setPosition(AjustResoX * 200, AjustResoY * 850);
 	txQQuit.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQQuit, "Echap pour quitter", "Escape to leave");
+
+	if (save::getTutoNb() == 2)
+		save::setTutoNb(3);
 }
 
 void Hotel::initHotel() {
@@ -617,6 +620,8 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 							stInfoValid = { "" };
 							stInfoValidEn = { "" };
 							_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
+							if (save::getTutoNb() == 6)
+								save::setTutoNb(7);
 							_perso1.SKILL[0] = true;
 						}
 						else {

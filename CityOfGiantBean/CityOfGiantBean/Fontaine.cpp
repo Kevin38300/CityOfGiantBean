@@ -189,6 +189,8 @@ void ChgElem(Joueur& _perso1, Personnage::Elements _element) {
 		PasArgentResteF = 0;
 		ValidReussi = 1;
 		NonRetourFontaine();
+		if (save::getTutoNb() == 9)
+			save::setTutoNb(10);
 	}
 	else {
 		PasArgentResteF = 1;

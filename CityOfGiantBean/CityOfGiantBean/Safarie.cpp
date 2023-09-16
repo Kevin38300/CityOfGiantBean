@@ -930,6 +930,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbGob += 1;
 					iNbGob += 1;
+					if (save::getTutoNb() == 3)
+						save::setTutoNb(4);
 					bLoot = true;
 				}
 				if (bColLoup == true && bLoot == false) {
@@ -943,6 +945,8 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbLoup += 1;
 					iNbLoup += 1;
 					bLoot = true;
+					if (save::getTutoNb() == 5)
+						save::setTutoNb(6);
 				}
 				if (bColOurs == true && bLoot == false) {
 					tmp_loot = _perso1.GetLootCuire() + 1;
