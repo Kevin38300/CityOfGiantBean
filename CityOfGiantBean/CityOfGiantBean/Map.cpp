@@ -63,6 +63,7 @@ sf::Vector2f posSouris;
 sf::Vector2i mousePosition;
 float fClickMenu;
 
+extern float timerAff;
 void initCarte()
 {
 	fontMenu.loadFromFile("../Ressources/Fonts/YOZAKURA-Regular.otf");
@@ -250,50 +251,57 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 	{
 		if (_map == MapGame::RDC) {
 			if (_shop == ShopGame::NONE) {
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, hotelPos, hotelSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, hotelPos, hotelSize) && (save::getTutoNb() == 2 || save::getTutoNb() == 6 || save::getTuto() == false)) {
 					_posPerso = hotelPosH;
 					_map = MapGame::SHOP;
 					_shop = ShopGame::HOTEL;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize) && (save::getTutoNb() == 4 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::BOUTIQUE;
 					_posPerso = ShopPosT;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, AlchimiePos, AlchimieSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, AlchimiePos, AlchimieSize) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::ALCHIMIE;
 					_posPerso = AlchimiePosA;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, fontainePos, fontaineSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, fontainePos, fontaineSize) && (save::getTutoNb() == 9 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::FONTAINE;
 					_posPerso = fontainePos;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, tavernePos, taverneSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, tavernePos, taverneSize) && (save::getTutoNb() == 8 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::TAVERNE;
 					_posPerso = tavernePosT;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, SafariPos, SafariSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, SafariPos, SafariSize) && (save::getTutoNb() == 3 || save::getTutoNb() == 5 || save::getTuto() == false)) {
 					_map = MapGame::SAFARIE;
 					_posPerso = SafariSPos;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
-				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, GiantJackPos, GiantJackSize)) {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, GiantJackPos, GiantJackSize) && (save::getTutoNb() == 7 || save::getTuto() == false)) {
 					_map = MapGame::MONTE;
 					fClickMenu = 0.0f;
+					timerAff = 0.0f;
 					return;
 				}
 			}
@@ -301,41 +309,57 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 		if (_map == MapGame::SHOP) {
-			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, hotelPosH, hotelSizeH)) {
+			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, hotelPosH, hotelSizeH) && _shop == ShopGame::HOTEL) {
+				if (save::getTutoNb() == 2)
+					save::setTutoNb(3);
+				if (save::getTutoNb() == 6)
+					save::setTutoNb(7);
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
-			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, ShopPosT, ShopSizeT)) {
+			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, ShopPosT, ShopSizeT) && _shop == ShopGame::BOUTIQUE) {
+				if (save::getTutoNb() == 4)
+					save::setTutoNb(5);
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
-			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, AlchimiePosA, AlchimieSizeA)) {
+			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, AlchimiePosA, AlchimieSizeA) && _shop == ShopGame::ALCHIMIE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
-			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, fontainePosF, fontaineSizeF)) {
+			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, fontainePosF, fontaineSizeF) && _shop == ShopGame::FONTAINE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
-			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, tavernePosT, taverneSizeT)) {
+			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, tavernePosT, taverneSizeT) && _shop == ShopGame::TAVERNE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
 		}
 		if (_map == MapGame::SAFARIE) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, SafariSPos, SafariSSize)) {
+				if (save::getTutoNb() == 3)
+					save::setTutoNb(4);
+				if (save::getTutoNb() == 5)
+					save::setTutoNb(6);
 				_map = MapGame::RDC;
 				fClickMenu = 0.0f;
+				timerAff = 0.0f;
 				return;
 			}
 		}
@@ -356,7 +380,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txVille.setCharacterSize(40);
 			posVille = sf::Vector2f(AjustResoX * 130.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventure.x, posAventure.y + txAventure.getGlobalBounds().height), sf::Vector2f(txAventure.getGlobalBounds().width, txAventure.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventure.x, posAventure.y + txAventure.getGlobalBounds().height), sf::Vector2f(txAventure.getGlobalBounds().width, txAventure.getGlobalBounds().height)) && (save::getTutoNb() >= 7 || save::getTuto() == false)) {
 			txAventure.setCharacterSize(45);
 			posAventure = sf::Vector2f(AjustResoX * 245.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -371,7 +395,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txAventure.setCharacterSize(40);
 			posAventure = sf::Vector2f(AjustResoX * 250.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureGuerrier.x, posAventureGuerrier.y + txAventureGuerrier.getGlobalBounds().height), sf::Vector2f(txAventureGuerrier.getGlobalBounds().width, txAventureGuerrier.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureGuerrier.x, posAventureGuerrier.y + txAventureGuerrier.getGlobalBounds().height), sf::Vector2f(txAventureGuerrier.getGlobalBounds().width, txAventureGuerrier.getGlobalBounds().height)) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 			txAventureGuerrier.setCharacterSize(45);
 			posAventureGuerrier = sf::Vector2f(AjustResoX * 645.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -386,7 +410,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txAventureGuerrier.setCharacterSize(40);
 			posAventureGuerrier = sf::Vector2f(AjustResoX * 650.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureClerc.x, posAventureClerc.y + txAventureClerc.getGlobalBounds().height), sf::Vector2f(txAventureClerc.getGlobalBounds().width, txAventureClerc.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureClerc.x, posAventureClerc.y + txAventureClerc.getGlobalBounds().height), sf::Vector2f(txAventureClerc.getGlobalBounds().width, txAventureClerc.getGlobalBounds().height)) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 			txAventureClerc.setCharacterSize(45);
 			posAventureClerc = sf::Vector2f(AjustResoX * 1045.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -401,7 +425,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txAventureClerc.setCharacterSize(40);
 			posAventureClerc = sf::Vector2f(AjustResoX * 1050.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureMage.x, posAventureMage.y + txAventureMage.getGlobalBounds().height), sf::Vector2f(txAventureMage.getGlobalBounds().width, txAventureMage.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureMage.x, posAventureMage.y + txAventureMage.getGlobalBounds().height), sf::Vector2f(txAventureMage.getGlobalBounds().width, txAventureMage.getGlobalBounds().height)) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 			txAventureMage.setCharacterSize(45);
 			posAventureMage = sf::Vector2f(AjustResoX * 445.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -416,7 +440,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			txAventureMage.setCharacterSize(40);
 			posAventureMage = sf::Vector2f(AjustResoX * 450.0f, AjustResoY * 900.0f);
 		}
-		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureAss.x, posAventureAss.y + txAventureAss.getGlobalBounds().height), sf::Vector2f(txAventureAss.getGlobalBounds().width, txAventureAss.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAventureAss.x, posAventureAss.y + txAventureAss.getGlobalBounds().height), sf::Vector2f(txAventureAss.getGlobalBounds().width, txAventureAss.getGlobalBounds().height)) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 			txAventureAss.setCharacterSize(45);
 			posAventureAss = sf::Vector2f(AjustResoX * 845.0f, AjustResoY * 900.0f);
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -440,35 +464,35 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 		tools::ChoixLangue(tools::GetTrad(), txAventureMage, " Zone arme ", " Weapon area");
 	}
 	if (_map == MapGame::AVENTURE) {
-		if (_aventure == AventureGame::AVENTURE){
+		if (_aventure == AventureGame::AVENTURE) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, GiantJackPosAv, GiantJackSizeAv) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 				_map = MapGame::MONTE;
 				fClickMenu = 0.0f;
 				return;
 			}
 		}
-		if (_aventure == AventureGame::ZONE_MAGE){
+		if (_aventure == AventureGame::ZONE_MAGE) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, GiantJackPosAv, GiantJackSizeAv) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 				_map = MapGame::MONTE;
 				fClickMenu = 0.0f;
 				return;
 			}
 		}
-		if (_aventure == AventureGame::ZONE_ASSASSIN){
+		if (_aventure == AventureGame::ZONE_ASSASSIN) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, GiantJackPosAv, GiantJackSizeAv) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 				_map = MapGame::MONTE;
 				fClickMenu = 0.0f;
 				return;
 			}
 		}
-		if (_aventure == AventureGame::ZONE_GUERRIER){
+		if (_aventure == AventureGame::ZONE_GUERRIER) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, GiantJackPosAv, GiantJackSizeAv) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 				_map = MapGame::MONTE;
 				fClickMenu = 0.0f;
 				return;
 			}
 		}
-		if (_aventure == AventureGame::ZONE_CLERC){
+		if (_aventure == AventureGame::ZONE_CLERC) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, GiantJackPosAv, GiantJackSizeAv) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && fClickMenu > 0.3f) {
 				_map = MapGame::MONTE;
 				fClickMenu = 0.0f;

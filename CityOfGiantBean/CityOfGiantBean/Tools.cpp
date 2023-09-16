@@ -8,8 +8,8 @@ sf::RenderWindow window;
 std::string windowTitle;
 sf::Vector2u windowSize;
 
-int iLangueTrad, iChoixMusic;
-bool bFirstIn, bFirstInM, bDialogue;
+int iLangueTrad, iChoixMusic, iTuto;
+bool bFirstIn, bFirstInM, bDialogue, bTuto;
 float SonVolume, MusicVolume;
 
 std::string stpst1;
@@ -56,6 +56,18 @@ namespace save
 	}
 	int getMap()	{
 		return iSaveMap;
+	}
+	void setTuto(bool _tuto_On_Off) {
+		bTuto = _tuto_On_Off;
+	}
+	bool getTuto() {
+		return bTuto;
+	}
+	void setTutoNb(int _tuto_Nb)	{
+		iTuto = _tuto_Nb;
+	}
+	int getTutoNb()	{
+		return iTuto;
 	}
 }
 namespace music

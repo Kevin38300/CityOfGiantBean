@@ -210,6 +210,8 @@ void Chargement::update(myWindow& _window) {
 					fClickMenu = 0.0f;
 					save::setpseudo1(stPseudo);
 					save::setMap(1);
+					save::setTuto(true);
+					save::setTutoNb(1);
 					Sauvegarde::SaveGame(save::getpseudo1(), save::getSexe(), save::getMap());
 					this->stateManager_->TransitionTo(new Game(MapGame::RDC, ModeGame::LIBRE, AventureGame::NONE, ShopGame::NONE, _window), _window);
 					return;

@@ -124,7 +124,7 @@ void Hotel::initQuete() {
 }
 
 void Hotel::initHotel() {
-	fontS.loadFromFile("../Ressources/Fonts/Typewriter.ttf");
+	fontS.loadFromFile("../Ressources/Fonts/YOZAKURA-Regular.otf");
 
 	posrsPNJquete = { AjustResoX * 323, AjustResoY * 270 };
 	rsPNJquete.setSize(sf::Vector2f(AjustResoX * 58, AjustResoY * 49));
@@ -1303,6 +1303,7 @@ void Hotel::displayHotel(myWindow& _window, ModeGame& _modeGame, Joueur& _perso1
 			txLevelUpH.setPosition(posText);
 			_window.Draw(txLevelUpH);
 		}
+
 	}
 	if (_modeGame == ModeGame::SKILL_TREE) {
 		displaySkillTree(_window, _perso1);

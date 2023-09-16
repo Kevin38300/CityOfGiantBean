@@ -286,7 +286,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 	if (_mode == ModeGame::LIBRE) {
 		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add) || bElevation == true)
 			bElevation = true;*/
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiGoblein, rsize)) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiGoblein, rsize) ) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Gobelin: Bonjour, si tu veux t'entrainer avec\nmes gobelin tu pourras drop du Cuivre");
 			stParoleSafarieEn = ("Goblin King: Hello, if you want to train with\nmy goblins you can drop Copper");
@@ -357,7 +357,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		else
 			bElevation = false;
 
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posGobelin, sf::Vector2f(spGobelin.getGlobalBounds().width, spGobelin.getGlobalBounds().height)) && irsVieGobelin >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posGobelin, sf::Vector2f(spGobelin.getGlobalBounds().width, spGobelin.getGlobalBounds().height)) && irsVieGobelin >= 1 && (save::getTuto() == false || save::getTutoNb() == 3)) {
 
 			Gobelin1.SetName("Gobelin");
 			Gobelin1.SetMonstre(gobelin);
@@ -383,7 +383,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posGobelin = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOurs, sf::Vector2f(spOurs.getGlobalBounds().width, spOurs.getGlobalBounds().height)) && irsVieOurs >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOurs, sf::Vector2f(spOurs.getGlobalBounds().width, spOurs.getGlobalBounds().height)) && irsVieOurs >= 1 && save::getTuto() == false) {
 
 			Ours1.SetName("Ours");
 			Ours1.SetMonstre(ours);
@@ -409,7 +409,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posOurs = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posLoup, sf::Vector2f(spLoup.getGlobalBounds().width, spLoup.getGlobalBounds().height)) && irsVieLoup >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posLoup, sf::Vector2f(spLoup.getGlobalBounds().width, spLoup.getGlobalBounds().height)) && irsVieLoup >= 1 && (save::getTuto() == false || save::getTutoNb() == 5)) {
 
 			Loup1.SetName("Loup");
 			Loup1.SetMonstre(loup);
@@ -435,7 +435,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 			posLoup = posCombatMonstre;
 			_mode = ModeGame::CHASSE;
 		}
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOrc, sf::Vector2f(spOrc.getGlobalBounds().width, spOrc.getGlobalBounds().height)) && irsVieOrc >= 1) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posOrc, sf::Vector2f(spOrc.getGlobalBounds().width, spOrc.getGlobalBounds().height)) && irsVieOrc >= 1 && save::getTuto() == false) {
 
 			Orc1.SetName("Orc");
 			Orc1.SetMonstre(orc);

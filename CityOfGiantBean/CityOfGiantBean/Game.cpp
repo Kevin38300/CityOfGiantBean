@@ -9,6 +9,7 @@
 #include "MenuInGame.h"
 #include "Hotel.h"
 #include "Aventure.h"
+#include "Tuto.h"
 
 Game::Game() {
 }
@@ -29,6 +30,8 @@ Consos conso;
 Hotel hotel;
 //Villagois villagois = Villagois();
 
+extern float timerAff ;
+
 void Game::init(myWindow& _window) {
 	_white = sf::Color::White;
 	_black = sf::Color::Black;
@@ -38,6 +41,7 @@ void Game::init(myWindow& _window) {
 	_cyan = sf::Color::Cyan;
 	_transparent = sf::Color(0.0, 0.0, 0.0, 0.0);
 
+	initTuto();
 	initCarte();
 	persos.push_back(&persoMain);
 	persoMain.initPerso();
@@ -59,28 +63,33 @@ void Game::update(myWindow& _window) {
 	fClickMenu += tools::GetTimeDelta();
 	updateCarte(_window, mapGame, shopGame, aventureGame, modeGame, persoMain.persoPosition);
 	menuGame.UpdateMenuGame(_window, modeGame, persoMain, safarie);
-	if (modeGame == ModeGame::LIBRE) {
+	updateTuto(mapGame, shopGame, aventureGame, modeGame);
+	if (modeGame == ModeGame::LIBRE && (save::getTutoNb() >= 4 || save::getTuto() == false)) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::MENU;
 			fClickMenu = 0.0f;
+			timerAff = 0.0f;
 		}
 	}
 	if (modeGame == ModeGame::MENU) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::LIBRE;
 			fClickMenu = 0.0f;
+			timerAff = 0.0f;
 		}
 	}
 	if (modeGame == ModeGame::QUETE) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::LIBRE;
 			fClickMenu = 0.0f;
+			timerAff = 0.0f;
 		}
 	}
 	if (modeGame == ModeGame::SKILL_TREE) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::LIBRE;
 			fClickMenu = 0.0f;
+			timerAff = 0.0f;
 		}
 	}
 	if (mapGame == MapGame::RDC) {
@@ -155,6 +164,11 @@ void Game::draw(myWindow& _window) {
 		}
 		if (shopGame == ShopGame::HOTEL) {
 			hotel.displayHotel(_window, modeGame, persoMain);
+		}
+	}
+	if (modeGame == ModeGame::LIBRE) {
+		if (save::getTuto() == true) {
+			drawTuto(_window);
 		}
 	}
 	menuGame.DisplayMenuGame(_window, modeGame, persoMain);

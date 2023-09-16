@@ -30,6 +30,10 @@ namespace save
 	int getSexe();
 	void setMap(int _choixMap);
 	int getMap();
+	void setTuto(bool _tuto_On_Off);
+	bool getTuto();
+	void setTutoNb(int _tuto_Nb);
+	int getTutoNb();
 }
 namespace music
 {
