@@ -120,6 +120,9 @@
     <ClCompile Include="Aventure.cpp">
       <Filter>Lieux</Filter>
     </ClCompile>
+    <ClCompile Include="Tuto.cpp">
+      <Filter>Menu/Save</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tools.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="Aventure.h">
       <Filter>Lieux</Filter>
+    </ClInclude>
+    <ClInclude Include="Tuto.h">
+      <Filter>Menu/Save</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

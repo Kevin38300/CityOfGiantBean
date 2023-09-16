@@ -179,6 +179,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Taverne.cpp" />
     <ClCompile Include="Tools.cpp" />
+    <ClCompile Include="Tuto.cpp" />
     <ClCompile Include="Villagois.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +211,7 @@
     <ClInclude Include="stateManager.h" />
     <ClInclude Include="Taverne.h" />
     <ClInclude Include="Tools.h" />
+    <ClInclude Include="Tuto.h" />
     <ClInclude Include="Villagois.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

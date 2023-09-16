@@ -28,7 +28,8 @@ enum class ModeGame {
 	FORGE,
 	CHASSE,
 	DUEL,
-	MENU
+	MENU,
+	TUTO
 };
 
 enum class ShopGame {
