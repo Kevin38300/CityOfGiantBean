@@ -200,7 +200,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 	}
 	timerState += tools::GetTimeDelta();
 	if (_modeGame == ModeGame::LIBRE) {
-		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJquete, sf::Vector2f(rsPNJquete.getGlobalBounds().width, rsPNJquete.getGlobalBounds().height))) {
+		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJquete, sf::Vector2f(rsPNJquete.getGlobalBounds().width, rsPNJquete.getGlobalBounds().height)) && (save::getTutoNb() == 2 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("Bonjour, bienvenu au bureau des quetes.");
 			stBasePNJEn = ("Hello, welcome to the quest office.");
@@ -210,7 +210,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 				_modeGame = ModeGame::QUETE;
 			}
 		}
-		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJskill, sf::Vector2f(rsPNJskill.getGlobalBounds().width, rsPNJskill.getGlobalBounds().height))) {
+		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJskill, sf::Vector2f(rsPNJskill.getGlobalBounds().width, rsPNJskill.getGlobalBounds().height)) && (save::getTutoNb() == 6 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("Bonjour, je suis le maitre des competences, puis-je vous aider ?\n\n\nR : reset des skill (les skillpoint utiliser seront perdu) ");
 			stBasePNJEn = ("Hello, I am the master of skills, can I help you ?\n\n\nR : Skill reset (SkillPoint use will be lost) ");
@@ -226,14 +226,14 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 				}
 			}
 		}
-		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJversus, sf::Vector2f(rsPNJversus.getGlobalBounds().width, rsPNJversus.getGlobalBounds().height))) {
+		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJversus, sf::Vector2f(rsPNJversus.getGlobalBounds().width, rsPNJversus.getGlobalBounds().height)) && (save::getTutoNb() >= 11 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("''Ca chauffe, on ferait mieux de ne pas intervenir''");
 			stBasePNJEn = ("''It's heating up, we'd better not intervene''");
 			stReponseBase = ("");
 			stReponseBaseEn = ("");
 		}
-		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ1, sf::Vector2f(rsPNJ1.getGlobalBounds().width, rsPNJ1.getGlobalBounds().height))) {
+		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ1, sf::Vector2f(rsPNJ1.getGlobalBounds().width, rsPNJ1.getGlobalBounds().height)) && (save::getTutoNb() >= 11 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("Hey !");
 			stBasePNJEn = ("Hey !");
@@ -244,7 +244,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 				ChoixActionPNJ1();
 			}
 		}
-		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ2, sf::Vector2f(rsPNJ2.getGlobalBounds().width, rsPNJ2.getGlobalBounds().height))) {
+		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ2, sf::Vector2f(rsPNJ2.getGlobalBounds().width, rsPNJ2.getGlobalBounds().height)) && (save::getTutoNb() >= 11 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("Yo !");
 			stBasePNJEn = ("Yo !");
@@ -255,7 +255,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 				ChoixActionPNJ1();
 			}
 		}
-		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ3, sf::Vector2f(rsPNJ3.getGlobalBounds().width, rsPNJ3.getGlobalBounds().height))) {
+		else if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJ3, sf::Vector2f(rsPNJ3.getGlobalBounds().width, rsPNJ3.getGlobalBounds().height)) && (save::getTutoNb() >= 11 || save::getTuto() == false)) {
 			bPNJBase = true;
 			stBasePNJ = ("...");
 			stBasePNJEn = ("...");

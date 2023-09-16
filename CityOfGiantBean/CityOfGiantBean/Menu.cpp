@@ -17,6 +17,11 @@ Menu::Menu(StateMenu _stateMenu, myWindow& _window) {
 	posVerifOui = sf::Vector2f(AjustResoX * 800.0f, AjustResoY * 900.0f);
 	posVerifNon = sf::Vector2f(AjustResoX * 900.0f, AjustResoY * 900.0f);
 
+	posAideCombat = sf::Vector2f(AjustResoX * 600.0f, AjustResoY * 100.0f);
+	posAideDir = sf::Vector2f(AjustResoX * 850.0f, AjustResoY * 100.0f);
+
+	posAide = sf::Vector2f(AjustResoX * 500.0f, AjustResoY * 200.0f);
+
 	posTitre = sf::Vector2f(AjustResoX * 700.0f, AjustResoY * 10.0f);
 	posMNew = sf::Vector2f(AjustResoX * 50.0f, AjustResoY * 100.0f);
 	posMCharge = sf::Vector2f(AjustResoX * 50.0f, AjustResoY * 150.0f);
@@ -37,6 +42,21 @@ Menu::Menu(StateMenu _stateMenu, myWindow& _window) {
 }
 
 void Menu::init(myWindow& _window) {
+
+
+	ttAideCom.loadFromFile("../Ressources/Textures/MENU/commandeCombat.png");
+	spAideCom.setTexture(ttAideCom);
+	spAideCom.setPosition(posAide);
+	ttAideComEn.loadFromFile("../Ressources/Textures/MENU/commandeCombatEn.png");
+	spAideComEn.setTexture(ttAideComEn);
+	spAideComEn.setPosition(posAide);
+
+	ttAideDir.loadFromFile("../Ressources/Textures/MENU/commandeDir.png");
+	spAideDir.setTexture(ttAideDir);
+	spAideDir.setPosition(posAide);
+	ttAideDirEn.loadFromFile("../Ressources/Textures/MENU/commandeDirEn.png");
+	spAideDirEn.setTexture(ttAideDirEn);
+	spAideDirEn.setPosition(posAide);
 
 
 	ttMenu.loadFromFile("../Ressources/Textures/MENU/MenuCeleste.jpg");
@@ -125,6 +145,16 @@ void Menu::init(myWindow& _window) {
 	txVerifNon.setPosition(posVerifNon);
 	txVerifNon.setCharacterSize(50);
 
+	txAideCombat.setFont(fontMenu);
+	txAideCombat.setFillColor(_red);
+	txAideCombat.setPosition(posAideCombat);
+	txAideCombat.setCharacterSize(50);
+
+	txAideDir.setFont(fontMenu);
+	txAideDir.setFillColor(_red);
+	txAideDir.setPosition(posAideDir);
+	txAideDir.setCharacterSize(50);
+
 	boiteDiscussion::initBoiteDiscussion();
 }
 
@@ -149,39 +179,59 @@ void Menu::update(myWindow& _window) {
 	if (bOption == true) {
 
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
+			if (bAide == false) {
 
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOption.x, posMOption.y + txMOption.getGlobalBounds().height), sf::Vector2f(txMOption.getGlobalBounds().width, txMOption.getGlobalBounds().height))) {
-				bOption = false;
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOpe.x, posMOpe.y + txMOpe.getGlobalBounds().height), sf::Vector2f(txMOpe.getGlobalBounds().width, txMOpe.getGlobalBounds().height))) {
-				_window.ToggleFullscreen();
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOmoinSon.x, posMOmoinSon.y + 30), sf::Vector2f(txMOmoinSon.getGlobalBounds().width, txMOmoinSon.getGlobalBounds().height)) && music::GetVolumeSon() > 0) {
-				music::AddVolumeSon(-5);
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOplusSon.x, posMOplusSon.y + txMOplusSon.getGlobalBounds().height), sf::Vector2f(txMOplusSon.getGlobalBounds().width, txMOplusSon.getGlobalBounds().height)) && music::GetVolumeSon() < 100) {
-				music::AddVolumeSon(5);
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOmoinMus.x, posMOmoinMus.y + 30), sf::Vector2f(txMOmoinMus.getGlobalBounds().width, txMOmoinMus.getGlobalBounds().height)) && music::GetVolumeMusique() > 0) {
-				music::AddVolumeMusique(-5);
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOplusMus.x, posMOplusMus.y + txMOplusMus.getGlobalBounds().height), sf::Vector2f(txMOplusMus.getGlobalBounds().width, txMOplusMus.getGlobalBounds().height)) && music::GetVolumeMusique() < 100) {
-				music::AddVolumeMusique(5);
-				fClickMenu = 0.0f;
-			}
-			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOlangue.x, posMOlangue.y + txMOlangue.getGlobalBounds().height), sf::Vector2f(txMOlangue.getGlobalBounds().width, txMOlangue.getGlobalBounds().height))) {
-				if (tools::GetTrad() == 0) {
-					tools::SetTrad(1);
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOption.x, posMOption.y + txMOption.getGlobalBounds().height), sf::Vector2f(txMOption.getGlobalBounds().width, txMOption.getGlobalBounds().height))) {
+					bOption = false;
+					fClickMenu = 0.0f;
 				}
-				else if (tools::GetTrad() == 1) {
-					tools::SetTrad(0);
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOaide.x, posMOaide.y + txMOaide.getGlobalBounds().height), sf::Vector2f(txMOaide.getGlobalBounds().width, txMOaide.getGlobalBounds().height))) {
+					bAide = true;
+					fClickMenu = 0.0f;
 				}
-				fClickMenu = 0.0f;
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOpe.x, posMOpe.y + txMOpe.getGlobalBounds().height), sf::Vector2f(txMOpe.getGlobalBounds().width, txMOpe.getGlobalBounds().height))) {
+					_window.ToggleFullscreen();
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOmoinSon.x, posMOmoinSon.y + 30), sf::Vector2f(txMOmoinSon.getGlobalBounds().width, txMOmoinSon.getGlobalBounds().height)) && music::GetVolumeSon() > 0) {
+					music::AddVolumeSon(-5);
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOplusSon.x, posMOplusSon.y + txMOplusSon.getGlobalBounds().height), sf::Vector2f(txMOplusSon.getGlobalBounds().width, txMOplusSon.getGlobalBounds().height)) && music::GetVolumeSon() < 100) {
+					music::AddVolumeSon(5);
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOmoinMus.x, posMOmoinMus.y + 30), sf::Vector2f(txMOmoinMus.getGlobalBounds().width, txMOmoinMus.getGlobalBounds().height)) && music::GetVolumeMusique() > 0) {
+					music::AddVolumeMusique(-5);
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOplusMus.x, posMOplusMus.y + txMOplusMus.getGlobalBounds().height), sf::Vector2f(txMOplusMus.getGlobalBounds().width, txMOplusMus.getGlobalBounds().height)) && music::GetVolumeMusique() < 100) {
+					music::AddVolumeMusique(5);
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOlangue.x, posMOlangue.y + txMOlangue.getGlobalBounds().height), sf::Vector2f(txMOlangue.getGlobalBounds().width, txMOlangue.getGlobalBounds().height))) {
+					if (tools::GetTrad() == 0) {
+						tools::SetTrad(1);
+					}
+					else if (tools::GetTrad() == 1) {
+						tools::SetTrad(0);
+					}
+					fClickMenu = 0.0f;
+				}
+			}
+			else {
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posMOaide.x, posMOaide.y + txMOaide.getGlobalBounds().height), sf::Vector2f(txMOaide.getGlobalBounds().width, txMOaide.getGlobalBounds().height))) {
+					bAide = false;
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAideCombat.x, posAideCombat.y + txAideCombat.getGlobalBounds().height), sf::Vector2f(txAideCombat.getGlobalBounds().width, txAideCombat.getGlobalBounds().height))) {
+					iAide = 1;
+					fClickMenu = 0.0f;
+				}
+				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posAideDir.x, posAideDir.y + txAideDir.getGlobalBounds().height), sf::Vector2f(txAideDir.getGlobalBounds().width, txAideDir.getGlobalBounds().height))) {
+					iAide = 2;
+					fClickMenu = 0.0f;
+				}
 			}
 		}
 	}
@@ -243,6 +293,8 @@ void Menu::update(myWindow& _window) {
 		}
 	}
 
+	tools::ChoixLangue(tools::GetTrad(), txAideCombat, "Aide combat", "Help fight");
+	tools::ChoixLangue(tools::GetTrad(), txAideDir, "Aide direction", "Help direction");
 	tools::ChoixLangue(tools::GetTrad(), txMTitre, "Cite de l'haricot geant", "City Of Giant Bean");
 	tools::ChoixLangue(tools::GetTrad(), txMNew, "Nouvelle partie", "New Game");
 	tools::ChoixLangue(tools::GetTrad(), txMCharge, "Charger la partie", "Charge game");
@@ -290,6 +342,22 @@ void Menu::draw(myWindow& _window) {
 		_window.Draw(txMOpe);
 		_window.Draw(txMOaide);
 		_window.Draw(txMOlangue);
+		if (bAide == true) {
+			_window.Draw(txAideCombat);
+			_window.Draw(txAideDir);
+			if (iAide == 1) {
+				if (tools::GetTrad() == 0)
+					_window.Draw(spAideCom);
+				if (tools::GetTrad() == 1)
+					_window.Draw(spAideComEn);
+			}
+			if (iAide == 2) {
+				if (tools::GetTrad() == 0)
+					_window.Draw(spAideDir);
+				if (tools::GetTrad() == 1)
+				_window.Draw(spAideDirEn);
+			}
+		}
 	}
 }
 
