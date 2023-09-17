@@ -4,15 +4,13 @@ extern std::string NomElement;
 extern std::string NomJob;
 
 Personnage::Personnage(){
-	name = "Voyageur";
+	name = save::getpseudo1();
 	NomElement = "None";
 	element = None;
 	niveau = 1;
 	pv = 2000;
 	defense = 100;
 	attaque = 200;
-	argent = 100000;
-	Totargent = argent;
 	mana = 20;
 	endurance = 50; // /100
 	vitesse = 15; // /100

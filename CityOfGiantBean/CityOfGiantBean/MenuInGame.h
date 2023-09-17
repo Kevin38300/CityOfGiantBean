@@ -14,7 +14,7 @@ class MenuGame {
 	std::string description, stQteInv, stEquipeOuNon ;
 	std::string descriptionEn, stEquipeOuNonEn ;
 
-	sf::Text sMGinventaire, sMGchoixEquipe, sMGoption, txDescriptionInv, txDesOption, txProfil, txAide, txQuete, txRetour, txAvatar, txInfoProfil;
+	sf::Text sMGinventaire, sMGchoixEquipe, sMGoption, txDescriptionInv, txDesOption, txProfil, txAide, txQuete, txRetour, txAvatar, txInfoProfil, txQuit;
 
 	sf::Font fMG;
 
@@ -22,7 +22,7 @@ class MenuGame {
 
 	sf::RectangleShape rInv, rOption, rsChoixAvatar;
 
-	sf::Vector2f pInvBase, pOption, posRsAvatar{ AjustResoX * 300, AjustResoY * 202.5f }, posDesOption, posProfil, posAide, posQuete, posRetour, posAvatar, posAvatarP{ AjustResoX * 75, AjustResoY * 60 };
+	sf::Vector2f pInvBase, pOption, posRsAvatar{ AjustResoX * 300, AjustResoY * 202.5f }, posDesOption, posProfil, posAide, posQuete, posRetour, posQuit, posAvatar, posAvatarP{ AjustResoX * 75, AjustResoY * 60 };
 
 	bool bProfil{ false }, bAide{ false }, bAvatar{ false }, bQuete{ false }, BAva[7]{ false };
 	sf::IntRect rectAvatar{ 450,0,50,50 };
@@ -39,11 +39,14 @@ public:
 		tmgInventaire.loadFromFile("..\\Ressources\\Textures\\MENU\\Inventaire.png");
 		smgInv.setTexture(tmgInventaire);
 		smgInv.setPosition(sf::Vector2f(AjustResoX * 207, AjustResoY * 102));
+		smgInv.setScale(AjustReso * 1, AjustReso * 1);
 
 		ttAvatar.loadFromFile("..\\Ressources\\Textures\\Logo\\AvatarProfil.png");
 		spAvatarFull.setTexture(ttAvatar);
 		spAvatar.setTexture(ttAvatar);
 		spAvatarFull.setPosition(sf::Vector2f(AjustResoX * 300, AjustResoY * 200));
+		spAvatar.setScale(AjustReso * 1, AjustReso * 1);
+		spAvatarFull.setScale(AjustReso * 1, AjustReso * 1);
 
 		fMG.loadFromFile("../Ressources/Fonts/Typewriter.ttf");
 
@@ -118,6 +121,11 @@ public:
 		posRetour = { AjustResoX * 200,AjustResoY * 350 };
 		txRetour.setPosition(posRetour);
 		txRetour.setFillColor(sf::Color::Black);
+		tools::ChoixLangue(tools::GetTrad(), txQuit, "Quitter le jeu", "Exit game");
+		txQuit.setFont(fMG);
+		posQuit = { AjustResoX * 200,AjustResoY * 400 };
+		txQuit.setPosition(posQuit);
+		txQuit.setFillColor(sf::Color::Black);
 	};
 
 	void UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueur, Safarie& safari);

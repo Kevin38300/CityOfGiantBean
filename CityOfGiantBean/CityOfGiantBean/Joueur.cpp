@@ -1,5 +1,9 @@
 #include "Joueur.h"
 #include "Villagois.h"
+#include "Assassin.h"
+#include "Clerc.h"
+#include "Guerrier.h"
+#include "Magicien.h"
 
 
 extern int classeDisplay;
@@ -28,9 +32,122 @@ void Joueur::initPerso() {
 	persoFrameY = 2;
 	element = None;
 	SetJob(villagois);
-
+	name = save::getpseudo1();
+	
 	SonG_LvlUpBuff.loadFromFile("..\\Ressources\\Audio\\LvlUp.wav");
 	SonG_LvlUp.setBuffer(SonG_LvlUpBuff);
+
+	SetTotArgent(20000);
+
+	if (save::GetNew() == false){
+		name = save::getpseudo1();
+		SetTotArgent(save::getArgent());
+		Experience(save::getXp());
+
+		switch (save::getElement())
+		{
+		case 1:
+			SetElement(Personnage::Feu);
+			break;
+		case 2:
+			SetElement(Personnage::Vent);
+			break;
+		case 3:
+			SetElement(Personnage::Terre);
+			break;
+		case 4:
+			SetElement(Personnage::Eau);
+			break;
+		case 5:
+			SetElement(Personnage::None);
+			break;
+		default:
+			break;
+		}
+
+		EpeeBuy = save::getNbEpee();
+		LanceBuy = save::getNbLance();
+		BatonBuy = save::getNbBague();
+
+		LourdBuy = save::getNbLourd();
+		LegerBuy = save::getNbLeger();
+		BouclierBuy = save::getNbBouclier();
+
+		soinPvEquipe = save::getNbPotionPv();
+		SoinManaBuy = save::getNbPotionMana();
+		BombeBuy = save::getNbBombe();
+		iPotionMy = save::getNbPotionMy();
+
+
+		if (save::getSkill1() == 1) {
+			SKILL[0] == true;
+		}
+		if (save::getSkill2() == 1) {
+			SKILL[1] == true;
+		}
+		else if (save::getSkill2() == 2) {
+			SKILL[2] == true;
+		}
+		if (save::getSkill3() == 1) {
+			SKILL[3] == true;
+		}
+		else if (save::getSkill3() == 2) {
+			SKILL[4] == true;
+		}
+		else if (save::getSkill3() == 3) {
+			SKILL[5] == true;
+		}
+		else if (save::getSkill3() == 4) {
+			SKILL[6] == true;
+		}
+		if (save::getSkill4() == 1) {
+			SKILL[7] == true;
+		}
+		else if (save::getSkill4() == 2) {
+			SKILL[8] == true;
+		}
+		SetSkillPoint(save::getSkillpoint());
+
+		iCatchGob = save::getCatchGob();
+		iCatchLoup = save::getCatchLoup();
+		iCatchOurs = save::getCatchOurs();
+		iCatchOrc = save::getCatchOrc();
+		iCatchGobOurs = save::getCatchGobOurs();
+		iCatchGobLoup = save::getCatchGobLoup();
+		iCatchOursOrc = save::getCatchOursOrc();
+		iCatchLouRoc = save::getCatchLoupRoc();
+
+		NbMonstreBattu = save::getNbMonstreBattu();
+		NbEnnemiBattu = save::getNbEnnemiBattu();
+		NbMonstreCapture = save::getNbMonstreCatch();
+		NbPersoBattu = save::getNbPersoBattu();
+
+		NbGob = save::getNbGob();
+		NbLoup = save::getNbLoup();
+		NbOurs = save::getNbOurs();
+		NbOrc = save::getNbOrc();
+
+		NbMag = save::getNbMag();
+		NbGuer = save::getNbGuer();
+		NbAss = save::getNbAss();
+		NbClerc = save::getNbClerc();
+
+		iChgElem = save::getChgElement();
+		iChgClasse = save::getChgClass();
+
+		iAchat = save::getIAchat();
+		iFabrique = save::getIFabrique();
+		iBossAv = save::getIBossAv();
+
+
+		SetLootCuivre(save::getcuivre());
+		SetLootCuire(save::getcuire());
+		SetLootFer(save::getfer());
+		SetLootFourrure(save::getFourrure());
+
+		SetFillet(save::getfillet());
+		SetSuperFillet(save::getsuperfillet());
+	}
 }
 
 float Joueur::ChoixElement(Elements _elementAtk, Elements _elementDef) {

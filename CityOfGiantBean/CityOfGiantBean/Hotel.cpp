@@ -205,9 +205,9 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 			bPNJBase = true;
 			stBasePNJ = ("Bonjour, bienvenu au bureau des quetes.");
 			stBasePNJEn = ("Hello, welcome to the quest office.");
-			stReponseBase = ("1: Bonjour, montrez moi ce que vous avez.");
-			stReponseBaseEn = ("1: Hello, show me what you have.");
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad1)) {
+			stReponseBase = ("(Espace) Bonjour, montrez moi ce que vous avez.");
+			stReponseBaseEn = ("(Space) Hello, show me what you have.");
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				_modeGame = ModeGame::QUETE;
 			}
 		}
@@ -215,9 +215,9 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 			bPNJBase = true;
 			stBasePNJ = ("Bonjour, je suis le maitre des competences, puis-je vous aider ?\n\n\nR : reset des skill (les skillpoint utiliser seront perdu) ");
 			stBasePNJEn = ("Hello, I am the master of skills, can I help you ?\n\n\nR : Skill reset (SkillPoint use will be lost) ");
-			stReponseBase = ("1: Bonjour, que pouvez vous m'enseigner ?");
-			stReponseBaseEn = ("1: Hello, what can you teach me ?");
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad1)) {
+			stReponseBase = ("(Espace) Bonjour, que pouvez vous m'enseigner ?");
+			stReponseBaseEn = ("(Space) Hello, what can you teach me ?");
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				_modeGame = ModeGame::SKILL_TREE;
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && timerState > 0.3f ) {
@@ -542,6 +542,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 									stInfoValidEn = { "" };
 									_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 									_perso1.SKILL[8] = true;
+									save::setSkill4(2);
 								}
 								else {
 									stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -582,6 +583,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 								if (_perso1.SKILL[0] == true) {
 									_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 									_perso1.SKILL[2] = true;
+									save::setSkill2(2);
 								}
 								else {
 									stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -623,6 +625,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 							_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 							if (save::getTutoNb() == 6)
 								save::setTutoNb(7);
+							save::setSkill1(1);
 							_perso1.SKILL[0] = true;
 						}
 						else {
@@ -656,6 +659,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 								if (_perso1.SKILL[0] == true) {
 									_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 									_perso1.SKILL[1] = true;
+									save::setSkill2(1);
 								}
 								else {
 									stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -698,6 +702,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 									stInfoValidEn = { "" };
 									_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 									_perso1.SKILL[7] = true;
+									save::setSkill4(1);
 								}
 								else {
 									stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -751,6 +756,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 											stInfoValidEn = { "" };
 											_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 											_perso1.SKILL[5] = true;
+											save::setSkill3(3);
 										}
 										else {
 											stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -799,6 +805,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 											stInfoValidEn = { "" };
 											_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 											_perso1.SKILL[3] = true;
+											save::setSkill3(1);
 										}
 										else {
 											stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -846,6 +853,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 											stInfoValidEn = { "" };
 											_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 											_perso1.SKILL[6] = true;
+											save::setSkill3(4);
 										}
 										else {
 											stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -895,6 +903,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 											stInfoValidEn = { "" };
 											_perso1.SetSkillPoint(_perso1.GetSkillPoint() - 1);
 											_perso1.SKILL[4] = true;
+											save::setSkill3(2);
 										}
 										else {
 											stInfoValid = { "\nVous n'avez pas le skill precedent" };
@@ -1379,6 +1388,12 @@ void Hotel::ResetSkill(Joueur& _perso1) {
 	_perso1.SKILL[6] = false;
 	_perso1.SKILL[7] = false;
 	_perso1.SKILL[8] = false;
+
+
+	save::setSkill1(0);
+	save::setSkill2(0);
+	save::setSkill3(0);
+	save::setSkill4(0);
 }
 
 void Hotel::ChoixActionPNJ1() {
@@ -1469,7 +1484,7 @@ void Hotel::ChoixActionPNJ1() {
 		stReponseBase = ("Comment allez-vous?");
 		stReponseBaseEn = ("How are you?");
 		stBasePNJ = ("Non ca va pas.");
-		stBasePNJ = ("No it's not okay.");
+		stBasePNJEn = ("No it's not okay.");
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			bChoixAction2 = true;
 			stBasePNJ = "";

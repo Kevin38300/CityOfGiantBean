@@ -10,6 +10,11 @@
 #include "Hotel.h"
 #include "Aventure.h"
 #include "Tuto.h"
+#include "Save.h"
+#include "Assassin.h"
+#include "Clerc.h"
+#include "Guerrier.h"
+#include "Magicien.h"
 
 Game::Game() {
 }
@@ -41,19 +46,28 @@ void Game::init(myWindow& _window) {
 	_cyan = sf::Color::Cyan;
 	_transparent = sf::Color(0.0, 0.0, 0.0, 0.0);
 
-	initTuto();
 	initCarte();
 	persos.push_back(&persoMain);
 	persoMain.initPerso();
 	//persoMain.SetJob(villagois);
 	initFontaine();
-	initTaverne();
-	initBoutique();
+	initTaverne(persoMain);
+	initBoutique(persoMain);
 	alchimie.initAlchimie();
 	menuGame.InitMenuGame();
 	safarie.initSafari();
 	hotel.initHotel();
 	aventure.initEnnemi();
+
+	if (save::GetNew() == true) {
+		initTuto();
+	}
+	else if (save::GetNew() == false) {
+
+		aventure.iZoneAv = save::getNivAventure();
+		safarie.iZonzSafari = save::getNivSafarie();
+	}
+
 
 	SonG_wooshBuff.loadFromFile("..\\Ressources\\Audio\\Whoosh3.wav");
 	SonG_woosh.setBuffer(SonG_wooshBuff);
@@ -191,6 +205,17 @@ void Game::update(myWindow& _window) {
 }
 
 void Game::updateEvent(myWindow& _window) {
+
+	if (_window.GetEvent().type == sf::Event::Closed)
+	{
+		initSave();
+		Sauvegarde::SaveGame(save::getpseudo1(), save::getSexe(), save::getMap(), save::getAventure(), save::getShop(), save::getMode(), save::getClasse(), save::getElement(), save::getNiveau(), save::getNbEpee(), save::getNbLance(), save::getNbBague(), save::getNbLourd(), save::getNbLeger(),
+			save::getNbBouclier(), save::getNbPotionPv(), save::getNbPotionMana(), save::getNbBombe(), save::getNbPotionMy(), save::getArmeEquipe(), save::getArmureEquipe(), save::getSkill1(), save::getSkill2(), save::getSkill3(), save::getSkill4(), save::getXp(), save::getSkillpoint(),
+			save::getCatchGob(), save::getCatchLoup(), save::getCatchOurs(), save::getCatchOrc(), save::getCatchGobOurs(), save::getCatchGobLoup(), save::getCatchOursOrc(), save::getCatchLoupRoc(), save::getNbMonstreBattu(), save::getNbEnnemiBattu(), save::getNbMonstreCatch(), save::getNbGob(),
+			save::getNbLoup(), save::getNbOurs(), save::getNbOrc(), save::getNbPersoBattu(), save::getNbMag(), save::getNbGuer(), save::getNbAss(), save::getNbClerc(), save::getChgElement(), save::getChgClass(), save::getIAchat(), save::getIFabrique(), save::getIBossAv(), save::getNivAventure(),
+			save::getNivSafarie(), save::getcuivre(), save::getcuire(), save::getfer(), save::getFourrure(), save::getfillet(), save::getsuperfillet(), save::getArgent());
+	}
+
 }
 
 void Game::draw(myWindow& _window) {
@@ -240,4 +265,123 @@ void Game::draw(myWindow& _window) {
 }
 
 void Game::destroy() {
+}
+
+void Game::initSave() {
+	if (mapGame == MapGame::RDC)
+		save::setMap(1);
+	if (mapGame == MapGame::SAFARIE)
+		save::setMap(2);
+	if (mapGame == MapGame::MONTE)
+		save::setMap(3);
+	if (mapGame == MapGame::AVENTURE)
+		save::setMap(4);
+	if (mapGame == MapGame::SHOP)
+		save::setMap(5);
+
+	if (aventureGame == AventureGame::ZONE_MAGE)
+		save::setAventure(1);
+	if (aventureGame == AventureGame::ZONE_GUERRIER)
+		save::setAventure(2);
+	if (aventureGame == AventureGame::ZONE_ASSASSIN)
+		save::setAventure(3);
+	if (aventureGame == AventureGame::ZONE_CLERC)
+		save::setAventure(4);
+	if (aventureGame == AventureGame::AVENTURE)
+		save::setAventure(5);
+	if (aventureGame == AventureGame::NONE)
+		save::setAventure(6);
+
+	if (shopGame == ShopGame::HOTEL)
+		save::setShop(1);
+	if (shopGame == ShopGame::BOUTIQUE)
+		save::setShop(2);
+	if (shopGame == ShopGame::ALCHIMIE)
+		save::setShop(3);
+	if (shopGame == ShopGame::FONTAINE)
+		save::setShop(4);
+	if (shopGame == ShopGame::TAVERNE)
+		save::setShop(5);
+	if (shopGame == ShopGame::NONE)
+		save::setShop(6);
+
+	if (modeGame == ModeGame::LIBRE)
+		save::setMode(1);
+	if (modeGame == ModeGame::AVE)
+		save::setMode(2);
+	if (modeGame == ModeGame::LOOT)
+		save::setMode(3);
+	if (modeGame == ModeGame::SKILL_TREE)
+		save::setMode(4);
+	if (modeGame == ModeGame::QUETE)
+		save::setMode(5);
+	if (modeGame == ModeGame::FORGE)
+		save::setMode(6);
+	if (modeGame == ModeGame::CHASSE)
+		save::setMode(7);
+	if (modeGame == ModeGame::DUEL)
+		save::setMode(8);
+	if (modeGame == ModeGame::MENU)
+		save::setMode(9);
+	if (modeGame == ModeGame::TUTO)
+		save::setMode(10);
+
+	save::setNiveau(persoMain.GetNiveau());
+	save::setNbEpee(persoMain.EpeeBuy);
+	save::setNbLance(persoMain.LanceBuy);
+	save::setNbBague(persoMain.BatonBuy);
+	save::setNbLourd(persoMain.LourdBuy);
+	save::setNbLeger(persoMain.LegerBuy);
+	save::setNbBouclier(persoMain.BouclierBuy);
+	save::setNbPotionPv(persoMain.SoinPvBuy);
+	save::setNbPotionMana(persoMain.SoinManaBuy);
+	save::setNbBombe(persoMain.BombeBuy);
+	save::setNbPotionMy(persoMain.iPotionMy);
+
+	save::setXp(persoMain.exp);
+	save::setSkillpoint(persoMain.GetSkillPoint());
+
+	save::setCatchGob(persoMain.iCatchGob);
+	save::setCatchLoup(persoMain.iCatchLoup);
+	save::setCatchOurs(persoMain.iCatchOurs);
+	save::setCatchOrc(persoMain.iCatchOrc);
+	save::setCatchGobOurs(persoMain.iCatchGobOurs);
+	save::setCatchGobLoup(persoMain.iCatchGobLoup);
+	save::setCatchOursOrc(persoMain.iCatchOursOrc);
+	save::setCatchLoupRoc(persoMain.iCatchLouRoc);
+
+	save::setNbMonstreBattu(persoMain.NbMonstreBattu);
+	save::setNbEnnemiBattu(persoMain.NbEnnemiBattu);
+	save::setNbMonstreCatch(persoMain.NbMonstreCapture);
+
+	save::setNbGob(persoMain.NbGob);
+	save::setNbLoup(persoMain.NbLoup);
+	save::setNbOurs(persoMain.NbOurs);
+	save::setNbOrc(persoMain.NbOrc);
+
+	save::setNbPersoBattu(persoMain.NbPersoBattu);
+
+	save::setNbMag(persoMain.NbMag);
+	save::setNbGuer(persoMain.NbGuer);
+	save::setNbAss(persoMain.NbAss);
+	save::setNbClerc(persoMain.NbClerc);
+
+	save::setChgElement(persoMain.iChgElem);
+	save::setChgClass(persoMain.iChgClasse);
+
+	save::setIAchat(persoMain.iAchat);
+	save::setIFabrique(persoMain.iFabrique);
+	save::setIBossAv(persoMain.iBossAv);
+	save::setNivAventure(aventure.iZoneAv);
+	save::setNivSafarie(safarie.iZonzSafari);
+
+	save::setcuivre(persoMain.GetLootCuivre());
+	save::setcuire(persoMain.GetLootCuire());
+	save::setfer(persoMain.GetLootFer());
+	save::setFourrure(persoMain.GetLootFourrure());
+
+	save::setfillet(persoMain.GetFillet());
+	save::setsuperfillet(persoMain.GetSuperFillet());
+
+	save::setArgent(persoMain.GetTotArgent());
 }

@@ -242,11 +242,11 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && fClickMenu > 0.3f)
-	{
-		std::cout << posSouris.x << " && " << posSouris.y << std::endl;
-		fClickMenu = 0.0f;
-	}
+	//if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && fClickMenu > 0.3f)
+	//{
+	//	std::cout << posSouris.x << " && " << posSouris.y << std::endl;
+	//	fClickMenu = 0.0f;
+	//}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f)
 	{
 		if (_map == MapGame::RDC) {

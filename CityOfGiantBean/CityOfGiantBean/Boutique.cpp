@@ -108,11 +108,11 @@ void loadBoutique() {
 	}
 }
 
-void initBoutique() {
+void initBoutique(Joueur& _perso1) {
 
 
-	ShopPNJsize = { AjustResoX *  60, AjustResoY * 40 };
-	ShopPNJpos = { AjustResoX * 937, AjustResoY * 540};
+	ShopPNJsize = { AjustResoX * 60, AjustResoY * 40 };
+	ShopPNJpos = { AjustResoX * 937, AjustResoY * 540 };
 	ShopPNJshape.setSize(ShopPNJsize);
 	ShopPNJshape.setPosition(ShopPNJpos);
 	ShopPNJshape.setFillColor(sf::Color::Red);
@@ -124,13 +124,13 @@ void initBoutique() {
 	ShopEpeeShape.setFillColor(sf::Color::Red);
 
 	ShopLanceSize = { AjustResoX * 65, AjustResoY * 45 };
-	ShopLancePos = { AjustResoX * 1540, AjustResoY * 524};
+	ShopLancePos = { AjustResoX * 1540, AjustResoY * 524 };
 	ShopLanceShape.setSize(ShopLanceSize);
 	ShopLanceShape.setPosition(ShopLancePos);
 	ShopLanceShape.setFillColor(sf::Color::Cyan);
 
 	ShopBatonSize = { AjustResoX * 60, AjustResoY * 45 };
-	ShopBatonPos = { AjustResoX * 1637, AjustResoY * 522};
+	ShopBatonPos = { AjustResoX * 1637, AjustResoY * 522 };
 	ShopBatonShape.setSize(ShopBatonSize);
 	ShopBatonShape.setPosition(ShopBatonPos);
 	ShopBatonShape.setFillColor(sf::Color::Yellow);
@@ -148,19 +148,19 @@ void initBoutique() {
 	ShopLourdShape.setFillColor(sf::Color::Cyan);
 
 	ShopLegerSize = { AjustResoX * 60, AjustResoY * 45 };
-	ShopLegerPos = { AjustResoX * 1095, AjustResoY * 521};
+	ShopLegerPos = { AjustResoX * 1095, AjustResoY * 521 };
 	ShopLegerShape.setSize(ShopLegerSize);
 	ShopLegerShape.setPosition(ShopLegerPos);
 	ShopLegerShape.setFillColor(sf::Color::Yellow);
 
 	ShopPotionPVSize = { AjustResoX * 60, AjustResoY * 45 };
-	ShopPotionPVPos = { AjustResoX * 374, AjustResoY * 516};
+	ShopPotionPVPos = { AjustResoX * 374, AjustResoY * 516 };
 	ShopPotionPVShape.setSize(ShopPotionPVSize);
 	ShopPotionPVShape.setPosition(ShopPotionPVPos);
 	ShopPotionPVShape.setFillColor(sf::Color::Red);
 
 	ShopPotionMSize = { AjustResoX * 60, AjustResoY * 45 };
-	ShopPotionMPos = { AjustResoX * 453, AjustResoY * 524};
+	ShopPotionMPos = { AjustResoX * 453, AjustResoY * 524 };
 	ShopPotionMShape.setSize(ShopPotionMSize);
 	ShopPotionMShape.setPosition(ShopPotionMPos);
 	ShopPotionMShape.setFillColor(sf::Color::Cyan);
@@ -227,6 +227,66 @@ void initBoutique() {
 	tools::ChoixLangue(tools::GetTrad(), NonTexte, "Non", "No");
 	tools::ChoixLangue(tools::GetTrad(), txVendeur, stVendeur, stVendeurEn);
 	tools::ChoixLangue(tools::GetTrad(), PasArgentShop, PasDArgent, PasDArgentEn);
+
+	if (save::GetNew() == false){
+
+	switch (save::getArmeEquipe())
+	{
+	case 1:
+		_perso1.SetArme(Epee);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armeEquipe = true;
+		_perso1.bEpeeEquip = true;
+		break;
+	case 2:
+		_perso1.SetArme(Lance);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armeEquipe = true;
+		_perso1.bLanceEquip = true;
+		break;
+	case 3:
+		_perso1.SetArme(Baton);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armeEquipe = true;
+		_perso1.bBagueEquip = true;
+		break;
+	case 4:
+		break;
+	default:
+		break;
+	}
+	switch (save::getArmureEquipe())
+	{
+	case 1:
+		_perso1.SetArmure(Leger);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armureEquipe = true;
+		_perso1.bLegerEquip = true;
+		break;
+	case 2:
+		_perso1.SetArmure(Lourd);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armureEquipe = true;
+		_perso1.bLourdEquip = true;
+		break;
+	case 3:
+		_perso1.SetArmure(Bouclier);
+		_perso1.UpdateStatsJob();
+		_perso1.DisplayStat();
+		_perso1.armureEquipe = true;
+		_perso1.bBouclierEquip = true;
+		break;
+	case 4:
+		break;
+	default:
+		break;
+	}
+}
 }
 
 void updateBoutique(myWindow& _window, Joueur& _perso1) {
@@ -455,6 +515,7 @@ void EquipLeger(Joueur& _perso1) {
 			_perso1.armureEquipe = true;
 			_perso1.bLegerEquip = true;
 			_perso1.LegerBuy -= 1;
+			save::setArmureEquipe(1);
 			std::cout << "Vous avez equipe cette Armure " << std::endl;
 		}
 	}
@@ -476,6 +537,7 @@ void EquipLourd(Joueur& _perso1) {
 			_perso1.armureEquipe = true;
 			_perso1.bLourdEquip = true;
 			_perso1.LourdBuy -= 1;
+			save::setArmureEquipe(2);
 			std::cout << "Vous avez equipe cette Armure " << std::endl;
 		}
 	}
@@ -497,6 +559,7 @@ void EquipBouclier(Joueur& _perso1) {
 			_perso1.armureEquipe = true;
 			_perso1.bBouclierEquip = true;
 			_perso1.BouclierBuy -= 1;
+			save::setArmureEquipe(3);
 			std::cout << "Vous avez equipe cette Armure " << std::endl;
 		}
 	}
@@ -518,6 +581,7 @@ void EquipEpee(Joueur& _perso1) {
 			_perso1.armeEquipe = true;
 			_perso1.bEpeeEquip = true;
 			_perso1.EpeeBuy -= 1;
+			save::setArmeEquipe(1);
 			std::cout << "Vous avez equipe cette Arme " << std::endl;
 		}
 	}
@@ -539,6 +603,7 @@ void EquipLance(Joueur& _perso1) {
 			_perso1.armeEquipe = true;
 			_perso1.bLanceEquip = true;
 			_perso1.LanceBuy -= 1;
+			save::setArmeEquipe(2);
 			std::cout << "Vous avez equipe cette Arme " << std::endl;
 		}
 	}
@@ -560,6 +625,7 @@ void EquipBague(Joueur& _perso1) {
 			_perso1.armeEquipe = true;
 			_perso1.bBagueEquip = true;
 			_perso1.BatonBuy -= 1;
+			save::setArmeEquipe(3);
 			std::cout << "Vous avez equipe cette Arme " << std::endl;
 		}
 	}
@@ -580,6 +646,7 @@ void DesEquipLeger(Joueur& _perso1) {
 			_perso1.armureEquipe = false;
 			_perso1.bLegerEquip = false;
 			_perso1.LegerBuy += 1;
+			save::setArmureEquipe(4);
 			std::cout << "Vous avez desequipe cette Armure " << std::endl;
 		}
 }
@@ -596,6 +663,7 @@ void DesEquipLourd(Joueur& _perso1) {
 			_perso1.armureEquipe = false;
 			_perso1.bLourdEquip = false;
 			_perso1.LourdBuy += 1;
+			save::setArmureEquipe(4);
 			std::cout << "Vous avez desequipe cette Armure " << std::endl;
 		}
 }
@@ -612,6 +680,7 @@ void DesEquipBouclier(Joueur& _perso1) {
 			_perso1.armureEquipe = false;
 			_perso1.bBouclierEquip = false;
 			_perso1.BouclierBuy += 1;
+			save::setArmureEquipe(4);
 			std::cout << "Vous avez desequipe cette Armure " << std::endl;
 		}
 }
@@ -628,6 +697,7 @@ void DesEquipEpee(Joueur& _perso1) {
 			_perso1.armeEquipe = false;
 			_perso1.bEpeeEquip = false;
 			_perso1.EpeeBuy += 1;
+			save::setArmeEquipe(4);
 			std::cout << "Vous avez desequipe cette Arme " << std::endl;
 		}
 }
@@ -644,6 +714,7 @@ void DesEquipLance(Joueur& _perso1) {
 			_perso1.armeEquipe = false;
 			_perso1.bLanceEquip = false;
 			_perso1.LanceBuy += 1;
+			save::setArmeEquipe(4);
 			std::cout << "Vous avez desequipe cette Arme " << std::endl;
 		}
 }
@@ -660,6 +731,7 @@ void DesEquipBague(Joueur& _perso1) {
 			_perso1.armeEquipe = false;
 			_perso1.bBagueEquip = false;
 			_perso1.BatonBuy += 1;
+			save::setArmeEquipe(4);
 			std::cout << "Vous avez desequipe cette Arme " << std::endl;
 		}
 }

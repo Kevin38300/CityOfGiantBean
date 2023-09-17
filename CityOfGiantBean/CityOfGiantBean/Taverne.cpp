@@ -50,7 +50,7 @@ sf::Vector2f TavernePNJsize;
 sf::Vector2f TavernePNJpos;
 sf::RectangleShape TavernePNJshape;
 
-void initTaverne() {
+void initTaverne(Joueur& _perso1) {
 
 
 	TavernePNJsize = {AjustResoX * 105,AjustResoY * 80 };
@@ -138,6 +138,32 @@ void initTaverne() {
 	tools::ChoixLangue(tools::GetTrad(), NonTexteT, "Non", "No");
 	tools::ChoixLangue(tools::GetTrad(), txPNJ, stPNJ, stPNJEn);
 
+	if (save::GetNew() == false) {
+		switch (save::getClasse())
+		{
+		case 1:
+			_perso1.SetJob(assassin);
+			classeDisplay = 1;
+			break;
+		case 2:
+			_perso1.SetJob(guerrier);
+			classeDisplay = 3;
+			break;
+		case 3:
+			_perso1.SetJob(clerc);
+			classeDisplay = 2;
+			break;
+		case 4:
+			_perso1.SetJob(magicien);
+			classeDisplay = 4;
+			break;
+		case 5:
+			break;
+		default:
+			break;
+		}
+	}
+
 	boiteDiscussion::initBoiteDiscussion();
 }
 
@@ -176,6 +202,7 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 				ChgJob(_perso1, assassin);
 				if (ChgReussi == 1) {
 					classeDisplay = 1;
+					save::setClasse(1);
 					ChgReussi = 0;
 				}
 				if (ChgReussi == 2) {
@@ -200,6 +227,7 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 				ChgJob(_perso1, guerrier);
 				if (ChgReussi == 1) {
 					classeDisplay = 3;
+					save::setClasse(2);
 					ChgReussi = 0;
 				}
 				if (ChgReussi == 2) {
@@ -224,6 +252,7 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 				ChgJob(_perso1, clerc);
 				if (ChgReussi == 1) {
 					classeDisplay = 2;
+					save::setClasse(3);
 					ChgReussi = 0;
 				}
 				if (ChgReussi == 2) {
@@ -249,6 +278,7 @@ void updateTaverne(myWindow& _window, Joueur& _perso1) {
 				//_perso1.SetRect({ 48,0,16,18 });
 				if (ChgReussi == 1) {
 					classeDisplay = 4;
+					save::setClasse(4);
 					ChgReussi = 0;
 				}
 				if (ChgReussi == 2) {

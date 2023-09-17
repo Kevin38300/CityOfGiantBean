@@ -124,7 +124,8 @@ void updateFontaine(myWindow& _window, Joueur& _perso1) {
 			NomElement = "Feu";
 			NomElementEn = "Fire";
 			ChgElem(_perso1, Personnage::Feu);
-			_perso1.iChgElem += 1;
+			if (ValidReussi == 1)
+				save::setElement(1);
 			ValidF = 0;
 			OuiNonF = 3;
 		}
@@ -140,7 +141,8 @@ void updateFontaine(myWindow& _window, Joueur& _perso1) {
 			NomElement = "Vent";
 			NomElementEn = "Wind";
 			ChgElem(_perso1, Personnage::Vent);
-			_perso1.iChgElem += 1;
+			if (ValidReussi == 1)
+				save::setElement(2);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && OuiNonF == 2) {
 			NonRetourFontaine();
@@ -154,7 +156,8 @@ void updateFontaine(myWindow& _window, Joueur& _perso1) {
 			NomElement = "Terre";
 			NomElementEn = "Earth";
 			ChgElem(_perso1, Personnage::Terre);
-			_perso1.iChgElem += 1;
+			if (ValidReussi == 1)
+				save::setElement(3);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && OuiNonF == 2) {
 			NonRetourFontaine();
@@ -168,7 +171,8 @@ void updateFontaine(myWindow& _window, Joueur& _perso1) {
 			NomElement = "Eau";
 			NomElementEn = "Water";
 			ChgElem(_perso1, Personnage::Eau);
-			_perso1.iChgElem += 1;
+			if (ValidReussi == 1)
+				save::setElement(4);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && OuiNonF == 2) {
 			NonRetourFontaine();
@@ -183,6 +187,7 @@ void ChgElem(Joueur& _perso1, Personnage::Elements _element) {
 	if (_perso1.GetTotArgent() >= 5000) {
 		_perso1.SetTotArgent(_perso1.GetTotArgent() - 5000);
 		_perso1.SetElement(_element);
+		_perso1.iChgElem += 1;
 		tools::ChoixLangue(tools::GetTrad(), ObtenuElementTexte, "Vous avez change d'element\nVous avez l'element " + NomElement, "You have changed element\nYou have the element" + NomElementEn);
 		tools::ChoixLangue(tools::GetTrad(), ArgentRestant, "\n\nOr restant : " + std::to_string((int)_perso1.GetTotArgent()), "\n\nGold remaining " + std::to_string((int)_perso1.GetTotArgent()));
 		//_perso1.DisplayStat();

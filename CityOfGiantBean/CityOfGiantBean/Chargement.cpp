@@ -110,6 +110,21 @@ void Chargement::init(myWindow& _window) {
 	}
 	if (stateChargement == StateChargement::CONTINU) {
 
+		Sauvegarde::LoadGame();
+		txNewVerif.setFont(fontMenu);
+		txNewVerif.setFillColor(_black);
+		txNewVerif.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
+		txNewVerif.setCharacterSize(50);
+
+		txNewVerifOui.setFont(fontMenu);
+		txNewVerifOui.setFillColor(_red);
+		txNewVerifOui.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
+		txNewVerifOui.setCharacterSize(50);
+
+		txNewVerifNon.setFont(fontMenu);
+		txNewVerifNon.setFillColor(_red);
+		txNewVerifNon.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
+		txNewVerifNon.setCharacterSize(50);
 	}
 	boiteDiscussion::initBoiteDiscussion();
 }
@@ -127,7 +142,7 @@ void Chargement::update(myWindow& _window) {
 		if (bTextEnter) {
 			txNewPseudo.setCharacterSize(75);
 			posNewPseudo = sf::Vector2f(AjustResoX * 100.0f, AjustResoY * 275.0f);
-			tools::ChoixLangue(tools::GetTrad(), txEntrePseudo, "Veuillez entrer votre pseudo\npuis valide en cliquant sur pseudo","Please enter your pseudo\nthen validate by clicking on pseudo");
+			tools::ChoixLangue(tools::GetTrad(), txEntrePseudo, "Veuillez entrer votre pseudo\npuis valide en cliquant sur pseudo", "Please enter your pseudo\nthen validate by clicking on pseudo");
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewPseudo.x, posNewPseudo.y + txNewPseudo.getGlobalBounds().height), sf::Vector2f(txNewPseudo.getGlobalBounds().width, txNewPseudo.getGlobalBounds().height))) {
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -211,7 +226,7 @@ void Chargement::update(myWindow& _window) {
 			bValid = true;
 		}
 		posNewTxVerifOui = sf::Vector2f(posNewTxVerif.x + txNewVerifOui.getGlobalBounds().width + txNewVerif.getGlobalBounds().width, posNewTxVerif.y);
-		posNewTxVerifNon = sf::Vector2f(posNewTxVerif.x + txNewVerifNon.getGlobalBounds().width *3+ txNewVerif.getGlobalBounds().width, posNewTxVerif.y);
+		posNewTxVerifNon = sf::Vector2f(posNewTxVerif.x + txNewVerifNon.getGlobalBounds().width * 3 + txNewVerif.getGlobalBounds().width, posNewTxVerif.y);
 		if (bValid) {
 			if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(posNewTxVerifOui.x, posNewTxVerifOui.y + txNewVerifOui.getGlobalBounds().height), sf::Vector2f(txNewVerifOui.getGlobalBounds().width, txNewVerifOui.getGlobalBounds().height))) {
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
@@ -220,7 +235,8 @@ void Chargement::update(myWindow& _window) {
 					save::setMap(1);
 					save::setTuto(true);
 					save::setTutoNb(1);
-					Sauvegarde::SaveGame(save::getpseudo1(), save::getSexe(), save::getMap());
+					save::setNewPartie(true);
+					Sauvegarde::SaveGame(save::getpseudo1(), save::getSexe(), save::getMap(), 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 20000);
 					this->stateManager_->TransitionTo(new Game(MapGame::RDC, ModeGame::LIBRE, AventureGame::NONE, ShopGame::NONE, _window), _window);
 					return;
 				}
@@ -238,15 +254,32 @@ void Chargement::update(myWindow& _window) {
 		tools::ChoixLangue(tools::GetTrad(), txNewChoixS, "Choix du Sexe", "Sex Choice");
 		tools::ChoixLangue(tools::GetTrad(), txNewPseudo, "Pseudo : " + stTextEnter, "Pseudo : " + stTextEnter);
 		tools::ChoixLangue(tools::GetTrad(), txNewRetour, "Retour", "Back");
-		tools::ChoixLangue(tools::GetTrad(), txNewVerif, "Voulez vous continuer ?", "nAre you sure you want to continue ?");
+		tools::ChoixLangue(tools::GetTrad(), txNewVerif, "Voulez vous continuer ?", "Are you sure you want to continue ?");
 		tools::ChoixLangue(tools::GetTrad(), txNewVerifOui, "Oui", "Yes");
 		tools::ChoixLangue(tools::GetTrad(), txNewVerifNon, "Non", "No");
 		txNewVerifOui.setPosition(posNewTxVerifOui);
 		txNewVerifNon.setPosition(posNewTxVerifNon);
 	}
 	if (stateChargement == StateChargement::CONTINU) {
-		tools::ChoixLangue(tools::GetTrad(), txMTitre, "Chargement de la partie", "Load Game");
-
+		tools::ChoixLangue(tools::GetTrad(), txMTitre, "Chargement de la partie" , "Load Game");
+		tools::ChoixLangue(tools::GetTrad(), txNewVerif, "Voulez vous continuez la partie de " + save::getpseudo1(), "Do you want to continue the part of " + save::getpseudo1());
+		tools::ChoixLangue(tools::GetTrad(), txNewVerifOui, "Oui", "Yes");
+		tools::ChoixLangue(tools::GetTrad(), txNewVerifNon, "Non", "No");
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(AjustResoX * 600.0f, AjustResoY * 950.0f + txNewVerifOui.getGlobalBounds().height), sf::Vector2f(txNewVerifOui.getGlobalBounds().width, txNewVerifOui.getGlobalBounds().height))) {
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
+				fClickMenu = 0.0f;
+				save::setNewPartie(false);
+				this->stateManager_->TransitionTo(new Game(MapGame::RDC, ModeGame::LIBRE, AventureGame::NONE, ShopGame::NONE, _window), _window);
+				return;
+			}
+		}
+		if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, sf::Vector2f(AjustResoX * 700.0f, AjustResoY * 950.0f + txNewVerifNon.getGlobalBounds().height), sf::Vector2f(txNewVerifNon.getGlobalBounds().width, txNewVerifNon.getGlobalBounds().height))) {
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
+				fClickMenu = 0.0f;
+				this->stateManager_->TransitionTo(new Menu(StateMenu::MENU, _window), _window);
+				return;
+			}
+		}
 	}
 	music::SetVolume(musiqueMenu);
 }
@@ -272,8 +305,8 @@ void Chargement::updateEvent(myWindow& _window) {
 void Chargement::draw(myWindow& _window) {
 	_window.Draw(spMenu);
 	_window.Draw(txMTitre);
+	boiteDiscussion::displayBoiteDiscussion(_window);
 	if (stateChargement == StateChargement::NEW) {
-		boiteDiscussion::displayBoiteDiscussion(_window);
 		_window.Draw(txNewChoixS);
 		_window.Draw(spPersoM);
 		_window.Draw(spPersoF);
@@ -290,6 +323,9 @@ void Chargement::draw(myWindow& _window) {
 		}
 	}
 	if (stateChargement == StateChargement::CONTINU) {
+		_window.Draw(txNewVerif);
+		_window.Draw(txNewVerifOui);
+		_window.Draw(txNewVerifNon);
 
 	}
 }

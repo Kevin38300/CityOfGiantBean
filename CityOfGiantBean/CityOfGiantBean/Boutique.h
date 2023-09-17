@@ -3,7 +3,7 @@
 #include "Joueur.h"
 
 void loadBoutique();
-void initBoutique();
+void initBoutique(Joueur& _perso1);
 void updateBoutique(myWindow& _window, Joueur& _perso1);
 void NonRetourBoutique();
 void validationShop(myWindow& _window);

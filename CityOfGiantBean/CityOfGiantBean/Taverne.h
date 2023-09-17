@@ -2,7 +2,7 @@
 #include "Joueur.h"
 #include "stateManager.h"
 
-void initTaverne();
+void initTaverne(Joueur& _perso1);
 void updateTaverne(myWindow& _window, Joueur& _perso1);
 void displayTaverne(myWindow& _window);
 

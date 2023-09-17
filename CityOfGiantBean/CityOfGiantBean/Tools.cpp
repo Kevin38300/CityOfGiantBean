@@ -9,12 +9,14 @@ std::string windowTitle;
 sf::Vector2u windowSize;
 
 int iLangueTrad, iChoixMusic, iTuto;
-bool bFirstIn, bFirstInM, bDialogue, bTuto;
+bool bFirstIn, bFirstInM, bDialogue, bTuto, bNew;
 float SonVolume, MusicVolume;
 
 std::string stpst1;
 
-int iSaveSexe, iSaveMap;
+int iSaveSexe, iSaveMap, choixSexe, choixMap, choixAve, choixShop, choixMode, classe, element, niveau, NbEpee, NbLance, NbBague, NbLourd, NbLeger, NbBouclier, NbPotioPv, NbPotionMana, NbBombe, NbPotionMy, armeEquipe, armureEquipe, skill1, skill2, skill3,
+skill4, Xp, skillpoint, CatchGob, CatchLoup, CatchOurs, catchOrc, catchGobOurs, catchGobLoup, catchOursorc, catchLoupRoc, NbMonstreBattu, NbEnnemiBattu, NbMonstreCatch, NbGob, NbLoup, NbOurs, NbOrc, NbPersoBattu, NbMag, NbGuer, NbAss, NbClerc, iChgElem,
+iChgClass, iAchat, iFabrique, iBossAv, NivAventure, NivSafarie, Cuivre, cuire, fer, fourrure, fillet, superfillet, argent;
 
 namespace boiteDiscussion
 {
@@ -24,37 +26,43 @@ namespace boiteDiscussion
 	void initBoiteDiscussion() {
 		BoiteDiscussionTexture.loadFromFile("..\\Ressources\\Textures\\dialogbox1.png");
 		BoiteDiscussionSprite.setTexture(BoiteDiscussionTexture);
-		BoiteDiscussionPos = { 0,1080-BoiteDiscussionSprite.getGlobalBounds().height};
+		BoiteDiscussionPos = { 0,1080 - BoiteDiscussionSprite.getGlobalBounds().height };
 		BoiteDiscussionSprite.setPosition(BoiteDiscussionPos);
 	}
 	void displayBoiteDiscussion(myWindow& _window) {
 		_window.Draw(BoiteDiscussionSprite);
 	}
-	bool getBoolDiscu()	{
+	bool getBoolDiscu() {
 		return bDialogue;
 	}
-	void setBoolDiscu(bool _bool)	{
+	void setBoolDiscu(bool _bool) {
 		bDialogue = _bool;
 	}
 }
 namespace save
 {
+	void setNewPartie(bool _True_New__False_Charge) {
+		bNew = _True_New__False_Charge;
+	}
+	bool GetNew() {
+		return bNew;
+	}
 	void setpseudo1(std::string _string) {
 		stpst1 = _string;
 	}
 	std::string getpseudo1() {
 		return stpst1;
 	}
-	void setSexe(int _choixSexe){
+	void setSexe(int _choixSexe) {
 		iSaveSexe = _choixSexe;
 	}
-	int getSexe()	{
+	int getSexe() {
 		return iSaveSexe;
 	}
-	void setMap(int _choixMap)	{
+	void setMap(int _choixMap) {
 		iSaveMap = _choixMap;
 	}
-	int getMap()	{
+	int getMap() {
 		return iSaveMap;
 	}
 	void setTuto(bool _tuto_On_Off) {
@@ -63,11 +71,359 @@ namespace save
 	bool getTuto() {
 		return bTuto;
 	}
-	void setTutoNb(int _tuto_Nb)	{
+	void setTutoNb(int _tuto_Nb) {
 		iTuto = _tuto_Nb;
 	}
-	int getTutoNb()	{
+	int getTutoNb() {
 		return iTuto;
+	}
+	void setAventure(int _choixAve)	{
+		choixAve = _choixAve;
+	}
+	int getAventure() {
+		return choixAve;
+	}
+	void setShop(int _choixShop) {
+		choixShop = _choixShop;
+	}
+	int getShop() {
+		return choixShop;
+	}
+	void setMode(int _choixMode) {
+		choixMode = _choixMode;
+	}
+	int getMode() {
+		return choixMode;
+	}
+	void setClasse(int _classe) {
+		classe = _classe;
+	}
+	int getClasse() {
+		return classe;
+	}
+	void setElement(int _element) {
+		element = _element;
+	}
+	int getElement() {
+		return element;
+	}
+	void setNiveau(int _niveau) {
+		niveau = _niveau;
+	}
+	int getNiveau() {
+		return niveau;
+	}
+	void setNbEpee(int _NbEpee) {
+		NbEpee = _NbEpee;
+	}
+	int getNbEpee() {
+		return NbEpee;
+	}
+	void setNbLance(int _NbLance) {
+		NbLance = _NbLance;
+	}
+	int getNbLance() {
+		return NbLance;
+	}
+	void setNbBague(int _NbBague) {
+		NbBague = _NbBague;
+	}
+	int getNbBague() {
+		return NbBague;
+	}
+	void setNbLourd(int _NbLourd) {
+		NbLourd = _NbLourd;
+	}
+	int getNbLourd() {
+		return NbLourd;
+	}
+	void setNbLeger(int _NbLeger) {
+		NbLeger = _NbLeger;
+	}
+	int getNbLeger() {
+		return NbLeger;
+	}
+	void setNbBouclier(int _NbBouclier) {
+		NbBouclier = _NbBouclier;
+	}
+	int getNbBouclier() {
+		return NbBouclier;
+	}
+	void setNbPotionPv(int _NbPotioPv) {
+		NbPotioPv = _NbPotioPv;
+	}
+	int getNbPotionPv() {
+		return NbPotioPv;
+	}
+	void setNbPotionMana(int _NbPotionMana) {
+		NbPotionMana = _NbPotionMana;
+	}
+	int getNbPotionMana() {
+		return NbPotionMana;
+	}
+	void setNbBombe(int _NbBombe) {
+		NbBombe = _NbBombe;
+	}
+	int getNbBombe() {
+		return NbBombe;
+	}
+	void setNbPotionMy(int _NbPotionMy) {
+		NbPotionMy = _NbPotionMy;
+	}
+	int getNbPotionMy() {
+		return NbPotionMy;
+	}
+	void setArmeEquipe(int _armeEquipe) {
+		armeEquipe = _armeEquipe;
+	}
+	int getArmeEquipe() {
+		return armeEquipe;
+	}
+	void setArmureEquipe(int _armureEquipe) {
+		armureEquipe = _armureEquipe;
+	}
+	int getArmureEquipe() {
+		return armureEquipe;
+	}
+	void setSkill1(int _skill1) {
+		skill1 = _skill1;
+	}
+	int getSkill1() {
+		return skill1;
+	}
+	void setSkill2(int _skill2) {
+		skill2 = _skill2;
+	}
+	int getSkill2() {
+		return skill2;
+	}
+	void setSkill3(int _skill3) {
+		skill3 = _skill3;
+	}
+	int getSkill3() {
+		return skill3;
+	}
+	void setSkill4(int _skill4) {
+		skill4 = _skill4;
+	}
+	int getSkill4() {
+		return skill4;
+	}
+	void setXp(int _Xp) {
+		Xp = _Xp;
+	}
+	int getXp() {
+		return Xp;
+	}
+	void setSkillpoint(int _skillpoint) {
+		skillpoint = _skillpoint;
+	}
+	int getSkillpoint() {
+		return skillpoint;
+	}
+	void setCatchGob(int _CatchGob) {
+		CatchGob = _CatchGob;
+	}
+	int getCatchGob() {
+		return CatchGob;
+	}
+	void setCatchLoup(int _CatchLoup) {
+		CatchLoup = _CatchLoup;
+	}
+	int getCatchLoup() {
+		return CatchLoup;
+	}
+	void setCatchOurs(int _CatchOurs) {
+		CatchOurs = _CatchOurs;
+	}
+	int getCatchOurs() {
+		return CatchOurs;
+	}
+	void setCatchOrc(int _catchOrc) {
+		catchOrc = _catchOrc;
+	}
+	int getCatchOrc() {
+		return catchOrc;
+	}
+	void setCatchGobOurs(int _catchGobOurs) {
+		catchGobOurs = _catchGobOurs;
+	}
+	int getCatchGobOurs() {
+		return catchGobOurs;
+	}
+	void setCatchGobLoup(int _catchGobLoup) {
+		catchGobLoup = _catchGobLoup;
+	}
+	int getCatchGobLoup() {
+		return catchGobLoup;
+	}
+	void setCatchOursOrc(int _catchOursorc) {
+		catchOursorc = _catchOursorc;
+	}
+	int getCatchOursOrc() {
+		return catchOursorc;
+	}
+	void setCatchLoupRoc(int _catchLoupRoc) {
+		catchLoupRoc = _catchLoupRoc;
+	}
+	int getCatchLoupRoc() {
+		return catchLoupRoc;
+	}
+	void setNbMonstreBattu(int _NbMonstreBattu) {
+		NbMonstreBattu = _NbMonstreBattu;
+	}
+	int getNbMonstreBattu() {
+		return NbMonstreBattu;
+	}
+	void setNbEnnemiBattu(int _NbEnnemiBattu) {
+		NbEnnemiBattu = _NbEnnemiBattu;
+	}
+	int getNbEnnemiBattu() {
+		return NbEnnemiBattu;
+	}
+	void setNbMonstreCatch(int _NbMonstreCatch) {
+		NbMonstreCatch = _NbMonstreCatch;
+	}
+	int getNbMonstreCatch() {
+		return NbMonstreCatch;
+	}
+	void setNbGob(int _NbGob) {
+		NbGob = _NbGob;
+	}
+	int getNbGob() {
+		return NbGob;
+	}
+	void setNbLoup(int _NbLoup) {
+		NbLoup = _NbLoup;
+	}
+	int getNbLoup() {
+		return NbLoup;
+	}
+	void setNbOurs(int _NbOurs) {
+		NbOurs = _NbOurs;
+	}
+	int getNbOurs() {
+		return NbOurs;
+	}
+	void setNbOrc(int _NbOrc) {
+		NbOrc = _NbOrc;
+	}
+	int getNbOrc() {
+		return NbOrc;
+	}
+	void setNbPersoBattu(int _NbPersoBattu) {
+		NbPersoBattu = _NbPersoBattu;
+	}
+	int getNbPersoBattu() {
+		return NbPersoBattu;
+	}
+	void setNbMag(int _NbMag) {
+		NbMag = _NbMag;
+	}
+	int getNbMag() {
+		return NbMag;
+	}
+	void setNbGuer(int _NbGuer) {
+		NbGuer = _NbGuer;
+	}
+	int getNbGuer() {
+		return NbGuer;
+	}
+	void setNbAss(int _NbAss) {
+		NbAss = _NbAss;
+	}
+	int getNbAss() {
+		return NbAss;
+	}
+	void setNbClerc(int _NbClerc) {
+		NbClerc = _NbClerc;
+	}
+	int getNbClerc()	{
+		return NbClerc;
+	}
+	void setChgElement(int _iChgElem) {
+		iChgElem = _iChgElem;
+	}
+	int getChgElement() {
+		return iChgElem;
+	}
+	void setChgClass(int _iChgClass) {
+		iChgClass = _iChgClass;
+	}
+	int getChgClass() {
+		return iChgClass;
+	}
+	void setIAchat(int _iAchat) {
+		iAchat = _iAchat;
+	}
+	int getIAchat() {
+		return iAchat;
+	}
+	void setIFabrique(int _iFabrique) {
+		iFabrique = _iFabrique;
+	}
+	int getIFabrique() {
+		return iFabrique;
+	}
+	void setIBossAv(int _iBossAv) {
+		iBossAv = _iBossAv;
+	}
+	int getIBossAv() {
+		return iBossAv;
+	}
+	void setNivAventure(int _NivAventure) {
+		NivAventure = _NivAventure;
+	}
+	int getNivAventure() {
+		return NivAventure;
+	}
+	void setNivSafarie(int _NivSafarie) {
+		NivSafarie = _NivSafarie;
+	}
+	int getNivSafarie() {
+		return NivSafarie;
+	}
+	void setcuivre(int _Cuivre)	{
+		Cuivre = _Cuivre;
+	}
+	int getcuivre()	{
+		return Cuivre;
+	}
+	void setcuire(int _cuire)	{
+		cuire = _cuire;
+	}
+	int getcuire()	{
+		return cuire;
+	}
+	void setfer(int _fer)	{
+		fer = _fer;
+	}
+	int getfer()	{
+		return fer;
+	}
+	void setFourrure(int _fourrure)	{
+		fourrure = _fourrure;
+	}
+	int getFourrure()	{
+		return fourrure;
+	}
+	void setfillet(int _fillet)	{
+		fillet = _fillet;
+	}
+	int getfillet()	{
+		return fillet;
+	}
+	void setsuperfillet(int _superfillet)	{
+		superfillet = _superfillet;
+	}
+	int getsuperfillet()	{
+		return superfillet;
+	}
+	void setArgent(int _argent)	{
+		argent = _argent;
+	}
+	int getArgent()	{
+		return argent;
 	}
 }
 namespace music

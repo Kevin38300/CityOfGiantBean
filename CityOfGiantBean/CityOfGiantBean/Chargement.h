@@ -23,7 +23,7 @@ private:
 
 	sf::Texture ttPersoM, ttPersoF;
 	sf::Sprite spPersoM, spPersoF, spPerso;
-	sf::Text txNewChoixS, txNewPseudo, txNewPseudoVerif, txEntrePseudo, txNewRetour, txNewVerif, txNewVerifOui, txNewVerifNon;
+	sf::Text txNewChoixS, txNewPseudo, txNewPseudoVerif, txEntrePseudo, txNewRetour, txNewVerif, txNewVerifOui, txNewVerifNon, txCharge;
 	sf::Vector2f posNewChoixS, posNewPseudo, posNewRetour, posEntrePseudo, posNewPersoM, posNewPersoF, posNewPersoVerif, posNewPseudoVerif, posNewTxVerif, posNewTxVerifOui, posNewTxVerifNon;
 	int iChoixSexe{ 0 };
 	sf::IntRect persoRect;

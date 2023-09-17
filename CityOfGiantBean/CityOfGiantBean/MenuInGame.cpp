@@ -51,7 +51,7 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 			invDepVerticalOp -= 1;
 			timerState = 0.0f;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && invDepVerticalOp < 4 && timerState > 0.3f) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && invDepVerticalOp < 5 && timerState > 0.3f) {
 			invDepVerticalOp += 1;
 			timerState = 0.0f;
 		}
@@ -89,6 +89,13 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 			pOption = posRetour;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerState > 0.3f) {
 				choixOption = 0;
+				timerState = 0.0f;
+			}
+			break;
+		case 5:
+			pOption = posQuit;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerState > 0.3f) {
+				_window.SetIsDone(true);
 				timerState = 0.0f;
 			}
 			break;
@@ -765,6 +772,7 @@ void MenuGame::DisplayMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joue
 				_window.Draw(txQuete);
 				_window.Draw(txAvatar);
 				_window.Draw(txRetour);
+				_window.Draw(txQuit);
 				_window.Draw(txDesOption);
 				if (choixOption == 1) {
 					_window.Draw(rOption);

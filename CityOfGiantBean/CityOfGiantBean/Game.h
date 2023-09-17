@@ -47,7 +47,6 @@ class MenuGame;
 class Game : public State
 {
 private:
-
 	sf::Texture ttMenu;
 	sf::Sprite spMenu;
 	sf::Vector2f posTitre, posSouris, posJoueur;
@@ -80,6 +79,6 @@ public:
 	void updateEvent(myWindow& _window) override;
 	void draw(myWindow& _window) override;
 	void destroy() override;
-
+	void initSave();
 };
 
