@@ -60,6 +60,12 @@ private:
 
 	sf::Color _white, _black, _green, _red, _transparent, _blue, _cyan;
 
+	sf::SoundBuffer SonG_wooshBuff, SonG_AktPBuff, SonG_AtkMBuff, SonG_PVpBuff, SonG_PVmBuff, SonG_LvlUpBuff;
+
+	sf::Sound SonG_woosh, SonG_AktP, SonG_AtkM, SonG_PVp, SonG_PVm, SonG_LvlUp;
+
+	sf::Music musiqueGame, musiqueCombatAv, musiqueCombatSa, musiqueShop;
+
 	MapGame mapGame;
 	ModeGame modeGame;
 	AventureGame aventureGame;

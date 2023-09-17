@@ -32,6 +32,12 @@ private:
 
 	sf::Color _white, _black, _green, _red, _transparent, _blue, _cyan;
 
+	sf::SoundBuffer SonMenuBuffer;
+
+	sf::Sound SonMenu;
+
+	sf::Music musiqueMenu;
+
 	StateChargement stateChargement;
 public:
 	Chargement();

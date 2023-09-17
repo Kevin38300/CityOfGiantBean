@@ -30,7 +30,7 @@ Consos conso;
 Hotel hotel;
 //Villagois villagois = Villagois();
 
-extern float timerAff ;
+extern float timerAff;
 
 void Game::init(myWindow& _window) {
 	_white = sf::Color::White;
@@ -54,9 +54,64 @@ void Game::init(myWindow& _window) {
 	safarie.initSafari();
 	hotel.initHotel();
 	aventure.initEnnemi();
+
+	SonG_wooshBuff.loadFromFile("..\\Ressources\\Audio\\Whoosh3.wav");
+	SonG_woosh.setBuffer(SonG_wooshBuff);
+	SonG_AktPBuff.loadFromFile("..\\Ressources\\Audio\\AtkP.wav");
+	SonG_AktP.setBuffer(SonG_AktPBuff);
+	SonG_AtkMBuff.loadFromFile("..\\Ressources\\Audio\\AtkM.wav");
+	SonG_AtkM.setBuffer(SonG_AtkMBuff);
+	SonG_PVpBuff.loadFromFile("..\\Ressources\\Audio\\pvP.wav");
+	SonG_PVp.setBuffer(SonG_PVpBuff);
+	SonG_PVmBuff.loadFromFile("..\\Ressources\\Audio\\pvM.wav");
+	SonG_PVm.setBuffer(SonG_PVmBuff);
+	SonG_LvlUpBuff.loadFromFile("..\\Ressources\\Audio\\LvlUp.wav");
+	SonG_LvlUp.setBuffer(SonG_LvlUpBuff);
+
+	tools::SetFirstInM(false);
+	musiqueGame.openFromFile("..\\Ressources\\Audio\\Shop.ogg");
+	musiqueGame.setLoop(true);
+	musiqueCombatAv.openFromFile("..\\Ressources\\Audio\\CombatAv.ogg");
+	musiqueCombatAv.setLoop(true);
+	musiqueCombatSa.openFromFile("..\\Ressources\\Audio\\CombatSa.ogg");
+	musiqueCombatSa.setLoop(true);
+	musiqueShop.openFromFile("..\\Ressources\\Audio\\Libre.ogg");
+	musiqueShop.setLoop(true);
 }
 
 void Game::update(myWindow& _window) {
+
+	if (tools::GetFirstInM() == false) {
+		if (mapGame == MapGame::SHOP) {
+			musiqueGame.stop();
+			musiqueCombatAv.stop();
+			musiqueCombatSa.stop();
+			musiqueShop.play();
+			tools::SetFirstInM(true);
+		}
+		if (mapGame == MapGame::RDC || mapGame == MapGame::MONTE) {
+			musiqueGame.play();
+			musiqueCombatAv.stop();
+			musiqueCombatSa.stop();
+			musiqueShop.stop();
+			tools::SetFirstInM(true);
+		}
+		if (mapGame == MapGame::AVENTURE) {
+			musiqueGame.stop();
+			musiqueCombatAv.play();
+			musiqueCombatSa.stop();
+			musiqueShop.stop();
+			tools::SetFirstInM(true);
+		}
+		if (mapGame == MapGame::SAFARIE) {
+			musiqueGame.stop();
+			musiqueCombatAv.stop();
+			musiqueCombatSa.play();
+			musiqueShop.stop();
+			tools::SetFirstInM(true);
+		}
+
+	}
 
 	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
@@ -123,6 +178,16 @@ void Game::update(myWindow& _window) {
 			hotel.update(persoMain, modeGame, safarie, aventure);
 		}
 	}
+
+	music::SetVolume(musiqueGame);
+	music::SetVolume(musiqueShop);
+	music::SetVolume(musiqueCombatAv);
+	music::SetVolume(musiqueCombatSa);
+	music::SetSon(SonG_AktP);
+	music::SetSon(SonG_AtkM);
+	music::SetSon(SonG_PVm);
+	music::SetSon(SonG_PVp);
+	music::SetSon(SonG_LvlUp);
 }
 
 void Game::updateEvent(myWindow& _window) {

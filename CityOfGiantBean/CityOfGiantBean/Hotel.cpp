@@ -191,6 +191,7 @@ void Hotel::initHotel() {
 	initQuete();
 	initSkillTree();
 	boiteDiscussion::initBoiteDiscussion();
+
 }
 
 void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Aventure& aventure) {
@@ -1284,6 +1285,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 		if (bQA4)
 			txQEtage.setFillColor(sf::Color::Green);
 	}
+
 }
 
 void Hotel::displayHotel(myWindow& _window, ModeGame& _modeGame, Joueur& _perso1) {

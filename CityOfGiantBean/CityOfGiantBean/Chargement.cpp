@@ -13,6 +13,10 @@ Chargement::Chargement(StateChargement _stateChargement, myWindow& _window) {
 	bValid = false;
 	bValidPerso = false;
 	bValidPseudo = false;
+
+	tools::SetFirstInM(false);
+	musiqueMenu.openFromFile("..\\Ressources\\Audio\\Menu.ogg");
+	musiqueMenu.setLoop(true);
 }
 
 void Chargement::init(myWindow& _window) {
@@ -111,6 +115,10 @@ void Chargement::init(myWindow& _window) {
 }
 
 void Chargement::update(myWindow& _window) {
+	if (tools::GetFirstInM() == false) {
+		musiqueMenu.play();
+		tools::SetFirstInM(true);
+	}
 
 	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
@@ -240,6 +248,7 @@ void Chargement::update(myWindow& _window) {
 		tools::ChoixLangue(tools::GetTrad(), txMTitre, "Chargement de la partie", "Load Game");
 
 	}
+	music::SetVolume(musiqueMenu);
 }
 
 void Chargement::updateEvent(myWindow& _window) {

@@ -291,6 +291,17 @@ void Aventure::initEnnemi() {
 	stFuiteREn = "Flee failed";
 
 	boiteDiscussion::initBoiteDiscussion();
+
+	SonG_wooshBuff.loadFromFile("..\\Ressources\\Audio\\Whoosh3.wav");
+	SonG_woosh.setBuffer(SonG_wooshBuff);
+	SonG_AktPBuff.loadFromFile("..\\Ressources\\Audio\\AtkP.wav");
+	SonG_AktP.setBuffer(SonG_AktPBuff);
+	SonG_AtkMBuff.loadFromFile("..\\Ressources\\Audio\\AtkM.wav");
+	SonG_AtkM.setBuffer(SonG_AtkMBuff);
+	SonG_PVpBuff.loadFromFile("..\\Ressources\\Audio\\pvP.wav");
+	SonG_PVp.setBuffer(SonG_PVpBuff);
+	SonG_PVmBuff.loadFromFile("..\\Ressources\\Audio\\pvM.wav");
+	SonG_PVm.setBuffer(SonG_PVmBuff);
 }
 
 void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, AventureGame& _modeAv) {
@@ -1055,7 +1066,6 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 			_perso1.fTimerLevelUp += tools::GetTimeDelta();
 			if (_perso1.fTimerLevelUp > 1.5f) {
 				_perso1.fTimerLevelUp = 0.0f;
-				_perso1.bLeveluUp = false;
 			}
 			tools::ChoixLangue(tools::GetTrad(), txLevelUpA, "Vous avez progresse au niveau " + std::to_string(_perso1.GetNiveau()), "You have progressed at the level " + std::to_string(_perso1.GetNiveau()));
 		}
@@ -1136,6 +1146,11 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 	//rsMag.setPosition(posRsMag);
 	spVill.setPosition(posRsVill);
 	//rsVill.setPosition(posRsVill);
+
+	music::SetSon(SonG_AktP);
+	music::SetSon(SonG_AtkM);
+	music::SetSon(SonG_PVm);
+	music::SetSon(SonG_PVp);
 }
 
 

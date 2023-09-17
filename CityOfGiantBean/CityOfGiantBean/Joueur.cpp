@@ -28,6 +28,9 @@ void Joueur::initPerso() {
 	persoFrameY = 2;
 	element = None;
 	SetJob(villagois);
+
+	SonG_LvlUpBuff.loadFromFile("..\\Ressources\\Audio\\LvlUp.wav");
+	SonG_LvlUp.setBuffer(SonG_LvlUpBuff);
 }
 
 float Joueur::ChoixElement(Elements _elementAtk, Elements _elementDef) {
@@ -309,6 +312,7 @@ void Joueur::updatePerso(myWindow& _window, ModeGame _mode) {
 			}
 		}
 	}
+	music::SetSon(SonG_LvlUp);
 }
 
 void Joueur::displayPerso(myWindow& _window, ModeGame _mode) {
@@ -392,7 +396,8 @@ void Joueur::Experience(int _xp) {
 	std::cout << "XP gagner " << _xp << std::endl;
 	exp += _xp;
 	while (exp >= TotalExp) {
-		niveau += 1; 
+		niveau += 1;
+		SonG_LvlUp.play();
 		bLeveluUp = true;
 		SetNiveau(niveau);
 		ChangeStatNiveau(GetNiveau());

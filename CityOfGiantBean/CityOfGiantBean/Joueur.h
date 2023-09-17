@@ -22,6 +22,10 @@ class Joueur :  public Personnage
 
 	sf::Font fontA;
 
+	sf::SoundBuffer SonG_LvlUpBuff;
+
+	sf::Sound SonG_LvlUp;
+
 	bool bCombat;
 public:
 

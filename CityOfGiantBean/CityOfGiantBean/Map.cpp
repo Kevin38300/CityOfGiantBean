@@ -253,6 +253,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (_shop == ShopGame::NONE) {
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, hotelPos, hotelSize) && (save::getTutoNb() == 2 || save::getTutoNb() == 6 || save::getTuto() == false)) {
 					_posPerso = hotelPosH;
+					tools::SetFirstInM(false);
 					_map = MapGame::SHOP;
 					_shop = ShopGame::HOTEL;
 					fClickMenu = 0.0f;
@@ -262,6 +263,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, ShopPos, ShopSize) && (save::getTutoNb() == 4 || save::getTutoNb() == 5 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::BOUTIQUE;
+					tools::SetFirstInM(false);
 					_posPerso = ShopPosT;
 					fClickMenu = 0.0f;
 					timerAff = 0.0f;
@@ -270,6 +272,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, AlchimiePos, AlchimieSize) && (save::getTutoNb() >= 10 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::ALCHIMIE;
+					tools::SetFirstInM(false);
 					_posPerso = AlchimiePosA;
 					fClickMenu = 0.0f;
 					timerAff = 0.0f;
@@ -278,6 +281,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, fontainePos, fontaineSize) && (save::getTutoNb() == 9 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::FONTAINE;
+					tools::SetFirstInM(false);
 					_posPerso = fontainePos;
 					fClickMenu = 0.0f;
 					timerAff = 0.0f;
@@ -286,6 +290,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, tavernePos, taverneSize) && (save::getTutoNb() == 8 || save::getTuto() == false)) {
 					_map = MapGame::SHOP;
 					_shop = ShopGame::TAVERNE;
+					tools::SetFirstInM(false);
 					_posPerso = tavernePosT;
 					fClickMenu = 0.0f;
 					timerAff = 0.0f;
@@ -293,6 +298,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 				}
 				if (tools::CircleRect_Collision(posSouris, AjustResoX * 10.0f, SafariPos, SafariSize) && (save::getTutoNb() == 3 || save::getTutoNb() == 5 || save::getTuto() == false)) {
 					_map = MapGame::SAFARIE;
+					tools::SetFirstInM(false);
 					_posPerso = SafariSPos;
 					fClickMenu = 0.0f;
 					timerAff = 0.0f;
@@ -316,6 +322,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 					save::setTutoNb(7);
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -323,6 +330,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, ShopPosT, ShopSizeT) && _shop == ShopGame::BOUTIQUE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -330,6 +338,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, AlchimiePosA, AlchimieSizeA) && _shop == ShopGame::ALCHIMIE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -337,6 +346,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, fontainePosF, fontaineSizeF) && _shop == ShopGame::FONTAINE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				if (save::getTutoNb() == 10)
@@ -346,6 +356,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, tavernePosT, taverneSizeT) && _shop == ShopGame::TAVERNE) {
 				_map = MapGame::RDC;
 				_shop = ShopGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -354,6 +365,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 		if (_map == MapGame::SAFARIE) {
 			if (tools::CircleRect_Collision(_posPerso, AjustResoX * 10.0f, SafariSPos, SafariSSize)) {
 				_map = MapGame::RDC;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -368,6 +380,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::RDC;
 				_aventure = AventureGame::NONE;
+				tools::SetFirstInM(false);
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
 				return;
@@ -383,6 +396,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::AVENTURE;
+				tools::SetFirstInM(false);
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				timerAff = 0.0f;
@@ -399,6 +413,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_GUERRIER;
+				tools::SetFirstInM(false);
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
@@ -414,6 +429,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_CLERC;
+				tools::SetFirstInM(false);
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
@@ -429,6 +445,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_MAGE;
+				tools::SetFirstInM(false);
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;
@@ -444,6 +461,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f) {
 				_map = MapGame::AVENTURE;
 				_aventure = AventureGame::ZONE_ASSASSIN;
+				tools::SetFirstInM(false);
 				_posPerso = GiantJackPosAv;
 				fClickMenu = 0.0f;
 				return;

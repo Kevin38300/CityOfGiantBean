@@ -7,9 +7,9 @@ int main() {
 	tools::SetChoixMu(0);
 	tools::SetTrad(0);
 	tools::SetFirstInM(false);
-	music::SetVolSonMusBase(0.0f, 0.f);
+	//music::SetVolSonMusBase(0.0f, 0.f);
+	music::SetVolSonMusBase(50.0f, 60.f);
 	window.ToggleFullscreen();
-	//music::SetVolSonMusBase(50.0f, 60.f);
 	while (!window.IsDone())
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11))

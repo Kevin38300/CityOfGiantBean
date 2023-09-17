@@ -15,6 +15,9 @@ class Consos;
 class Aventure
 {
 
+	sf::SoundBuffer SonG_wooshBuff, SonG_AktPBuff, SonG_AtkMBuff, SonG_PVpBuff, SonG_PVmBuff;
+
+	sf::Sound SonG_woosh, SonG_AktP, SonG_AtkM, SonG_PVp, SonG_PVm;
 public:
 
 	int _choixAttaque, AnnulAtk = 1, iZoneAv{ 1 };

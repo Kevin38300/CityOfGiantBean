@@ -218,6 +218,17 @@ void Safarie::initSafari() {
 	stElevationEn = "I would like to raise the level of the area";
 
 	initMonstreSafari();
+
+	SonG_wooshBuff.loadFromFile("..\\Ressources\\Audio\\Whoosh3.wav");
+	SonG_woosh.setBuffer(SonG_wooshBuff);
+	SonG_AktPBuff.loadFromFile("..\\Ressources\\Audio\\AtkP.wav");
+	SonG_AktP.setBuffer(SonG_AktPBuff);
+	SonG_AtkMBuff.loadFromFile("..\\Ressources\\Audio\\AtkM.wav");
+	SonG_AtkM.setBuffer(SonG_AtkMBuff);
+	SonG_PVpBuff.loadFromFile("..\\Ressources\\Audio\\pvP.wav");
+	SonG_PVp.setBuffer(SonG_PVpBuff);
+	SonG_PVmBuff.loadFromFile("..\\Ressources\\Audio\\pvM.wav");
+	SonG_PVm.setBuffer(SonG_PVmBuff);
 }
 
 void Safarie::initMonstreSafari() {
@@ -531,6 +542,11 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 	TimerRespawn(timerrsOurs, irsVieOurs);
 	TimerRespawn(timerrsGob, irsVieGobelin);
 	TimerRespawn(timerrsOrc, irsVieOrc);*/
+
+	music::SetSon(SonG_AktP);
+	music::SetSon(SonG_AtkM);
+	music::SetSon(SonG_PVm);
+	music::SetSon(SonG_PVp);
 }
 
 void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _conso) {
@@ -764,6 +780,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 						stNomMonstre = { _monstre1.GetName() };
 						timerDescritionCombat = 0.0f;
 						iDescCombat = 1;
+						SonG_AktP.play();
 						bDescCombat = true;
 						bAtkPerso = false;
 						bAtkMonstre = true;
@@ -811,6 +828,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 				_perso1.SetTotPv(PvRestant);
 				timerDescritionCombat = 0.0f;
 				iDescCombat = 2;
+				SonG_AtkM.play();
 				bDescCombat = true;
 				bAtkPerso = true;
 				bAtkMonstre = false;
@@ -842,6 +860,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 				_perso1.SetTotPv(PvRestant);
 				timerDescritionCombat = 0.0f;
 				iDescCombat = 2;
+				SonG_AtkM.play();
 				bDescCombat = true;
 				bAtkPerso = true;
 				bAtkMonstre = false;
@@ -875,6 +894,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 						stNomMonstre = { _monstre1.GetName() };
 						timerDescritionCombat = 0.0f;
 						iDescCombat = 1;
+						SonG_AktP.play();
 						bDescCombat = true;
 						bAtkPerso = false;
 						bAtkMonstre = true;
@@ -930,6 +950,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbGob += 1;
 					iNbGob += 1;
+					SonG_PVm.play();
 					if (save::getTutoNb() == 3)
 						save::setTutoNb(4);
 					bLoot = true;
@@ -944,6 +965,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbLoup += 1;
 					iNbLoup += 1;
+					SonG_PVm.play();
 					bLoot = true;
 					if (save::getTutoNb() == 5)
 						save::setTutoNb(6);
@@ -955,6 +977,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbOurs += 1;
 					iNbOurs += 1;
+					SonG_PVm.play();
 					_perso1.Experience((30 * _monstre1.GetNiveau()));
 					stLoot = { "\nVous avez obtenu : 1 Cuir" };
 					stLootEn = { "\nYou get : 1 Leather" };
@@ -967,6 +990,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 					_perso1.NbMonstreBattu += 1;
 					_perso1.NbOrc += 1;
 					iNbOrc += 1;
+					SonG_PVm.play();
 					_perso1.Experience((30 * _monstre1.GetNiveau()));
 					stLoot = { "\nVous avez obtenu : 1 Fer" };
 					stLootEn = { "\nYou get : 1 Iron" };
@@ -979,6 +1003,7 @@ void Safarie::combatSafari(Joueur& _perso1, Monstre& _monstre1, Consos& _conso, 
 				tmp_arg = _perso1.GetTotArgent() - 100;
 				if (tmp_arg <= 0)
 					tmp_arg = 0;
+				SonG_PVp.play();
 				_perso1.SetTotArgent(tmp_arg);
 				bDefaite = true;
 			}

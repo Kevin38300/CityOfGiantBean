@@ -39,6 +39,8 @@ Menu::Menu(StateMenu _stateMenu, myWindow& _window) {
 	bVerifNew = false;
 
 	stateMenu = _stateMenu;
+
+	tools::SetChoixMu(1);
 }
 
 void Menu::init(myWindow& _window) {
@@ -156,6 +158,12 @@ void Menu::init(myWindow& _window) {
 	txAideDir.setCharacterSize(50);
 
 	boiteDiscussion::initBoiteDiscussion();
+
+	tools::SetFirstInM(false);
+	musiqueMenu.openFromFile("..\\Ressources\\Audio\\Menu.ogg");
+	musiqueMenu.setLoop(true);
+	SonMenuBuffer.loadFromFile("..\\Ressources\\Audio\\Whoosh3.wav");
+	SonMenu.setBuffer(SonMenuBuffer);
 }
 
 void Menu::update(myWindow& _window) {
@@ -168,6 +176,10 @@ void Menu::update(myWindow& _window) {
 		bSave = true;
 	}
 
+	if (tools::GetFirstInM() == false) {
+		musiqueMenu.play();
+		tools::SetFirstInM(true);
+	}
 	mousePosition = sf::Mouse::getPosition(_window.getRenderWindow());
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
@@ -293,6 +305,8 @@ void Menu::update(myWindow& _window) {
 		}
 	}
 
+	music::SetVolume(musiqueMenu);
+
 	tools::ChoixLangue(tools::GetTrad(), txAideCombat, "Aide combat", "Help fight");
 	tools::ChoixLangue(tools::GetTrad(), txAideDir, "Aide direction", "Help direction");
 	tools::ChoixLangue(tools::GetTrad(), txMTitre, "Cite de l'haricot geant", "City Of Giant Bean");
@@ -355,7 +369,7 @@ void Menu::draw(myWindow& _window) {
 				if (tools::GetTrad() == 0)
 					_window.Draw(spAideDir);
 				if (tools::GetTrad() == 1)
-				_window.Draw(spAideDirEn);
+					_window.Draw(spAideDirEn);
 			}
 		}
 	}

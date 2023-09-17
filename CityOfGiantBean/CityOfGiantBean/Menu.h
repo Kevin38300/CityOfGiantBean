@@ -11,6 +11,13 @@ class Menu : public State
 {
 private:
 
+
+	sf::SoundBuffer SonMenuBuffer;
+
+	sf::Sound SonMenu;
+
+	sf::Music musiqueMenu;
+
 	sf::Texture ttMenu, ttAideDir, ttAideCom, ttAideDirEn, ttAideComEn;
 	sf::Sprite spMenu, spAideDir, spAideCom, spAideDirEn, spAideComEn;
 	sf::Vector2f posTitre, posSouris, posAide;
