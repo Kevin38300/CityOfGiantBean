@@ -177,36 +177,43 @@ void initBoutique(Joueur& _perso1) {
 	PasArgentShop.setOrigin(PasArgentShop.getGlobalBounds().height / 2, PasArgentShop.getGlobalBounds().width / 2);
 	PasArgentShop.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	PasArgentShop.setFillColor(sf::Color::Black);
+	PasArgentShop.setCharacterSize(35 * AjustReso);
 
 	ArgentRestantB.setFont(font);
 	ArgentRestantB.setOrigin(ArgentRestantB.getGlobalBounds().height / 2, ArgentRestantB.getGlobalBounds().width / 2);
 	ArgentRestantB.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ArgentRestantB.setFillColor(sf::Color::Black);
+	ArgentRestantB.setCharacterSize(35 * AjustReso);
 
 	ObtenuObjetTexte.setFont(font);
 	ObtenuObjetTexte.setOrigin(ObtenuObjetTexte.getGlobalBounds().height / 2, ObtenuObjetTexte.getGlobalBounds().width / 2);
 	ObtenuObjetTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ObtenuObjetTexte.setFillColor(sf::Color::Black);
+	ObtenuObjetTexte.setCharacterSize(35 * AjustReso);
 
 	ValidationShop.setFont(font);
 	ValidationShop.setOrigin(ValidationShop.getGlobalBounds().height / 2, ValidationShop.getGlobalBounds().width / 2);
 	ValidationShop.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ValidationShop.setFillColor(sf::Color::Black);
+	ValidationShop.setCharacterSize(35 * AjustReso);
 
 	OuiTexte.setFont(font);
 	OuiTexte.setOrigin(OuiTexte.getGlobalBounds().height / 2, OuiTexte.getGlobalBounds().width / 2);
 	OuiTexte.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
 	OuiTexte.setFillColor(sf::Color::Red);
+	OuiTexte.setCharacterSize(35 * AjustReso);
 
 	NonTexte.setFont(font);
 	NonTexte.setOrigin(NonTexte.getGlobalBounds().height / 2, NonTexte.getGlobalBounds().width / 2);
 	NonTexte.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
 	NonTexte.setFillColor(sf::Color::Red);
+	NonTexte.setCharacterSize(35 * AjustReso);
 
 	txVendeur.setFont(font);
 	txVendeur.setOrigin(txVendeur.getGlobalBounds().height / 2, txVendeur.getGlobalBounds().width / 2);
 	txVendeur.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txVendeur.setFillColor(sf::Color::Black);
+	txVendeur.setCharacterSize(35 * AjustReso);
 
 	PasDArgent = "Vous n'avez pas assez d'argent!";
 	ArgentRestant = "Argent restant : ";
@@ -228,6 +235,7 @@ void initBoutique(Joueur& _perso1) {
 	tools::ChoixLangue(tools::GetTrad(), txVendeur, stVendeur, stVendeurEn);
 	tools::ChoixLangue(tools::GetTrad(), PasArgentShop, PasDArgent, PasDArgentEn);
 
+	//////////////////// Chargement des donnes enregidtrer
 	if (save::GetNew() == false){
 
 	switch (save::getArmeEquipe())
@@ -290,6 +298,7 @@ void initBoutique(Joueur& _perso1) {
 }
 
 void updateBoutique(myWindow& _window, Joueur& _perso1) {
+	//////////////////////Deplacement vers le choix des objet
 	if (tools::CircleRect_Collision(_perso1.GetPos(), 10, ShopPNJpos, ShopPNJsize))
 		pnjAcceuil = 1;
 	else
@@ -330,7 +339,8 @@ void updateBoutique(myWindow& _window, Joueur& _perso1) {
 		choixBoutique = 9;
 		Valid = 1;
 	}
-
+	 
+	////////////// Vzerification avant Achat d'objet
 	if (choixBoutique == 1) {
 		stNomObjet = " Epee";
 		stNomObjetEn = " Sword";
@@ -479,28 +489,7 @@ void updateBoutique(myWindow& _window, Joueur& _perso1) {
 	}
 }
 
-void NonRetourBoutique() {
-	Valid = 0;
-	choixBoutique = 0;
-	OuiNon = 3;
-}
-
-void AchatArmes(Joueur& _perso1, Armes _armes) {
-	if (_perso1.GetTotArgent() >= _armes.GetPrix()) {
-		_perso1.SetTotArgent(_perso1.GetTotArgent() - _armes.GetPrix());
-		tools::ChoixLangue(tools::GetTrad(), ObtenuObjetTexte, "Vous avez obtenu : " + _armes.GetName(), "You got :" + _armes.GetName());
-		tools::ChoixLangue(tools::GetTrad(), ArgentRestantB, "\n\nOr restant : " + std::to_string((int)_perso1.GetTotArgent()), "\n\nGold remaining " + std::to_string((int)_perso1.GetTotArgent()));
-		achatReussi = 1;
-		ValidReussiB = 1;
-		PasArgentReste = 0;
-		NonRetourBoutique();
-	}
-	else {
-		achatReussi = 0;
-		PasArgentReste = 1;
-		NonRetourBoutique();
-	}
-}
+/////////////////////////////Equipement / Desequipement
 
 void EquipLeger(Joueur& _perso1) {
 	if (_perso1.LegerBuy >= 1) {
@@ -523,6 +512,7 @@ void EquipLeger(Joueur& _perso1) {
 		std::cout << "Vous n'avez pas cette Armure " << std::endl;
 	}
 }
+
 
 void EquipLourd(Joueur& _perso1) {
 	if (_perso1.LourdBuy >= 1) {
@@ -734,6 +724,30 @@ void DesEquipBague(Joueur& _perso1) {
 			save::setArmeEquipe(4);
 			std::cout << "Vous avez desequipe cette Arme " << std::endl;
 		}
+}
+
+void NonRetourBoutique() {
+	////////////Annulation achat
+	Valid = 0;
+	choixBoutique = 0;
+	OuiNon = 3;
+}
+
+void AchatArmes(Joueur& _perso1, Armes _armes) {
+	if (_perso1.GetTotArgent() >= _armes.GetPrix()) {
+		_perso1.SetTotArgent(_perso1.GetTotArgent() - _armes.GetPrix());
+		tools::ChoixLangue(tools::GetTrad(), ObtenuObjetTexte, "Vous avez obtenu : " + _armes.GetName(), "You got :" + _armes.GetName());
+		tools::ChoixLangue(tools::GetTrad(), ArgentRestantB, "\n\nOr restant : " + std::to_string((int)_perso1.GetTotArgent()), "\n\nGold remaining " + std::to_string((int)_perso1.GetTotArgent()));
+		achatReussi = 1;
+		ValidReussiB = 1;
+		PasArgentReste = 0;
+		NonRetourBoutique();
+	}
+	else {
+		achatReussi = 0;
+		PasArgentReste = 1;
+		NonRetourBoutique();
+	}
 }
 
 void AchatArmures(Joueur& _perso1, Armures _armures) {

@@ -12,7 +12,7 @@ void initTuto() {
 	posText = { AjustResoX * 150, AjustResoY * 850 };
 	txTuto.setFont(fontTuto);
 	txTuto.setFillColor(sf::Color::Black);
-	txTuto.setCharacterSize(40);
+	txTuto.setCharacterSize(40 * AjustReso);
 	txTuto.setPosition(posText);
 
 	boiteDiscussion::initBoiteDiscussion();

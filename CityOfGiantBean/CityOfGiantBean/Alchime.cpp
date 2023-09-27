@@ -13,21 +13,25 @@ void Alchimie::initAlchimie() {
 	txPnj.setFont(fA);
 	txPnj.setFillColor(sf::Color::Black);
 	txPnj.setPosition(posText);
+	txPnj.setCharacterSize(35 * AjustReso);
 
 	txDecr.setFont(fA);
 	txDecr.setOrigin(txDecr.getGlobalBounds().height / 2, txDecr.getGlobalBounds().width / 2);
 	txDecr.setPosition(AjustResoX * 150.0f, AjustResoY * 900.0f);
 	txDecr.setFillColor(sf::Color::Red);
+	txDecr.setCharacterSize(35 * AjustReso);
 
 	txRetour.setFont(fA);
 	txRetour.setOrigin(txRetour.getGlobalBounds().height / 2, txRetour.getGlobalBounds().width / 2);
 	txRetour.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
 	txRetour.setFillColor(sf::Color::Red);
+	txRetour.setCharacterSize(35 * AjustReso);
 
 	txDescForge.setFont(fA);
 	txDescForge.setOrigin(txDescForge.getGlobalBounds().height / 2, txDescForge.getGlobalBounds().width / 2);
 	txDescForge.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txDescForge.setFillColor(sf::Color::Black);
+	txDescForge.setCharacterSize(35 * AjustReso);
 
 	rInv.setFillColor(sf::Color(0, 255, 0, 100));
 	rInv.setSize(sf::Vector2f(AjustResoX * 72.0f, AjustResoY * 73.0f));
@@ -49,6 +53,7 @@ void Alchimie::initAlchimie() {
 void Alchimie::updateAlchimie(myWindow& _window, ModeGame& _mode, Joueur& _perso1) {
 	timerState += tools::GetTimeDelta();
 	if (_mode == ModeGame::LIBRE) {
+		//////////////// parler a l'alchimiste
 		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posrsPNJForge, sf::Vector2f(AjustResoX * 158, AjustResoY * 260)) && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || bPnj == true) {
 			bPnj = true;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -76,7 +81,7 @@ void Alchimie::updateAlchimie(myWindow& _window, ModeGame& _mode, Joueur& _perso
 			timerState = 0.0f;
 			return;
 		}
-
+		////////////////// deplacement choix forge
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && timerState > 0.3f && invDepLateral < 4) {
 			invDepVertical = 1;
 			timerState = 0.0f;

@@ -24,7 +24,7 @@ Villagois villagois = Villagois();
 void Joueur::initPerso() {
 	persoMTexture.loadFromFile("..\\Ressources\\Textures\\CLASSE\\PersoMale.png");
 	persoFTexture.loadFromFile("..\\Ressources\\Textures\\CLASSE\\PersoFemale.png");
-	persoSprite.setScale(3, 3);
+	persoSprite.setScale(3*AjustReso, 3 * AjustReso);
 	persoRect = { 192,0,16,18 };
 	persoPosition = { 100,100 };
 	vitessePerso = { 200,200 };
@@ -344,28 +344,28 @@ void Joueur::updatePerso(myWindow& _window, ModeGame _mode) {
 	if (_mode == ModeGame::LIBRE) {
 		if (boiteDiscussion::getBoolDiscu() == false) {
 			sf::FloatRect playerfrect = persoSprite.getGlobalBounds();
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 				if (persoPosition.y > 0) {
 					persoPosition.y -= vitessePerso.y * tools::GetTimeDelta();
 					isMoving = true;
 					persoFrameY = 0;
 				}
 			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 				if (persoPosition.y < AjustResoY * 1080) {
 					persoPosition.y += vitessePerso.y * tools::GetTimeDelta();
 					isMoving = true;
 					persoFrameY = 2;
 				}
 			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 				if (persoPosition.x < AjustResoX * 1920) {
 					persoPosition.x += vitessePerso.x * tools::GetTimeDelta();
 					isMoving = true;
 					persoFrameY = 1;
 				}
 			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 				if (persoPosition.x > 0) {
 					persoPosition.x -= vitessePerso.x * tools::GetTimeDelta();
 					isMoving = true;

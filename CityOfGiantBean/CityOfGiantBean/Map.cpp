@@ -69,10 +69,12 @@ void initCarte()
 	fontMenu.loadFromFile("../Ressources/Fonts/YOZAKURA-Regular.otf");
 	ttVillage.loadFromFile("..\\Ressources\\Textures\\LIEUX\\MerDeNuageRDC.png");
 	spVillage.setTexture(ttVillage);
+	spVillage.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	///////////////////////////// Shop
 	ttShop.loadFromFile("..\\Ressources\\Textures\\LIEUX\\Shop.png");
 	spShop.setTexture(ttShop);
+	spShop.setScale(1*AjustResoX, 1*AjustResoY);
 
 	ShopSize = { AjustResoX * 205,AjustResoY * 230 };
 	ShopSizeT = { AjustResoX * 150,AjustResoY * 190 };
@@ -83,6 +85,7 @@ void initCarte()
 	///////////////////////////// Taverne
 	ttTaverne.loadFromFile("..\\Ressources\\Textures\\LIEUX\\Taverne.png");
 	spTaverne.setTexture(ttTaverne);
+	spTaverne.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	taverneSize = { AjustResoX * 220,AjustResoY * 195 };
 	taverneSizeT = { AjustResoX * 150,AjustResoY * 190 };
@@ -93,6 +96,7 @@ void initCarte()
 	///////////////////////////// Fontaine
 	ttFontaine.loadFromFile("..\\Ressources\\Textures\\LIEUX\\Fontaine.png");
 	spFontaine.setTexture(ttFontaine);
+	spFontaine.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	fontaineSize = { AjustResoX * 118,AjustResoY * 80 };
 	fontainePos = { AjustResoX * 1177,AjustResoY * 890 };
@@ -110,9 +114,11 @@ void initCarte()
 
 	ttAlchimie.loadFromFile("..\\Ressources\\Textures\\LIEUX\\Alchimie.png");
 	spAlchimie.setTexture(ttAlchimie);
+	spAlchimie.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	ttForge.loadFromFile("..\\Ressources\\Textures\\MENU\\MenuAlchimie.png");
 	spForge.setTexture(ttForge);
+	spForge.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	AlchimieSize = { AjustResoX * 253,AjustResoY * 190 };
 	AlchimiePos = { AjustResoX * 637,AjustResoY * 795 };
@@ -133,12 +139,15 @@ void initCarte()
 	///////////////////////////// Hotel
 	ttHotel.loadFromFile("..\\Ressources\\Textures\\LIEUX\\Hotel.png");
 	spHotel.setTexture(ttHotel);
+	spHotel.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	ttSkillTree.loadFromFile("..\\Ressources\\Textures\\MENU\\SkillTree.png");
 	spSkillTree.setTexture(ttSkillTree);
+	spSkillTree.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	ttQuete.loadFromFile("..\\Ressources\\Textures\\MENU\\MenuQuete.png");
 	spQuete.setTexture(ttQuete);
+	spQuete.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	hotelSize = { AjustResoX * 291,AjustResoY * 150 };
 	hotelPos = { AjustResoX * 355,AjustResoY * 205 };
@@ -149,6 +158,7 @@ void initCarte()
 	///////////////////////////// GiantJack
 	ttGiantJack.loadFromFile("..\\Ressources\\Textures\\LIEUX\\MonteEtage.png");
 	spGiantJack.setTexture(ttGiantJack);
+	spGiantJack.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	GiantJackSize = { AjustResoX * 135,AjustResoY * 155 };
 	GiantJackPos = { AjustResoX * 880,AjustResoY * 280 };
@@ -174,43 +184,45 @@ void initCarte()
 	txQuelEtage.setFont(fontMenu);
 	txQuelEtage.setFillColor(sf::Color::Black);
 	txQuelEtage.setPosition(posQuelEtage);
-	txQuelEtage.setCharacterSize(40);
+	txQuelEtage.setCharacterSize(40 * AjustReso);
 
 	txVille.setFont(fontMenu);
 	txVille.setFillColor(sf::Color::Red);
 	txVille.setPosition(posVille);
-	txVille.setCharacterSize(40);
+	txVille.setCharacterSize(40 * AjustReso);
 
 	txAventure.setFont(fontMenu);
 	txAventure.setFillColor(sf::Color::Red);
 	txAventure.setPosition(posAventure);
-	txAventure.setCharacterSize(40);
+	txAventure.setCharacterSize(40 * AjustReso);
 
 	txAventureClerc.setFont(fontMenu);
 	txAventureClerc.setFillColor(sf::Color::Red);
 	txAventureClerc.setPosition(posAventureClerc);
-	txAventureClerc.setCharacterSize(40);
+	txAventureClerc.setCharacterSize(40 * AjustReso);
 
 	txAventureMage.setFont(fontMenu);
 	txAventureMage.setFillColor(sf::Color::Red);
 	txAventureMage.setPosition(posAventureMage);
-	txAventureMage.setCharacterSize(40);
+	txAventureMage.setCharacterSize(40 * AjustReso);
 
 	txAventureGuerrier.setFont(fontMenu);
 	txAventureGuerrier.setFillColor(sf::Color::Red);
 	txAventureGuerrier.setPosition(posAventureGuerrier);
-	txAventureGuerrier.setCharacterSize(40);
+	txAventureGuerrier.setCharacterSize(40 * AjustReso);
 
 	txAventureAss.setFont(fontMenu);
 	txAventureAss.setFillColor(sf::Color::Red);
 	txAventureAss.setPosition(posAventureAss);
-	txAventureAss.setCharacterSize(40);
+	txAventureAss.setCharacterSize(40 * AjustReso);
 
 	///////////////////////////// Aventure
 	ttAventure.loadFromFile("..\\Ressources\\Textures\\LIEUX\\MerDeNuageAventure.png");
 	spAventure.setTexture(ttAventure);
+	spAventure.setScale(1 * AjustResoX, 1 * AjustResoY);
 	ttAventureCombat.loadFromFile("..\\Ressources\\Textures\\LIEUX\\AventureCombat.png");
 	spAventureCombat.setTexture(ttAventureCombat);
+	spAventureCombat.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	AventureSize = { AjustResoX * 135,AjustResoY * 155 };
 	AventurePos = { AjustResoX * 880,AjustResoY * 280 };
@@ -222,9 +234,11 @@ void initCarte()
 
 	ttSafari.loadFromFile("..\\Ressources\\Textures\\LIEUX\\MerDeNuageSafarie.png");
 	spSafari.setTexture(ttSafari);
+	spSafari.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	ttSafariCombat.loadFromFile("..\\Ressources\\Textures\\LIEUX\\SafarieCombat.png");
 	spSafariCombat.setTexture(ttSafariCombat);
+	spSafariCombat.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	SafariSize = { AjustResoX * 185,AjustResoX * 70 };
 	SafariSSize = { AjustResoX * 160,AjustResoY * 133 };
@@ -242,11 +256,7 @@ void updateCarte(myWindow& _window, MapGame& _map, ShopGame& _shop, AventureGame
 	posSouris = _window.getRenderWindow().mapPixelToCoords(mousePosition);
 	fClickMenu += tools::GetTimeDelta();
 
-	//if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && fClickMenu > 0.3f)
-	//{
-	//	std::cout << posSouris.x << " && " << posSouris.y << std::endl;
-	//	fClickMenu = 0.0f;
-	//}
+	///////////////////////////////////////////////// Deplacement entre les differentes map / shop
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && fClickMenu > 0.3f)
 	{
 		if (_map == MapGame::RDC) {

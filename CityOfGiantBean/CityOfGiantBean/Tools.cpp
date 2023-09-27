@@ -26,7 +26,8 @@ namespace boiteDiscussion
 	void initBoiteDiscussion() {
 		BoiteDiscussionTexture.loadFromFile("..\\Ressources\\Textures\\dialogbox1.png");
 		BoiteDiscussionSprite.setTexture(BoiteDiscussionTexture);
-		BoiteDiscussionPos = { 0,1080 - BoiteDiscussionSprite.getGlobalBounds().height };
+		BoiteDiscussionSprite.setScale(1*AjustResoX, 1*AjustResoY);
+		BoiteDiscussionPos = { 0,1080 * AjustResoY - BoiteDiscussionSprite.getGlobalBounds().height };
 		BoiteDiscussionSprite.setPosition(BoiteDiscussionPos);
 	}
 	void displayBoiteDiscussion(myWindow& _window) {

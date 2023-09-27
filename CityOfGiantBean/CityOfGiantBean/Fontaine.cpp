@@ -59,31 +59,37 @@ void initFontaine() {
 	ValidationFontaine.setOrigin(ValidationFontaine.getGlobalBounds().height / 2, ValidationFontaine.getGlobalBounds().width / 2);
 	ValidationFontaine.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ValidationFontaine.setFillColor(sf::Color::Black);
+	ValidationFontaine.setCharacterSize(35 * AjustReso);
 
 	OuiTexteF.setFont(fontF);
 	OuiTexteF.setOrigin(OuiTexteF.getGlobalBounds().height / 2, OuiTexteF.getGlobalBounds().width / 2);
 	OuiTexteF.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
 	OuiTexteF.setFillColor(sf::Color::Red);
+	OuiTexteF.setCharacterSize(35 * AjustReso);
 
 	NonTexteF.setFont(fontF);
 	NonTexteF.setOrigin(NonTexteF.getGlobalBounds().height / 2, NonTexteF.getGlobalBounds().width / 2);
 	NonTexteF.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
 	NonTexteF.setFillColor(sf::Color::Red);
+	NonTexteF.setCharacterSize(35 * AjustReso);
 
 	PasArgentFontaine.setFont(fontF);
 	PasArgentFontaine.setOrigin(PasArgentFontaine.getGlobalBounds().height / 2, PasArgentFontaine.getGlobalBounds().width / 2);
 	PasArgentFontaine.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	PasArgentFontaine.setFillColor(sf::Color::Black);
+	PasArgentFontaine.setCharacterSize(35 * AjustReso);
 
 	ArgentRestant.setFont(fontF);
 	ArgentRestant.setOrigin(ArgentRestant.getGlobalBounds().height / 2, ArgentRestant.getGlobalBounds().width / 2);
 	ArgentRestant.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ArgentRestant.setFillColor(sf::Color::Black);
+	ArgentRestant.setCharacterSize(35 * AjustReso);
 
 	ObtenuElementTexte.setFont(fontF);
 	ObtenuElementTexte.setOrigin(ObtenuElementTexte.getGlobalBounds().height / 2, ObtenuElementTexte.getGlobalBounds().width / 2);
 	ObtenuElementTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ObtenuElementTexte.setFillColor(sf::Color::Black);
+	ObtenuElementTexte.setCharacterSize(35 * AjustReso);
 
 	PasDArgentF = "Vous n'avez pas assez d'argent!";
 	ValidElem = "Vous allez change d'element. Element choisi : ";

@@ -30,12 +30,13 @@ void Chargement::init(myWindow& _window) {
 
 	ttMenu.loadFromFile("../Ressources/Textures/MENU/MenuCeleste.jpg");
 	spMenu.setTexture(ttMenu);
+	spMenu.setScale(1*AjustResoX, 1*AjustResoY);
 	fontMenu.loadFromFile("../Ressources/Fonts/YOZAKURA-Regular.otf");
 
 	txMTitre.setFont(fontMenu);
 	txMTitre.setFillColor(_black);
 	txMTitre.setPosition(posTitre);
-	txMTitre.setCharacterSize(75);
+	txMTitre.setCharacterSize(50 * AjustReso);
 
 	if (stateChargement == StateChargement::NEW) {
 		posEntrePseudo = sf::Vector2f(AjustResoX * 700.0f, AjustResoY * 300.0f);
@@ -57,13 +58,13 @@ void Chargement::init(myWindow& _window) {
 		spPersoM.setTexture(ttPersoM);
 		spPersoM.setPosition(posNewPersoM);
 		spPersoM.setTextureRect(persoRect);
-		spPersoM.setScale(3, 3);
+		spPersoM.setScale(3 * AjustResoX, 3 * AjustResoY);
 
 		ttPersoF.loadFromFile("..\\Ressources\\Textures\\CLASSE\\PersoFemale.png");
 		spPersoF.setTexture(ttPersoF);
 		spPersoF.setPosition(posNewPersoF);
 		spPersoF.setTextureRect(persoRect);
-		spPersoF.setScale(3, 3);
+		spPersoF.setScale(3 * AjustResoX, 3 * AjustResoY);
 
 		spPerso.setPosition(posNewPersoVerif);
 
@@ -71,42 +72,42 @@ void Chargement::init(myWindow& _window) {
 		txEntrePseudo.setFont(fontMenu);
 		txEntrePseudo.setFillColor(_black);
 		txEntrePseudo.setPosition(posEntrePseudo);
-		txEntrePseudo.setCharacterSize(50);
+		txEntrePseudo.setCharacterSize(35 * AjustReso);
 
 		txNewChoixS.setFont(fontMenu);
 		txNewChoixS.setFillColor(_black);
 		txNewChoixS.setPosition(posNewChoixS);
-		txNewChoixS.setCharacterSize(50);
+		txNewChoixS.setCharacterSize(35 * AjustReso);
 
 		txNewPseudo.setFont(fontMenu);
 		txNewPseudo.setFillColor(_black);
 		txNewPseudo.setPosition(posNewPseudo);
-		txNewPseudo.setCharacterSize(50);
+		txNewPseudo.setCharacterSize(35 * AjustReso);
 
 		txNewRetour.setFont(fontMenu);
 		txNewRetour.setFillColor(_black);
 		txNewRetour.setPosition(posNewRetour);
-		txNewRetour.setCharacterSize(50);
+		txNewRetour.setCharacterSize(35 * AjustReso);
 
 		txNewVerif.setFont(fontMenu);
 		txNewVerif.setFillColor(_black);
 		txNewVerif.setPosition(posNewTxVerif);
-		txNewVerif.setCharacterSize(50);
+		txNewVerif.setCharacterSize(35 * AjustReso);
 
 		txNewVerifOui.setFont(fontMenu);
 		txNewVerifOui.setFillColor(_red);
 		txNewVerifOui.setPosition(posNewTxVerifOui);
-		txNewVerifOui.setCharacterSize(50);
+		txNewVerifOui.setCharacterSize(35 * AjustReso);
 
 		txNewVerifNon.setFont(fontMenu);
 		txNewVerifNon.setFillColor(_red);
 		txNewVerifNon.setPosition(posNewTxVerifNon);
-		txNewVerifNon.setCharacterSize(50);
+		txNewVerifNon.setCharacterSize(35 * AjustReso);
 
 		txNewPseudoVerif.setFont(fontMenu);
 		txNewPseudoVerif.setFillColor(_black);
 		txNewPseudoVerif.setPosition(posNewPseudoVerif);
-		txNewPseudoVerif.setCharacterSize(50);
+		txNewPseudoVerif.setCharacterSize(35 * AjustReso);
 	}
 	if (stateChargement == StateChargement::CONTINU) {
 
@@ -114,17 +115,17 @@ void Chargement::init(myWindow& _window) {
 		txNewVerif.setFont(fontMenu);
 		txNewVerif.setFillColor(_black);
 		txNewVerif.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
-		txNewVerif.setCharacterSize(50);
+		txNewVerif.setCharacterSize(35 * AjustReso);
 
 		txNewVerifOui.setFont(fontMenu);
 		txNewVerifOui.setFillColor(_red);
 		txNewVerifOui.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
-		txNewVerifOui.setCharacterSize(50);
+		txNewVerifOui.setCharacterSize(35 * AjustReso);
 
 		txNewVerifNon.setFont(fontMenu);
 		txNewVerifNon.setFillColor(_red);
 		txNewVerifNon.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
-		txNewVerifNon.setCharacterSize(50);
+		txNewVerifNon.setCharacterSize(35 * AjustReso);
 	}
 	boiteDiscussion::initBoiteDiscussion();
 }

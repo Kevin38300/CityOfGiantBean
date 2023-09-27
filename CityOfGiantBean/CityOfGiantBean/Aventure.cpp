@@ -74,49 +74,49 @@ void Aventure::initEnnemi() {
 
 	ttAss.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Assassin.png");
 	spAss.setTexture(ttAss);
-	spAss.setScale(0.06, 0.04);
+	spAss.setScale(0.06 * AjustResoX, 0.04 * AjustResoY);
 	spAss2.setTexture(ttAss);
-	spAss2.setScale(0.06, 0.04);
+	spAss2.setScale(0.06 * AjustResoX, 0.04 * AjustResoY);
 	spAss3.setTexture(ttAss);
-	spAss3.setScale(0.06, 0.04);
+	spAss3.setScale(0.06 * AjustResoX, 0.04 * AjustResoY);
 	spAss4.setTexture(ttAss);
-	spAss4.setScale(0.06, 0.04);
+	spAss4.setScale(0.06 * AjustResoX, 0.04 * AjustResoY);
 	ttGuer.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Guerrier.png");
 	spGuer.setTexture(ttGuer);
-	spGuer.setScale(0.2, 0.2);
+	spGuer.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spGuer2.setTexture(ttGuer);
-	spGuer2.setScale(0.2, 0.2);
+	spGuer2.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spGuer3.setTexture(ttGuer);
-	spGuer3.setScale(0.2, 0.2);
+	spGuer3.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spGuer4.setTexture(ttGuer);
-	spGuer4.setScale(0.2, 0.2);
+	spGuer4.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	ttClerc.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Clerc.png");
 	spClerc.setTexture(ttClerc);
-	spClerc.setScale(0.18, 0.18);
+	spClerc.setScale(0.18 * AjustResoX, 0.18 * AjustResoY);
 	spClerc2.setTexture(ttClerc);
-	spClerc2.setScale(0.18, 0.18);
+	spClerc2.setScale(0.18 * AjustResoX, 0.18 * AjustResoY);
 	spClerc3.setTexture(ttClerc);
-	spClerc3.setScale(0.18, 0.18);
+	spClerc3.setScale(0.18 * AjustResoX, 0.18 * AjustResoY);
 	spClerc4.setTexture(ttClerc);
-	spClerc4.setScale(0.18, 0.18);
+	spClerc4.setScale(0.18 * AjustResoX, 0.18 * AjustResoY);
 	ttMag.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Magicien.png");
 	spMag.setTexture(ttMag);
-	spMag.setScale(0.2, 0.2);
+	spMag.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spMag2.setTexture(ttMag);
-	spMag2.setScale(0.2, 0.2);
+	spMag2.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spMag3.setTexture(ttMag);
-	spMag3.setScale(0.2, 0.2);
+	spMag3.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	spMag4.setTexture(ttMag);
-	spMag4.setScale(0.2, 0.2);
+	spMag4.setScale(0.2 * AjustResoX, 0.2 * AjustResoY);
 	ttVill.loadFromFile("..\\Ressources\\Textures\\CLASSE\\Villagois.png");
 	spVill.setTexture(ttVill);
-	spVill.setScale(0.35, 0.35);
+	spVill.setScale(0.35 * AjustResoX, 0.35 * AjustResoY);
 	spVill2.setTexture(ttVill);
-	spVill2.setScale(0.35, 0.35);
+	spVill2.setScale(0.35 * AjustResoX, 0.35 * AjustResoY);
 	spVill3.setTexture(ttVill);
-	spVill3.setScale(0.35, 0.35);
+	spVill3.setScale(0.35 * AjustResoX, 0.35 * AjustResoY);
 	spVill4.setTexture(ttVill);
-	spVill4.setScale(0.35, 0.35);
+	spVill4.setScale(0.35 * AjustResoX, 0.35 * AjustResoY);
 
 	rsAss.setSize(sf::Vector2f(spAss.getGlobalBounds().width, spAss.getGlobalBounds().height));
 	rsAss.setFillColor(sf::Color::Cyan);
@@ -148,11 +148,13 @@ void Aventure::initEnnemi() {
 	postexte = { AjustResoX * 150.0f, AjustResoY * 850.0f };
 	txParoleAv.setFont(fontAv);
 	txParoleAv.setFillColor(sf::Color::Black);
+	txParoleAv.setCharacterSize(35 * AjustReso);
 
 	txLevelUpA.setFont(fontAv);
 	txLevelUpA.setOrigin(txLevelUpA.getGlobalBounds().height / 2, txLevelUpA.getGlobalBounds().width / 2);
 	txLevelUpA.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	txLevelUpA.setFillColor(sf::Color::Black);
+	txLevelUpA.setCharacterSize(35 * AjustReso);
 
 	posCombatAv = { AjustResoX * 349.0f, AjustResoY * 293.0f };
 	posCombatEnemi = { AjustResoX * 1275.0f, AjustResoY * 287.0f };
@@ -161,86 +163,103 @@ void Aventure::initEnnemi() {
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
 	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
 	txStatsPerso.setFillColor(sf::Color::Black);
+	txStatsPerso.setCharacterSize(35 * AjustReso);
 
 	txStatsEnnemi.setFont(fontAv);
 	txStatsEnnemi.setOrigin(txStatsEnnemi.getGlobalBounds().height / 2, txStatsEnnemi.getGlobalBounds().width / 2);
 	txStatsEnnemi.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
 	txStatsEnnemi.setFillColor(sf::Color::Black);
+	txStatsEnnemi.setCharacterSize(35 * AjustReso);
 
 	DetailActionAventureA.setFont(fontAv);
 	DetailActionAventureA.setOrigin(DetailActionAventureA.getGlobalBounds().height / 2, DetailActionAventureA.getGlobalBounds().width / 2);
 	DetailActionAventureA.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	DetailActionAventureA.setFillColor(sf::Color::Black);
+	DetailActionAventureA.setCharacterSize(35 * AjustReso);
 
 	ActionAventure.setFont(fontAv);
 	ActionAventure.setOrigin(ActionAventure.getGlobalBounds().height / 2, ActionAventure.getGlobalBounds().width / 2);
 	ActionAventure.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	ActionAventure.setFillColor(sf::Color::Black);
+	ActionAventure.setCharacterSize(35 * AjustReso);
 
 	AventureAttaque.setFont(fontAv);
 	AventureAttaque.setOrigin(AventureAttaque.getGlobalBounds().height / 2, AventureAttaque.getGlobalBounds().width / 2);
 	AventureAttaque.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	AventureAttaque.setFillColor(sf::Color::Red);
+	AventureAttaque.setCharacterSize(35 * AjustReso);
 
 	AventureSkill.setFont(fontAv);
 	AventureSkill.setOrigin(AventureSkill.getGlobalBounds().height / 2, AventureSkill.getGlobalBounds().width / 2);
 	AventureSkill.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	AventureSkill.setFillColor(sf::Color::Red);
+	AventureSkill.setCharacterSize(35 * AjustReso);
 
 	AventureObjet.setFont(fontAv);
 	AventureObjet.setOrigin(AventureObjet.getGlobalBounds().height / 2, AventureObjet.getGlobalBounds().width / 2);
 	AventureObjet.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	AventureObjet.setFillColor(sf::Color::Red);
+	AventureObjet.setCharacterSize(35 * AjustReso);
 
 	AventureFuite.setFont(fontAv);
 	AventureFuite.setOrigin(AventureFuite.getGlobalBounds().height / 2, AventureFuite.getGlobalBounds().width / 2);
 	AventureFuite.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	AventureFuite.setFillColor(sf::Color::Red);
+	AventureFuite.setCharacterSize(35 * AjustReso);
 
 	txDescCombat.setFont(fontAv);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
 	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txDescCombat.setFillColor(sf::Color::Black);
+	txDescCombat.setCharacterSize(35 * AjustReso);
 
 	txSoinPV.setFont(fontAv);
 	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
 	txSoinPV.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSoinPV.setFillColor(sf::Color::Red);
+	txSoinPV.setCharacterSize(35 * AjustReso);
 
 	txSoinMana.setFont(fontAv);
 	txSoinMana.setOrigin(txSoinMana.getGlobalBounds().height / 2, txSoinMana.getGlobalBounds().width / 2);
 	txSoinMana.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSoinMana.setFillColor(sf::Color::Red);
+	txSoinMana.setCharacterSize(35 * AjustReso);
 
 	txBombe.setFont(fontAv);
 	txBombe.setOrigin(txBombe.getGlobalBounds().height / 2, txBombe.getGlobalBounds().width / 2);
 	txBombe.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txBombe.setFillColor(sf::Color::Red);
+	txBombe.setCharacterSize(35 * AjustReso);
 
 	txSkill1.setFont(fontAv);
 	txSkill1.setOrigin(txSkill1.getGlobalBounds().height / 2, txSkill1.getGlobalBounds().width / 2);
 	txSkill1.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSkill1.setFillColor(sf::Color::Red);
+	txSkill1.setCharacterSize(35 * AjustReso);
 
 	txSkill2.setFont(fontAv);
 	txSkill2.setOrigin(txSkill2.getGlobalBounds().height / 2, txSkill2.getGlobalBounds().width / 2);
 	txSkill2.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSkill2.setFillColor(sf::Color::Red);
+	txSkill2.setCharacterSize(35 * AjustReso);
 
 	txSkill3.setFont(fontAv);
 	txSkill3.setOrigin(txSkill3.getGlobalBounds().height / 2, txSkill3.getGlobalBounds().width / 2);
 	txSkill3.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txSkill3.setFillColor(sf::Color::Red);
+	txSkill3.setCharacterSize(35 * AjustReso);
 
 	txSkill4.setFont(fontAv);
 	txSkill4.setOrigin(txSkill4.getGlobalBounds().height / 2, txSkill4.getGlobalBounds().width / 2);
 	txSkill4.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txSkill4.setFillColor(sf::Color::Red);
+	txSkill4.setCharacterSize(35 * AjustReso);
 
 	txRetourAction.setFont(fontAv);
 	txRetourAction.setOrigin(txRetourAction.getGlobalBounds().height / 2, txRetourAction.getGlobalBounds().width / 2);
 	txRetourAction.setPosition(AjustResoX * 1527.0f, AjustResoY * 645.0f);
 	txRetourAction.setFillColor(sf::Color::Red);
+	txRetourAction.setCharacterSize(35 * AjustReso);
 
 	tools::ChoixLangue(tools::GetTrad(), ActionAventure, "Choisissez votre action :", "Choose your action:");
 	tools::ChoixLangue(tools::GetTrad(), AventureAttaque, "Attaque", "Attack");
@@ -306,7 +325,7 @@ void Aventure::initEnnemi() {
 
 void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, AventureGame& _modeAv) {
 	if (_mode == ModeGame::LIBRE) {
-
+		//////////////////////// Mise en combat selon la zone choisi
 		if (_modeAv == AventureGame::ZONE_MAGE) {
 			if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRsVill, sf::Vector2f(spVill.getGlobalBounds().width, spVill.getGlobalBounds().height))) {
 				bPnj = true;
@@ -1072,6 +1091,7 @@ void Aventure::UpdateAventure(Joueur& _perso1, ModeGame& _mode, Consos& _conso, 
 	}
 	if (_mode == ModeGame::AVE) {
 
+		///////////////////////////Lancement des combats
 		if (bAss == true) {
 			combatAventureAss(_perso1, assassinA, _conso, _mode, 1, _modeAv);
 		}

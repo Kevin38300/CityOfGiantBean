@@ -94,7 +94,7 @@ void Game::init(myWindow& _window) {
 }
 
 void Game::update(myWindow& _window) {
-
+	////////////////////////// Play music
 	if (tools::GetFirstInM() == false) {
 		if (mapGame == MapGame::SHOP) {
 			musiqueGame.stop();
@@ -133,6 +133,7 @@ void Game::update(myWindow& _window) {
 	updateCarte(_window, mapGame, shopGame, aventureGame, modeGame, persoMain.persoPosition);
 	menuGame.UpdateMenuGame(_window, modeGame, persoMain, safarie);
 	updateTuto(mapGame, shopGame, aventureGame, modeGame);
+	///////////////////////// Changement de mode
 	if (modeGame == ModeGame::LIBRE && (save::getTutoNb() >= 4 || save::getTuto() == false)) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && fClickMenu > 0.3f) {
 			modeGame = ModeGame::MENU;
@@ -161,6 +162,7 @@ void Game::update(myWindow& _window) {
 			timerAff = 0.0f;
 		}
 	}
+	///////////////////////////Update
 	if (mapGame == MapGame::RDC) {
 	}
 	if (mapGame == MapGame::SAFARIE) {
@@ -205,7 +207,7 @@ void Game::update(myWindow& _window) {
 }
 
 void Game::updateEvent(myWindow& _window) {
-
+	/////////Sauvegarde avant que la fentre se ferme
 	if (_window.GetEvent().type == sf::Event::Closed)
 	{
 		initSave();
@@ -268,6 +270,7 @@ void Game::destroy() {
 }
 
 void Game::initSave() {
+	/////////////////// Save des donnes en int avant Sauvegarde dans fichier
 	if (mapGame == MapGame::RDC)
 		save::setMap(1);
 	if (mapGame == MapGame::SAFARIE)

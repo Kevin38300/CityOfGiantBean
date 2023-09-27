@@ -36,6 +36,7 @@ void Hotel::initSkillTree() {
 	txDescSkillTree.setFillColor(sf::Color::Black);
 	txDescSkillTree.setPosition(AjustResoX * 200, AjustResoY * 800);
 	txDescSkillTree.setFont(fontS);
+	txDescSkillTree.setCharacterSize(35 * AjustReso);
 
 	stDebutDecr = { "Skill point obtenu : " };
 	stDecrValid = { "\nVoulez vous choisir ce skill ?\n" };
@@ -60,67 +61,83 @@ void Hotel::initQuete() {
 	txDescQuete.setFillColor(sf::Color::Black);
 	txDescQuete.setPosition(AjustResoX * 200, AjustResoY * 800);
 	txDescQuete.setFont(fontS);
+	txDescQuete.setCharacterSize(35 * AjustReso);
 
 	txInfoQuete.setFillColor(sf::Color::Black);
 	txInfoQuete.setPosition(AjustResoX * 200, AjustResoY * 850);
 	txInfoQuete.setFont(fontS);
+	txInfoQuete.setCharacterSize(35 * AjustReso);
 
 	txQFontaine.setPosition(AjustResoX * 250, AjustResoY * 200);
 	txQFontaine.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQFontaine, "Fontaine", "Fountain");
+	txQFontaine.setCharacterSize(35 * AjustReso);
 
 	txQTaverne.setPosition(AjustResoX * 250, AjustResoY * 250);
 	txQTaverne.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQTaverne, "Taverne", "Tavern");
+	txQTaverne.setCharacterSize(35 * AjustReso);
 
 	txQShop.setPosition(AjustResoX * 250, AjustResoY * 300);
 	txQShop.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQShop, "Shop", "Shop");
+	txQShop.setCharacterSize(35 * AjustReso);
 
 	txQForge.setPosition(AjustResoX * 250, AjustResoY * 350);
 	txQForge.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQForge, "Forge", "Forge");
+	txQForge.setCharacterSize(35 * AjustReso);
 
 	txQChasseur.setPosition(AjustResoX * 250, AjustResoY * 200);
 	txQChasseur.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQChasseur, "Chasseur", "Hunter");
+	txQChasseur.setCharacterSize(35 * AjustReso);
 
 	txQPasDeQuartier.setPosition(AjustResoX * 250, AjustResoY * 250);
 	txQPasDeQuartier.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQPasDeQuartier, "Pas de Quartier", "No Neighborhood");
+	txQPasDeQuartier.setCharacterSize(35 * AjustReso);
 
 	txQCapture.setPosition(AjustResoX * 250, AjustResoY * 300);
 	txQCapture.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQCapture, "Capture", "Catch");
+	txQCapture.setCharacterSize(35 * AjustReso);
 
 	txQElevation.setPosition(AjustResoX * 250, AjustResoY * 350);
 	txQElevation.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQElevation, "Elevation", "Elevation");
+	txQElevation.setCharacterSize(35 * AjustReso);
 
 	txQElimination.setPosition(AjustResoX * 250, AjustResoY * 200);
 	txQElimination.setFont(fontS);
 	txQElimination.setString("Elimination");
 	tools::ChoixLangue(tools::GetTrad(), txQElimination, "Elimination", "Elimination");
+	txQElimination.setCharacterSize(35 * AjustReso);
 
 	txQDetrousseur.setPosition(AjustResoX * 250, AjustResoY * 250);
 	txQDetrousseur.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQDetrousseur, "Detrousseur", "Spoiler");
+	txQDetrousseur.setCharacterSize(35 * AjustReso);
 
 	txQBoss.setPosition(AjustResoX * 250, AjustResoY * 300);
 	txQBoss.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQBoss, "Boss", "Boss");
+	txQBoss.setCharacterSize(35 * AjustReso);
 
 	txQEtage.setPosition(AjustResoX * 250, AjustResoY * 350);
 	txQEtage.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQEtage, "Etage", "Floor");
+	txQEtage.setCharacterSize(35 * AjustReso);
 
 	txQRetour.setPosition(AjustResoX * 250, AjustResoY * 400);
 	txQRetour.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQRetour, "Retour", "Back");
+	txQRetour.setCharacterSize(35 * AjustReso);
 
 	txQQuit.setPosition(AjustResoX * 200, AjustResoY * 850);
 	txQQuit.setFont(fontS);
 	tools::ChoixLangue(tools::GetTrad(), txQQuit, "Echap pour quitter", "Escape to leave");
+	txQQuit.setCharacterSize(35 * AjustReso);
 
 	if (save::getTutoNb() == 2)
 		save::setTutoNb(3);
@@ -167,26 +184,31 @@ void Hotel::initHotel() {
 	txReponseBase.setOrigin(txReponseBase.getGlobalBounds().height / 2, txReponseBase.getGlobalBounds().width / 2);
 	txReponseBase.setPosition(AjustResoX * 150, AjustResoY * 900);
 	txReponseBase.setFillColor(sf::Color::Red);
+	txReponseBase.setCharacterSize(35 * AjustReso);
 
 	txLevelUpH.setFont(fontS);
 	txLevelUpH.setOrigin(txLevelUpH.getGlobalBounds().height / 2, txLevelUpH.getGlobalBounds().width / 2);
 	txLevelUpH.setPosition(posText);
 	txLevelUpH.setFillColor(sf::Color::Black);
+	txLevelUpH.setCharacterSize(35 * AjustReso);
 
 	txReponse1.setFont(fontS);
 	txReponse1.setOrigin(txReponse1.getGlobalBounds().height / 2, txReponse1.getGlobalBounds().width / 2);
 	txReponse1.setPosition(AjustResoX * 150, AjustResoY * 950);
 	txReponse1.setFillColor(sf::Color::Red);
+	txReponse1.setCharacterSize(35 * AjustReso);
 
 	txReponse2.setFont(fontS);
 	txReponse2.setOrigin(txReponse2.getGlobalBounds().height / 2, txReponse2.getGlobalBounds().width / 2);
 	txReponse2.setPosition(AjustResoX * 150, AjustResoY * 1050);
 	txReponse2.setFillColor(sf::Color::Red);
+	txReponse2.setCharacterSize(35 * AjustReso);
 
 	txReponse3.setFont(fontS);
 	txReponse3.setOrigin(txReponse3.getGlobalBounds().height / 2, txReponse3.getGlobalBounds().width / 2);
 	txReponse3.setPosition(AjustResoX * 150, AjustResoY * 1100);
 	txReponse3.setFillColor(sf::Color::Red);
+	txReponse3.setCharacterSize(35 * AjustReso);
 
 	initQuete();
 	initSkillTree();
@@ -305,6 +327,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 			timerSkill = 0.0f;
 		}
 
+		//////////////////////////// Deplacement en skill tree : Choisis un cote et bloque l'autre : choix des competence : Debloquage des branche selon le niv du joueur
 		switch (_perso1.GetNiveau())
 		{
 		case 0:
@@ -944,6 +967,7 @@ void Hotel::update(Joueur& _perso1, ModeGame& _modeGame, Safarie& safarie, Avent
 	}
 
 	if (_modeGame == ModeGame::QUETE) {
+		//////////////////////Deplacement et choix de la quete
 		if (bQLieux == false && bQAventure == false && bQSafari == false) {
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && iDepOnglet > 0 && timerState > 0.3f) {

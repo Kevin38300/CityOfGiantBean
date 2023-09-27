@@ -10,7 +10,7 @@ int main() {
 	tools::SetFirstInM(false);
 	//music::SetVolSonMusBase(0.0f, 0.f);
 	music::SetVolSonMusBase(50.0f, 60.f);
-	window.ToggleFullscreen();
+	//window.ToggleFullscreen();
 	while (!window.IsDone())
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F11))

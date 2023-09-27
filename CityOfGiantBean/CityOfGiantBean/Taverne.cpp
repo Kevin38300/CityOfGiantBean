@@ -52,6 +52,7 @@ sf::RectangleShape TavernePNJshape;
 
 void initTaverne(Joueur& _perso1) {
 
+	////////////////////// init texte et position
 
 	TavernePNJsize = {AjustResoX * 105,AjustResoY * 80 };
 	TavernePNJpos = { AjustResoX * 925,AjustResoY * 530 };
@@ -92,37 +93,44 @@ void initTaverne(Joueur& _perso1) {
 	txPNJ.setOrigin(txPNJ.getGlobalBounds().height / 2, txPNJ.getGlobalBounds().width / 2);
 	txPNJ.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	txPNJ.setFillColor(sf::Color::Black);
+	txPNJ.setCharacterSize(35 * AjustReso);
 
 	ValidationT.setFont(fontT);
 	ValidationT.setOrigin(ValidationT.getGlobalBounds().height / 2, ValidationT.getGlobalBounds().width / 2);
 	ValidationT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ValidationT.setFillColor(sf::Color::Black);
+	ValidationT.setCharacterSize(35 * AjustReso);
 
 	OuiTexteT.setFont(fontT);
 	OuiTexteT.setOrigin(OuiTexteT.getGlobalBounds().height / 2, OuiTexteT.getGlobalBounds().width / 2);
 	OuiTexteT.setPosition(AjustResoX * 600.0f, AjustResoY * 950.0f);
 	OuiTexteT.setFillColor(sf::Color::Red);
+	OuiTexteT.setCharacterSize(35 * AjustReso);
 
 	NonTexteT.setFont(fontT);
 	NonTexteT.setOrigin(NonTexteT.getGlobalBounds().height / 2, NonTexteT.getGlobalBounds().width / 2);
 	NonTexteT.setPosition(AjustResoX * 700.0f, AjustResoY * 950.0f);
 	NonTexteT.setFillColor(sf::Color::Red);
+	NonTexteT.setCharacterSize(35 * AjustReso);
 
 	PasArgentTaverne.setFont(fontT);
 	PasArgentTaverne.setOrigin(PasArgentTaverne.getGlobalBounds().height / 2, PasArgentTaverne.getGlobalBounds().width / 2);
 	PasArgentTaverne.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	PasArgentTaverne.setFillColor(sf::Color::Black);
+	PasArgentTaverne.setCharacterSize(35 * AjustReso);
 
 
 	ArgentRestantT.setFont(fontT);
 	ArgentRestantT.setOrigin(ArgentRestantT.getGlobalBounds().height / 2, ArgentRestantT.getGlobalBounds().width / 2);
 	ArgentRestantT.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ArgentRestantT.setFillColor(sf::Color::Black);
+	ArgentRestantT.setCharacterSize(35 * AjustReso);
 
 	ObtenuClasseTexte.setFont(fontT);
 	ObtenuClasseTexte.setOrigin(ObtenuClasseTexte.getGlobalBounds().height / 2, ObtenuClasseTexte.getGlobalBounds().width / 2);
 	ObtenuClasseTexte.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	ObtenuClasseTexte.setFillColor(sf::Color::Black);
+	ObtenuClasseTexte.setCharacterSize(35 * AjustReso);
 
 	PasDArgentT = "Vous n'avez pas assez d'argent!";
 	ValidationTa = "Vous allez change de classe: Classe : ";
@@ -138,6 +146,8 @@ void initTaverne(Joueur& _perso1) {
 	tools::ChoixLangue(tools::GetTrad(), NonTexteT, "Non", "No");
 	tools::ChoixLangue(tools::GetTrad(), txPNJ, stPNJ, stPNJEn);
 
+
+	////////////////// changement du rect du sprite du personnage
 	if (save::GetNew() == false) {
 		switch (save::getClasse())
 		{
@@ -169,6 +179,7 @@ void initTaverne(Joueur& _perso1) {
 
 void updateTaverne(myWindow& _window, Joueur& _perso1) {
 
+	/////////////////////// Interaction pnj
 	if (tools::CircleRect_Collision(_perso1.persoPosition, 10, TavernePNJpos, TavernePNJsize))
 		iPNJ = 1;
 	else

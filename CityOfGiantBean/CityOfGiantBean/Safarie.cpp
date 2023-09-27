@@ -59,108 +59,129 @@ void Safarie::initSafari() {
 	posText = { AjustResoX * 150.0f, AjustResoY * 850.0f };
 	txParoleSafarie.setFont(fontS);
 	txParoleSafarie.setFillColor(sf::Color::Black);
+	txParoleSafarie.setCharacterSize(35 * AjustReso);
 
 
 	txLevelUp.setFont(fontS);
 	txLevelUp.setOrigin(txLevelUp.getGlobalBounds().height / 2, txLevelUp.getGlobalBounds().width / 2);
 	txLevelUp.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	txLevelUp.setFillColor(sf::Color::Black);
+	txLevelUp.setCharacterSize(35 * AjustReso);
 
 	DetailActionAventureS.setFont(fontS);
 	DetailActionAventureS.setOrigin(DetailActionAventureS.getGlobalBounds().height / 2, DetailActionAventureS.getGlobalBounds().width / 2);
 	DetailActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 850.0f);
 	DetailActionAventureS.setFillColor(sf::Color::Black);
+	DetailActionAventureS.setCharacterSize(35 * AjustReso);
 
 	ActionAventureS.setFont(fontS);
 	ActionAventureS.setOrigin(ActionAventureS.getGlobalBounds().height / 2, ActionAventureS.getGlobalBounds().width / 2);
 	ActionAventureS.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	ActionAventureS.setFillColor(sf::Color::Black);
+	ActionAventureS.setCharacterSize(35 * AjustReso);
 
 	AventureAttaqueS.setFont(fontS);
 	AventureAttaqueS.setOrigin(AventureAttaqueS.getGlobalBounds().height / 2, AventureAttaqueS.getGlobalBounds().width / 2);
 	AventureAttaqueS.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	AventureAttaqueS.setFillColor(sf::Color::Red);
+	AventureAttaqueS.setCharacterSize(35 * AjustReso);
 
 	AventureSkillS.setFont(fontS);
 	AventureSkillS.setOrigin(AventureSkillS.getGlobalBounds().height / 2, AventureSkillS.getGlobalBounds().width / 2);
 	AventureSkillS.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	AventureSkillS.setFillColor(sf::Color::Red);
+	AventureSkillS.setCharacterSize(35 * AjustReso);
 
 	AventureObjetS.setFont(fontS);
 	AventureObjetS.setOrigin(AventureObjetS.getGlobalBounds().height / 2, AventureObjetS.getGlobalBounds().width / 2);
 	AventureObjetS.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	AventureObjetS.setFillColor(sf::Color::Red);
+	AventureObjetS.setCharacterSize(35 * AjustReso);
 
 	AventureFuiteS.setFont(fontS);
 	AventureFuiteS.setOrigin(AventureFuiteS.getGlobalBounds().height / 2, AventureFuiteS.getGlobalBounds().width / 2);
 	AventureFuiteS.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	AventureFuiteS.setFillColor(sf::Color::Red);
+	AventureFuiteS.setCharacterSize(35 * AjustReso);
 
 	txStatsMonstre.setFont(fontS);
 	txStatsMonstre.setOrigin(txStatsMonstre.getGlobalBounds().height / 2, txStatsMonstre.getGlobalBounds().width / 2);
 	txStatsMonstre.setPosition(AjustResoX * 1526.0f, AjustResoY * 85.0f);
 	txStatsMonstre.setFillColor(sf::Color::Black);
+	txStatsMonstre.setCharacterSize(35 * AjustReso);
 
 	txStatsPerso.setFont(fontS);
 	txStatsPerso.setOrigin(txStatsPerso.getGlobalBounds().height / 2, txStatsPerso.getGlobalBounds().width / 2);
 	txStatsPerso.setPosition(AjustResoX * 32.0f, AjustResoY * 80.0f);
 	txStatsPerso.setFillColor(sf::Color::Black);
+	txStatsPerso.setCharacterSize(35 * AjustReso);
 
 	txDescCombat.setFont(fontS);
 	txDescCombat.setOrigin(txDescCombat.getGlobalBounds().height / 2, txDescCombat.getGlobalBounds().width / 2);
 	txDescCombat.setPosition(AjustResoX * 150.0f, AjustResoY * 800.0f);
 	txDescCombat.setFillColor(sf::Color::Black);
+	txDescCombat.setCharacterSize(35 * AjustReso);
 
 	txElevation.setFont(fontS);
 	txElevation.setOrigin(txElevation.getGlobalBounds().height / 2, txElevation.getGlobalBounds().width / 2);
 	txElevation.setPosition(AjustResoX * 150.0f, AjustResoY * 950.0f);
 	txElevation.setFillColor(sf::Color::Red);
+	txElevation.setCharacterSize(35 * AjustReso);
 
 
 	txSoinPV.setFont(fontS);
 	txSoinPV.setOrigin(txSoinPV.getGlobalBounds().height / 2, txSoinPV.getGlobalBounds().width / 2);
 	txSoinPV.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSoinPV.setFillColor(sf::Color::Red);
+	txSoinPV.setCharacterSize(35 * AjustReso);
 
 	txSoinMana.setFont(fontS);
 	txSoinMana.setOrigin(txSoinMana.getGlobalBounds().height / 2, txSoinMana.getGlobalBounds().width / 2);
 	txSoinMana.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSoinMana.setFillColor(sf::Color::Red);
+	txSoinMana.setCharacterSize(35 * AjustReso);
 
 	txBombe.setFont(fontS);
 	txBombe.setOrigin(txBombe.getGlobalBounds().height / 2, txBombe.getGlobalBounds().width / 2);
 	txBombe.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txBombe.setFillColor(sf::Color::Red);
+	txBombe.setCharacterSize(35 * AjustReso);
 
 	txFilet.setFont(fontS);
 	txFilet.setOrigin(txFilet.getGlobalBounds().height / 2, txFilet.getGlobalBounds().width / 2);
 	txFilet.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txFilet.setFillColor(sf::Color::Red);
+	txFilet.setCharacterSize(35 * AjustReso);
 
 	txSkill1.setFont(fontS);
 	txSkill1.setOrigin(txSkill1.getGlobalBounds().height / 2, txSkill1.getGlobalBounds().width / 2);
 	txSkill1.setPosition(AjustResoX * 195.0f, AjustResoY * 645.0f);
 	txSkill1.setFillColor(sf::Color::Red);
+	txSkill1.setCharacterSize(35 * AjustReso);
 
 	txSkill2.setFont(fontS);
 	txSkill2.setOrigin(txSkill2.getGlobalBounds().height / 2, txSkill2.getGlobalBounds().width / 2);
 	txSkill2.setPosition(AjustResoX * 470.0f, AjustResoY * 645.0f);
 	txSkill2.setFillColor(sf::Color::Red);
+	txSkill2.setCharacterSize(35 * AjustReso);
 
 	txSkill3.setFont(fontS);
 	txSkill3.setOrigin(txSkill3.getGlobalBounds().height / 2, txSkill3.getGlobalBounds().width / 2);
 	txSkill3.setPosition(AjustResoX * 851.0f, AjustResoY * 645.0f);
 	txSkill3.setFillColor(sf::Color::Red);
+	txSkill3.setCharacterSize(35 * AjustReso);
 
 	txSkill4.setFont(fontS);
 	txSkill4.setOrigin(txSkill4.getGlobalBounds().height / 2, txSkill4.getGlobalBounds().width / 2);
 	txSkill4.setPosition(AjustResoX * 1188.0f, AjustResoY * 645.0f);
 	txSkill4.setFillColor(sf::Color::Red);
+	txSkill4.setCharacterSize(35 * AjustReso);
 
 	txRetourAction.setFont(fontS);
 	txRetourAction.setOrigin(txRetourAction.getGlobalBounds().height / 2, txRetourAction.getGlobalBounds().width / 2);
 	txRetourAction.setPosition(AjustResoX * 1527.0f, AjustResoY * 645.0f);
 	txRetourAction.setFillColor(sf::Color::Red);
+	txRetourAction.setCharacterSize(35 * AjustReso);
 
 	tools::ChoixLangue(tools::GetTrad(), ActionAventureS, "Choisissez votre action :", "Choose your action:");
 	tools::ChoixLangue(tools::GetTrad(), AventureAttaqueS, "Attaque", "Attack");
@@ -297,6 +318,8 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 	if (_mode == ModeGame::LIBRE) {
 		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Add) || bElevation == true)
 			bElevation = true;*/
+
+		//////////////////////Interaction PNJ
 		if (tools::CircleRect_Collision(_perso1.persoPosition, 20, posRoiGoblein, rsize) ) {
 			bColRoiMonstre = true;
 			stParoleSafarie = ("Roi Gobelin: Bonjour, si tu veux t'entrainer avec\nmes gobelin tu pourras drop du Cuivre");
@@ -326,7 +349,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 				bTimeRanger = true;
 				fTmp = 0.0f;
 			}
-
+			/////////////////// Elevation du niveau du safari
 			if (bTimeRanger == true) {
 				fTmp += tools::GetTimeDelta();
 				if (fTmp < 2.0f)
@@ -368,6 +391,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		else
 			bElevation = false;
 
+		//////////////////// Lancement des combats
 		if (tools::CircleRect_Collision(_perso1.persoPosition, 10, posGobelin, sf::Vector2f(spGobelin.getGlobalBounds().width, spGobelin.getGlobalBounds().height)) && irsVieGobelin >= 1 && (save::getTuto() == false || save::getTutoNb() == 3)) {
 
 			Gobelin1.SetName("Gobelin");
@@ -477,6 +501,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		rsGobelin.setPosition(posGobelin);
 		rsOurs.setPosition(posOurs);
 		rsOrc.setPosition(posOrc);
+		//////////////Monter de niveau
 		if (_perso1.bLeveluUp == true) {
 			_perso1.fTimerLevelUp += tools::GetTimeDelta();
 			if (_perso1.fTimerLevelUp > 1.5f) {
@@ -502,6 +527,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 		}
 	}
 
+	//////////// Reset des vie des mobs
 	if (irsVieGobelin <= 0) {
 		timerrsGob += tools::GetTimeDelta();
 		if (timerrsGob >= 10.0f) {
@@ -551,6 +577,7 @@ void Safarie::updateSafari(Joueur& _perso1, ModeGame& _mode, Consos& _conso) {
 
 void Safarie::ChoixObjetAventure(Joueur& _perso1, Monstre& _monstre1, Consos& _conso) {
 
+	/////////////////////choix d'utilisation d'un objet si disponible
 	int tmpint;
 	timerChoixActionO += tools::GetTimeDelta();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && choixActionO > 1 && timerChoixActionO > 0.3f) {

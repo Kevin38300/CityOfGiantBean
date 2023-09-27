@@ -95,6 +95,7 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 		case 5:
 			pOption = posQuit;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerState > 0.3f) {
+
 				_window.SetIsDone(true);
 				timerState = 0.0f;
 			}
@@ -206,6 +207,15 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 			bAide = false;
 			timerState = 0.0f;
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && timerState > 0.3f) {
+			iAideMenu = 1;
+			timerState = 0.0f;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && timerState > 0.3f) {
+			iAideMenu = 2;
+			timerState = 0.0f;
+		}
+
 	}
 	if (bQuete == true) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && timerState > 0.3f) {
@@ -220,12 +230,12 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && iChoixAvatar > 0 && timerState > 0.3f) {
 			iChoixAvatar -= 1;
-			posRsAvatar.x -= 50.5;
+			posRsAvatar.x -= 50.5 * AjustResoX;
 			timerState = 0.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && iChoixAvatar < 8 && timerState > 0.3f) {
 			iChoixAvatar += 1;
-			posRsAvatar.x += 50.5;
+			posRsAvatar.x += 50.5 * AjustResoX;
 			timerState = 0.0f;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && timerState > 0.3f) {
@@ -265,9 +275,13 @@ void MenuGame::UpdateMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joueu
 		}
 		AfficheAvatar();
 	}
+	tools::ChoixLangue(tools::GetTrad(), txAideCombat, "Aide combat\nFleche gauche", "Help fight\nLeft");
+	tools::ChoixLangue(tools::GetTrad(), txAideDir, "Aide direction\nFleche droite", "Help direction\nright");
 	spAvatar.setPosition(posAvatarP);
-	pInvBase = sf::Vector2f(((invDepLateral * 113) + 122) * AjustResoX, ((invDepVertical * 113) + 20) * AjustResoY);
-	rInv.setPosition(pInvBase);
+	pInvBase = { 235 * AjustResoX,133 * AjustResoY};
+	pInv = sf::Vector2f(((pInvBase.x + (invDepLateral - 1) * (116 * AjustResoX))), ((pInvBase.y + (invDepVertical - 1) * (110 * AjustResoY))));
+	//pInv = sf::Vector2f(((invDepLateral * (113 * AjustResoX)) + 122 * AjustResoX), ((invDepVertical * (113 * AjustResoY)) + 20 * AjustResoY));
+	rInv.setPosition(pInv);
 	rOption.setPosition(pOption);
 	rsChoixAvatar.setPosition(posRsAvatar);
 };
@@ -782,6 +796,21 @@ void MenuGame::DisplayMenuGame(myWindow& _window, ModeGame& _mode, Joueur& _joue
 				_window.Draw(txInfoProfil);
 			}
 			if (bAide == true) {
+
+				_window.Draw(txAideCombat);
+				_window.Draw(txAideDir);
+				if (iAideMenu == 1) {
+					if (tools::GetTrad() == 0)
+						_window.Draw(spAideCom);
+					if (tools::GetTrad() == 1)
+						_window.Draw(spAideComEn);
+				}
+				if (iAideMenu == 2) {
+					if (tools::GetTrad() == 0)
+						_window.Draw(spAideDir);
+					if (tools::GetTrad() == 1)
+						_window.Draw(spAideDirEn);
+				}
 
 			}
 			if (bQuete == true) {

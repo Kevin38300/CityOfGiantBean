@@ -49,113 +49,118 @@ void Menu::init(myWindow& _window) {
 	ttAideCom.loadFromFile("../Ressources/Textures/MENU/commandeCombat.png");
 	spAideCom.setTexture(ttAideCom);
 	spAideCom.setPosition(posAide);
+	spAideCom.setScale(1 * AjustResoX, 1 * AjustResoY);
 	ttAideComEn.loadFromFile("../Ressources/Textures/MENU/commandeCombatEn.png");
 	spAideComEn.setTexture(ttAideComEn);
 	spAideComEn.setPosition(posAide);
+	spAideComEn.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	ttAideDir.loadFromFile("../Ressources/Textures/MENU/commandeDir.png");
 	spAideDir.setTexture(ttAideDir);
 	spAideDir.setPosition(posAide);
+	spAideDir.setScale(1 * AjustResoX, 1 * AjustResoY);
 	ttAideDirEn.loadFromFile("../Ressources/Textures/MENU/commandeDirEn.png");
 	spAideDirEn.setTexture(ttAideDirEn);
 	spAideDirEn.setPosition(posAide);
+	spAideDirEn.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 
 	ttMenu.loadFromFile("../Ressources/Textures/MENU/MenuCeleste.jpg");
 	spMenu.setTexture(ttMenu);
+	spMenu.setScale(1 * AjustResoX, 1 * AjustResoY);
 
 	fontMenu.loadFromFile("../Ressources/Fonts/YOZAKURA-Regular.otf");
 
 	txMTitre.setFont(fontMenu);
 	txMTitre.setFillColor(_black);
 	txMTitre.setPosition(posTitre);
-	txMTitre.setCharacterSize(75);
+	txMTitre.setCharacterSize(75 * AjustReso);
 
 	txMNew.setFont(fontMenu);
 	txMNew.setFillColor(_black);
 	txMNew.setPosition(posMNew);
-	txMNew.setCharacterSize(35);
+	txMNew.setCharacterSize(35 * AjustReso);
 
 	txMCharge.setFont(fontMenu);
 	txMCharge.setFillColor(_black);
 	txMCharge.setPosition(posMCharge);
-	txMCharge.setCharacterSize(35);
+	txMCharge.setCharacterSize(35 * AjustReso);
 
 	txMOption.setFont(fontMenu);
 	txMOption.setFillColor(_black);
 	txMOption.setPosition(posMOption);
-	txMOption.setCharacterSize(35);
+	txMOption.setCharacterSize(35 * AjustReso);
 
 	txMQuitter.setFont(fontMenu);
 	txMQuitter.setFillColor(_black);
 	txMQuitter.setPosition(posMQuitter);
-	txMQuitter.setCharacterSize(35);
+	txMQuitter.setCharacterSize(35 * AjustReso);
 
 	txMOvolSon.setFont(fontMenu);
 	txMOvolSon.setFillColor(_black);
 	txMOvolSon.setPosition(posMOvolSon);
-	txMOvolSon.setCharacterSize(35);
+	txMOvolSon.setCharacterSize(35 * AjustReso);
 
 	txMOvolMusic.setFont(fontMenu);
 	txMOvolMusic.setFillColor(_black);
 	txMOvolMusic.setPosition(posMOvolMusic);
-	txMOvolMusic.setCharacterSize(35);
+	txMOvolMusic.setCharacterSize(35 * AjustReso);
 
 	txMOpe.setFont(fontMenu);
 	txMOpe.setFillColor(_black);
 	txMOpe.setPosition(posMOpe);
-	txMOpe.setCharacterSize(35);
+	txMOpe.setCharacterSize(35 * AjustReso);
 
 	txMOaide.setFont(fontMenu);
 	txMOaide.setFillColor(_black);
 	txMOaide.setPosition(posMOaide);
-	txMOaide.setCharacterSize(35);
+	txMOaide.setCharacterSize(35 * AjustReso);
 
 	txMOlangue.setFont(fontMenu);
 	txMOlangue.setFillColor(_black);
 	txMOlangue.setPosition(posMOlangue);
-	txMOlangue.setCharacterSize(35);
+	txMOlangue.setCharacterSize(35 * AjustReso);
 
 	txMOmoinMus.setFont(fontMenu);
 	txMOmoinMus.setFillColor(_black);
-	txMOmoinMus.setCharacterSize(35);
+	txMOmoinMus.setCharacterSize(35 * AjustReso);
 
 	txMOmoinSon.setFont(fontMenu);
 	txMOmoinSon.setFillColor(_black);
-	txMOmoinSon.setCharacterSize(35);
+	txMOmoinSon.setCharacterSize(35 * AjustReso);
 
 	txMOplusMus.setFont(fontMenu);
 	txMOplusMus.setFillColor(_black);
-	txMOplusMus.setCharacterSize(35);
+	txMOplusMus.setCharacterSize(35 * AjustReso);
 
 	txMOplusSon.setFont(fontMenu);
 	txMOplusSon.setFillColor(_black);
-	txMOplusSon.setCharacterSize(35);
+	txMOplusSon.setCharacterSize(35 * AjustReso);
 
 	txVerifNew.setFont(fontMenu);
 	txVerifNew.setFillColor(_red);
 	txVerifNew.setPosition(posVerifNew);
-	txVerifNew.setCharacterSize(50);
+	txVerifNew.setCharacterSize(50 * AjustReso);
 
 	txVerifOui.setFont(fontMenu);
 	txVerifOui.setFillColor(_red);
 	txVerifOui.setPosition(posVerifOui);
-	txVerifOui.setCharacterSize(50);
+	txVerifOui.setCharacterSize(50 * AjustReso);
 
 	txVerifNon.setFont(fontMenu);
 	txVerifNon.setFillColor(_red);
 	txVerifNon.setPosition(posVerifNon);
-	txVerifNon.setCharacterSize(50);
+	txVerifNon.setCharacterSize(50 * AjustReso);
 
 	txAideCombat.setFont(fontMenu);
 	txAideCombat.setFillColor(_red);
 	txAideCombat.setPosition(posAideCombat);
-	txAideCombat.setCharacterSize(50);
+	txAideCombat.setCharacterSize(50 * AjustReso);
 
 	txAideDir.setFont(fontMenu);
 	txAideDir.setFillColor(_red);
 	txAideDir.setPosition(posAideDir);
-	txAideDir.setCharacterSize(50);
+	txAideDir.setCharacterSize(50 * AjustReso);
 
 	boiteDiscussion::initBoiteDiscussion();
 
